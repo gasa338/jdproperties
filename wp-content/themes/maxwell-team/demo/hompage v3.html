@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteTransfers Ljubljana | Premium Ride Services</title>
+    <meta name="description" content="Premium transfer services in Ljubljana. Airport transfers, international trips, wine tours, and luxury transportation.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#f59e0b',
+                        accent: '#dc2626',
+                        dark: '#0f172a',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+        }
+        .service-card, .tour-card {
+            transition: all 0.3s ease;
+        }
+        .service-card:hover, .tour-card:hover {
+            transform: translateY(-5px);
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 10px); }
+            100% { transform: translate(0, -0px); }
+        }
+    </style>
+</head>
+<body class="font-sans bg-light text-dark">
+    
+    <!-- Header (existing code) -->
+    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <!-- Header content -->
+    </header>
+
+    <!-- Modern Hero Section (existing code) -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Hero content -->
+    </section>
+
+    <!-- Services Section (existing code) -->
+    <section class="py-20 bg-white">
+        <!-- Services content -->
+    </section>
+
+    <!-- ========== DODATE SEKCIJE ========== -->
+
+    <!-- 1. Lokalni SEO sekcija - Service Area -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-primary font-semibold">SERVICE AREA</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">Serving Ljubljana & Beyond</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">We provide premium transfer services throughout Ljubljana and all major destinations in Slovenia and neighboring countries.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Coverage Areas</h3>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-lg mb-3 text-primary">Ljubljana Areas</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-primary mr-2 text-sm"></i>
+                                    <span>City Center</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-primary mr-2 text-sm"></i>
+                                    <span>Bežigrad</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-primary mr-2 text-sm"></i>
+                                    <span>Šiška</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-primary mr-2 text-sm"></i>
+                                    <span>Moste</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-primary mr-2 text-sm"></i>
+                                    <span>Vič</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-3 text-primary">Popular Destinations</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-primary mr-2 text-sm"></i>
+                                    <span>Bled</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-primary mr-2 text-sm"></i>
+                                    <span>Bohinj</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-primary mr-2 text-sm"></i>
+                                    <span>Postojna</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-primary mr-2 text-sm"></i>
+                                    <span>Piran</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-primary mr-2 text-sm"></i>
+                                    <span>Maribor</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-6 bg-white rounded-xl shadow-sm border border-gray-100">
+                        <h4 class="font-semibold text-lg mb-2">International Transfers</h4>
+                        <p class="text-gray-600 mb-4">We also serve cross-border destinations including:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Zagreb, Croatia</span>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Trieste, Italy</span>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Klagenfurt, Austria</span>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Budapest, Hungary</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-primary to-blue-600 rounded-2xl p-8 text-white">
+                    <h3 class="text-2xl font-bold mb-4">Not Sure If We Cover Your Area?</h3>
+                    <p class="mb-6 opacity-90">Contact us directly to check if we can serve your specific location. We're constantly expanding our service areas.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-secondary mr-3"></i>
+                            <span>Free area verification</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-secondary mr-3"></i>
+                            <span>Quick response within 1 hour</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-secondary mr-3"></i>
+                            <span>Special quotes for new areas</span>
+                        </div>
+                    </div>
+                    <a href="#" class="inline-flex items-center bg-white text-primary px-6 py-3 rounded-xl font-semibold mt-6 hover:bg-gray-100 transition">
+                        <i class="fas fa-phone-alt mr-2"></i> Contact Us Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. FAQ sekcija -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-primary font-semibold">FAQ</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Find answers to the most common questions about our transfer services in Ljubljana.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                <i class="fas fa-question-circle text-primary mr-2"></i>
+                                How far in advance should I book?
+                            </h3>
+                            <p class="text-gray-600">We recommend booking at least 24 hours in advance for standard transfers. For airport transfers, 48 hours is ideal. Last-minute bookings are subject to availability.</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                <i class="fas fa-question-circle text-primary mr-2"></i>
+                                What is your cancellation policy?
+                            </h3>
+                            <p class="text-gray-600">You can cancel free of charge up to 24 hours before your scheduled pickup. Cancellations within 24 hours may incur a 50% fee. Airport transfers have a 6-hour cancellation window.</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                <i class="fas fa-question-circle text-primary mr-2"></i>
+                                Do you provide child seats?
+                            </h3>
+                            <p class="text-gray-600">Yes, we offer child seats for all age groups at no extra cost. Please specify your requirements during booking so we can prepare the appropriate seat.</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                <i class="fas fa-question-circle text-primary mr-2"></i>
+                                How do I find my driver at the airport?
+                            </h3>
+                            <p class="text-gray-600">For airport pickups, your driver will be waiting in the arrivals hall with a sign bearing your name. We also track your flight for any delays.</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                <i class="fas fa-question-circle text-primary mr-2"></i>
+                                What payment methods do you accept?
+                            </h3>
+                            <p class="text-gray-600">We accept cash, credit cards (Visa, MasterCard), and online payments. Corporate accounts and invoicing are available for business clients.</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                <i class="fas fa-question-circle text-primary mr-2"></i>
+                                Can I make multiple stops during my journey?
+                            </h3>
+                            <p class="text-gray-600">Yes, we can accommodate multiple stops. Please inform us in advance so we can plan the route accordingly. Additional stops may incur extra charges.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <p class="text-gray-600 mb-4">Didn't find the answer you were looking for?</p>
+                    <a href="#" class="inline-flex items-center text-primary font-semibold hover:text-blue-700 transition group">
+                        View all frequently asked questions
+                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Blog/Content sekcija -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-primary font-semibold">TRAVEL GUIDES</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">Explore Ljubljana & Slovenia</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Discover insider tips, hidden gems, and essential information for your visit to Slovenia.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition">
+                    <div class="h-48 bg-gradient-to-r from-blue-400 to-blue-600 relative">
+                        <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold">Travel Tips</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Top 10 Must-Visit Places in Ljubljana</h3>
+                        <p class="text-gray-600 mb-4">Discover the essential sights and experiences in Slovenia's charming capital city.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-500 text-sm">June 15, 2023</span>
+                            <a href="#" class="text-primary font-semibold text-sm flex items-center group">
+                                Read more
+                                <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition">
+                    <div class="h-48 bg-gradient-to-r from-amber-400 to-amber-600 relative">
+                        <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold">Wine Tours</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Slovenia's Wine Regions: A Complete Guide</h3>
+                        <p class="text-gray-600 mb-4">Explore the three distinct wine regions of Slovenia and their unique characteristics.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-500 text-sm">May 28, 2023</span>
+                            <a href="#" class="text-primary font-semibold text-sm flex items-center group">
+                                Read more
+                                <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition">
+                    <div class="h-48 bg-gradient-to-r from-green-400 to-green-600 relative">
+                        <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold">Airport Guide</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Ljubljana Airport: Arrival & Transfer Guide</h3>
+                        <p class="text-gray-600 mb-4">Everything you need to know about arriving at LJU and getting to your destination.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-500 text-sm">April 12, 2023</span>
+                            <a href="#" class="text-primary font-semibold text-sm flex items-center group">
+                                Read more
+                                <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition shadow-md">
+                    <i class="fas fa-newspaper mr-2"></i> View All Travel Guides
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Trust Signals sekcija -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-primary font-semibold">WHY CHOOSE US</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">Trusted by Travelers</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">We're committed to providing the highest standard of service for all our clients.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-primary text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Fully Licensed & Insured</h3>
+                    <p class="text-gray-600">All our vehicles and drivers are fully licensed and insured according to Slovenian regulations.</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-car text-primary text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Modern Fleet</h3>
+                    <p class="text-gray-600">Our vehicles are regularly maintained and replaced to ensure comfort, safety, and reliability.</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-user-tie text-primary text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Professional Drivers</h3>
+                    <p class="text-gray-600">Our drivers are experienced, professional, and knowledgeable about Ljubljana and Slovenia.</p>
+                </div>
+            </div>
+            
+            <!-- Certifications & Partners -->
+            <div class="bg-gray-50 rounded-2xl p-8">
+                <h3 class="text-2xl font-bold text-center mb-8">Our Certifications & Partners</h3>
+                <div class="flex flex-wrap justify-center gap-8 md:gap-12">
+                    <div class="w-32 h-20 bg-white rounded-lg shadow-sm flex items-center justify-center p-4">
+                        <span class="font-bold text-gray-700">Tourism<br>Slovenia</span>
+                    </div>
+                    <div class="w-32 h-20 bg-white rounded-lg shadow-sm flex items-center justify-center p-4">
+                        <span class="font-bold text-gray-700">Ljubljana<br>Tourism</span>
+                    </div>
+                    <div class="w-32 h-20 bg-white rounded-lg shadow-sm flex items-center justify-center p-4">
+                        <span class="font-bold text-gray-700">Safe<br>Travels</span>
+                    </div>
+                    <div class="w-32 h-20 bg-white rounded-lg shadow-sm flex items-center justify-center p-4">
+                        <span class="font-bold text-gray-700">Green<br>Fleet</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Call to Action sa formom -->
+    <section class="py-20 bg-gradient-to-r from-primary to-blue-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6">Get a Personalized Quote</h2>
+                        <p class="text-xl mb-8 opacity-90">Tell us about your travel needs, and we'll provide you with a customized quote for your transfer service.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-secondary mr-3 text-xl"></i>
+                                <span class="text-lg">No obligation quote</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-secondary mr-3 text-xl"></i>
+                                <span class="text-lg">Response within 2 hours</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-secondary mr-3 text-xl"></i>
+                                <span class="text-lg">Best price guarantee</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-8 text-dark shadow-2xl">
+                        <h3 class="text-2xl font-bold mb-6 text-center">Quick Quote Request</h3>
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2">Full Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Email Address</label>
+                                <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Service Type</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                    <option>Airport Transfer</option>
+                                    <option>International Trip</option>
+                                    <option>City Tour</option>
+                                    <option>Wine Tour</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Pickup Location</label>
+                                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="City or address">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Destination</label>
+                                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="City or address">
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition mt-4">
+                                Get My Quote
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (existing code) -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <!-- Footer content -->
+    </footer>
+
+</body>
+</html>

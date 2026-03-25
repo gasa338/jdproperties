@@ -1,0 +1,331 @@
+/* TAČAN REDOSLED - @tailwind direktive MORAJU biti prve */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* OPTIMIZOVANI FONTOVI - local() + woff2 */
+@font-face {
+  font-family: 'Montserrat';
+  src:
+    local('Montserrat Bold'),
+    local('Montserrat-Bold'),
+    url('../fonts/Montserrat/static/Montserrat-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src:
+    local('Roboto Regular'),
+    local('Roboto-Regular'),
+    url('../fonts/Roboto/static/Roboto-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src:
+    local('Roboto Medium'),
+    local('Roboto-Medium'),
+    url('../fonts/Roboto/static/Roboto-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src:
+    local('Roboto Bold'),
+    local('Roboto-Bold'),
+    url('../fonts/Roboto/static/Roboto-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* SAMO OVDE DEFINISIŠTE BOJE - HEX format */
+    --background: #F8FAFD;
+    --foreground: #0F1A3A;
+    --primary: #00255F; /* #00255F */
+    --primary-foreground: #FFFFFF;
+    --primary-dark: #00255F;
+    --secondary: #E8EFF9;
+    --secondary-foreground: #0F1A3A;
+    --muted: #3636363a;
+    --muted-foreground: #4a4b4d57;
+    --accent: #96B9E6;
+    --accent-foreground: #00255F;
+    --accent-light: #F5F9FF;
+    --accent-medium: #E1EBF7;
+    --destructive: #EF4444;
+    --destructive-foreground: #FFFFFF;
+    --border: #D9E2F0;
+    --border-dark: #00255F;
+    --input: #D9E2F0;
+    --ring: #004CBF;
+    --section-dark: #00255F;
+    --section-medium: #003A8A;
+    --section-light: #F5F9FF;
+    --sidebar-background: #FAFBFC;
+    --sidebar-foreground: #0F1A3A;
+    --sidebar-primary: #004CBF;
+    --sidebar-primary-foreground: #FFFFFF;
+    --sidebar-accent: #E8EFF9;
+    --sidebar-accent-foreground: #0F1A3A;
+    --sidebar-border: #D9E2F0;
+    --sidebar-ring: #004CBF;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--foreground);
+    background-color: var(--background) !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--primary);
+  }
+
+  .custom-logo-link img {
+    height: 43px !important;
+    width: auto !important;
+  }
+
+    a {
+      text-decoration: none !important;
+    }
+  /* Samo dva breakpoint-a */
+  @media (max-width: 992px) {
+    .custom-logo-link img {
+      max-height: 35px !important;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .custom-logo-link img {
+      max-height: 30px !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  }
+
+  .glow-primary {
+    box-shadow: 0 8px 30px rgba(0, 76, 191, 0.2);
+  }
+
+  .glow-subtle {
+    box-shadow: 0 4px 20px rgba(0, 76, 191, 0.1);
+  }
+
+  .bg-gradient-hero {
+    background-image: radial-gradient(ellipse at top, rgba(0, 76, 191, 0.08), transparent 60%);
+  }
+
+  .bg-gradient-card {
+    background-image: linear-gradient(135deg, var(--card), #F8FAFD);
+  }
+
+  /* Section background utilities - SADA KORISTI VAR() */
+  .bg-section-dark {
+    background-color: var(--section-dark);
+    color: white;
+  }
+
+  .bg-section-medium {
+    background-color: var(--section-medium);
+    color: white;
+  }
+
+  .bg-section-light {
+    background-color: var(--section-light);
+  }
+
+  .bg-accent-light {
+    background-color: var(--accent-light);
+  }
+
+  .bg-accent-medium {
+    background-color: var(--accent-medium);
+  }
+
+  /* Animacije */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out forwards;
+  }
+
+  /* Definisanje animacija */
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes pulse-glow {
+
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(0, 76, 191, 0.2);
+    }
+
+    50% {
+      box-shadow: 0 0 20px 10px rgba(0, 76, 191, 0.2);
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* styles/globals.css */
+@layer components {
+
+  /* H1 Styles */
+  .h1-responsive {
+    @apply font-heading font-bold text-h1-mobile md:text-h1-tablet lg:text-h1-desktop;
+  }
+
+  /* H2 Styles */
+  .h2-responsive {
+    @apply font-heading font-semibold text-h2-mobile md:text-h2-tablet lg:text-h2-desktop;
+  }
+
+  /* H3 Styles */
+  .h3-responsive {
+    @apply font-heading font-semibold text-h3-mobile md:text-h3-tablet lg:text-h3-desktop;
+  }
+
+  /* H4 Styles */
+  .h4-responsive {
+    @apply font-heading font-medium text-h4-mobile md:text-h4-tablet lg:text-h4-desktop;
+  }
+
+  /* H5 Styles */
+  .h5-responsive {
+    @apply font-heading font-medium text-h5-mobile md:text-h5-tablet lg:text-h5-desktop;
+  }
+
+  /* H6 Styles */
+  .h6-responsive {
+    @apply font-heading font-medium text-h6-mobile md:text-h6-tablet lg:text-h6-desktop;
+  }
+
+  .hover-lift {
+    @apply shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md;
+  }
+  
+  .maxwell-border {
+    @apply border hover:border-border-dark transition-colors duration-200;
+  }
+
+  /* Maxwell content - univerzalni parent */
+  .maxwell-content p {
+    @apply mb-3;
+  }
+
+  .maxwell-content strong {
+    @apply font-bold;
+  }
+
+  /* Linkovi unutar maxwell content */
+  .maxwell-content a {
+    @apply text-primary hover:text-secondary transition-colors duration-200;
+  }
+
+  .maxwell-content a:hover {
+    @apply text-secondary !important;
+  }
+
+  .maxwell-content ol {
+    list-style-type: decimal;
+    margin: 1em 0;
+    padding-left: 1em;
+  }
+
+  .maxwell-content ol li {
+    @apply !mb-1 !pl-1;
+  }
+ 
+}
+
+/* ----------------------------- */
+/* SPECIFIČNE KLASE ZA LISTE */
+/* ----------------------------- */
+
+/* 1. Standard Maxwell lista */
+.list-maxwell-dics ul {
+  list-style: disc;
+  margin: 1em 0;
+}
+
+.list-maxwell-dics ul li {
+  margin-bottom: 0.5rem;        /* mb-2 */
+  padding-left: 0.5rem;         /* pl-2 */
+  display: flex;
+  align-items: flex-start;
+}
+
+.list-maxwell-dics ul li::before {
+  content: '•';
+  color: var(--color-primary);
+  margin-right: 0.5rem;
+}
+

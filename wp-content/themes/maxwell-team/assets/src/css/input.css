@@ -1,0 +1,288 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* OPTIMIZOVANI FONTOVI - local() + woff2 */
+/* manrope-600 - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/Manrope/manrope-v20-latin-600.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* manrope-700 - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/Manrope/manrope-v20-latin-700.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* inter-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Inter/inter-v20-latin-regular.woff2') format('woff2');
+}
+
+/* inter-500 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/Inter/inter-v20-latin-500.woff2') format('woff2');
+}
+
+/* inter-600 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/Inter/inter-v20-latin-600.woff2') format('woff2');
+}
+
+/* inter-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/Inter/inter-v20-latin-700.woff2') format('woff2');
+}
+
+
+@layer base {
+  :root {
+    --background: 40 20% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 180 9% 98%;
+    --card-foreground: 222 47% 11%;
+
+    --light: 30 20% 98%;
+    --footer: 210 4.3% 96.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 222 55% 16%;
+    --primary-foreground: 40 20% 98%;
+
+    --secondary: 40 15% 94%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 46%;
+
+    --accent: 12 80% 58%;
+    --accent-light: 12 20% 98%;
+    --accent-dark: 12 60% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 13% 90%;
+    --input: 220 13% 90%;
+    --ring: 222 55% 16%;
+
+    --radius: 0.625rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --hero-gradient: linear-gradient(135deg, hsl(222 55% 16%), hsl(222 45% 24%));
+    --accent-gradient: linear-gradient(135deg, hsl(12 80% 58%), hsl(16 85% 52%));
+    --surface-gradient: linear-gradient(180deg, hsl(40 20% 98%), hsl(220 14% 96%));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: theme('fontFamily.body');
+    font-weight: 400;
+    font-size: 1rem;
+    color: hsl(var(--muted-foreground));
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: theme('fontFamily.heading');
+    font-weight: 600;
+    line-height: 1.2;
+    color: hsl(var(--foreground));
+  }
+
+  p,
+  div {
+    font-family: theme('fontFamily.body');
+    font-weight: 400;
+  }
+
+  li {
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  .bg-hero {
+    background: var(--hero-gradient);
+  }
+
+  .bg-surface {
+    background: var(--surface-gradient);
+  }
+
+  .bg-background {
+    background: var(--background);
+  }
+  
+  .bg-footer {
+    background: var(--footer);
+  }
+
+  .maxwell-content p {
+    @apply mb-3;
+  }
+
+  .maxwell-content ul {
+    @apply list-disc list-inside;
+  }
+
+  .maxwell-content ul li::marker {
+    @apply text-accent pl-0.5;
+  }
+
+  .maxwell-content ul li {
+    @apply mb-2;
+  }
+
+  .maxwell-content ul li a {
+    @apply hover:text-secondary transition-colors duration-200;
+  }
+
+  .maxwell-content blockquote {
+    @apply text-accent font-medium pt-4 border-l-4 border-accent px-6 bg-accent/5 py-2 rounded-r-lg my-4;
+  }
+
+  .maxwell-top-title {
+    @apply font-semibold text-accent tracking-wide;
+  }
+
+  .top-title-light-frame {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-primary/15 mb-8;
+  }
+
+  .top-title-light {
+    @apply text-primary text-sm font-medium tracking-wider uppercase mb-4 block;
+  }
+
+  .top-title-dark-frame {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-primary/15 mb-8;
+  }
+
+  .top-title-dark {
+    @apply text-primary text-sm font-medium tracking-wider uppercase mb-4 block;
+  }
+}
+
+@layer components {
+
+  /* Text Gradient Accent */
+  .text-gradient-accent {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* H1 Styles */
+  .h1-responsive {
+    @apply font-heading font-bold text-h1-mobile md:text-h1-tablet lg:text-h1-desktop;
+  }
+
+  .h1-responsive span {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* H2 Styles */
+  .h2-responsive {
+    @apply font-heading font-semibold text-h2-mobile md:text-h2-tablet lg:text-h2-desktop;
+  }
+
+  .h2-responsive span {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* H3 Styles */
+  .h3-responsive {
+    @apply font-heading font-semibold text-h3-mobile md:text-h3-tablet lg:text-h3-desktop;
+  }
+
+  .h3-responsive span {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* H4 Styles */
+  .h4-responsive {
+    @apply font-heading font-medium text-h4-mobile md:text-h4-tablet lg:text-h4-desktop;
+  }
+
+  /* H5 Styles */
+  .h5-responsive {
+    @apply font-heading font-medium text-h5-mobile md:text-h5-tablet lg:text-h5-desktop;
+  }
+
+  /* H6 Styles */
+  .h6-responsive {
+    @apply font-heading font-medium text-h6-mobile md:text-h6-tablet lg:text-h6-desktop;
+  }
+}
+
+.wp-block-heading {
+  @apply h2-responsive mb-3;
+}
+
+.maxwell-post-content p {
+  @apply !mb-2;
+}
+
+.nav-links a {
+  @apply no-underline text-accent;
+}

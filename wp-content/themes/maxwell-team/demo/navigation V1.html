@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Navigation Examples with Dropdowns</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .nav-container {
+            transition: all 0.3s ease;
+        }
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        .nav-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        .dropdown-content {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .mobile-dropdown.open .mobile-dropdown-content {
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold text-center mb-12 text-gray-800">Modern Navigation Examples with Dropdowns</h1>
+        
+        <!-- Navigation 1: Minimal Glassmorphism -->
+        <div class="mb-16">
+            <h2 class="text-xl font-semibold mb-4 text-gray-700">1. Minimal Glassmorphism</h2>
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl">
+                <nav class="nav-container bg-white/70 backdrop-blur-lg rounded-2xl p-4 nav-shadow">
+                    <div class="flex items-center justify-between">
+                        <!-- Logo -->
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                                <span class="text-white font-bold text-lg">L</span>
+                            </div>
+                            <span class="ml-3 text-xl font-bold text-gray-800">LuxStay</span>
+                        </div>
+                        
+                        <!-- Desktop Menu -->
+                        <div class="hidden md:flex items-center space-x-8">
+                            <a href="#" class="text-gray-600 hover:text-indigo-600 transition-colors">Home</a>
+                            
+                            <!-- Dropdown 1 -->
+                            <div class="dropdown relative">
+                                <button class="flex items-center text-gray-600 hover:text-indigo-600 transition-colors">
+                                    <span>Rooms</span>
+                                    <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                                </button>
+                                <div class="dropdown-content absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10">
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">Standard Room</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">Deluxe Suite</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">Executive Suite</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">Presidential Suite</a>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="text-gray-600 hover:text-indigo-600 transition-colors">Amenities</a>
+                            
+                            <!-- Dropdown 2 -->
+                            <div class="dropdown relative">
+                                <button class="flex items-center text-gray-600 hover:text-indigo-600 transition-colors">
+                                    <span>Services</span>
+                                    <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                                </button>
+                                <div class="dropdown-content absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10">
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">Spa & Wellness</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">Restaurant</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">Conference Rooms</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">Airport Transfer</a>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="text-gray-600 hover:text-indigo-600 transition-colors">Contact</a>
+                            
+                            <!-- Language Selector -->
+                            <div class="dropdown relative">
+                                <button class="flex items-center text-gray-600 hover:text-indigo-600 transition-colors">
+                                    <i class="fas fa-globe mr-1"></i>
+                                    <span>EN</span>
+                                    <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                                </button>
+                                <div class="dropdown-content absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg py-2 z-10">
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">English</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">Español</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">Français</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Book Now Button -->
+                            <button class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-all">
+                                Book Now
+                            </button>
+                        </div>
+                        
+                        <!-- Mobile Menu Button -->
+                        <button class="md:hidden text-gray-600" id="menu1-toggle">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Mobile Menu -->
+                    <div class="mobile-menu md:hidden mt-4" id="menu1">
+                        <div class="flex flex-col space-y-4 py-4">
+                            <a href="#" class="text-gray-600 hover:text-indigo-600 transition-colors py-2">Home</a>
+                            
+                            <!-- Mobile Dropdown 1 -->
+                            <div class="mobile-dropdown">
+                                <button class="flex items-center justify-between w-full text-gray-600 hover:text-indigo-600 transition-colors py-2" onclick="toggleMobileDropdown(this)">
+                                    <span>Rooms</span>
+                                    <i class="fas fa-chevron-down text-xs"></i>
+                                </button>
+                                <div class="mobile-dropdown-content ml-4">
+                                    <a href="#" class="block py-2 text-gray-600 hover:text-indigo-600">Standard Room</a>
+                                    <a href="#" class="block py-2 text-gray-600 hover:text-indigo-600">Deluxe Suite</a>
+                                    <a href="#" class="block py-2 text-gray-600 hover:text-indigo-600">Executive Suite</a>
+                                    <a href="#" class="block py-2 text-gray-600 hover:text-indigo-600">Presidential Suite</a>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="text-gray-600 hover:text-indigo-600 transition-colors py-2">Amenities</a>
+                            
+                            <!-- Mobile Dropdown 2 -->
+                            <div class="mobile-dropdown">
+                                <button class="flex items-center justify-between w-full text-gray-600 hover:text-indigo-600 transition-colors py-2" onclick="toggleMobileDropdown(this)">
+                                    <span>Services</span>
+                                    <i class="fas fa-chevron-down text-xs"></i>
+                                </button>
+                                <div class="mobile-dropdown-content ml-4">
+                                    <a href="#" class="block py-2 text-gray-600 hover:text-indigo-600">Spa & Wellness</a>
+                                    <a href="#" class="block py-2 text-gray-600 hover:text-indigo-600">Restaurant</a>
+                                    <a href="#" class="block py-2 text-gray-600 hover:text-indigo-600">Conference Rooms</a>
+                                    <a href="#" class="block py-2 text-gray-600 hover:text-indigo-600">Airport Transfer</a>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="text-gray-600 hover:text-indigo-600 transition-colors py-2">Contact</a>
+                            
+                            <div class="pt-4 border-t border-gray-200 flex justify-between">
+                                <!-- Language Selector -->
+                                <div class="flex items-center">
+                                    <i class="fas fa-globe mr-2 text-gray-500"></i>
+                                    <select class="bg-transparent text-gray-600">
+                                        <option>EN</option>
+                                        <option>ES</option>
+                                        <option>FR</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- Book Now Button -->
+                                <button class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-medium">
+                                    Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        
+        <!-- Navigation 2: Dark Elegant -->
+        <div class="mb-16">
+            <h2 class="text-xl font-semibold mb-4 text-gray-700">2. Dark Elegant</h2>
+            <div class="bg-gradient-to-r from-gray-800 to-gray-900 p-8 rounded-xl">
+                <nav class="nav-container bg-gray-900/90 backdrop-blur-md rounded-xl p-4 border border-gray-700">
+                    <div class="flex items-center justify-between">
+                        <!-- Logo -->
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gradient-to-r from-amber-500 to-orange-500 rounded-lg flex items-center justify-center">
+                                <span class="text-white font-bold text-lg">E</span>
+                            </div>
+                            <span class="ml-3 text-xl font-bold text-white">EliteStay</span>
+                        </div>
+                        
+                        <!-- Desktop Menu -->
+                        <div class="hidden md:flex items-center space-x-8">
+                            <a href="#" class="text-gray-300 hover:text-amber-400 transition-colors">Home</a>
+                            
+                            <!-- Dropdown 1 -->
+                            <div class="dropdown relative">
+                                <button class="flex items-center text-gray-300 hover:text-amber-400 transition-colors">
+                                    <span>Suites</span>
+                                    <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                                </button>
+                                <div class="dropdown-content absolute left-0 mt-2 w-48 bg-gray-800 border border-gray-700 rounded-lg shadow-lg py-2 z-10">
+                                    <a href="#" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Classic Suite</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Executive Suite</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Premium Suite</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Royal Suite</a>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="text-gray-300 hover:text-amber-400 transition-colors">Dining</a>
+                            
+                            <!-- Dropdown 2 -->
+                            <div class="dropdown relative">
+                                <button class="flex items-center text-gray-300 hover:text-amber-400 transition-colors">
+                                    <span>Experiences</span>
+                                    <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                                </button>
+                                <div class="dropdown-content absolute left-0 mt-2 w-56 bg-gray-800 border border-gray-700 rounded-lg shadow-lg py-2 z-10">
+                                    <a href="#" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Spa Treatments</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Wine Tasting</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Private Tours</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Cooking Classes</a>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="text-gray-300 hover:text-amber-400 transition-colors">Events</a>
+                            
+                            <!-- Language Selector -->
+                            <div class="dropdown relative">
+                                <button class="flex items-center text-gray-300 hover:text-amber-400 transition-colors">
+                                    <i class="fas fa-globe mr-1"></i>
+                                    <span>EN</span>
+                                    <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                                </button>
+                                <div class="dropdown-content absolute right-0 mt-2 w-32 bg-gray-800 border border-gray-700 rounded-lg shadow-lg py-2 z-10">
+                                    <a href="#" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">English</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Español</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Français</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Book Now Button -->
+                            <button class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg transition-all">
+                                Book Now
+                            </button>
+                        </div>
+                        
+                        <!-- Mobile Menu Button -->
+                        <button class="md:hidden text-gray-300" id="menu2-toggle">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Mobile Menu -->
+                    <div class="mobile-menu md:hidden mt-4" id="menu2">
+                        <div class="flex flex-col space-y-4 py-4">
+                            <a href="#" class="text-gray-300 hover:text-amber-400 transition-colors py-2">Home</a>
+                            
+                            <!-- Mobile Dropdown 1 -->
+                            <div class="mobile-dropdown">
+                                <button class="flex items-center justify-between w-full text-gray-300 hover:text-amber-400 transition-colors py-2" onclick="toggleMobileDropdown(this)">
+                                    <span>Suites</span>
+                                    <i class="fas fa-chevron-down text-xs"></i>
+                                </button>
+                                <div class="mobile-dropdown-content ml-4">
+                                    <a href="#" class="block py-2 text-gray-300 hover:text-amber-400">Classic Suite</a>
+                                    <a href="#" class="block py-2 text-gray-300 hover:text-amber-400">Executive Suite</a>
+                                    <a href="#" class="block py-2 text-gray-300 hover:text-amber-400">Premium Suite</a>
+                                    <a href="#" class="block py-2 text-gray-300 hover:text-amber-400">Royal Suite</a>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="text-gray-300 hover:text-amber-400 transition-colors py-2">Dining</a>
+                            
+                            <!-- Mobile Dropdown 2 -->
+                            <div class="mobile-dropdown">
+                                <button class="flex items-center justify-between w-full text-gray-300 hover:text-amber-400 transition-colors py-2" onclick="toggleMobileDropdown(this)">
+                                    <span>Experiences</span>
+                                    <i class="fas fa-chevron-down text-xs"></i>
+                                </button>
+                                <div class="mobile-dropdown-content ml-4">
+                                    <a href="#" class="block py-2 text-gray-300 hover:text-amber-400">Spa Treatments</a>
+                                    <a href="#" class="block py-2 text-gray-300 hover:text-amber-400">Wine Tasting</a>
+                                    <a href="#" class="block py-2 text-gray-300 hover:text-amber-400">Private Tours</a>
+                                    <a href="#" class="block py-2 text-gray-300 hover:text-amber-400">Cooking Classes</a>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="text-gray-300 hover:text-amber-400 transition-colors py-2">Events</a>
+                            
+                            <div class="pt-4 border-t border-gray-700 flex justify-between">
+                                <!-- Language Selector -->
+                                <div class="flex items-center">
+                                    <i class="fas fa-globe mr-2 text-gray-400"></i>
+                                    <select class="bg-transparent text-gray-300">
+                                        <option>EN</option>
+                                        <option>ES</option>
+                                        <option>FR</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- Book Now Button -->
+                                <button class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                                    Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        
+        <!-- Navigation 3: Colorful Gradient -->
+        <div class="mb-16">
+            <h2 class="text-xl font-semibold mb-4 text-gray-700">3. Colorful Gradient</h2>
+            <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-8 rounded-xl">
+                <nav class="nav-container bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-4 text-white">
+                    <div class="flex items-center justify-between">
+                        <!-- Logo -->
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                                <span class="text-white font-bold text-lg">V</span>
+                            </div>
+                            <span class="ml-3 text-xl font-bold">VividStay</span>
+                        </div>
+                        
+                        <!-- Desktop Menu -->
+                        <div class="hidden md:flex items-center space-x-8">
+                            <a href="#" class="hover:text-purple-100 transition-colors">Home</a>
+                            
+                            <!-- Dropdown 1 -->
+                            <div class="dropdown relative">
+                                <button class="flex items-center hover:text-purple-100 transition-colors">
+                                    <span>Rooms</span>
+                                    <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                                </button>
+                                <div class="dropdown-content absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-lg py-2 z-10">
+                                    <a href="#" class="block px-4 py-2 hover:bg-purple-50">City View Room</a>
+                                    <a href="#" class="block px-4 py-2 hover:bg-purple-50">Garden View Room</a>
+                                    <a href="#" class="block px-4 py-2 hover:bg-purple-50">Poolside Room</a>
+                                    <a href="#" class="block px-4 py-2 hover:bg-purple-50">Family Suite</a>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="hover:text-purple-100 transition-colors">Experiences</a>
+                            
+                            <!-- Dropdown 2 -->
+                            <div class="dropdown relative">
+                                <button class="flex items-center hover:text-purple-100 transition-colors">
+                                    <span>Gallery</span>
+                                    <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                                </button>
+                                <div class="dropdown-content absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-lg py-2 z-10">
+                                    <a href="#" class="block px-4 py-2 hover:bg-purple-50">Rooms</a>
+                                    <a href="#" class="block px-4 py-2 hover:bg-purple-50">Restaurants</a>
+                                    <a href="#" class="block px-4 py-2 hover:bg-purple-50">Activities</a>
+                                    <a href="#" class="block px-4 py-2 hover:bg-purple-50">Events</a>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="hover:text-purple-100 transition-colors">Contact</a>
+                            
+                            <!-- Language Selector -->
+                            <div class="dropdown relative">
+                                <button class="flex items-center hover:text-purple-100 transition-colors">
+                                    <i class="fas fa-globe mr-1"></i>
+                                    <span>EN</span>
+                                    <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                                </button>
+                                <div class="dropdown-content absolute right-0 mt-2 w-32 bg-white text-gray-800 rounded-lg shadow-lg py-2 z-10">
+                                    <a href="#" class="block px-4 py-2 hover:bg-purple-50">English</a>
+                                    <a href="#" class="block px-4 py-2 hover:bg-purple-50">Español</a>
+                                    <a href="#" class="block px-4 py-2 hover:bg-purple-50">Français</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Book Now Button -->
+                            <button class="bg-white text-purple-600 px-6 py-2 rounded-full font-medium hover:shadow-lg transition-all">
+                                Book Now
+                            </button>
+                        </div>
+                        
+                        <!-- Mobile Menu Button -->
+                        <button class="md:hidden" id="menu3-toggle">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Mobile Menu -->
+                    <div class="mobile-menu md:hidden mt-4" id="menu3">
+                        <div class="flex flex-col space-y-4 py-4">
+                            <a href="#" class="hover:text-purple-100 transition-colors py-2">Home</a>
+                            
+                            <!-- Mobile Dropdown 1 -->
+                            <div class="mobile-dropdown">
+                                <button class="flex items-center justify-between w-full hover:text-purple-100 transition-colors py-2" onclick="toggleMobileDropdown(this)">
+                                    <span>Rooms</span>
+                                    <i class="fas fa-chevron-down text-xs"></i>
+                                </button>
+                                <div class="mobile-dropdown-content ml-4">
+                                    <a href="#" class="block py-2 hover:text-purple-100">City View Room</a>
+                                    <a href="#" class="block py-2 hover:text-purple-100">Garden View Room</a>
+                                    <a href="#" class="block py-2 hover:text-purple-100">Poolside Room</a>
+                                    <a href="#" class="block py-2 hover:text-purple-100">Family Suite</a>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="hover:text-purple-100 transition-colors py-2">Experiences</a>
+                            
+                            <!-- Mobile Dropdown 2 -->
+                            <div class="mobile-dropdown">
+                                <button class="flex items-center justify-between w-full hover:text-purple-100 transition-colors py-2" onclick="toggleMobileDropdown(this)">
+                                    <span>Gallery</span>
+                                    <i class="fas fa-chevron-down text-xs"></i>
+                                </button>
+                                <div class="mobile-dropdown-content ml-4">
+                                    <a href="#" class="block py-2 hover:text-purple-100">Rooms</a>
+                                    <a href="#" class="block py-2 hover:text-purple-100">Restaurants</a>
+                                    <a href="#" class="block py-2 hover:text-purple-100">Activities</a>
+                                    <a href="#" class="block py-2 hover:text-purple-100">Events</a>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="hover:text-purple-100 transition-colors py-2">Contact</a>
+                            
+                            <div class="pt-4 border-t border-white/30 flex justify-between">
+                                <!-- Language Selector -->
+                                <div class="flex items-center">
+                                    <i class="fas fa-globe mr-2"></i>
+                                    <select class="bg-transparent text-white">
+                                        <option class="text-gray-800">EN</option>
+                                        <option class="text-gray-800">ES</option>
+                                        <option class="text-gray-800">FR</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- Book Now Button -->
+                                <button class="bg-white text-purple-600 px-4 py-2 rounded-full text-sm font-medium">
+                                    Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        
+        <!-- Navigation 4: Clean & Professional -->
+        <div class="mb-16">
+            <h2 class="text-xl font-semibold mb-4 text-gray-700">4. Clean & Professional</h2>
+            <div class="bg-gradient-to-r from-green-50 to-teal-50 p-8 rounded-xl">
+                <nav class="nav-container bg-white rounded-xl p-4 nav-shadow">
+                    <div class="flex items-center justify-between">
+                        <!-- Logo -->
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-teal-500 rounded-lg flex items-center justify-center">
+                                <span class="text-white font-bold text-lg">H</span>
+                            </div>
+                            <span class="ml-3 text-xl font-bold text-gray-800">HarmonyStay</span>
+                        </div>
+                        
+                        <!-- Desktop Menu -->
+                        <div class="hidden md:flex items-center space-x-8">
+                            <a href="#" class="text-gray-600 hover:text-teal-600 transition-colors font-medium">Home</a>
+                            
+                            <!-- Dropdown 1 -->
+                            <div class="dropdown relative">
+                                <button class="flex items-center text-gray-600 hover:text-teal-600 transition-colors font-medium">
+                                    <span>Accommodations</span>
+                                    <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                                </button>
+                                <div class="dropdown-content absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-lg py-2 z-10 border">
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-teal-50">Standard Rooms</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-teal-50">Family Rooms</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-teal-50">Business Suites</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-teal-50">Accessible Rooms</a>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="text-gray-600 hover:text-teal-600 transition-colors font-medium">Services</a>
+                            
+                            <!-- Dropdown 2 -->
+                            <div class="dropdown relative">
+                                <button class="flex items-center text-gray-600 hover:text-teal-600 transition-colors font-medium">
+                                    <span>Location</span>
+                                    <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                                </button>
+                                <div class="dropdown-content absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10 border">
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-teal-50">Getting Here</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-teal-50">Local Attractions</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-teal-50">Transportation</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-teal-50">Map & Directions</a>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="text-gray-600 hover:text-teal-600 transition-colors font-medium">Reviews</a>
+                            
+                            <!-- Language Selector -->
+                            <div class="dropdown relative">
+                                <button class="flex items-center text-gray-600 hover:text-teal-600 transition-colors font-medium">
+                                    <i class="fas fa-globe mr-1"></i>
+                                    <span>EN</span>
+                                    <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                                </button>
+                                <div class="dropdown-content absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg py-2 z-10 border">
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-teal-50">English</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-teal-50">Español</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-teal-50">Français</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Book Now Button -->
+                            <button class="bg-gradient-to-r from-green-500 to-teal-500 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg transition-all">
+                                Book Now
+                            </button>
+                        </div>
+                        
+                        <!-- Mobile Menu Button -->
+                        <button class="md:hidden text-gray-600" id="menu4-toggle">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Mobile Menu -->
+                    <div class="mobile-menu md:hidden mt-4" id="menu4">
+                        <div class="flex flex-col space-y-4 py-4">
+                            <a href="#" class="text-gray-600 hover:text-teal-600 transition-colors py-2 font-medium">Home</a>
+                            
+                            <!-- Mobile Dropdown 1 -->
+                            <div class="mobile-dropdown">
+                                <button class="flex items-center justify-between w-full text-gray-600 hover:text-teal-600 transition-colors py-2 font-medium" onclick="toggleMobileDropdown(this)">
+                                    <span>Accommodations</span>
+                                    <i class="fas fa-chevron-down text-xs"></i>
+                                </button>
+                                <div class="mobile-dropdown-content ml-4">
+                                    <a href="#" class="block py-2 text-gray-600 hover:text-teal-600">Standard Rooms</a>
+                                    <a href="#" class="block py-2 text-gray-600 hover:text-teal-600">Family Rooms</a>
+                                    <a href="#" class="block py-2 text-gray-600 hover:text-teal-600">Business Suites</a>
+                                    <a href="#" class="block py-2 text-gray-600 hover:text-teal-600">Accessible Rooms</a>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="text-gray-600 hover:text-teal-600 transition-colors py-2 font-medium">Services</a>
+                            
+                            <!-- Mobile Dropdown 2 -->
+                            <div class="mobile-dropdown">
+                                <button class="flex items-center justify-between w-full text-gray-600 hover:text-teal-600 transition-colors py-2 font-medium" onclick="toggleMobileDropdown(this)">
+                                    <span>Location</span>
+                                    <i class="fas fa-chevron-down text-xs"></i>
+                                </button>
+                                <div class="mobile-dropdown-content ml-4">
+                                    <a href="#" class="block py-2 text-gray-600 hover:text-teal-600">Getting Here</a>
+                                    <a href="#" class="block py-2 text-gray-600 hover:text-teal-600">Local Attractions</a>
+                                    <a href="#" class="block py-2 text-gray-600 hover:text-teal-600">Transportation</a>
+                                    <a href="#" class="block py-2 text-gray-600 hover:text-teal-600">Map & Directions</a>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="text-gray-600 hover:text-teal-600 transition-colors py-2 font-medium">Reviews</a>
+                            
+                            <div class="pt-4 border-t border-gray-200 flex justify-between">
+                                <!-- Language Selector -->
+                                <div class="flex items-center">
+                                    <i class="fas fa-globe mr-2 text-gray-500"></i>
+                                    <select class="bg-transparent text-gray-600 font-medium">
+                                        <option>EN</option>
+                                        <option>ES</option>
+                                        <option>FR</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- Book Now Button -->
+                                <button class="bg-gradient-to-r from-green-500 to-teal-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                                    Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation 1
+            const menu1Toggle = document.getElementById('menu1-toggle');
+            const menu1 = document.getElementById('menu1');
+            
+            menu1Toggle.addEventListener('click', function() {
+                menu1.classList.toggle('open');
+            });
+            
+            // Navigation 2
+            const menu2Toggle = document.getElementById('menu2-toggle');
+            const menu2 = document.getElementById('menu2');
+            
+            menu2Toggle.addEventListener('click', function() {
+                menu2.classList.toggle('open');
+            });
+            
+            // Navigation 3
+            const menu3Toggle = document.getElementById('menu3-toggle');
+            const menu3 = document.getElementById('menu3');
+            
+            menu3Toggle.addEventListener('click', function() {
+                menu3.classList.toggle('open');
+            });
+            
+            // Navigation 4
+            const menu4Toggle = document.getElementById('menu4-toggle');
+            const menu4 = document.getElementById('menu4');
+            
+            menu4Toggle.addEventListener('click', function() {
+                menu4.classList.toggle('open');
+            });
+        });
+        
+        // Mobile dropdown toggle functionality
+        function toggleMobileDropdown(button) {
+            const dropdown = button.parentElement;
+            dropdown.classList.toggle('open');
+            
+            // Rotate the chevron icon
+            const icon = button.querySelector('i');
+            if (dropdown.classList.contains('open')) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+    </script>
+</body>
+</html>

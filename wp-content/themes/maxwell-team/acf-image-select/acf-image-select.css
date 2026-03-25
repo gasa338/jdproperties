@@ -1,0 +1,256 @@
+/* Main container */
+.acf-background-select {
+    margin: 15px 0;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+}
+
+/* Options container - ALWAYS HORIZONTAL */
+.background-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+/* Individual option */
+.background-option {
+    flex: 0 0 auto;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.background-option:hover {
+    transform: translateY(-3px);
+}
+
+/* Hide the actual radio input */
+.background-radio {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Option label */
+.background-option-label {
+    display: block;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+}
+
+/* Option preview - FIXED SIZE */
+.option-preview {
+    width: 150px !important;
+    height: 100px !important;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 8px;
+    position: relative;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.option-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Checkmark for selected state */
+.checkmark {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    background: #007cba;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+.checkmark svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* No image placeholder */
+.no-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.placeholder-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+/* Custom option */
+.option-preview.custom-option {
+    background: #f8f9fa;
+    border-style: dashed;
+    border-color: #7e8993;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.option-preview.custom-option .dashicons {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    color: #7e8993;
+}
+
+/* SELECTED STATE */
+.background-option.selected .option-preview {
+    border-color: #007cba;
+    border-width: 3px;
+    box-shadow: 0 5px 15px rgba(0, 124, 186, 0.2);
+}
+
+.background-option.selected .checkmark {
+    display: flex;
+}
+
+.background-option.selected .option-preview.custom-option {
+    border-color: #46b450;
+    background: linear-gradient(135deg, #f7fcf7 0%, #e8f5e8 100%);
+}
+
+.background-option.selected .option-preview.custom-option .dashicons {
+    color: #46b450;
+}
+
+/* Option label text */
+.option-label {
+    font-size: 13px;
+    color: #23282d;
+    font-weight: 500;
+    text-align: center;
+    max-width: 150px;
+    word-wrap: break-word;
+    margin-top: 5px;
+}
+
+.background-option.selected .option-label {
+    color: #007cba;
+    font-weight: 600;
+}
+
+/* Selection info */
+.selection-info {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.selected-background {
+    margin-bottom: 8px;
+}
+
+.selected-background .label {
+    font-weight: 600;
+    color: #23282d;
+}
+
+.selected-background .value {
+    margin-left: 8px;
+    color: #007cba;
+    font-weight: 600;
+}
+
+.custom-indicator {
+    color: #46b450;
+    font-weight: 600;
+}
+
+.predefined-indicator {
+    color: #007cba;
+    font-weight: 600;
+}
+
+.size-info {
+    color: #666;
+    font-size: 12px;
+    padding-top: 8px;
+    border-top: 1px solid #ddd;
+}
+
+.size-info small {
+    opacity: 0.8;
+}
+
+/* Custom background upload */
+.custom-background-upload {
+    width: 100%;
+}
+
+.upload-instructions {
+    background: #f0f8ff;
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border-left: 4px solid #007cba;
+}
+
+.upload-instructions p {
+    margin: 0;
+    color: #444;
+    font-size: 13px;
+}
+
+.custom-image-upload {
+    margin-top: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .background-options {
+        gap: 10px;
+        justify-content: center;
+    }
+    
+    .option-preview {
+        width: 120px !important;
+        height: 80px !important;
+    }
+    
+    .option-label {
+        max-width: 120px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .background-options {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        flex-wrap: nowrap;
+    }
+    
+    .background-option {
+        flex-shrink: 0;
+    }
+}

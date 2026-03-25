@@ -1,0 +1,95 @@
+/* Modern table styling for Gutenberg block */
+.wp-block-table {
+    overflow-x: auto;
+    margin: 1.5em 0;
+}
+
+.wp-block-table table {
+    width: 100%;
+    border-collapse: collapse;
+    line-height: 1.5;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Header styling */
+.wp-block-table th {
+    color: hsl(var(--muted-foreground)) !important;
+    font-weight: 600 !important;
+}
+
+/* Cell styling */
+.wp-block-table td {
+    padding: 12px;
+    border: 1px solid #f5f5f7 !important;
+}
+
+/* Row hover effect */
+.wp-block-table tbody tr:hover {
+    background-color: #f8fafc;
+    transition: background-color 0.2s ease;
+}
+
+/* First column styling (agency names) */
+.wp-block-table td:first-child {
+    font-weight: 600;
+}
+
+/* Alternating row colors for better readability */
+.wp-block-table tbody tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .wp-block-table table {
+        font-size: 0.8rem;
+    }
+
+    .wp-block-table th,
+    .wp-block-table td {
+        padding: 10px 8px;
+        min-width: 120px;
+    }
+
+    /* Make table horizontally scrollable on mobile */
+    .wp-block-table {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Optional: Add subtle border radius to first and last cells */
+.wp-block-table tr:first-child th:first-child {
+    border-top-left-radius: 12px;
+}
+
+.wp-block-table tr:first-child th:last-child {
+    border-top-right-radius: 12px;
+}
+
+/** blog post style */
+.wp-block-image {
+  margin-bottom: 0.5rem !important;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: hsl(var(--accent) / 0.05);
+}
+
+.wp-block-image img {
+  border-radius: 0.5rem;
+}
+
+.wp-block-list {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+.wp-block-list li::marker {
+  color: hsl(var(--accent));
+  padding-left: 0.125rem;
+}
+
+.wp-block-list li {
+  margin-bottom: 0.5rem;
+}

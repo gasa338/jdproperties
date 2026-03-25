@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="60" viewBox="0 0 240 60">
+  <style>
+    .text { font-family: Arial, sans-serif; font-weight: 800; }
+  </style>
+
+  <!-- Mountains -->
+  <path d="M20 38 L40 10 L60 35 L75 20 L95 38 Z" fill="#fcfcfcff"/>
+
+  <!-- Car body -->
+  <rect x="110" y="22" width="55" height="20" rx="3" ry="3" fill="#c49a2c"/>
+  <rect x="125" y="15" width="25" height="15" rx="2" ry="2" fill="#c49a2c"/>
+
+  <!-- Windows -->
+  <rect x="127" y="17" width="10" height="11" fill="white"/>
+  <rect x="140" y="17" width="10" height="11" fill="white"/>
+
+  <!-- Wheels -->
+  <circle cx="125" cy="42" r="5" fill="#ffffffff"/>
+  <circle cx="150" cy="42" r="5" fill="#ffffffff"/>
+
+  <!-- Text -->
+  <text x="15" y="58" font-size="16" class="text" fill="#ffffffff">SLOVENIATRIPS</text>
+  <text x="165" y="58" font-size="10" class="text" fill="#0d1b2a">.com</text>
+</svg>

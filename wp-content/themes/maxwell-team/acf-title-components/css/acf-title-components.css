@@ -1,0 +1,77 @@
+/* ==============================
+   WRAPPER
+   ============================== */
+.acf-advanced-title-field {
+    border: 1px solid #e1e1e1;
+    padding: 12px;
+    background: #fff;
+}
+
+/* ==============================
+   INPUTS
+   ============================== */
+.acf-advanced-title-field input[type="text"],
+.acf-advanced-title-field textarea,
+.acf-advanced-title-field select {
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 6px 8px;
+    font-size: 13px;
+}
+
+/* ==============================
+   SETTINGS
+   ============================== */
+.acf-advanced-title-field .settings-panel {
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.acf-advanced-title-field label {
+    font-size: 12px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+/* ==============================
+   CUSTOM FONT SIZE
+   ============================== */
+.custom-font-size-row {
+    display: none;
+    gap: 6px;
+}
+
+.custom-font-size-row.visible {
+    display: flex;
+}
+
+.custom-font-size-row input {
+    width: 100%;
+}
+
+/* ==============================
+   PREVIEW (EDITOR ONLY)
+   ============================== */
+.wp-block .advanced-title {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.wp-block .advanced-title-top {
+    font-size: 12px;
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.wp-block .advanced-title-top img {
+    width: 14px;
+    height: 14px;
+}
+
+.wp-block .advanced-title-desc {
+    font-size: 13px;
+    opacity: 0.8;
+}

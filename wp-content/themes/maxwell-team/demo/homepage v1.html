@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ljubljana Premium Transfer Services | Airport, International & Wine Tours</title>
+    <meta name="description" content="Premium transfer services in Ljubljana. Airport transfers, international trips, countrywide service, wine tours, and popular destinations. Book your ride today!">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1d4ed8',
+                        secondary: '#f59e0b',
+                        accent: '#dc2626'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <i class="fas fa-car text-white text-lg"></i>
+                    </div>
+                    <span class="ml-2 text-xl font-bold text-gray-800">LjubljanaTransfers</span>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-primary font-medium">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-primary transition">Services</a>
+                    <a href="#" class="text-gray-600 hover:text-primary transition">Destinations</a>
+                    <a href="#" class="text-gray-600 hover:text-primary transition">About</a>
+                    <a href="#" class="text-gray-600 hover:text-primary transition">Contact</a>
+                </nav>
+                
+                <!-- Mobile menu button -->
+                <button class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="#" class="bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-primary to-blue-700 text-white py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Premium Transfer Services in Ljubljana</h1>
+                <p class="text-xl mb-8 opacity-90">Comfortable, reliable, and professional rides for all your travel needs. From airport transfers to international trips and scenic wine tours.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="bg-secondary text-gray-900 px-6 py-3 rounded-lg font-semibold text-center hover:bg-amber-500 transition">Book Your Ride</a>
+                    <a href="#" class="bg-white text-primary px-6 py-3 rounded-lg font-semibold text-center hover:bg-gray-100 transition">Our Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Premium Services</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We offer a wide range of transfer services tailored to your needs, ensuring comfort and reliability every step of the way.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-globe-europe text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">International Trips</h3>
+                    <p class="text-gray-600 mb-4">Cross-border journeys to neighboring countries with professional drivers and comfortable vehicles.</p>
+                    <a href="#" class="text-primary font-medium flex items-center">Learn more <i class="fas fa-arrow-right ml-2 text-sm"></i></a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-map-marked-alt text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Countrywide Service</h3>
+                    <p class="text-gray-600 mb-4">Travel anywhere in Slovenia with our reliable and comfortable transfer services.</p>
+                    <a href="#" class="text-primary font-medium flex items-center">Learn more <i class="fas fa-arrow-right ml-2 text-sm"></i></a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-plane-departure text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Airport Transfers</h3>
+                    <p class="text-gray-600 mb-4">Timely and comfortable transfers to and from Ljubljana Airport and other regional airports.</p>
+                    <a href="#" class="text-primary font-medium flex items-center">Learn more <i class="fas fa-arrow-right ml-2 text-sm"></i></a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-landmark text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Popular Destinations</h3>
+                    <p class="text-gray-600 mb-4">Explore Slovenia's most beautiful locations with our guided transfer services.</p>
+                    <a href="#" class="text-primary font-medium flex items-center">Learn more <i class="fas fa-arrow-right ml-2 text-sm"></i></a>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-wine-glass-alt text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Wine Tours</h3>
+                    <p class="text-gray-600 mb-4">Experience Slovenia's renowned wine regions with our specialized wine tour services.</p>
+                    <a href="#" class="text-primary font-medium flex items-center">Learn more <i class="fas fa-arrow-right ml-2 text-sm"></i></a>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-crown text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">VIP Services</h3>
+                    <p class="text-gray-600 mb-4">Premium vehicles and personalized services for special occasions and business needs.</p>
+                    <a href="#" class="text-primary font-medium flex items-center">Learn more <i class="fas fa-arrow-right ml-2 text-sm"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Tours Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Popular Tours & Destinations</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Discover our most requested routes and destinations that showcase the beauty of Slovenia and beyond.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Tour 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="h-48 bg-blue-200 relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="font-semibold text-lg">Lake Bled & Bohinj</h3>
+                            <p class="text-sm">Scenic beauty</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-600 text-sm"><i class="fas fa-clock mr-1"></i> Full day</span>
+                            <span class="text-primary font-semibold">From €120</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Visit Slovenia's most famous lakes with guided stops at key viewpoints.</p>
+                        <a href="#" class="text-primary font-medium text-sm flex items-center">Book this tour <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Tour 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="h-48 bg-amber-200 relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="font-semibold text-lg">Vipava Valley Wine Tour</h3>
+                            <p class="text-sm">Wine tasting</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-600 text-sm"><i class="fas fa-clock mr-1"></i> 6 hours</span>
+                            <span class="text-primary font-semibold">From €90</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Explore renowned wineries and taste exceptional Slovenian wines.</p>
+                        <a href="#" class="text-primary font-medium text-sm flex items-center">Book this tour <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Tour 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="h-48 bg-green-200 relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="font-semibold text-lg">Postojna Cave & Predjama Castle</h3>
+                            <p class="text-sm">Historical sites</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-600 text-sm"><i class="fas fa-clock mr-1"></i> 5 hours</span>
+                            <span class="text-primary font-semibold">From €80</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Discover Slovenia's underground wonders and medieval castle.</p>
+                        <a href="#" class="text-primary font-medium text-sm flex items-center">Book this tour <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Tour 4 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="h-48 bg-purple-200 relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="font-semibold text-lg">Zagreb City Transfer</h3>
+                            <p class="text-sm">International trip</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-600 text-sm"><i class="fas fa-clock mr-1"></i> 2.5 hours</span>
+                            <span class="text-primary font-semibold">From €150</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Comfortable transfer to Croatia's capital with optional city tour.</p>
+                        <a href="#" class="text-primary font-medium text-sm flex items-center">Book this tour <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#" class="inline-flex items-center text-primary font-semibold hover:text-blue-700 transition">
+                    View all destinations
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking CTA Section -->
+    <section class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Book Your Ride?</h2>
+                <p class="text-lg mb-8 opacity-90">Get a quick quote or book directly through our easy-to-use booking system. We're here to make your travel seamless.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#" class="bg-secondary text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-amber-500 transition">Book Now</a>
+                    <a href="#" class="bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Get a Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">What Our Customers Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it - hear from travelers who have experienced our premium transfer services.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-primary"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-800">Marko P.</h4>
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"The airport transfer was flawless. The driver was punctual, professional, and the vehicle was spotless. Highly recommended!"</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-primary"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-800">Sarah K.</h4>
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"The wine tour to Vipava Valley was exceptional! Our driver was knowledgeable and the wineries we visited were fantastic."</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-primary"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-800">Thomas R.</h4>
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"We used their service for a trip to Zagreb. Comfortable ride, professional driver, and great value. Will use again!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                            <i class="fas fa-car text-white"></i>
+                        </div>
+                        <span class="ml-2 text-xl font-bold">LjubljanaTransfers</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Premium transfer services in Ljubljana and beyond. Comfort, reliability, and professionalism.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">International Trips</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Countrywide Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Airport Transfers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Popular Destinations</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Wine Tours</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone mr-2 text-sm"></i>
+                            <span>+386 40 123 456</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-2 text-sm"></i>
+                            <span>info@ljubljanatransfers.si</span>
+                        </li>
+                        <li class="flex items-start text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-2 text-sm mt-1"></i>
+                            <span>123 Main Street, Ljubljana, Slovenia</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe for updates and special offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg text-gray-800 w-full focus:outline-none">
+                        <button type="submit" class="bg-primary px-4 py-2 rounded-r-lg hover:bg-blue-700 transition">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
+                <p>&copy; 2023 LjubljanaTransfers. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
