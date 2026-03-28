@@ -4,7 +4,7 @@ $footer_data = get_field('footer_data', 'option');
 $social_network = get_field('social_network', 'option');
 ?>
 
-<footer class="bg-footer text-primary no-underline">
+<footer class="bg-gradient-purple text-white no-underline">
     <div class="container py-16 px-4 mx-auto">
         <div class="grid sm:grid-cols-2 lg:grid-cols-[1.4fr,repeat(4,1fr)] gap-8">
             <div>
@@ -31,7 +31,7 @@ $social_network = get_field('social_network', 'option');
                                             <?php echo $item['text']['title']; ?>
                                         </div>
                                     <?php else: ?>
-                                        <a href="<?php echo esc_url($item['text']['url']); ?>" class="flex items-center gap-3 hover:text-accent transition-colors no-underline">
+                                        <a href="<?php echo esc_url($item['text']['url']); ?>" class="flex items-center gap-3 transition-colors no-underline">
                                             <?php if (!empty($item['icon'])): ?>
                                                 <?php echo maxwell_render_svg($item['icon']['url'], 'w-6 h-6'); ?>
                                             <?php endif; ?>
@@ -47,7 +47,7 @@ $social_network = get_field('social_network', 'option');
                     <div class="flex items-center gap-3 mb-6">
                         <?php foreach ($social_network as $key => $social) : ?>
                             <?php if (!empty($social['link']['url']) && !empty($social['link']['url'])) : ?>
-                                <a href="<?php echo $social['link']['url']; ?>" class="hover:text-secondary hover:scale-110 transition-all duration-300 w-10 h-10 no-underline" aria-label="<?php echo $social['link']['title']; ?> social media link">
+                                <a href="<?php echo $social['link']['url']; ?>" class="transition-all duration-300 w-10 h-10 no-underline" aria-label="<?php echo $social['link']['title']; ?> social media link">
                                     <div class="w-12 h-12 rounded-xl bg-accent flex items-center justify-center text-white">
                                         <?php echo maxwell_render_icon($social['icon'], 'w-6 h-6 !text-white'); ?>
                                     </div>
@@ -67,7 +67,7 @@ $social_network = get_field('social_network', 'option');
                 if ($menu_1) :
             ?>
                     <div>
-                        <h2 class="text-primary font-bold text-lg mb-6"><?php echo $menu_1->name ?></h2>
+                        <h2 class="text-white font-bold text-lg mb-6"><?php echo $menu_1->name ?></h2>
                         <ul class="space-y-3">
                             <?php foreach ($menu_1_items as $item) : ?>
                                 <li>
@@ -90,7 +90,7 @@ $social_network = get_field('social_network', 'option');
                 if ($menu_2) :
             ?>
                     <div>
-                        <h2 class="font-bold text-lg mb-6"><?php echo $menu_2->name ?></h2>
+                        <h2 class="text-white font-bold text-lg mb-6"><?php echo $menu_2->name ?></h2>
                         <ul class="space-y-3">
                             <?php foreach ($menu_2_items as $item) : ?>
                                 <li>
@@ -114,7 +114,7 @@ $social_network = get_field('social_network', 'option');
                 if ($menu_3) :
             ?>
                     <div>
-                        <h2 class="font-bold text-lg mb-6"><?php echo $menu_3->name ?></h2>
+                        <h2 class="text-white font-bold text-lg mb-6"><?php echo $menu_3->name ?></h2>
                         <ul class="space-y-3">
                             <?php foreach ($menu_3_items as $item) : ?>
                                 <li>
@@ -138,7 +138,7 @@ $social_network = get_field('social_network', 'option');
                 if ($menu_4) :
             ?>
                     <div>
-                        <h2 class="text-foreground font-bold text-lg mb-6"><?php echo $menu_4->name ?></h2>
+                        <h2 class="text-white font-bold text-lg mb-6"><?php echo $menu_4->name ?></h2>
                         <ul class="space-y-3">
                             <?php foreach ($menu_4_items as $item) : ?>
                                 <li>
@@ -153,7 +153,7 @@ $social_network = get_field('social_network', 'option');
             <?php endif; ?>
 
         </div>
-        <div class="border-t border-foreground mt-12 pt-8 text-center text-foreground/60 flex justify-between items-center">
+        <div class="border-t border-white mt-12 pt-8 text-center text-white flex justify-between items-center">
             <?php
             $menu_5_id = $menu_locations['footer-menu-5'];
             if (!empty($menu_locations['footer-menu-5'])) :

@@ -36,8 +36,8 @@ $color_mode = $data['background'] ?? 'dark';
                                         <div class="flex gap-4">
                                             <?php if (!empty($challenge['icon'])) : ?>
                                                 <div class="flex-shrink-0">
-                                                    <div class="bg-accent p-2 rounded-lg">
-                                                        <?php echo maxwell_render_icon($challenge['icon'], 'w-6 h-6 text-white '); ?>
+                                                    <div class="p-2 rounded-lg ">
+                                                        <?php echo maxwell_render_icon($challenge['icon'], 'w-6 h-6 text-accent '); ?>
                                                     </div>
                                                 </div>
                                             <?php endif; ?>
@@ -72,12 +72,12 @@ $color_mode = $data['background'] ?? 'dark';
                     <div class="grid md:grid-cols-2 gap-6">
                         <?php foreach ($data['challenges'] as $challenge): ?>
                             <div class="group p-4 rounded-xl border border-border <?php echo esc_attr($color_mode == 'dark_mode' ? 'bg-white/5 border border-white/10' : 'bg-card border border-border'); ?>  hover:shadow-md hover:shadow-accent/5 hover:border-accent/50 transition-all duration-300">
-                                <div class="flex gap-4">
+                                <div class="flex gap-2">
                                     <?php if (!empty($challenge['icon'])) : ?>
                                         <div class="flex-shrink-0">
-                                            <div class="bg-accent p-2 rounded-lg">
-                                                <?php echo maxwell_render_icon($challenge['icon'], 'w-6 h-6 text-white'); ?>
-                                            </div>
+                                            <div class="rounded-lg">
+                                                <?php echo maxwell_render_icon($challenge['icon'], 'w-6 h-6 text-accent'); ?>
+                                            </div>  
                                         </div>
                                     <?php endif; ?>
 

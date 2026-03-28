@@ -38,7 +38,6 @@ switch ($grid_columns) {
                     <span class="maxwell-top-title mb-4 block"><?php echo esc_html($data['top_title']); ?></span>
                 <?php endif; ?>
                 <?php echo _heading($data['title'], 'mb-4 ' . ($color_mode == 'dark_mode' ? 'text-white' : 'text-foreground')); ?>
-
                 <?php if ($data['text']): ?>
                     <div class="<?php echo esc_attr($color_mode == 'dark_mode' ? 'text-white/60' : 'text-muted-foreground'); ?> mb-12"><?php echo apply_filters('the_content', $data['text']); ?></div>
                 <?php endif; ?>
@@ -47,7 +46,7 @@ switch ($grid_columns) {
             <?php if ($data['solutions']): ?>
                 <div class="grid <?php echo $grid_classes; ?>">
                     <?php foreach ($data['solutions'] as $solution): ?>
-                        <div class="p-8 rounded-2xl <?php echo esc_attr($color_mode == 'dark_mode' ? 'bg-white/5 border border-white/10 hover:border-accent/50' : 'bg-card border-border hover:border-accent/50'); ?> <?php echo $layout == 'center' ? " flex flex-col items-center justify-center text-center " : "" ?> border transition-colors group">
+                        <div class="group p-8 rounded-2xl <?php echo esc_attr($color_mode == 'dark_mode' ? 'bg-white/5 border border-white/10 hover:border-accent/50' : 'bg-card border-border hover:border-accent/50'); ?> <?php echo $layout == 'center' ? " flex flex-col items-center justify-center text-center " : "" ?> border transition-colors group">
                             <?php if ($solution['icon']): ?>
                                 <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-accent">
                                     <?php echo maxwell_render_icon($solution['icon'], 'w-7 h-7 text-white'); ?>
@@ -59,9 +58,18 @@ switch ($grid_columns) {
                                 </h3>
                             <?php endif; ?>
                             <?php if ($solution['text']): ?>
-                                <div class="<?php echo esc_attr($color_mode == 'dark_mode' ? 'text-white/60' : 'text-muted-foreground'); ?>">
+                                <div class="<?php echo esc_attr($color_mode == 'dark_mode' ? 'text-white/60' : 'text-muted-foreground'); ?> mb-4">
                                     <?php echo apply_filters('the_content', $solution['text']); ?>
                                 </div>
+                            <?php endif; ?>
+                            <?php if ($solution['link']): ?>
+                                <a href="<?php echo esc_url($solution['link']['url']); ?>" class="inline-flex items-center gap-1 text-accent font-medium no-underline" title="<?php echo "read more about " . esc_attr($solution['title']); ?>">
+                                    <?php echo esc_html($solution['link']['title']); ?>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform">
+                                        <path d="M5 12h14"></path>
+                                        <path d="m12 5 7 7-7 7"></path>
+                                    </svg>
+                                </a>
                             <?php endif; ?>
                         </div>
                     <?php endforeach; ?>

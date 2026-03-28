@@ -217,18 +217,27 @@ function _title_position($position = 'left', $width = 'medium')
     return $positionClasses[$position] . ' ' . $widthClasses[$width];
 }
 
+/**
+ * Populate CF7 forms in ACF select field.
+ *
+ * This function is a filter that populates the 'choose_form' select field
+ * with all the available Contact Form 7 forms.
+ *
+ * @param array $field The ACF field.
+ * @return array The modified ACF field.
+ */
 function populate_cf7_forms_in_acf($field)
 {
-    // Proveri da li je to polje koje želimo da popunimo
+    // Check if the field is the one we want to populate
     if ($field['name'] === 'choose_form' || $field['_name'] === 'choose_form') {
 
-        // Resetuj choices array
+        // Reset the choices array
         $field['choices'] = array();
 
-        // Dodaj praznu opciju
+        // Add an empty option
         $field['choices'][''] = '— Izaberite formu —';
 
-        // Preuzmi sve CF7 forme
+        // Get all the available CF7 forms
         $forms = get_posts(array(
             'post_type' => 'wpcf7_contact_form',
             'numberposts' => -1,
@@ -237,18 +246,18 @@ function populate_cf7_forms_in_acf($field)
             'post_status' => 'publish'
         ));
 
-        // Popuni choices sa formama
+        // Populate the choices with the forms
         foreach ($forms as $form) {
             $field['choices'][$form->ID] = $form->post_title . ' (ID: ' . $form->ID . ')';
         }
 
-        // Opsionalno: dodaj poruku ako nema formi
+        // Optional: add a message if there are no forms
         if (empty($forms)) {
             $field['choices'][''] = 'Nema dostupnih Contact Form 7 formi';
             $field['disabled'] = true;
         }
 
-        // Opsionalno: postavi defaultnu vrednost
+        // Optional: set a default value
         // $field['default_value'] = '';
     }
 
@@ -264,13 +273,13 @@ function _background($data)
 
     switch ($data) {
         case 'dark':
-            $bg_class = 'bg-surface';
+            $bg_class = 'bg-secondary/50';
             break;
         case 'light':
             $bg_class = 'bg-light';
             break;
         case 'dark_mode':
-            $bg_class = 'bg-hero';
+            $bg_class = 'bg-gradient-purple';
             break;
         default:
             $bg_class = 'bg-light';
@@ -619,7 +628,7 @@ function maxwell_get_cpt($post_type = 'case-study', int $post_number = 4): array
             $post_id = get_the_ID();
             $output[] = [
                 'title' => get_the_title(),
-                'link' => ['url' => get_the_permalink(), 'title'=> get_the_title() , 'target'=> '_blank'],
+                'link' => ['url' => get_the_permalink(), 'title' => get_the_title(), 'target' => '_blank'],
                 'image' => get_image(get_post_thumbnail_id($post_id)),
                 'tag' => _case_study_primary_category($post_id),
                 'main_text' => maxxwell_get_the_excerpt($post_id),

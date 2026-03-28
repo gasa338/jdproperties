@@ -1,94 +1,131 @@
-/* TAČAN REDOSLED - @tailwind direktive MORAJU biti prve */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* OPTIMIZOVANI FONTOVI - local() + woff2 */
+/* manrope-600 - latin */
 @font-face {
-  font-family: 'Montserrat';
-  src:
-    local('Montserrat Bold'),
-    local('Montserrat-Bold'),
-    url('../fonts/Montserrat/static/Montserrat-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
   font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/Manrope/manrope-v20-latin-600.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
+/* manrope-700 - latin */
 @font-face {
-  font-family: 'Roboto';
-  src:
-    local('Roboto Regular'),
-    local('Roboto-Regular'),
-    url('../fonts/Roboto/static/Roboto-Regular.woff2') format('woff2');
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/Manrope/manrope-v20-latin-700.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* inter-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
   font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+  src: url('../fonts/Inter/inter-v20-latin-regular.woff2') format('woff2');
 }
 
+/* inter-500 - latin */
 @font-face {
-  font-family: 'Roboto';
-  src:
-    local('Roboto Medium'),
-    local('Roboto-Medium'),
-    url('../fonts/Roboto/static/Roboto-Medium.woff2') format('woff2');
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
   font-weight: 500;
-  font-style: normal;
-  font-display: swap;
+  src: url('../fonts/Inter/inter-v20-latin-500.woff2') format('woff2');
 }
 
+/* inter-600 - latin */
 @font-face {
-  font-family: 'Roboto';
-  src:
-    local('Roboto Bold'),
-    local('Roboto-Bold'),
-    url('../fonts/Roboto/static/Roboto-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
   font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/Inter/inter-v20-latin-600.woff2') format('woff2');
 }
+
+/* inter-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/Inter/inter-v20-latin-700.woff2') format('woff2');
+}
+
 
 @layer base {
   :root {
-    /* SAMO OVDE DEFINISIŠTE BOJE - HEX format */
-    --background: #F8FAFD;
-    --foreground: #0F1A3A;
-    --primary: #00255F; /* #00255F */
-    --primary-foreground: #FFFFFF;
-    --primary-dark: #00255F;
-    --secondary: #E8EFF9;
-    --secondary-foreground: #0F1A3A;
-    --muted: #3636363a;
-    --muted-foreground: #4a4b4d57;
-    --accent: #96B9E6;
-    --accent-foreground: #00255F;
-    --accent-light: #F5F9FF;
-    --accent-medium: #E1EBF7;
-    --destructive: #EF4444;
-    --destructive-foreground: #FFFFFF;
-    --border: #D9E2F0;
-    --border-dark: #00255F;
-    --input: #D9E2F0;
-    --ring: #004CBF;
-    --section-dark: #00255F;
-    --section-medium: #003A8A;
-    --section-light: #F5F9FF;
-    --sidebar-background: #FAFBFC;
-    --sidebar-foreground: #0F1A3A;
-    --sidebar-primary: #004CBF;
-    --sidebar-primary-foreground: #FFFFFF;
-    --sidebar-accent: #E8EFF9;
-    --sidebar-accent-foreground: #0F1A3A;
-    --sidebar-border: #D9E2F0;
-    --sidebar-ring: #004CBF;
+    --background: 40 20% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 180 9% 98%;
+    --card-foreground: 222 47% 11%;
+
+    --light: 30 20% 98%;
+    --footer: 210 4.3% 96.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 222 55% 16%;
+    --primary-foreground: 40 20% 98%;
+
+    --secondary: 40 15% 94%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 46%;
+
+    --accent: 12 80% 58%;
+    --accent-light: 12 20% 98%;
+    --accent-dark: 12 60% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 13% 90%;
+    --input: 220 13% 90%;
+    --ring: 222 55% 16%;
+
+    --radius: 0.625rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --hero-gradient: linear-gradient(135deg, hsl(222 55% 16%), hsl(222 45% 24%));
+    --accent-gradient: linear-gradient(135deg, hsl(12 80% 58%), hsl(16 85% 52%));
+    --surface-gradient: linear-gradient(180deg, hsl(40 20% 98%), hsl(220 14% 96%));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
   }
 
   body {
-    font-family: var(--font-body);
+    @apply bg-background text-foreground;
+    font-family: theme('fontFamily.body');
     font-weight: 400;
     font-size: 1rem;
-    color: var(--foreground);
-    background-color: var(--background) !important;
+    color: hsl(var(--muted-foreground));
+    line-height: 1.6;
   }
 
   h1,
@@ -97,150 +134,105 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-heading);
+    font-family: theme('fontFamily.heading');
     font-weight: 600;
     line-height: 1.2;
-    color: var(--primary);
+    color: hsl(var(--foreground));
   }
 
-  .custom-logo-link img {
-    height: 43px !important;
-    width: auto !important;
+  p,
+  div {
+    font-family: theme('fontFamily.body');
+    font-weight: 400;
   }
 
-    a {
-      text-decoration: none !important;
-    }
-  /* Samo dva breakpoint-a */
-  @media (max-width: 992px) {
-    .custom-logo-link img {
-      max-height: 35px !important;
-    }
-  }
-
-  @media (max-width: 576px) {
-    .custom-logo-link img {
-      max-height: 30px !important;
-    }
+  li {
+    color: hsl(var(--foreground));
   }
 }
 
 @layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  .bg-hero {
+    background: var(--hero-gradient);
   }
 
-  .glow-primary {
-    box-shadow: 0 8px 30px rgba(0, 76, 191, 0.2);
+  .bg-surface {
+    background: var(--surface-gradient);
   }
 
-  .glow-subtle {
-    box-shadow: 0 4px 20px rgba(0, 76, 191, 0.1);
+  .bg-background {
+    background: var(--background);
+  }
+  
+  .bg-footer {
+    background: var(--footer);
   }
 
-  .bg-gradient-hero {
-    background-image: radial-gradient(ellipse at top, rgba(0, 76, 191, 0.08), transparent 60%);
+  .maxwell-content p {
+    @apply mb-3;
   }
 
-  .bg-gradient-card {
-    background-image: linear-gradient(135deg, var(--card), #F8FAFD);
+  .maxwell-content ul {
+    @apply list-disc list-inside;
   }
 
-  /* Section background utilities - SADA KORISTI VAR() */
-  .bg-section-dark {
-    background-color: var(--section-dark);
-    color: white;
+  .maxwell-content ul li::marker {
+    @apply text-accent pl-0.5;
   }
 
-  .bg-section-medium {
-    background-color: var(--section-medium);
-    color: white;
+  .maxwell-content ul li {
+    @apply mb-2;
   }
 
-  .bg-section-light {
-    background-color: var(--section-light);
+  .maxwell-content ul li a {
+    @apply hover:text-secondary transition-colors duration-200;
   }
 
-  .bg-accent-light {
-    background-color: var(--accent-light);
+  .maxwell-content blockquote {
+    @apply text-accent font-medium pt-4 border-l-4 border-accent px-6 bg-accent/5 py-2 rounded-r-lg my-4;
   }
 
-  .bg-accent-medium {
-    background-color: var(--accent-medium);
+  .maxwell-top-title {
+    @apply font-semibold text-accent tracking-wide;
   }
 
-  /* Animacije */
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+  .top-title-light-frame {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-primary/15 mb-8;
   }
 
-  .animate-pulse-glow {
-    animation: pulse-glow 3s ease-in-out infinite;
+  .top-title-light {
+    @apply text-primary text-sm font-medium tracking-wider uppercase mb-4 block;
   }
 
-  .animate-slide-up {
-    animation: slide-up 0.6s ease-out forwards;
+  .top-title-dark-frame {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-primary/15 mb-8;
   }
 
-  .animate-fade-in {
-    animation: fade-in 0.8s ease-out forwards;
-  }
-
-  /* Definisanje animacija */
-  @keyframes float {
-
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-
-  @keyframes pulse-glow {
-
-    0%,
-    100% {
-      box-shadow: 0 0 0 0 rgba(0, 76, 191, 0.2);
-    }
-
-    50% {
-      box-shadow: 0 0 20px 10px rgba(0, 76, 191, 0.2);
-    }
-  }
-
-  @keyframes slide-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
+  .top-title-dark {
+    @apply text-primary text-sm font-medium tracking-wider uppercase mb-4 block;
   }
 }
 
-/* styles/globals.css */
 @layer components {
+
+  /* Text Gradient Accent */
+  .text-gradient-accent {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
   /* H1 Styles */
   .h1-responsive {
     @apply font-heading font-bold text-h1-mobile md:text-h1-tablet lg:text-h1-desktop;
+  }
+
+  .h1-responsive span {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   /* H2 Styles */
@@ -248,9 +240,23 @@
     @apply font-heading font-semibold text-h2-mobile md:text-h2-tablet lg:text-h2-desktop;
   }
 
+  .h2-responsive span {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   /* H3 Styles */
   .h3-responsive {
     @apply font-heading font-semibold text-h3-mobile md:text-h3-tablet lg:text-h3-desktop;
+  }
+
+  .h3-responsive span {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   /* H4 Styles */
@@ -267,65 +273,16 @@
   .h6-responsive {
     @apply font-heading font-medium text-h6-mobile md:text-h6-tablet lg:text-h6-desktop;
   }
-
-  .hover-lift {
-    @apply shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md;
-  }
-  
-  .maxwell-border {
-    @apply border hover:border-border-dark transition-colors duration-200;
-  }
-
-  /* Maxwell content - univerzalni parent */
-  .maxwell-content p {
-    @apply mb-3;
-  }
-
-  .maxwell-content strong {
-    @apply font-bold;
-  }
-
-  /* Linkovi unutar maxwell content */
-  .maxwell-content a {
-    @apply text-primary hover:text-secondary transition-colors duration-200;
-  }
-
-  .maxwell-content a:hover {
-    @apply text-secondary !important;
-  }
-
-  .maxwell-content ol {
-    list-style-type: decimal;
-    margin: 1em 0;
-    padding-left: 1em;
-  }
-
-  .maxwell-content ol li {
-    @apply !mb-1 !pl-1;
-  }
- 
 }
 
-/* ----------------------------- */
-/* SPECIFIČNE KLASE ZA LISTE */
-/* ----------------------------- */
-
-/* 1. Standard Maxwell lista */
-.list-maxwell-dics ul {
-  list-style: disc;
-  margin: 1em 0;
+.wp-block-heading {
+  @apply h2-responsive mb-3;
 }
 
-.list-maxwell-dics ul li {
-  margin-bottom: 0.5rem;        /* mb-2 */
-  padding-left: 0.5rem;         /* pl-2 */
-  display: flex;
-  align-items: flex-start;
+.maxwell-post-content p {
+  @apply !mb-2;
 }
 
-.list-maxwell-dics ul li::before {
-  content: '•';
-  color: var(--color-primary);
-  margin-right: 0.5rem;
+.nav-links a {
+  @apply no-underline text-accent;
 }
-

@@ -417,6 +417,30 @@ if (function_exists('acf_register_block_type')) {
 		'render_template' => 'blocks/hero-1/hero-1.php',
 	));
 
+	/**
+	 * ==============================
+	 * Hero Slider Block
+	 * ==============================
+	 */
+	acf_register_block_type(array(
+		'name' => 'hero-slider',
+		'title' => 'Hero Slider',
+		'description' => 'Hero Slider',
+		'category' => 'maxwell-blocks',
+		'mode' => 'preview',
+		'icon' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
+			<circle cx="12" cy="12" r="10" fill="none" stroke="#ff0000" stroke-width="2"/>
+			<text x="12" y="16" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="#ff0000" font-weight="bold"> M </text>
+		</svg>',
+		'supports' => array(
+			'align' => true,
+			'mode' => true,
+			'jsx' => true,
+			'anchor' => true,
+		),
+		'render_template' => 'blocks/hero-slider/hero-slider.php',
+	));
+
 
 	/**
 	 * ==============================
@@ -1310,6 +1334,30 @@ if (function_exists('acf_register_block_type')) {
 
 	/**
 	 * ==============================
+	 * Home Search Block
+	 * ==============================
+	 */
+	acf_register_block_type(array(
+		'name' => 'home-search',
+		'title' => 'Home Search',
+		'description' => 'Home Search block',
+		'category' => 'maxwell-blocks',
+		'mode' => 'preview',
+		'icon' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
+			<circle cx="12" cy="12" r="10" fill="none" stroke="#ff0000" stroke-width="2"/>
+			<text x="12" y="16" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="#ff0000" font-weight="bold"> M </text>
+		</svg>',
+		'supports' => array(
+			'align' => true,
+			'mode' => true,
+			'jsx' => true,
+			'anchor' => true,
+		),
+		'render_template' => 'blocks/home-search/home-search.php',
+	));
+
+	/**
+	 * ==============================
 	 * Posts list Block
 	 * ==============================
 	 */
@@ -1349,5 +1397,104 @@ if (function_exists('acf_register_block_type')) {
             'maxPages' => 1 // Ovo će biti ažurirano u template-u
         ));
 		}
+	));
+
+
+	
+
+	/**
+	 * ==============================
+	 * Feature Category Block
+	 * ==============================
+	 */
+	acf_register_block_type(array(
+		'name' => 'feature-category',
+		'title' => 'Feature Category',
+		'description' => 'Feature Category block',
+		'category' => 'maxwell-blocks',
+		'mode' => 'preview',
+		'icon' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
+			<circle cx="12" cy="12" r="10" fill="none" stroke="#ff0000" stroke-width="2"/>
+			<text x="12" y="16" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="#ff0000" font-weight="bold"> M </text>
+		</svg>',
+		'supports' => array(
+			'align' => true,
+			'mode' => true,
+			'jsx' => true,
+			'anchor' => true,
+		),
+		'render_template' => 'blocks/feature-category/feature-category.php',
+	));
+
+	/**
+	 * ==============================
+	 * About Text Block
+	 * ==============================
+	 */
+	acf_register_block_type(array(
+		'name' => 'about-text',
+		'title' => 'About Text',
+		'description' => 'About Text block',
+		'category' => 'maxwell-blocks',
+		'mode' => 'preview',
+		'icon' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
+			<circle cx="12" cy="12" r="10" fill="none" stroke="#ff0000" stroke-width="2"/>
+			<text x="12" y="16" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="#ff0000" font-weight="bold"> M </text>
+		</svg>',
+		'supports' => array(
+			'align' => true,
+			'mode' => true,
+			'jsx' => true,
+			'anchor' => true,
+		),
+		'render_template' => 'blocks/about-text/about-text.php',
+	));
+
+	/**
+	 * ==============================
+	 * Newsletter Block
+	 * ==============================
+	 */
+	acf_register_block_type(array(
+		'name' => 'newsletter',
+		'title' => 'Newsletter',
+		'description' => 'About Text block',
+		'category' => 'maxwell-blocks',
+		'mode' => 'preview',
+		'icon' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
+			<circle cx="12" cy="12" r="10" fill="none" stroke="#ff0000" stroke-width="2"/>
+			<text x="12" y="16" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="#ff0000" font-weight="bold"> M </text>
+		</svg>',
+		'supports' => array(
+			'align' => true,
+			'mode' => true,
+			'jsx' => true,
+			'anchor' => true,
+		),
+		'render_template' => 'blocks/newsletter/newsletter.php',
+	));
+
+	/**
+	 * ==============================
+	 * test Block
+	 * ==============================
+	 */
+	acf_register_block_type(array(
+		'name' => 'test',
+		'title' => 'Test',
+		'description' => 'Test block',
+		'category' => 'maxwell-blocks',
+		'mode' => 'preview',
+		'icon' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
+			<circle cx="12" cy="12" r="10" fill="none" stroke="#ff0000" stroke-width="2"/>
+			<text x="12" y="16" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="#ff0000" font-weight="bold"> M </text>
+		</svg>',
+		'supports' => array(
+			'align' => true,
+			'mode' => true,
+			'jsx' => true,
+			'anchor' => true,
+		),
+		'render_template' => 'blocks/test/test.php',
 	));
 }
