@@ -45,10 +45,10 @@ function _link_2($link, $class = '')
 }
 
 
-function _link_3($link, $class = '')
+function _link_3($link, $class = '', $title = '')
 {
 ?>
-    <a class="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all group <?php echo esc_attr($class); ?>" href="<?php echo esc_url($link['url']); ?>" target="<?php echo esc_attr($link['target']); ?>" title="<?php echo esc_attr($link['title']); ?>">
+    <a class="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all group <?php echo esc_attr($class); ?>" href="<?php echo esc_url($link['url']); ?>" target="<?php echo esc_attr($link['target']); ?>" title="<?php echo esc_attr($title); ?>">
         <?php echo esc_html($link['title']); ?>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right w-4 h-4 group-hover:translate-x-1 transition-transform">
             <path d="M5 12h14"></path>

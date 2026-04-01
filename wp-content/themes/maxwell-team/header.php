@@ -16,7 +16,7 @@
 
 	<header class="shadow-lg font-body sticky top-0 bg-card z-90">
 		<div class="mx-auto px-4 sm:px-6 lg:px-8">
-			<nav class="flex justify-between items-center h-16">
+			<nav class="flex justify-between items-center h-24">
 				<!-- Logo -->
 				<div class="flex-shrink-0 custom-logo-link">
 					<?php the_custom_logo(); ?>
@@ -86,7 +86,7 @@
 				</div>
 
 				<!-- Call to Action Button -->
-				<div class="hidden md:block">
+				<!-- <div class="hidden md:block">
 					<a href="#" class="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground glow-primary hover:scale-105 rounded-xl px-10 py-2 group no-underline">
 						<?php echo esc_html('Get Started'); ?>
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right w-5 h-5 transition-transform group-hover:translate-x-1">
@@ -94,7 +94,7 @@
 							<path d="m12 5 7 7-7 7"></path>
 						</svg>
 					</a>
-				</div>
+				</div> -->
 
 				<!-- Mobile menu button -->
 				<div class="block md:hidden z-50 w-12 h-12">

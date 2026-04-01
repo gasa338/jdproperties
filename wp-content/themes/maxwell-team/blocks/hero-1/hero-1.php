@@ -57,7 +57,7 @@ $overlay_color = $data['overlay_color']?? 'rgba(0, 0, 0, 0.5)';
                         <?php _link_1($data['link_1']); ?>
                     <?php endif; ?>
                     <?php if ($data['link_2']) : ?>
-                        <?php _link_2($data['link_2']); ?>
+                        <?php _link_2($data['link_2'], 'text-white'); ?>
                     <?php endif; ?>
                 </div>
             </div>

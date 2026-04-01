@@ -197,6 +197,10 @@ function mma_future_scripts()
 		wp_enqueue_script('blog-main', get_template_directory_uri() . '/assets/dist/js/blog-main.js', array(), _S_VERSION, true);
 		wp_enqueue_style('blog', get_template_directory_uri() . '/assets/dist/css/blog.css', array(), _S_VERSION, 'all');
 	}
+	
+	if (is_singular('properties')) {
+		wp_enqueue_script('properties', get_template_directory_uri() . '/assets/dist/js/properties-single.js', array(), _S_VERSION, true);
+	}
 
 	wp_dequeue_style('wp-block-library');
 	wp_dequeue_style('wp-block-library-theme');
@@ -287,3 +291,6 @@ require_once get_template_directory() . '/blocks/posts-list/posts-list-fn.php';
  */
 require get_template_directory() . '/inc/table_of_content.php';
 require get_template_directory() . '/inc/gutenberg_native.php';
+
+require_once get_template_directory() . '/inc/jd-property-hooks.php';
+require_once get_template_directory() . '/inc/jd-property-sale-hooks.php';

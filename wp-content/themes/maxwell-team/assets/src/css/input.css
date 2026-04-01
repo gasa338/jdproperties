@@ -61,9 +61,6 @@
   src: url('../fonts/Inter/inter-v20-latin-700.woff2') format('woff2');
 }
 
-
-
-
 @layer base {
   :root {
     --background: 270 15% 98%;
@@ -149,6 +146,28 @@
 
   li {
     color: var(--foreground);
+  }
+
+  .custom-logo-link img {
+    height: 85px !important;
+    width: auto !important;
+  }
+
+  a {
+    text-decoration: none !important;
+  }
+
+  /* Samo dva breakpoint-a */
+  @media (max-width: 992px) {
+    .custom-logo-link img {
+      max-height: 29px !important;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .custom-logo-link img {
+      max-height: 27px !important;
+    }
   }
 }
 

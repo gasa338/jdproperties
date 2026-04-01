@@ -7,13 +7,13 @@ $color_mode = $data['background'] ?? 'dark';
 ?>
 
 <?php echo _spacing_full('newsletter', $blocks_id, $data['margin'], $data['padding']); ?>
-<section id="<?php echo esc_attr($anchor); ?>" class="border-t border-border newsletter-<?php echo esc_attr($blocks_id); ?> <?php echo esc_attr($blocks_class); ?>">
-    <div class="container-luxury mx-auto px-4 sm:px-6 lg:px-8 py-14">
+<section id="<?php echo esc_attr($anchor); ?>" class="border-t border-border newsletter-<?php echo esc_attr($blocks_id); ?> <?php echo _background($color_mode); ?> <?php echo esc_attr($blocks_class); ?>">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div class="text-center lg:text-left">
-                <?php echo _heading($data['title'], 'mb-2'); ?>
+                <?php echo _heading($data['title'], 'mb-2 ' . ($color_mode === 'dark_mode' ? ' text-white' : ' text-foreground')); ?>
                 <?php if ($data['text']) : ?>
-                    <div class="font-body text-muted-foreground max-w-md"><?php echo $data['text']; ?></div>
+                    <div class="font-body text-muted-foreground max-w-md <?php echo $color_mode === 'dark_mode' ? ' text-white/60' : ' text-foreground'; ?>"><?php echo $data['text']; ?></div>
                 <?php endif; ?>
             </div>
             <?php echo do_shortcode('[mc4wp_form id="' . $data['choose_newsletter'] . '"]'); ?>

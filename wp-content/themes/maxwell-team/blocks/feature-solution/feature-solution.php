@@ -49,7 +49,7 @@ switch ($grid_columns) {
                         <div class="group p-8 rounded-2xl <?php echo esc_attr($color_mode == 'dark_mode' ? 'bg-white/5 border border-white/10 hover:border-accent/50' : 'bg-card border-border hover:border-accent/50'); ?> <?php echo $layout == 'center' ? " flex flex-col items-center justify-center text-center " : "" ?> border transition-colors group">
                             <?php if ($solution['icon']): ?>
                                 <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-accent">
-                                    <?php echo maxwell_render_icon($solution['icon'], 'w-7 h-7 text-white'); ?>
+                                    <?php echo maxwell_render_svg($solution['icon']['url'], 'w-7 h-7 text-white'); ?>
                                 </div>
                             <?php endif; ?>
                             <?php if ($solution['title']): ?>

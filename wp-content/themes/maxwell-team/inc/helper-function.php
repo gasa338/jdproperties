@@ -447,22 +447,22 @@ function _share_component($url, $title = '', $additionalClasses = '')
     $twitterUrl = "https://twitter.com/intent/tweet?url={$encodedUrl}&text={$encodedTitle}";
     $facebookUrl = "https://www.facebook.com/sharer/sharer.php?u={$encodedUrl}";
     ?>
-    <div class="bg-card border border-border rounded-xl p-6 mb-6 {$additionalClasses}">
-        <h3 class="font-semibold text-foreground mb-4 flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share2 w-4 h-4">
+    <div class="p-3 <?php echo $additionalClasses; ?>">
+        <h3 class="font-semibold text-foreground flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share2 w-4 h-4">
                 <circle cx="18" cy="5" r="3"></circle>
                 <circle cx="6" cy="12" r="3"></circle>
                 <circle cx="18" cy="19" r="3"></circle>
                 <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line>
                 <line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
             </svg>
-            Share
+            <?php echo __("Share: ", 'maxwell'); ?>
         </h3>
         <div class="flex gap-3">
             <a href="<?php echo $linkedinUrl; ?>" target="_blank" rel="noopener noreferrer"
-                class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 text-white transition-all bg-accent hover:bg-accent group cursor-pointer"
+                class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-white transition-all bg-accent hover:bg-accent group cursor-pointer"
                 title="Share on LinkedIn">
-                <svg class="w-5 h-5 text-white group-hover:text-white transition-colors" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="w-4 h-4 text-white group-hover:text-white transition-colors" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                     <rect width="4" height="12" x="2" y="9"></rect>
                     <circle cx="4" cy="4" r="2"></circle>
@@ -470,23 +470,23 @@ function _share_component($url, $title = '', $additionalClasses = '')
             </a>
 
             <a href="<?php echo $twitterUrl; ?>" target="_blank" rel="noopener noreferrer"
-                class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 text-white transition-all bg-accent hover:bg-accent group cursor-pointer"
+                class="w-8 h-8  rounded-lg flex items-center justify-center shrink-0 text-white transition-all bg-accent hover:bg-accent group cursor-pointer"
                 title="Share on Twitter">
-                <svg class="w-5 h-5 text-white group-hover:text-white transition-colors" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="w-4 h-4 text-white group-hover:text-white transition-colors" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
                 </svg>
             </a>
 
             <a href="<?php echo $facebookUrl; ?>" target="_blank" rel="noopener noreferrer"
-                class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 text-accent transition-all bg-accent hover:bg-accent group cursor-pointer"
+                class="w-8 h-8  rounded-lg flex items-center justify-center shrink-0 text-accent transition-all bg-accent hover:bg-accent group cursor-pointer"
                 title="Share on Facebook">
-                <svg class="w-5 h-5 text-white group-hover:text-white transition-colors" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="w-4 h-4 text-white group-hover:text-white transition-colors" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                 </svg>
             </a>
 
             <button onclick="copyToClipboard('<?php echo $url; ?>', this)"
-                class="relative w-10 h-10 rounded-lg flex items-center justify-center shrink-0 text-white transition-all bg-accent hover:bg-accent group cursor-pointer"
+                class="relative w-8 h-8  rounded-lg flex items-center justify-center shrink-0 text-white transition-all bg-accent hover:bg-accent group cursor-pointer"
                 title="Copy link"
                 id="{$uniqueId}">
                 <svg class="w-4 h-4 text-white group-hover:text-white transition-colors" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -639,4 +639,90 @@ function maxwell_get_cpt($post_type = 'case-study', int $post_number = 4): array
     }
 
     return $output;
+}
+
+
+function gxdev_get_custom_tax($post_id, $tax = '') {
+    $terms = get_the_terms($post_id, $tax);
+    $result = [];
+    
+    if ($terms && !is_wp_error($terms)) {
+        foreach ($terms as $term) {
+            $term_link = get_term_link($term);
+            if (!is_wp_error($term_link)) {
+                $result[] = [
+                    'name' => $term->name,
+                    'link' => $term_link
+                ];
+            }
+        }
+    }
+    
+    return $result;
+}
+
+
+// U functions.php
+/**
+ * Dohvata i renderuje sadržaj iz global_contents CPT-a po slugu
+ * 
+ * @param string $slug Slug globalnog sadržaja
+ * @return string
+ */
+function gxdev_render_global_content($slug) {
+
+    $content_post = get_page_by_path($slug, OBJECT, 'global-content');
+
+    if (!$content_post || $content_post->post_status !== 'publish') {
+        return '<!-- Global content not found: ' . esc_html($slug) . ' -->';
+    }
+
+    $content = $content_post->post_content;
+
+    // WordPress standardni rendering (blokovi + filteri)
+    $output = apply_filters('the_content', $content);
+
+    return $output;
+}
+
+
+function jd_get_related_properties($args = [])
+{
+    $defaults = [
+        'category' => null,
+        'posts_per_page' => 3,
+        'exclude_id' => get_the_ID(),
+    ];
+
+    $args = wp_parse_args($args, $defaults);
+
+    // 🔎 base query
+    $query_args = [
+        'post_type'      => 'properties',
+        'posts_per_page' => $args['posts_per_page'],
+        'post__not_in'   => [$args['exclude_id']],
+        // 'meta_key'       => 'property_price',
+        // 'orderby'        => 'meta_value_num',
+        // 'order'          => 'DESC',
+    ];
+
+    // TAX filter (ako postoji)
+    // if (!empty($args['category'])) {
+    //     $query_args['tax_query'] = [
+    //         [
+    //             'taxonomy' => 'prop-category',
+    //             'field'    => 'slug',
+    //             'terms'    => $args['category'],
+    //         ]
+    //     ];
+    // }
+    $query = new WP_Query($query_args);
+
+    // 🧠 fallback ako nema rezultata
+    if (!$query->have_posts() && !empty($args['category'])) {
+        unset($query_args['tax_query']);
+        $query = new WP_Query($query_args);
+    }
+
+    return $query;
 }

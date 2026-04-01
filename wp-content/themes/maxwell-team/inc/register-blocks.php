@@ -58,6 +58,43 @@ if (function_exists('acf_register_block_type')) {
 
 	));
 
+	
+
+	/**
+	 * ==============================
+	 * Contact Form 2 Block
+	 * ==============================
+	 */
+	acf_register_block_type(array(
+		'name' => 'contact-form-2',
+		'title' => 'Contact Form 2',
+		'description' => 'Contact Form 2',
+		'category' => 'maxwell-blocks',
+		'mode' => 'preview',
+		'icon' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
+			<circle cx="12" cy="12" r="10" fill="none" stroke="#ff0000" stroke-width="2"/>
+			<text x="12" y="16" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="#ff0000" font-weight="bold"> M </text>
+		</svg>',
+		'supports' => array(
+			'align' => true,
+			'mode' => true,
+			'jsx' => true,
+			'anchor' => true,
+		),
+		'render_template' => 'blocks/contact-form-2/contact-form-2.php',
+		'enqueue_assets'    => function () {
+			// Enqueue block styles
+			wp_enqueue_style(
+				'contact-form-block-style',
+				get_template_directory_uri() . '/blocks/contact-form-2/blocks-2.css',
+				array(),
+				'1.0.0'
+			);
+			
+		},
+	));
+		
+
 	/**
 	 * ==============================
 	 * CTA light Block
@@ -1496,5 +1533,52 @@ if (function_exists('acf_register_block_type')) {
 			'anchor' => true,
 		),
 		'render_template' => 'blocks/test/test.php',
+	));
+
+	/**
+	 * ==============================
+	 * Recommended property Block
+	 * ==============================
+	 */
+	acf_register_block_type(array(
+		'name' => 'recommended-property',
+		'title' => 'Recommended property',
+		'description' => 'Recommended property block',
+		'category' => 'maxwell-blocks',
+		'mode' => 'preview',
+		'icon' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
+			<circle cx="12" cy="12" r="10" fill="none" stroke="#ff0000" stroke-width="2"/>
+			<text x="12" y="16" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="#ff0000" font-weight="bold"> M </text>
+		</svg>',
+		'supports' => array(
+			'align' => true,
+			'mode' => true,
+			'jsx' => true,
+			'anchor' => true,
+		),
+		'render_template' => 'blocks/recommended-property/recommended-property.php',
+	));
+	/**
+	 * ==============================
+	 * FAQ 2 Block
+	 * ==============================
+	 */
+	acf_register_block_type(array(
+		'name' => 'faq-2',
+		'title' => 'FAQ 2',
+		'description' => 'FAQ 2 block',
+		'category' => 'maxwell-blocks',
+		'mode' => 'preview',
+		'icon' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
+			<circle cx="12" cy="12" r="10" fill="none" stroke="#ff0000" stroke-width="2"/>
+			<text x="12" y="16" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="#ff0000" font-weight="bold"> M </text>
+		</svg>',
+		'supports' => array(
+			'align' => true,
+			'mode' => true,
+			'jsx' => true,
+			'anchor' => true,
+		),
+		'render_template' => 'blocks/faq-2/faq-2.php',
 	));
 }

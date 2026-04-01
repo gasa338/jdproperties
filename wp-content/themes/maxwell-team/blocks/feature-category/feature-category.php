@@ -26,7 +26,7 @@ $color_mode = $data['background'] ?? 'dark';
                 <div>
                     <a class="group relative block rounded-lg overflow-hidden aspect-[3/4] card-hover" href="<?php echo $category['link']['url']; ?>" title="<?php echo $category['title']; ?>" target="<?php echo $category['link']['target'] ? $category['link']['target'] : '_self'; ?>">
                         <img src="<?php echo $category['image']['url']; ?>" alt="<?php echo $category['image']['alt']; ?>" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-102">
-                        <div class="absolute inset-0 bg-gradient-to-t from-accent/90 via-accent/60 to-transparent "></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-accent/40 via-accent/60 to-transparent "></div>
                         <div class="absolute bottom-0 left-0 right-0 p-6">
                             <h3 class="text-2xl text-primary-foreground font-semibold mb-1"><?php echo $category['title']; ?></h3>
 
