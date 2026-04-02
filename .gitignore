@@ -73,8 +73,8 @@ Thumbs.db
 !site.webmanifest
 # track these mu-plugins, plugins, and themes
 # add your own entries here
-!wp-content/themes/maxwell-team
-!wp-content/themes/maxwell-team/theme.json
+!wp-content/themes/gxdev-theme
+!wp-content/themes/gxdev-theme/theme.json
 !.github/
 !package.json
 !google*
