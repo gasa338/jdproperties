@@ -200,6 +200,7 @@ function mma_future_scripts()
 	
 	if (is_singular('properties')) {
 		wp_enqueue_script('properties', get_template_directory_uri() . '/assets/dist/js/properties-single.js', array(), _S_VERSION, true);
+		wp_enqueue_style('form', get_template_directory_uri() . '/assets/dist/css/form.css', array(), _S_VERSION, 'all');
 	}
 
 	wp_dequeue_style('wp-block-library');

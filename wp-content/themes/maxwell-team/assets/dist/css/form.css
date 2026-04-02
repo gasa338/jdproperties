@@ -1,0 +1,104 @@
+/* Opšti stilovi forme */
+.wpcf7-form {
+    margin: 0 auto;
+}
+
+/* Labele */
+.wpcf7-form label {
+    display: block;
+    /* margin-bottom: 20px; */
+}
+
+/* Polja za unos */
+.wpcf7-form input[type="text"],
+.wpcf7-form input[type="email"],
+.wpcf7-form input[type="tel"],
+.wpcf7-form input[type="url"],
+.wpcf7-form select,
+.wpcf7-form textarea {
+    width: 100%;
+    padding: 12px 10px;
+    margin-top: 5px;
+    border: 1px solid hsl(var(--border));
+    background-color: hsl(var(--input));
+    border-radius: 15px;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+/* Placeholder stil */
+.wpcf7-form ::placeholder {
+    color: #999;
+    font-family: theme('fontFamily.body');
+    font-weight: 400;
+    font-size: 1rem;
+    /* color: hsl(var(--primary-dark)); */
+}
+
+/* Dugme */
+.wpcf7-form input[type="submit"] {
+    background-color: hsl(var(--primary-dark));
+    color: hsl(var(--primary-dark));
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.wpcf7-form input[type="submit"] {
+    border: 2px solid hsl(var(--primary));
+    color: white;
+    background-color: hsl(var(--primary));
+    padding: 8px 16px; /* px-4 py-2 */
+    border-radius: 12px; /* rounded-xl */
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    width: 100%; /* zadržavam iz prethodnog */
+    margin-top: 10px;
+}
+
+.wpcf7-form input[type="submit"]:hover {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--accent-light)) !important; /* hover:!text-[#F06F40] */
+    transform: scale(0.98); /* hover:scale-[1.02] */
+    box-shadow: 0 4px 8px -1px hsl(var(--primary)); /* hover:shadow-lg hover:shadow-[#F06F40]/20 */
+}
+
+.wpcf7-form input[type="submit"]:active {
+    transform: scale(0.95); /* active:scale-95 */
+}
+
+/* Promeni boju active border-a */
+.wpcf7-form input[type="text"]:focus,
+.wpcf7-form input[type="email"]:focus,
+.wpcf7-form input[type="tel"]:focus,
+.wpcf7-form input[type="url"]:focus,
+.wpcf7-form select:focus,
+.wpcf7-form textarea:focus {
+    outline: 1px solid hsl(var(--primary), 10%, 90%);
+    border: 1px solid hsl(var(--primary), 10%, 90%);
+}
+
+
+/* Opcioni: stil za greške i uspešno slanje */
+.wpcf7 .wpcf7-not-valid-tip {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.wpcf7 .wpcf7-response-output {
+    border-radius: 5px;
+    padding: 15px;
+    margin: 20px 0;
+}

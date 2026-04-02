@@ -17,32 +17,6 @@ $social_network = get_field('social_network', 'option');
                 <?php if (!empty($footer_data['description'])) : ?>
                     <div class="mb-6"><?php echo apply_filters('the_content', $footer_data['description']); ?></div>
                 <?php endif; ?>
-
-                <?php if (!empty($footer_data['contact_data'])) : ?>
-                    <div class="flex items-center gap-3 mb-6">
-                        <ul class="space-y-4 text-foreground-muted">
-                            <?php foreach ($footer_data['contact_data'] as $item) : ?>
-                                <li>
-                                    <?php if ($item['text']['url'] == '#'): ?>
-                                        <div class="flex items-center gap-3 transition-colors">
-                                            <?php if (!empty($item['icon'])): ?>
-                                                <?php echo maxwell_render_svg($item['icon']['url'], 'w-6 h-6'); ?>
-                                            <?php endif; ?>
-                                            <?php echo $item['text']['title']; ?>
-                                        </div>
-                                    <?php else: ?>
-                                        <a href="<?php echo esc_url($item['text']['url']); ?>" class="flex items-center gap-3 transition-colors no-underline">
-                                            <?php if (!empty($item['icon'])): ?>
-                                                <?php echo maxwell_render_svg($item['icon']['url'], 'w-6 h-6'); ?>
-                                            <?php endif; ?>
-                                            <?php echo $item['text']['title']; ?>
-                                        </a>
-                                    <?php endif; ?>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                <?php endif; ?>
                 <?php if (!empty($social_network)) : ?>
                     <div class="flex items-center gap-3 mb-6">
                         <?php foreach ($social_network as $key => $social) : ?>
@@ -128,28 +102,34 @@ $social_network = get_field('social_network', 'option');
                 <?php endif; ?>
             <?php endif; ?>
 
-
-            <?php
-            $menu_4_id = $menu_locations['footer-menu-4'];
-            if (!empty($menu_locations['footer-menu-4'])) :
-                $menu_4 = wp_get_nav_menu_object($menu_4_id);
-                $menu_4_items = wp_get_nav_menu_items($menu_4_id);
-
-                if ($menu_4) :
-            ?>
-                    <div>
-                        <h2 class="text-white font-bold text-lg mb-6"><?php echo $menu_4->name ?></h2>
-                        <ul class="space-y-3">
-                            <?php foreach ($menu_4_items as $item) : ?>
-                                <li>
-                                    <a class="text-foreground hover:text-foreground-muted transition-colors no-underline" href="<?php echo esc_url($item->url) ?>">
-                                        <?php echo esc_html($item->title) ?>
+            <?php if (!empty($footer_data['contact_data'])) : ?>
+                <div>
+                    <h2 class="text-white font-bold text-lg mb-6">Kontact</h2>
+                    <ul class="space-y-4 text-foreground-muted">
+                        <?php foreach ($footer_data['contact_data'] as $item) : ?>
+                            <li>
+                                <?php if ($item['text']['url'] == '#'): ?>
+                                    <div class="flex items-center gap-3 transition-colors">
+                                        <?php if (!empty($item['icon'])): ?>
+                                            <?php echo maxwell_render_svg($item['icon']['url'], 'w-6 h-6'); ?>
+                                        <?php endif; ?>
+                                        <?php echo $item['text']['title']; ?>
+                                    </div>
+                                <?php else: ?>
+                                    <a href="<?php echo esc_url($item['text']['url']); ?>" class="flex items-center gap-3 transition-colors no-underline">
+                                        <?php if (!empty($item['icon'])): ?>
+                                            <?php echo maxwell_render_svg($item['icon']['url'], 'w-6 h-6'); ?>
+                                        <?php endif; ?>
+                                        <?php echo $item['text']['title']; ?>
                                     </a>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                <?php endif; ?>
+                                <?php endif; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+
+
+                </div>
+
             <?php endif; ?>
 
         </div>

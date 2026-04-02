@@ -1132,7 +1132,6 @@ function jd_sale_output_price_card()
 
 function jd_sale_output_schedule_form()
 {
-    $nonce = wp_create_nonce('jd_schedule_viewing');
 ?>
     <div class="bg-card border border-border rounded-xl p-6 space-y-4">
         <h3 class="font-heading text-base font-semibold text-foreground flex items-center gap-2">
@@ -1145,47 +1144,7 @@ function jd_sale_output_schedule_form()
             Zakaži razgledanje
         </h3>
 
-        <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" class="space-y-3">
-            <input type="hidden" name="action" value="jd_schedule_viewing">
-            <input type="hidden" name="property_id" value="<?php echo get_the_ID(); ?>">
-            <input type="hidden" name="_nonce" value="<?php echo $nonce; ?>">
-
-            <div>
-                <label class="block text-xs font-body text-muted-foreground mb-1">Ime i prezime</label>
-                <input type="text" name="full_name" required placeholder="Marko Marković"
-                    class="w-full font-body text-sm bg-secondary border border-border rounded-lg px-3 py-2.5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors">
-            </div>
-
-            <div>
-                <label class="block text-xs font-body text-muted-foreground mb-1">Telefon</label>
-                <input type="tel" name="phone" required placeholder="+381 6x xxx xxxx"
-                    class="w-full font-body text-sm bg-secondary border border-border rounded-lg px-3 py-2.5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors">
-            </div>
-
-            <div>
-                <label class="block text-xs font-body text-muted-foreground mb-1">Željeni termin</label>
-                <input type="datetime-local" name="datetime" required
-                    min="<?php echo date('Y-m-d\TH:i'); ?>"
-                    class="w-full font-body text-sm bg-secondary border border-border rounded-lg px-3 py-2.5 text-foreground focus:outline-none focus:border-accent transition-colors">
-            </div>
-
-            <div>
-                <label class="block text-xs font-body text-muted-foreground mb-1">Napomena (opciono)</label>
-                <textarea name="note" rows="2" placeholder="Npr. dostupan sam vikendima..."
-                    class="w-full font-body text-sm bg-secondary border border-border rounded-lg px-3 py-2.5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors resize-none"></textarea>
-            </div>
-
-            <button type="submit"
-                class="flex items-center justify-center gap-2 w-full bg-primary text-primary-foreground font-body text-sm font-semibold tracking-wide px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
-                    <line x1="16" x2="16" y1="2" y2="6" />
-                    <line x1="8" x2="8" y1="2" y2="6" />
-                    <line x1="3" x2="21" y1="10" y2="10" />
-                </svg>
-                Pošalji zahtev
-            </button>
-        </form>
+        <?php echo do_shortcode('[contact-form-7 id="f76702a" title="Zakaži razgledanje"]') ?>
     </div>
 <?php
 }
@@ -1415,25 +1374,6 @@ function jd_sale_output_similar()
             <h2 class="font-heading text-2xl sm:text-3xl font-semibold text-foreground mb-8">Slične nekretnine</h2>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php while ($query->have_posts()) : $query->the_post(); ?>
-                    <?php
-
-                    var_dump(get_the_ID());
-                    // $type    = gxdev_get_custom_tax($post_id, 'prop-category')[0];
-                    // $city    = get_field('opstinski_region', $post_id) . ', ' . get_field('opstina', $post_id);
-                    // $size    = get_field('property_squarespace', $post_id);
-                    // $rooms   = get_field('property_structure', $post_id);
-                    // $floor   = get_field('property_floor', $post_id);
-
-                    // $args = array(
-                    //     'post_id' => $post_id,
-                    //     'price' => $price,
-                    //     'type' => $type,
-                    //     'city' => $city,
-                    //     'size' => $size,
-                    //     'rooms' => $rooms,
-                    //     'floor' => $floor,
-                    // );
-                    ?>
                     <?php get_template_part('template-parts/content', 'property', [
                         'post_id' => get_the_ID()
                     ]); ?>
