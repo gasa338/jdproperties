@@ -71,59 +71,51 @@ $reverse = $data['reverse'] ?? false;
                         <?php endforeach; ?>
                     </div>
 
-                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <?php foreach ($data['tabs'] as $key => $tab): ?>
-                            <div>
-                                <a class="group block bg-card rounded-lg overflow-hidden border border-border card-hover" href="/nekretnina/1">
-                                    <div class="relative aspect-[4/3] bg-muted overflow-hidden">
-                                        <div class="absolute inset-0 bg-gradient-to-br from-muted to-cream-dark flex items-center justify-center">
-                                            <img src="http://jdproperties.test/wp-content/uploads/2026/03/category-apartments.jpg" alt="Property" class="w-full h-full object-cover">
-                                        </div>
-                                        <div class="image-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                        <div class="absolute top-3 left-3 flex gap-2">
-                                            <div class="inline-flex items-center rounded-full px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-accent text-accent-foreground border-0 font-body text-xs">Prodaja</div>
-                                            <div class="inline-flex items-center rounded-full px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-primary text-primary-foreground border-0 font-body text-xs">Novo</div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-center gap-6 py-3 bg-secondary border-b border-border text-sm font-body font-semibold text-foreground">
-                                        <div class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize w-4 h-4 text-accent">
-                                                <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
-                                                <path d="M21 8V5a2 2 0 0 0-2-2h-3"></path>
-                                                <path d="M3 16v3a2 2 0 0 0 2 2h3"></path>
-                                                <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
-                                            </svg><span>92 m²</span></div>
-                                        <div class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bed-double w-4 h-4 text-accent">
-                                                <path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"></path>
-                                                <path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"></path>
-                                                <path d="M12 4v6"></path>
-                                                <path d="M2 18h20"></path>
-                                            </svg><span>3 sobe</span></div>
-                                        <div class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers w-4 h-4 text-accent">
-                                                <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"></path>
-                                                <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"></path>
-                                                <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"></path>
-                                            </svg><span>4./6 sprat</span></div>
-                                    </div>
-                                    <div class="p-5 space-y-3"><span class="text-xs font-body font-medium text-accent uppercase tracking-wider">Stan</span>
-                                        <h3 class="font-heading text-lg font-semibold text-foreground leading-tight line-clamp-2 group-hover:text-accent transition-colors">Luksuzni trosoban stan na Vračaru</h3>
-                                        <div class="flex items-center gap-1.5 text-muted-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-3.5 h-3.5">
-                                                <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
-                                                <circle cx="12" cy="10" r="3"></circle>
-                                            </svg><span class="text-sm font-body">Vračar, Krunska ulica</span></div>
-                                        <div class="pt-3 border-t border-border"><span class="font-heading text-xl font-bold text-foreground">185.000 EUR</span></div>
-                                    </div>
-                                </a>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                    </div>
+                        <div
+                            data-tab-content="<?php echo $key; ?>"
+                            role="tabpanel"
+                            class="tab-content mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                            <?php echo $key === 0 ? '' : 'hidden'; ?>>
 
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                                <?php
+                                $post_ids = $tab['nekretnina'];
+                                $property_query = new WP_Query([
+                                    'post_type' => 'properties', // Ili tvoj custom post type
+                                    'post__in'  => $post_ids,
+                                    'orderby'   => 'post__in',
+                                    'posts_per_page' => -1,
+                                ]);
+
+                                // Proveri da li ima postova
+                                if ($property_query->have_posts()) :
+
+                                    while ($property_query->have_posts()) :
+                                        $property_query->the_post();
+
+                                        get_template_part('template-parts/content', 'property');
+
+                                    endwhile;
+
+
+                                else:
+                                    echo '<p>No properties found.</p>';
+                                endif;
+                                ?>
+
+                                <?php
+                                $post_ids = [];
+                                wp_reset_postdata(); ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
+    </div>
 </section>
-
-
-
 <script>
     (function() {
         const tabContainer = document.querySelector('.tab-container');

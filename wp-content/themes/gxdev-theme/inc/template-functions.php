@@ -187,7 +187,7 @@ function get_post_by_type($type = 'last', $post_type = 'post', $posts_per_page =
 			$output[$key]['id'] = get_the_ID();
 			$output[$key]['primary_category'] = get_primary_category(get_the_ID());
 			$output[$key]['title'] = get_the_title();
-			$output[$key]['excerpt'] = get_the_excerpt();
+			$output[$key]['excerpt'] = wp_trim_words(get_the_excerpt(), 24);
 			$output[$key]['image'] = get_image(get_post_thumbnail_id());
 			$output[$key]['link'] = array(
 				'url' => get_the_permalink(),

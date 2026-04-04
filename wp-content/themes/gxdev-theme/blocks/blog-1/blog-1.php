@@ -29,14 +29,21 @@ $color_mode = $data['background'] ?? 'light';
             <?php foreach ($posts as $post) : ?>
                 <article class="bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition z-10">
                     <?php if (!empty($post['primary_category'])) : ?>
-                        <div class="h-48 bg-cover bg-center relative z-10">
-                            <a href="<?php echo $post['primary_category']['link']; ?>" class="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded-full no-underline"><?php echo $post['primary_category']['name']; ?></a>
-                            <img src="<?php echo $post['image']['url']; ?>" alt="<?php echo $post['image']['alt']; ?>" class="w-full h-48 overflow-hidden object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-accent/30 via-accent/40 to-transparent"></div>
+                        <div class="h-64 bg-cover bg-center relative z-10">
+                            <a href="<?php echo $post['primary_category']['link']; ?>" class="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded-full hover:bg-accent/80 no-underline">
+                                <?php echo $post['primary_category']['name']; ?></a>
+                            <a href="<?php echo $post['link']['url']; ?>" title="read more about <?php echo $post['link']['title']; ?>">
+                                <img src="<?php echo $post['image']['url']; ?>" alt="<?php echo $post['image']['alt']; ?>" class="w-full h-64 overflow-hidden object-cover">
+                            </a>
+                            <!-- <div class="absolute inset-0 bg-gradient-to-t from-accent/30 via-accent/40 to-transparent"></div> -->
                         </div>
                     <?php endif; ?>
                     <div class="p-6 z-20">
-                        <h3 class="h3-responsive no-underline mb-3"><a href="<?php echo $post['link']; ?>" class="text-accent no-underline" title="read more about <?php echo $post['title']; ?>" target="_blank"><?php echo $post['title']; ?></a></h3>
+                        <h3 class="h3-responsive no-underline mb-3 hover:underline">
+                            <a href="<?php echo $post['link']; ?>" class="text-accent no-underline" title="read more about <?php echo $post['title']; ?>" target="_blank">
+                                <?php echo $post['title']; ?>
+                            </a>
+                        </h3>
                         <p class="mb-4"><?php echo $post['excerpt']; ?></p>
                         <div class="flex justify-between items-center">
                             <span class=""><?php echo $post['date']; ?></span>

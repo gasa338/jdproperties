@@ -689,7 +689,7 @@ function gxdev_render_global_content($slug) {
 function jd_get_related_properties($args = [])
 {
     $defaults = [
-        'category' => null,
+        'category' => $args['category'],
         'posts_per_page' => 3,
         'exclude_id' => get_the_ID(),
     ];
@@ -710,7 +710,7 @@ function jd_get_related_properties($args = [])
     // if (!empty($args['category'])) {
     //     $query_args['tax_query'] = [
     //         [
-    //             'taxonomy' => 'prop-category',
+    //             'taxonomy' => 'cat',
     //             'field'    => 'slug',
     //             'terms'    => $args['category'],
     //         ]
@@ -719,8 +719,8 @@ function jd_get_related_properties($args = [])
     $query = new WP_Query($query_args);
 
     // 🧠 fallback ako nema rezultata
-    if (!$query->have_posts() && !empty($args['category'])) {
-        unset($query_args['tax_query']);
+    if (!$query->have_posts()) {
+        // unset($query_args['tax_query']);
         $query = new WP_Query($query_args);
     }
 

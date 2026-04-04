@@ -11,7 +11,7 @@
 get_header();
 $post_id = get_the_ID();
 ?>
-<div class="min-h-screen bg-background">
+<div class="min-h-screen bg-accent">
 
 	<!-- Hero Section -->
 	<section class="pt-32 pb-16 bg-hero relative overflow-hidden">
@@ -42,18 +42,18 @@ $post_id = get_the_ID();
 					</h1>
 
 					<!-- Meta -->
-					 
+
 					<div class="flex flex-wrap items-center gap-6">
 
 						<div class="flex items-center gap-3">
-							<a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>"  rel="author" title="Posts by <?php the_author(); ?>">
-							<?php echo get_avatar(
-								get_the_author_meta('ID'),
-								48,
-								'',
-								'',
-								array('class' => 'w-12 h-12 rounded-full object-cover')
-							); ?>
+							<a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>" rel="author" title="Posts by <?php the_author(); ?>">
+								<?php echo get_avatar(
+									get_the_author_meta('ID'),
+									48,
+									'',
+									'',
+									array('class' => 'w-12 h-12 rounded-full object-cover')
+								); ?>
 							</a>
 
 
@@ -124,16 +124,20 @@ $post_id = get_the_ID();
 						endwhile; // End of the loop.
 						?>
 
-						<div class="flex flex-wrap gap-2 mt-8 pt-8 border-t border-border">
-							<?php
-							$tags = get_the_tags();
-							if ($tags) {
+						<?php
+						$tags = get_the_tags();
+						if ($tags) :
+						?>
+							<div class="flex flex-wrap gap-2 mt-8 pt-8 border-t border-border">
+								<?php
 								foreach ($tags as $tag) {
 									echo '<a href="' . get_tag_link($tag->term_id) . '" class="px-4 py-1.5 bg-accent text-white rounded-full no-underline hover:opacity-90">' . $tag->name . '</a>';
 								}
-							}
-							?>
-						</div>
+								?>
+							</div>
+						<?php
+						endif;
+						?>
 
 						<div class="flex flex-wrap gap-2 mt-8 pt-8 border-t border-border mb-12">
 							<h3 class="h3-responsive font-semibold text-foreground mb-4">Related Posts</h3>

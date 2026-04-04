@@ -45,7 +45,7 @@ $social_network = get_field('social_network', 'option');
                         <ul class="space-y-3">
                             <?php foreach ($menu_1_items as $item) : ?>
                                 <li>
-                                    <a class="text-foreground hover:text-foreground-muted transition-colors  no-underline" href="<?php echo esc_url($item->url) ?>">
+                                    <a class="hover:text-foreground-muted transition-colors  no-underline" href="<?php echo esc_url($item->url) ?>">
                                         <?php echo esc_html($item->title) ?>
                                     </a>
                                 </li>
@@ -68,7 +68,7 @@ $social_network = get_field('social_network', 'option');
                         <ul class="space-y-3">
                             <?php foreach ($menu_2_items as $item) : ?>
                                 <li>
-                                    <a class="text-foreground hover:text-foreground-muted transition-colors no-underline" href="<?php echo esc_url($item->url) ?>">
+                                    <a class="hover:text-foreground-muted transition-colors no-underline" href="<?php echo esc_url($item->url) ?>">
                                         <?php echo esc_html($item->title) ?>
                                     </a>
                                 </li>
@@ -92,7 +92,7 @@ $social_network = get_field('social_network', 'option');
                         <ul class="space-y-3">
                             <?php foreach ($menu_3_items as $item) : ?>
                                 <li>
-                                    <a class="text-foreground hover:text-foreground-muted transition-colors no-underline" href="<?php echo esc_url($item->url) ?>">
+                                    <a class="hover:text-foreground-muted transition-colors no-underline" href="<?php echo esc_url($item->url) ?>">
                                         <?php echo esc_html($item->title) ?>
                                     </a>
                                 </li>

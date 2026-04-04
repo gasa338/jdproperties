@@ -1062,10 +1062,6 @@ a {
   right: 1rem;
 }
 
-.right-6 {
-  right: 1.5rem;
-}
-
 .right-\[10\%\] {
   right: 10%;
 }
@@ -1116,10 +1112,6 @@ a {
 
 .top-4 {
   top: 1rem;
-}
-
-.top-6 {
-  top: 1.5rem;
 }
 
 .top-8 {
@@ -1795,18 +1787,6 @@ a {
   cursor: pointer;
 }
 
-.resize-none {
-  resize: none;
-}
-
-.snap-x {
-  scroll-snap-type: x var(--tw-scroll-snap-strictness);
-}
-
-.snap-mandatory {
-  --tw-scroll-snap-strictness: mandatory;
-}
-
 .scroll-mt-32 {
   scroll-margin-top: 8rem;
 }
@@ -2189,10 +2169,6 @@ a {
   border-color: hsl(var(--secondary) / 0.2);
 }
 
-.border-transparent {
-  border-color: transparent;
-}
-
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
@@ -2267,10 +2243,6 @@ a {
 
 .bg-black\/70 {
   background-color: rgb(0 0 0 / 0.7);
-}
-
-.bg-black\/90 {
-  background-color: rgb(0 0 0 / 0.9);
 }
 
 .bg-blue-600 {
@@ -2411,8 +2383,8 @@ a {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.from-accent\/40 {
-  --tw-gradient-from: hsl(var(--accent) / 0.4) var(--tw-gradient-from-position);
+.from-accent\/60 {
+  --tw-gradient-from: hsl(var(--accent) / 0.6) var(--tw-gradient-from-position);
   --tw-gradient-to: hsl(var(--accent) / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
@@ -2515,11 +2487,6 @@ a {
 .via-accent\/40 {
   --tw-gradient-to: hsl(var(--accent) / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), hsl(var(--accent) / 0.4) var(--tw-gradient-via-position), var(--tw-gradient-to);
-}
-
-.via-accent\/60 {
-  --tw-gradient-to: hsl(var(--accent) / 0)  var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), hsl(var(--accent) / 0.6) var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 
 .via-background\/80 {
@@ -3167,6 +3134,10 @@ a {
   --tw-shadow: var(--tw-shadow-colored);
 }
 
+.outline {
+  outline-style: solid;
+}
+
 .ring-2 {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
@@ -3498,6 +3469,10 @@ a {
   background-color: hsl(var(--accent) / 0.05);
 }
 
+.hover\:bg-accent\/50:hover {
+  background-color: hsl(var(--accent) / 0.5);
+}
+
 .hover\:bg-accent\/80:hover {
   background-color: hsl(var(--accent) / 0.8);
 }
@@ -3544,10 +3519,6 @@ a {
 
 .hover\:bg-primary\/50:hover {
   background-color: hsl(var(--primary) / 0.5);
-}
-
-.hover\:bg-primary\/80:hover {
-  background-color: hsl(var(--primary) / 0.8);
 }
 
 .hover\:bg-primary\/90:hover {
@@ -3648,20 +3619,6 @@ a {
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
-}
-
-.focus\:ring-2:focus {
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-}
-
-.focus\:ring-ring:focus {
-  --tw-ring-color: hsl(var(--ring));
-}
-
-.focus\:ring-offset-2:focus {
-  --tw-ring-offset-width: 2px;
 }
 
 .focus-visible\:outline-none:focus-visible {

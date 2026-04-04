@@ -447,14 +447,14 @@ function jd_sale_output_title()
     <div>
         <div class="flex flex-wrap gap-2 mb-3 py-4 border-t border-border">
             <?php
-            $type_terms = gxdev_get_custom_tax($post_id, 'prop-type');
+            $type_terms = gxdev_get_custom_tax($post_id, 'jd-type');
             if (!empty($type_terms)) : ?>
                 <a href="<?php echo esc_url($type_terms[0]['link']); ?>" title="<?php echo esc_attr($type_terms[0]['name']); ?>" class="inline-flex items-center rounded-full px-4 py-2  font-semibold bg-accent text-accent-foreground font-body">
                     <?php echo esc_html($type_terms[0]['name']); ?>
                 </a>
             <?php endif; ?>
             <?php
-            $category_terms = gxdev_get_custom_tax($post_id, 'prop-category');
+            $category_terms = gxdev_get_custom_tax($post_id, 'cat');
             if (!empty($category_terms)) : ?>
                 <a href="<?php echo esc_url($category_terms[0]['link']); ?>" title="<?php echo esc_attr($category_terms[0]['name']); ?>" class="inline-flex items-center rounded-full px-4 py-2  font-semibold bg-primary text-primary-foreground font-body">
                     <?php echo esc_html($category_terms[0]['name']); ?>
@@ -516,11 +516,13 @@ function jd_sale_output_title()
                     <?php echo number_format($price, 0, ',', '.'); ?> EUR
                 </span>
                 <?php
-                $price_per_m2 = ($area > 0) ? round($price / $area) : 0;
-                if ($price_per_m2) : ?>
-                    <span class="font-body text-base text-muted-foreground">
-                        <?php echo number_format($price_per_m2, 0, ',', '.'); ?> EUR/m²
-                    </span>
+                if ($category_terms[0]['name'] !== 'izdavanje'):
+                    $price_per_m2 = ($area > 0) ? round($price / $area) : 0;
+                    if ($price_per_m2) : ?>
+                        <span class="font-body text-base text-muted-foreground">
+                            <?php echo number_format($price_per_m2, 0, ',', '.'); ?> EUR/m²
+                        </span>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
         <?php endif; ?>
@@ -551,8 +553,8 @@ function jd_sale_output_stats()
                 <path d="M3 16v3a2 2 0 0 0 2 2h3" />
                 <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
             </svg>
-            <div class="font-body text-muted-foreground mb-1">Površina</div>
-            <div class="font-heading text-2xl font-bold text-foreground"><?php echo esc_html($area); ?> m²</div>
+            <div class="font-body text-muted-foreground mb-1"><?php echo __("Površina", "gxdev"); ?></div>
+            <div class="font-heading text-2xl font-bold text-foreground"><?php echo !empty($area) ? $area : "---"; ?> m²</div>
         </div>
 
         <div class="bg-secondary rounded-xl p-5 text-center border border-border">
@@ -562,8 +564,8 @@ function jd_sale_output_stats()
                 <path d="M12 4v6" />
                 <path d="M2 18h20" />
             </svg>
-            <div class="font-body text-muted-foreground mb-1">Sobe</div>
-            <div class="font-heading text-2xl font-bold text-foreground"><?php echo esc_html($rooms); ?></div>
+            <div class="font-body text-muted-foreground mb-1"><?php echo __("Sobe", "gxdev"); ?></div>
+            <div class="font-heading text-2xl font-bold text-foreground"><?php echo !empty($rooms) ? $rooms : "---"; ?></div>
         </div>
 
         <div class="bg-secondary rounded-xl p-5 text-center border border-border">
@@ -573,8 +575,8 @@ function jd_sale_output_stats()
                 <path d="m3 8 4-4 4 4" />
                 <path d="M7 4v16" />
             </svg>
-            <div class="font-body text-muted-foreground mb-1">Sprat</div>
-            <div class="font-heading text-2xl font-bold text-foreground"><?php echo esc_html($floor); ?></div>
+            <div class="font-body text-muted-foreground mb-1"><?php echo __("Sprat", "gxdev"); ?></div>
+            <div class="font-heading text-2xl font-bold text-foreground"><?php echo !empty($floor) ? $floor : "---"; ?></div>
         </div>
 
         <div class="bg-secondary rounded-xl p-5 text-center border border-border">
@@ -587,8 +589,8 @@ function jd_sale_output_stats()
                 <path d="M12 12h.01" />
                 <path d="M16 12h.01" />
             </svg>
-            <div class="font-body text-muted-foreground mb-1">Spratnost</div>
-            <div class="font-heading text-2xl font-bold text-foreground"><?php echo esc_html($floors_in_building); ?></div>
+            <div class="font-body text-muted-foreground mb-1"><?php echo __("Spratnost", "gxdev"); ?></div>
+            <div class="font-heading text-2xl font-bold text-foreground"><?php echo !empty($floors_in_building) ? $floors_in_building : "---"; ?></div>
         </div>
 
     </div>
@@ -612,7 +614,7 @@ function jd_sale_output_description()
                 <path d="M16 13H8" />
                 <path d="M16 17H8" />
             </svg>
-            Opis nekretnine
+            <?php echo __("Opis nekretnine", "gxdev"); ?>
         </h2>
         <div class="font-body text-muted-foreground leading-relaxed text-base maxwell-content">
             <?php the_content(); ?>
@@ -630,15 +632,6 @@ function jd_sale_output_features()
 {
 
     $post_id = get_the_ID();
-    $features = [
-        'Lift',
-        'Klima',
-        'Podgrevanje poda',
-        'Terasa 12m²',
-        'Ostava',
-        'Interfon',
-        'Video nadzor',
-    ];
     $heating = get_field('property_heating', $post_id);
     $parking_spaces = get_field('property_parking_spaces', $post_id);
     $toilettes = get_field('property_toilettes', $post_id);
@@ -649,7 +642,7 @@ function jd_sale_output_features()
                 <path d="M21.801 10A10 10 0 1 1 17 3.335" />
                 <path d="m9 11 3 3L22 4" />
             </svg>
-            Karakteristike
+            <?php echo __('Karakteristike', 'gxdev'); ?>
         </h2>
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
             <?php if (!empty($heating)): ?>
@@ -957,17 +950,19 @@ function jd_sale_output_map()
                 <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
                 <circle cx="12" cy="10" r="3" />
             </svg>
-            Lokacija
+            <?php echo __("Lokacija", 'gxdev'); ?>
         </h2>
-        <div class="rounded-xl overflow-hidden border border-border aspect-[16/9]">
-            <iframe
-                title="Lokacija nekretnine"
-                src="https://maps.google.com/maps?q=<?php echo $geo_sirina; ?>,<?php echo $geo_duzina; ?>&z=15&output=embed"
-                class="w-full h-full"
-                loading="lazy"
-                allowfullscreen>
-            </iframe>
-        </div>
+        <?php if (!empty($geo_duzina) || !empty($geo_sirina)): ?>
+            <div class="rounded-xl overflow-hidden border border-border aspect-[16/9]">
+                <iframe
+                    title="Lokacija nekretnine"
+                    src="https://maps.google.com/maps?q=<?php echo $geo_sirina; ?>,<?php echo $geo_duzina; ?>&z=15&output=embed"
+                    class="w-full h-full"
+                    loading="lazy"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        <?php endif; ?>
         <p class="font-body text-sm text-muted-foreground mt-3">
             📍 <?php echo esc_html($location); ?>
         </p>
@@ -982,37 +977,13 @@ function jd_sale_output_map()
 
 function jd_sale_output_faq()
 {
-    $post_id = get_the_ID();
-    $faqs    = get_post_meta($post_id, '_property_faqs', true) ?: [
-        [
-            'question' => 'Koji su koraci pri kupovini ove nekretnine?',
-            'answer'   => 'Kontaktirajte nas, zakažite razgledanje, dogovorite uslove kupovine, potpišite predugovor i ugovor o kupoprodaji kod notara.',
-        ],
-        [
-            'question' => 'Da li je moguće finansiranje putem kredita?',
-            'answer'   => 'Da, sarađujemo sa vodećim bankama i možemo vas uputiti na najpovoljnije uslove kreditiranja.',
-        ],
-        [
-            'question' => 'Koliki su dodatni troškovi kupovine?',
-            'answer'   => 'Porez na prenos apsolutnih prava iznosi 2.5% od procenjene vrednosti. Agencijska provizija je 2% + PDV od kupoprodajne cene.',
-        ],
-        [
-            'question' => 'Da li je nekretnina uknjižena?',
-            'answer'   => 'Da, nekretnina je uknjižena bez tereta i hipoteke. Dokumentacija je kompletna i dostupna na uvid.',
-        ],
-        [
-            'question' => 'Da li je moguće zakazati razgledanje?',
-            'answer'   => 'Naravno! Kontaktirajte nas telefonom ili putem forme i zakažite besplatno razgledanje u terminu koji vam odgovara.',
-            'open'     => true,
-        ],
-    ];
 ?>
     <div>
         <h2 class="font-heading text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
                 <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
             </svg>
-            Česta pitanja
+            <?php echo __('Česta pitanja', 'gxdev'); ?>
         </h2>
         <?php echo gxdev_render_global_content('faq-prodaja-stana'); ?>
     </div>
@@ -1141,7 +1112,7 @@ function jd_sale_output_schedule_form()
                 <line x1="8" x2="8" y1="2" y2="6" />
                 <line x1="3" x2="21" y1="10" y2="10" />
             </svg>
-            Zakaži razgledanje
+            <?php echo __('Zakaži razgledanje', 'gxdev'); ?>
         </h3>
 
         <?php echo do_shortcode('[contact-form-7 id="f76702a" title="Zakaži razgledanje"]') ?>
@@ -1362,16 +1333,18 @@ function jd_sale_output_cta_banner()
 
 function jd_sale_output_similar()
 {
-
+    $post_id = get_the_ID();
+    $category_terms = gxdev_get_custom_tax($post_id, 'cat');
+    $category = !empty($category_terms) ? $category_terms[0]['name'] : 'prodaja';
     $query = jd_get_related_properties([
-        'category' => 'prodaja',
+        'category' => $category,
         'posts_per_page' => 3,
     ]);
 
 ?>
     <?php if ($query->have_posts()) : ?>
         <div class="mt-16" style="opacity: 1; transform: none;">
-            <h2 class="font-heading text-2xl sm:text-3xl font-semibold text-foreground mb-8">Slične nekretnine</h2>
+            <h2 class="font-heading text-2xl sm:text-3xl font-semibold text-foreground mb-8"><?php echo __ ('Slične nekretnine', 'gxdev'); ?></h2>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php while ($query->have_posts()) : $query->the_post(); ?>
                     <?php get_template_part('template-parts/content', 'property', [
@@ -1381,101 +1354,5 @@ function jd_sale_output_similar()
             </div>
         </div>
     <?php endif; ?>
-<?php
-}
-function jd_sale_output_similar_original()
-{
-    $post_id = get_the_ID();
-
-    $similar = new WP_Query([
-        'post_type'      => 'property',
-        'posts_per_page' => 3,
-        'post__not_in'   => [$post_id],
-        'meta_query'     => [
-            ['key' => '_listing_type', 'value' => 'Prodaja', 'compare' => '='],
-        ],
-        'orderby'        => 'rand',
-    ]);
-
-    if (! $similar->have_posts()) return;
-?>
-    <div class="mt-16">
-        <h2 class="font-heading text-2xl sm:text-3xl font-semibold text-foreground mb-8">Slične nekretnine</h2>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <?php while ($similar->have_posts()) : $similar->the_post();
-                $s_id    = get_the_ID();
-                $s_price = get_post_meta($s_id, '_property_price',    true);
-                $s_area  = get_post_meta($s_id, '_property_area',     true);
-                $s_rooms = get_post_meta($s_id, '_property_rooms',    true);
-                $s_floor = get_post_meta($s_id, '_property_floor',    true);
-                $s_loc   = get_post_meta($s_id, '_property_location', true);
-                $s_type  = get_post_meta($s_id, '_property_type',     true);
-                $s_ppm2  = ($s_area > 0) ? round($s_price / $s_area) : 0;
-            ?>
-                <a class="group block bg-card rounded-lg overflow-hidden border border-border card-hover" href="<?php the_permalink(); ?>">
-
-                    <div class="relative aspect-[4/3] bg-muted overflow-hidden">
-                        <?php if (has_post_thumbnail()) : ?>
-                            <?php the_post_thumbnail('medium', ['class' => 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-500']); ?>
-                        <?php else : ?>
-                            <div class="absolute inset-0 bg-gradient-to-br from-muted to-muted-foreground/10 flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-foreground/30">
-                                    <rect width="16" height="20" x="4" y="2" rx="2" ry="2" />
-                                    <path d="M9 22v-4h6v4" />
-                                </svg>
-                            </div>
-                        <?php endif; ?>
-                        <div class="absolute top-3 left-3">
-                            <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold bg-accent text-accent-foreground font-body">Prodaja</span>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center justify-center gap-6 py-3 bg-secondary border-b border-border text-sm font-body font-semibold text-foreground">
-                        <?php if ($s_area) : ?><div class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
-                                    <path d="M8 3H5a2 2 0 0 0-2 2v3" />
-                                    <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
-                                    <path d="M3 16v3a2 2 0 0 0 2 2h3" />
-                                    <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
-                                </svg><span><?php echo esc_html($s_area); ?> m²</span></div><?php endif; ?>
-                        <?php if ($s_rooms) : ?><div class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
-                                    <path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8" />
-                                    <path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4" />
-                                    <path d="M12 4v6" />
-                                    <path d="M2 18h20" />
-                                </svg><span><?php echo esc_html($s_rooms); ?> sobe</span></div><?php endif; ?>
-                        <?php if ($s_floor) : ?><div class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
-                                    <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" />
-                                    <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" />
-                                    <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" />
-                                </svg><span><?php echo esc_html($s_floor); ?></span></div><?php endif; ?>
-                    </div>
-
-                    <div class="p-5 space-y-3">
-                        <?php if ($s_type) : ?><span class="text-xs font-body font-medium text-accent uppercase tracking-wider"><?php echo esc_html($s_type); ?></span><?php endif; ?>
-                        <h3 class="font-heading text-lg font-semibold text-foreground leading-tight line-clamp-2 group-hover:text-accent transition-colors"><?php the_title(); ?></h3>
-                        <?php if ($s_loc) : ?>
-                            <div class="flex items-center gap-1.5 text-muted-foreground">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
-                                    <circle cx="12" cy="10" r="3" />
-                                </svg>
-                                <span class="text-sm font-body"><?php echo esc_html($s_loc); ?></span>
-                            </div>
-                        <?php endif; ?>
-                        <?php if ($s_price) : ?>
-                            <div class="pt-3 border-t border-border flex items-baseline gap-3">
-                                <span class="font-heading text-xl font-bold text-foreground"><?php echo number_format($s_price, 0, ',', '.'); ?> EUR</span>
-                                <?php if ($s_ppm2) : ?>
-                                    <span class="font-body text-xs text-muted-foreground"><?php echo number_format($s_ppm2, 0, ',', '.'); ?> EUR/m²</span>
-                                <?php endif; ?>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-
-                </a>
-            <?php endwhile;
-            wp_reset_postdata(); ?>
-        </div>
-    </div>
 <?php
 }

@@ -40,7 +40,7 @@ function _link_1($link, $class = '')
 function _link_2($link, $class = '')
 {
 ?>
-    <a href="<?php echo esc_url($link['url']); ?>" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-border bg-transparent text-foreground hover:bg-secondary hover:border-accent/50 h-14 rounded-xl px-10 text-lg no-underline <?php echo esc_attr($class); ?>"><?php echo esc_html($link['title']); ?></a>
+    <a href="<?php echo esc_url($link['url']); ?>" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-border bg-transparent text-foreground hover:bg-accent/50 hover:border-accent/50 h-14 rounded-xl px-10 text-lg no-underline <?php echo esc_attr($class); ?>"><?php echo esc_html($link['title']); ?></a>
 <?php
 }
 
