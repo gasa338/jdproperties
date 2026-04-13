@@ -516,7 +516,7 @@ function jd_sale_output_title()
                     <?php echo number_format($price, 0, ',', '.'); ?> EUR
                 </span>
                 <?php
-                if ($category_terms[0]['name'] !== 'izdavanje'):
+                if ($category_terms[0]['name'] == 'prodaja'):
                     $price_per_m2 = ($area > 0) ? round($price / $area) : 0;
                     if ($price_per_m2) : ?>
                         <span class="font-body text-base text-muted-foreground">

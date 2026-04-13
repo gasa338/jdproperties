@@ -129,7 +129,7 @@ function properties_ajax_handler() {
 
     if ( $prop_category ) {
         $tax_query[] = [
-            'taxonomy' => 'prop-category',
+            'taxonomy' => 'cat',
             'field'    => 'slug',
             'terms'    => $prop_category,
         ];
@@ -137,7 +137,7 @@ function properties_ajax_handler() {
 
     if ( ! empty($prop_types) ) {
         $tax_query[] = [
-            'taxonomy' => 'prop-type',
+            'taxonomy' => 'jd-type',
             'field'    => 'slug',
             'terms'    => $prop_types,
             'operator' => 'IN',

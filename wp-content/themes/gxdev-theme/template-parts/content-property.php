@@ -26,7 +26,6 @@ $city = !empty($city_parts) ? implode(', ', $city_parts) : '';
 $size    = get_field('property_squarespace', $post_id);
 $rooms   = get_field('property_structure', $post_id);
 $floor   = get_field('property_floor', $post_id);
-
 // Thumbnail fallback
 $thumb = get_the_post_thumbnail_url($post_id, 'medium_large');
 ?>
@@ -58,19 +57,23 @@ $thumb = get_the_post_thumbnail_url($post_id, 'medium_large');
 
 	<!-- SPECS -->
 	<div class="flex items-center justify-center gap-6 py-3 bg-secondary border-b border-border text-sm font-semibold">
-		<?php if (!empty($type)): ?>
+		<?php if (!empty($size)): ?>
 			<div class="flex items-center gap-1.5">
-				<span><?php echo esc_html($size); ?> m²</span>
+				<span class="font-semibold"><?php echo $size; ?> m²</span>
 			</div>
 		<?php endif; ?>
-		<?php if (!empty($type)): ?>
-			<div class="flex items-center gap-1.5">
-				<span><?php echo esc_html($rooms); ?> sobe</span>
+		<?php if (!empty($rooms)): ?>
+			<div class="flex items-center gap-1.5 border-r border-border">
+				<?php if ($rooms == 1): ?>
+					<span class="font-semibold"><?php echo $rooms; ?> <?php echo __('soba', 'gxdev'); ?></span>
+				<?php else: ?>
+					<span class="font-semibold"><?php echo $rooms; ?> <?php echo __('sobe', 'gxdev'); ?></span>
+				<?php endif; ?>
 			</div>
 		<?php endif; ?>
-		<?php if (!empty($type)): ?>
+		<?php if (!empty($floor)): ?>
 			<div class="flex items-center gap-1.5">
-				<span><?php echo esc_html($floor); ?></span>
+				<span class="font-semibold"><?php echo $floor; ?> <?php echo __('sprat', 'gxdev'); ?></span>
 			</div>
 		<?php endif; ?>
 	</div>

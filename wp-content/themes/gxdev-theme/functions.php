@@ -366,22 +366,8 @@ add_action('init', function () {
 		'show_ui'           => true,
 		'show_admin_column' => true,
 		'show_in_rest'      => true,
-		'rewrite'           => array('slug' => 'prop-category'),
+		// 'rewrite'           => array('slug' => 'prop-category'),
 	));
-
-	/* ---------- TAX: type (hijerarhijska — tip nekretnine) ---------- */
-	// register_taxonomy('type', array('properties'), array(
-	// 	'labels' => array(
-	// 		'name'          => 'Types',
-	// 		'singular_name' => 'Type',
-	// 	),
-	// 	'hierarchical'      => true,
-	// 	'public'            => true,
-	// 	'show_ui'           => true,
-	// 	'show_admin_column' => true,
-	// 	'show_in_rest'      => true,
-	// 	'rewrite'           => array('slug' => 'prop-type'),
-	// ));
 
 	/* ---------- TAX: location (hijerarhijska — npr. Grad/Opština) ---------- */
 	register_taxonomy('location', array('properties'), array(
