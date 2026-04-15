@@ -37,7 +37,7 @@ $additional_pages = get_field('additional_content', $page_id);
 $term = get_queried_object();
 ?>
 
-<main >
+<main>
     <section class="pt-8">
         <div class="relative bg-gradient-purple py-24 overflow-hidden mb-24">
             <div class="absolute top-20 right-[10%] w-72 h-72 rounded-full border border-primary-foreground/8 animate-pulse-subtle"></div>
@@ -107,7 +107,7 @@ $term = get_queried_object();
 
             </div>
         </div>
-        <?php      
+        <?php
         if (!empty($additional_pages)) {
             foreach ($additional_pages['bottom'] as $page) : ?>
                 <?php echo gxdev_render_global_content($page->post_name); ?>

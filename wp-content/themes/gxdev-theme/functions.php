@@ -176,6 +176,8 @@ add_action('widgets_init', 'mma_future_widgets_init');
  */
 function mma_future_scripts()
 {
+	global $template;
+	$basename = basename($template);
 	/** ==============================            custom styles and scripts            ============================== */
 	/**  */
 	wp_enqueue_style('main', get_template_directory_uri() . '/assets/dist/css/output.css');
@@ -203,19 +205,40 @@ function mma_future_scripts()
 		wp_enqueue_style('form', get_template_directory_uri() . '/assets/dist/css/form.css', array(), _S_VERSION, 'all');
 	}
 
-	// wp_enqueue_script('properties-filters', get_template_directory_uri() . '/assets/dist/js/properties-filters.js', array(), _S_VERSION, true);
-    wp_enqueue_script(
-        'properties-filters',
-        get_template_directory_uri() . '/assets/dist/js/properties-filters.js',
-        ['jquery'],
-        filemtime( get_template_directory() . '/assets/dist/js/properties-filters.js' ),
-        true
-    );
+	if ($basename === 'properties.php') {
+		wp_enqueue_script(
+			'properties-filters',
+			get_template_directory_uri() . '/assets/dist/js/properties-filters.js',
+			['jquery'],
+			filemtime(get_template_directory() . '/assets/dist/js/properties-filters.js'),
+			true
+		);
 
-    wp_localize_script('properties-filters', 'propertiesAjax', [
-        'ajaxurl' => admin_url('admin-ajax.php'),
-        'nonce'   => wp_create_nonce('properties_filter_nonce'),
-    ]);
+		wp_localize_script('properties-filters', 'propertiesAjax', [
+			'ajaxurl' => admin_url('admin-ajax.php'),
+			'nonce'   => wp_create_nonce('properties_filter_nonce'),
+			'test' => 'test'
+		]);
+	}
+
+	if ($basename === 'taxonomy-location.php' || $basename === 'taxonomy-cat.php' || $basename === 'taxonomy-other.php' || $basename === 'taxonomy-jd-type.php') {
+
+		$term = get_queried_object();
+		wp_enqueue_script(
+			'properties-filters-taxonomy',
+			get_template_directory_uri() . '/assets/dist/js/properties-filters-taxonomy.js',
+			['jquery'],
+			filemtime(get_template_directory() . '/assets/dist/js/properties-filters-taxonomy.js'),
+			true
+		);
+
+		wp_localize_script('properties-filters-taxonomy', 'propertiesAjax', [
+			'ajaxurl' => admin_url('admin-ajax.php'),
+			'nonce'   => wp_create_nonce('properties_filter_taxonomy_nonce'),
+			'term_slug' => $term->slug,
+			'taxonomy' => $term->taxonomy,
+		]);
+	}
 	
 	wp_dequeue_style('wp-block-library');
 	wp_dequeue_style('wp-block-library-theme');
@@ -312,6 +335,7 @@ require get_template_directory() . '/inc/gutenberg_native.php';
 require_once get_template_directory() . '/inc/jd-property-hooks.php';
 require_once get_template_directory() . '/inc/jd-property-sale-hooks.php';
 require_once get_template_directory() . '/inc/functions-properties-ajax.php';
+require_once get_template_directory() . '/inc/functions-properties-ajax-taxonomy.php';
 
 
 
@@ -442,4 +466,37 @@ add_action('save_post_properties', function($post_id, $post, $update) {
 
   update_post_meta($post_id, 'property_price_num', $num);
 
+  _update_price_bounds_in_options($num);
+
 }, 10, 3);
+
+
+function _update_price_bounds_in_options($current_price) {
+  // Ako je cena 0 (nema cene), ignoriši
+  if ($current_price <= 0) {
+    return;
+  }
+  
+  // Dohvati trenutne vrednosti iz option tabele
+  $current_min = get_option('property_price_min', null);
+  $current_max = get_option('property_price_max', null);
+  
+  // INICIJALIZACIJA: ako nema vrednosti, postavi trenutnu cenu
+  if ($current_min === null) {
+    update_option('property_price_min', $current_price);
+  }
+  
+  if ($current_max === null) {
+    update_option('property_price_max', $current_price);
+  }
+  
+  // Provera za MINIMUM
+  if ($current_price < (int)$current_min) {
+    update_option('property_price_min', $current_price);
+  }
+  
+  // Provera za MAKSIMUM
+  if ($current_price > (int)$current_max) {
+    update_option('property_price_max', $current_price);
+  }
+}

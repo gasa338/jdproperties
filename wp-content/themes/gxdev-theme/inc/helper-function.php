@@ -726,3 +726,15 @@ function jd_get_related_properties($args = [])
 
     return $query;
 }
+
+
+// Funkcije za dohvat vrednosti za filtere
+function get_min_price() {
+  $min = get_option('property_price_min', 0);
+  return $min === null ? 100 : (int)$min;
+}
+
+function get_max_price() {
+  $max = get_option('property_price_max', 1000000);
+  return $max === null ? 1200000 : (int)$max;
+}

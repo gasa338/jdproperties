@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template Name: Properties
+ * Template Name: Properties Taxonomy
  */
 
 get_header();
@@ -37,7 +37,7 @@ $additional_pages = get_field('additional_content', $page_id);
 
 <main >
     <section class="pt-8">
-        <div class="relative bg-gradient-purple py-24 overflow-hidden mb-24">
+        <div class="relative bg-gradient-purple py-24 overflow-hidden mb-24>">
             <div class="absolute top-20 right-[10%] w-72 h-72 rounded-full border border-primary-foreground/8 animate-pulse-subtle"></div>
             <div class="absolute bottom-10 left-[5%] w-48 h-48 rounded-full border border-primary-foreground/5"></div>
             <div class="absolute top-1/3 right-[25%] w-3 h-3 rounded-full bg-accent opacity-60"></div>
@@ -301,5 +301,13 @@ $additional_pages = get_field('additional_content', $page_id);
         <?php } ?>
     </section>
 </main>
+
+<?php
+// Prosleđujemo podatke u JS
+wp_localize_script('properties-filters', 'propertiesAjax', [
+    'ajaxurl' => admin_url('admin-ajax.php'),
+    'nonce'   => wp_create_nonce('properties_filter_nonce'),
+]);
+?>
 
 <?php get_footer(); ?>
