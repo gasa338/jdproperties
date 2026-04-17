@@ -7,7 +7,7 @@ $title   = get_the_title();
 $price   = get_field('property_price', $post_id);
 
 // Povlači prvu kategoriju iz 'prop-category' taxona ili praznu niz ako nema kategorija
-$prop_categories = gxdev_get_custom_tax($post_id, 'prop-category');
+$prop_categories = gxdev_get_custom_tax($post_id, 'cat');
 $type = !empty($prop_categories) ? $prop_categories[0] : '';
 
 /*----*/
@@ -30,13 +30,13 @@ $floor   = get_field('property_floor', $post_id);
 $thumb = get_the_post_thumbnail_url($post_id, 'medium_large');
 ?>
 
-<div class="group bg-card rounded-lg overflow-hidden border border-border card-hover">
+<div class="group bg-card group card-border">
 
 	<!-- IMAGE (LINK) -->
-	<a href="<?php echo esc_url($link); ?>" class="block relative aspect-[4/3] bg-muted overflow-hidden">
+	<a href="<?php echo esc_url($link); ?>" class="block relative aspect-[4/3] bg-muted rounded-t-2xl overflow-hidden">
 
 		<?php if ($thumb): ?>
-			<img src="<?php echo esc_url($thumb); ?>" alt="<?php echo esc_attr($title); ?>" class="w-full h-full object-cover">
+			<img src="<?php echo esc_url($thumb); ?>" alt="<?php echo esc_attr($title); ?>" class="w-full h-full object-cover rounded-t-2xl overflow-hidden">
 		<?php else: ?>
 			<div class="absolute inset-0 flex items-center justify-center">
 				<!-- fallback ikonica -->
@@ -81,9 +81,9 @@ $thumb = get_the_post_thumbnail_url($post_id, 'medium_large');
 	<!-- CONTENT -->
 	<div class="p-5 space-y-3">
 
-		<span class="text-xs font-medium text-accent uppercase tracking-wider">
+		<!-- <span class="text-xs font-medium text-accent uppercase tracking-wider">
 			<?php echo esc_html($type); ?>
-		</span>
+		</span> -->
 
 		<!-- TITLE (LINK) -->
 		<h3 class="font-heading text-lg font-semibold leading-tight line-clamp-2">

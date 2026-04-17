@@ -11,7 +11,7 @@ $align = $data['title']['align'] ?? 'left';
 ?>
 
 <?php echo _spacing_full('hero-industry',$blocks_id,$data['margin'], $data['padding']); ?>
-<section class="py-24 relative hero-industry-<?php echo esc_attr($blocks_id); ?> <?php echo esc_attr($blocks_class); ?> <?php echo esc_attr($color_scheme == 'dark' ? 'bg-hero' : 'bg-card'); ?>">
+<section class="py-24 relative hero-industry-<?php echo esc_attr($blocks_id); ?> <?php echo esc_attr($blocks_class); ?> <?php echo _background($data['background']); ?>">
     <?php if ($color_scheme == 'dark'): ?>
         <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 1px 1px, rgb(255, 255, 255) 1px, transparent 0px); background-size: 32px 32px;"></div>
         <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 1px 1px, rgb(0, 0, 0) 1px, transparent 0px); background-size: 32px 32px;"></div>
@@ -33,9 +33,9 @@ $align = $data['title']['align'] ?? 'left';
                     <span class="maxwell-top-title mb-4 block <?php echo $align == 'center' ? 'text-center mx-auto' : ''; ?>"><?php echo $data['top_title']; ?></span>
                 <?php endif; ?>
             <?php endif; ?>
-            <?php echo _heading($data['title'], 'mb-6' . ($color_scheme == 'dark' ? ' text-white/80' : ' text-primary')); ?>
+            <?php echo _heading($data['title'], 'mb-6' . ($color_scheme == 'dark_mode' ? ' text-white/80' : ' text-primary')); ?>
             <?php if (!empty($data['text'])): ?>
-                <div class="text-xl mb-10 <?php echo esc_attr($color_scheme == 'dark' ? 'text-white/80 [&_p]:text-white/80 [&_span]:text-white/80 [&_strong]:text-white/80 [&_em]:text-white/80' : 'text-muted-foreground'); ?>"><?php echo apply_filters('the_content', $data['text']); ?></div>
+                <div class="text-xl mb-10 <?php echo esc_attr($color_scheme == 'dark_mode' ? 'text-white/80 [&_p]:text-white/80 [&_span]:text-white/80 [&_strong]:text-white/80 [&_em]:text-white/80' : 'text-muted-foreground'); ?>"><?php echo apply_filters('the_content', $data['text']); ?></div>
             <?php endif; ?>
             <div class="flex flex-wrap gap-4 <?php echo $align == 'center' ? 'items-center justify-center' : ''; ?>">
                 <?php if (!empty($data['link_1'])): ?>

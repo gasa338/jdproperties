@@ -39,7 +39,7 @@ $color_mode = $data['background'] ?? 'dark';
           <?php endif; ?>
         </div>
 
-        <div class="space-y-6 pl-14 maxwell-content <?php echo ($color_mode === 'dark_mode' ? 'text-white/60 [&_li]:!text-white' : ''); ?>">
+        <div class="space-y-6 <?php echo empty($data['left_icon']) ? "" : "pl-14"; ?> maxwell-content <?php echo ($color_mode === 'dark_mode' ? 'text-white/60 [&_li]:!text-white' : ''); ?>">
           <?php echo apply_filters('the_content', $data['left_text']); ?>
         </div>
       </div>
@@ -61,7 +61,7 @@ $color_mode = $data['background'] ?? 'dark';
           <?php endif; ?>
         </div>
 
-        <div class="space-y-6 pl-14 maxwell-content <?php echo ($color_mode === 'dark_mode' ? 'text-white/60 [&_li]:!text-white' : ''); ?>">
+        <div class="space-y-6 <?php echo empty($data['right_icon']) ? "" : "pl-14"; ?> maxwell-content <?php echo ($color_mode === 'dark_mode' ? 'text-white/60 [&_li]:!text-white' : ''); ?>">
           <?php echo apply_filters('the_content', $data['right_text']); ?>
         </div>
       </div>

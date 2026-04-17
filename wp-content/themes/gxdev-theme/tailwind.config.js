@@ -92,17 +92,21 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        purple: {
-          DEFAULT: "hsl(var(--purple))",
-          light: "hsl(var(--purple-light))",
-          dark: "hsl(var(--purple-dark))",
-          glow: "hsl(var(--purple-glow))",
+        navy: {
+          DEFAULT: "hsl(var(--navy))",
+          light: "hsl(var(--navy-light))",
+          dark: "hsl(var(--navy-dark))",
         },
-        lavender: {
-          DEFAULT: "hsl(var(--lavender))",
-          dark: "hsl(var(--lavender-dark))",
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-light))",
+          glow: "hsl(var(--gold-glow))",
         },
-        plum: "hsl(var(--plum))",
+        cream: {
+          DEFAULT: "hsl(var(--cream))",
+          dark: "hsl(var(--cream-dark))",
+        },
+        slate: "hsl(var(--slate))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

@@ -2,40 +2,41 @@
 // Ovo će kasnije biti zamenjeno sa stvarnim podacima iz CPT i taksonomija
 // Za sada koristimo mock podatke
 $property_types = [
-    '' => 'Tip nekretnine',
-    'stan' => 'Stan',
-    'kuca' => 'Kuća',
-    'poslovni-prostor' => 'Poslovni prostor',
-    'garaza' => 'Garaža',
-    'kancelarija' => 'Kancelarija',
-    'magacin' => 'Magacin'
+    '' => 'Tip nekretnine'
 ];
 
 // Lokacije - inicijalno 10 lokacija, kasnije će se učitavati iz taksonomije
-$locations = [
-    'novi-beograd' => 'Novi Beograd',
-    'zemun' => 'Zemun',
-    'centar' => 'Centar',
-    'vracar' => 'Vračar',
-    'palilula' => 'Palilula',
-    'cukarica' => 'Čukarica',
-    'novi-sad' => 'Novi Sad',
-    'nis' => 'Niš',
-    'kragujevac' => 'Kragujevac',
-    'subotica' => 'Subotica'
-];
+$locations = [];
+
+
+// Učitavamo termine iz WordPress taksonomija
+$types_tax = get_terms([
+    'taxonomy'   => 'jd-type',
+    'hide_empty' => false,
+]);
+foreach ($types_tax as $type) {
+    $property_types[$type->slug] = $type->name;
+}
+
+$locations_tax = get_terms([
+    'taxonomy'   => 'location',
+    'hide_empty' => false,
+]);
+foreach ($locations_tax as $location) {
+    $locations[$location->slug] = $location->name;
+}
 ?>
 
 <section class="relative z-20 -mt-8 px-4 sm:px-6 lg:px-8">
     <div class="max-w-5xl mx-auto">
         <div class="bg-card rounded-lg shadow-xl border border-border">
-            <div class="flex border-b border-border">
-                <button class="flex-1 py-3.5 text-sm font-body tracking-wide transition-colors bg-accent text-accent-foreground font-medium" data-type="all">Sve</button>
-                <button class="flex-1 py-3.5 text-sm font-body tracking-wide transition-colors text-muted-foreground hover:text-foreground hover:bg-secondary/50" data-type="sale">Prodaja</button>
-                <button class="flex-1 py-3.5 text-sm font-body tracking-wide transition-colors text-muted-foreground hover:text-foreground hover:bg-secondary/50" data-type="rent">Izdavanje</button>
-            </div>
-            <div class="p-5">
-                <form id="search-form" method="GET" action="">
+            <form method="GET" action="<?php echo home_url('/'); ?>" id="search-form">
+                <div class="flex border-b border-border">
+                    <button class="flex-1 py-3.5 text-sm font-body tracking-wide transition-colors bg-accent text-accent-foreground font-medium" data-type="all">Sve</button>
+                    <button class="flex-1 py-3.5 text-sm font-body tracking-wide transition-colors text-muted-foreground hover:text-foreground hover:bg-secondary/50" data-type="prodaja">Prodaja</button>
+                    <button class="flex-1 py-3.5 text-sm font-body tracking-wide transition-colors text-muted-foreground hover:text-foreground hover:bg-secondary/50" data-type="izdavanje">Izdavanje</button>
+                </div>
+                <div class="p-5">
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                         <!-- Tip nekretnine dropdown -->
                         <div class="relative">
@@ -56,13 +57,13 @@ $locations = [
                                 <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
                                 <circle cx="12" cy="10" r="3"></circle>
                             </svg>
-                            <input type="text" 
-                                   id="location-input" 
-                                   name="location" 
-                                   placeholder="Lokacija..." 
-                                   class="h-12 w-full px-4 bg-background border-0 border-b border-border/50 text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors pl-10" 
-                                   autocomplete="off"
-                                   value="<?php echo isset($_GET['location']) ? esc_attr($_GET['location']) : ''; ?>">
+                            <input type="text"
+                                id="location-input"
+                                name="location"
+                                placeholder="Lokacija..."
+                                class="h-12 w-full px-4 bg-background border-0 border-b border-border/50 text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors pl-10"
+                                autocomplete="off"
+                                value="<?php echo isset($_GET['location']) ? esc_attr($_GET['location']) : ''; ?>">
                             <div id="location-suggestions" class="hidden absolute z-50 w-full mt-1 bg-card border border-border rounded-md shadow-lg max-h-60 overflow-auto" style="min-width: 200px;"></div>
                         </div>
 
@@ -74,11 +75,11 @@ $locations = [
                                 <path d="M3 16v3a2 2 0 0 0 2 2h3"></path>
                                 <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
                             </svg>
-                            <input type="number" 
-                                   name="min_area" 
-                                   placeholder="Min m²" 
-                                   class="h-12 w-full px-4 bg-background border-0 border-b border-border/50 text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors pl-10" 
-                                   value="<?php echo isset($_GET['min_area']) ? esc_attr($_GET['min_area']) : ''; ?>">
+                            <input type="number"
+                                name="min_area"
+                                placeholder="Min m²"
+                                class="h-12 w-full px-4 bg-background border-0 border-b border-border/50 text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors pl-10"
+                                value="<?php echo isset($_GET['min_area']) ? esc_attr($_GET['min_area']) : ''; ?>">
                         </div>
 
                         <!-- Max m² -->
@@ -89,11 +90,11 @@ $locations = [
                                 <path d="M3 16v3a2 2 0 0 0 2 2h3"></path>
                                 <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
                             </svg>
-                            <input type="number" 
-                                   name="max_area" 
-                                   placeholder="Max m²" 
-                                   class="h-12 w-full px-4 bg-background border-0 border-b border-border/50 text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors pl-10" 
-                                   value="<?php echo isset($_GET['max_area']) ? esc_attr($_GET['max_area']) : ''; ?>">
+                            <input type="number"
+                                name="max_area"
+                                placeholder="Max m²"
+                                class="h-12 w-full px-4 bg-background border-0 border-b border-border/50 text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors pl-10"
+                                value="<?php echo isset($_GET['max_area']) ? esc_attr($_GET['max_area']) : ''; ?>">
                         </div>
 
                         <!-- Submit dugme -->
@@ -105,11 +106,11 @@ $locations = [
                             Pretraži
                         </button>
                     </div>
-                    
+
                     <!-- Hidden input za tip pretrage (prodaja/izdavanje) -->
                     <input type="hidden" name="search_type" id="search-type" value="all">
-                </form>
-            </div>
+                </div>
+            </form>
             <div class="px-5 pb-4 flex justify-end">
                 <a class="inline-flex items-center gap-2 text-sm font-body text-accent hover:text-accent/80 transition-colors" href="/nekretnine">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sliders-horizontal w-3.5 h-3.5">
@@ -131,187 +132,189 @@ $locations = [
 </section>
 
 <script>
-// Lokacije iz PHP niza (kasnije će se učitavati iz taksonomije)
-const locationsData = <?php echo json_encode(array_values($locations)); ?>;
+    // Lokacije iz PHP niza (kasnije će se učitavati iz taksonomije)
+    const locationsData = <?php echo json_encode(array_values($locations)); ?>;
 
-// Funkcija za filter lokacija
-function filterLocations(searchTerm) {
-    if (!searchTerm) return locationsData.slice(0, 10);
-    
-    const term = searchTerm.toLowerCase();
-    return locationsData
-        .filter(location => location.toLowerCase().includes(term))
-        .slice(0, 10);
-}
+    // Funkcija za filter lokacija
+    function filterLocations(searchTerm) {
+        if (!searchTerm) return locationsData.slice(0, 10);
 
-// Prikazivanje predloga za lokacije
-function showSuggestions(suggestions) {
-    const suggestionsDiv = document.getElementById('location-suggestions');
-    
-    if (suggestions.length === 0) {
-        suggestionsDiv.classList.add('hidden');
-        return;
+        const term = searchTerm.toLowerCase();
+        return locationsData
+            .filter(location => location.toLowerCase().includes(term))
+            .slice(0, 10);
     }
-    
-    suggestionsDiv.innerHTML = suggestions
-        .map(location => `
+
+    // Prikazivanje predloga za lokacije
+    function showSuggestions(suggestions) {
+        const suggestionsDiv = document.getElementById('location-suggestions');
+
+        if (suggestions.length === 0) {
+            suggestionsDiv.classList.add('hidden');
+            return;
+        }
+
+        suggestionsDiv.innerHTML = suggestions
+            .map(location => `
             <div class="px-4 py-2 hover:bg-accent/10 cursor-pointer text-sm text-foreground transition-colors" data-location="${location}">
                 ${escapeHtml(location)}
             </div>
         `)
-        .join('');
-    
-    suggestionsDiv.classList.remove('hidden');
-}
+            .join('');
 
-// HTML escape funkcija
-function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
+        suggestionsDiv.classList.remove('hidden');
+    }
 
-// Sakrivanje predloga
-function hideSuggestions() {
-    setTimeout(() => {
+    // HTML escape funkcija
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    // Sakrivanje predloga
+    function hideSuggestions() {
+        setTimeout(() => {
+            const suggestionsDiv = document.getElementById('location-suggestions');
+            if (suggestionsDiv) {
+                suggestionsDiv.classList.add('hidden');
+            }
+        }, 200);
+    }
+
+    // Inicijalizacija autocomplete-a za lokacije
+    function initLocationAutocomplete() {
+        const locationInput = document.getElementById('location-input');
         const suggestionsDiv = document.getElementById('location-suggestions');
-        if (suggestionsDiv) {
-            suggestionsDiv.classList.add('hidden');
-        }
-    }, 200);
-}
 
-// Inicijalizacija autocomplete-a za lokacije
-function initLocationAutocomplete() {
-    const locationInput = document.getElementById('location-input');
-    const suggestionsDiv = document.getElementById('location-suggestions');
-    
-    if (!locationInput) return;
-    
-    // Event za unos teksta
-    locationInput.addEventListener('input', function(e) {
-        const searchTerm = e.target.value;
-        const suggestions = filterLocations(searchTerm);
-        showSuggestions(suggestions);
-    });
-    
-    // Event za klik na predlog
-    suggestionsDiv.addEventListener('click', function(e) {
-        const target = e.target.closest('[data-location]');
-        if (target) {
-            locationInput.value = target.getAttribute('data-location');
-            hideSuggestions();
-            
-            // Opciono: trigger input event da bi se pokrenula pretraga
-            const event = new Event('input', { bubbles: true });
-            locationInput.dispatchEvent(event);
-        }
-    });
-    
-    // Event za fokusiranje - prikaži inicijalne predloge
-    locationInput.addEventListener('focus', function() {
-        const suggestions = filterLocations('');
-        showSuggestions(suggestions);
-    });
-    
-    // Event za izlazak iz polja
-    locationInput.addEventListener('blur', function() {
-        hideSuggestions();
-    });
-    
-    // Event za Enter
-    locationInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            document.getElementById('search-form').submit();
-        }
-    });
-    
-    // Event za Escape - sakrivanje predloga
-    locationInput.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            hideSuggestions();
-        }
-    });
-}
+        if (!locationInput) return;
 
-// Inicijalizacija tabova (prodaja/izdavanje)
-function initTabs() {
-    const tabs = document.querySelectorAll('[data-type]');
-    const searchTypeInput = document.getElementById('search-type');
-    
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Ukloni active klasu sa svih tabova
-            tabs.forEach(t => {
-                t.classList.remove('bg-accent', 'text-accent-foreground', 'font-medium');
-                t.classList.add('text-muted-foreground');
-            });
-            
-            // Dodaj active klasu na kliknuti tab
-            this.classList.add('bg-accent', 'text-accent-foreground', 'font-medium');
-            this.classList.remove('text-muted-foreground');
-            
-            // Postavi vrednost za search type
-            const searchType = this.getAttribute('data-type');
-            searchTypeInput.value = searchType;
-            
-            // Opciono: automatski submit forme
-            // document.getElementById('search-form').submit();
+        // Event za unos teksta
+        locationInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value;
+            const suggestions = filterLocations(searchTerm);
+            showSuggestions(suggestions);
         });
-    });
-}
 
-// Inicijalizacija na load
-document.addEventListener('DOMContentLoaded', function() {
-    initLocationAutocomplete();
-    initTabs();
-});
+        // Event za klik na predlog
+        suggestionsDiv.addEventListener('click', function(e) {
+            const target = e.target.closest('[data-location]');
+            if (target) {
+                locationInput.value = target.getAttribute('data-location');
+                hideSuggestions();
+
+                // Opciono: trigger input event da bi se pokrenula pretraga
+                const event = new Event('input', {
+                    bubbles: true
+                });
+                locationInput.dispatchEvent(event);
+            }
+        });
+
+        // Event za fokusiranje - prikaži inicijalne predloge
+        locationInput.addEventListener('focus', function() {
+            const suggestions = filterLocations('');
+            showSuggestions(suggestions);
+        });
+
+        // Event za izlazak iz polja
+        locationInput.addEventListener('blur', function() {
+            hideSuggestions();
+        });
+
+        // Event za Enter
+        locationInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                document.getElementById('search-form').submit();
+            }
+        });
+
+        // Event za Escape - sakrivanje predloga
+        locationInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                hideSuggestions();
+            }
+        });
+    }
+
+    // Inicijalizacija tabova (prodaja/izdavanje)
+    function initTabs() {
+        const tabs = document.querySelectorAll('[data-type]');
+        const searchTypeInput = document.getElementById('search-type');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Ukloni active klasu sa svih tabova
+                tabs.forEach(t => {
+                    t.classList.remove('bg-accent', 'text-accent-foreground', 'font-medium');
+                    t.classList.add('text-muted-foreground');
+                });
+
+                // Dodaj active klasu na kliknuti tab
+                this.classList.add('bg-accent', 'text-accent-foreground', 'font-medium');
+                this.classList.remove('text-muted-foreground');
+
+                // Postavi vrednost za search type
+                const searchType = this.getAttribute('data-type');
+                searchTypeInput.value = searchType;
+
+                // Opciono: automatski submit forme
+                // document.getElementById('search-form').submit();
+            });
+        });
+    }
+
+    // Inicijalizacija na load
+    document.addEventListener('DOMContentLoaded', function() {
+        initLocationAutocomplete();
+        initTabs();
+    });
 </script>
 
 <style>
-/* Stilovi za autocomplete - osiguravamo da dropdown bude iznad svih elemenata */
-#location-suggestions {
-    background-color: var(--card, #ffffff);
-    border-color: var(--border, #e5e7eb);
-    max-height: 240px;
-    overflow-y: auto;
-    z-index: 9999;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-#location-suggestions div:hover {
-    background-color: var(--accent, #f59e0b);
-    color: var(--accent-foreground, #ffffff);
-}
-
-/* Dark mode podrška */
-@media (prefers-color-scheme: dark) {
+    /* Stilovi za autocomplete - osiguravamo da dropdown bude iznad svih elemenata */
     #location-suggestions {
-        background-color: var(--card, #1f2937);
-        border-color: var(--border, #374151);
+        background-color: var(--card, #ffffff);
+        border-color: var(--border, #e5e7eb);
+        max-height: 240px;
+        overflow-y: auto;
+        z-index: 9999;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
-}
 
-/* Osiguravamo da roditeljski kontejner ne ograničava prikaz dropdowna */
-#location-container {
-    overflow: visible !important;
-}
+    #location-suggestions div:hover {
+        background-color: var(--accent, #f59e0b);
+        color: var(--accent-foreground, #ffffff);
+    }
 
-/* Grid kontejner takođe ne sme da ograničava overflow */
-.grid {
-    overflow: visible !important;
-}
+    /* Dark mode podrška */
+    @media (prefers-color-scheme: dark) {
+        #location-suggestions {
+            background-color: var(--card, #1f2937);
+            border-color: var(--border, #374151);
+        }
+    }
 
-/* Celi form kontejner mora da dozvoli overflow */
-form {
-    overflow: visible !important;
-}
+    /* Osiguravamo da roditeljski kontejner ne ograničava prikaz dropdowna */
+    #location-container {
+        overflow: visible !important;
+    }
 
-/* Relativni pozicionirani elementi ne smeju da imaju overflow hidden */
-.relative {
-    overflow: visible !important;
-}
+    /* Grid kontejner takođe ne sme da ograničava overflow */
+    .grid {
+        overflow: visible !important;
+    }
+
+    /* Celi form kontejner mora da dozvoli overflow */
+    form {
+        overflow: visible !important;
+    }
+
+    /* Relativni pozicionirani elementi ne smeju da imaju overflow hidden */
+    .relative {
+        overflow: visible !important;
+    }
 </style>

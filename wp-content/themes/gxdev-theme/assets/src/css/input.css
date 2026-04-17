@@ -63,43 +63,45 @@
 
 @layer base {
   :root {
-    --background: 270 15% 98%;
-    --foreground: 280 30% 15%;
+    --background: 40 20% 98%;
+    --foreground: 215 45% 13%;
 
     --card: 0 0% 100%;
-    --card-foreground: 280 30% 15%;
+    --card-foreground: 215 45% 13%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 280 30% 15%;
+    --popover-foreground: 215 45% 13%;
 
-    --primary: 279 41% 21%;
-    --primary-foreground: 270 15% 98%;
+    --primary: 215 50% 15%;
+    --primary-foreground: 40 25% 97%;
 
-    --secondary: 275 20% 95%;
-    --secondary-foreground: 279 41% 21%;
+    --secondary: 215 15% 95%;
+    --secondary-foreground: 215 50% 15%;
 
-    --muted: 270 12% 94%;
-    --muted-foreground: 270 10% 50%;
+    --muted: 215 10% 94%;
+    --muted-foreground: 215 10% 46%;
 
-    --accent:280 48% 31%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 38 70% 50%;
+    --accent-foreground: 215 50% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 275 12% 90%;
-    --input: 275 12% 90%;
-    --ring: 279 41% 21%;
+    --border: 215 12% 90%;
+    --input: 215 12% 90%;
+    --ring: 215 50% 15%;
 
     --radius: 0.375rem;
 
-    --purple: 280 48% 31%;
-    --purple-light: 280 35% 55%;
-    --purple-dark: 279 41% 21%;
-    --purple-glow: 280 60% 65%;
-    --lavender: 275 30% 96%;
-    --lavender-dark: 275 20% 90%;
-    --plum: 280 35% 40%;
+    --navy: 215 50% 15%;
+    --navy-light: 215 35% 45%;
+    --navy-dark: 215 55% 10%;
+    --gold: 38 70% 50%;
+    --gold-light: 40 55% 65%;
+    --gold-glow: 38 75% 55%;
+    --cream: 40 30% 96%;
+    --cream-dark: 40 15% 90%;
+    --slate: 215 25% 35%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -109,6 +111,10 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --hero-gradient: linear-gradient(135deg, hsl(222 55% 16%), hsl(222 45% 24%));
+    --accent-gradient: linear-gradient(135deg, hsl(12 80% 58%), hsl(16 85% 52%));
+    --surface-gradient: linear-gradient(180deg, hsl(40 20% 98%), hsl(220 14% 96%));
   }
 }
 
@@ -176,17 +182,13 @@
     @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24;
   }
 
-  .container-luxury {
-    @apply max-w-7xl mx-auto;
-  }
-
   .gold-divider {
     @apply w-16 h-0.5;
-    background: linear-gradient(90deg, hsl(var(--accent)), hsl(var(--purple-light)));
+    background: linear-gradient(90deg, hsl(var(--gold)), hsl(var(--gold-light)));
   }
 
-  .text-gradient-purple {
-    background: linear-gradient(135deg, hsl(280 60% 65%), hsl(280 48% 31%));
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(38 70% 50%), hsl(38 75% 55%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -195,17 +197,16 @@
   .card-hover {
     @apply transition-all duration-500 ease-out;
   }
-
-  .card-hover:hover {
-    @apply shadow-xl -translate-y-1;
+  .card-border {
+    @apply rounded-2xl border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-500;
   }
 
-  .image-overlay {
+    .image-overlay {
     @apply absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent;
   }
 
-  .bg-gradient-purple {
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  .bg-gradient-navy {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--navy-dark)));
   }
 
   .maxwell-content p {
@@ -296,5 +297,44 @@
   /* H6 Styles */
   .h6-responsive {
     @apply font-heading font-medium text-h6-mobile md:text-h6-tablet lg:text-h6-desktop;
+  }
+}
+
+
+@layer utilities {
+  .bg-hero {
+    background: var(--hero-gradient);
+  }
+
+  .bg-surface {
+    background: var(--surface-gradient);
+  }
+
+  .maxwell-content p {
+    @apply mb-3;
+  }
+
+  .maxwell-content ul {
+    @apply list-disc list-inside;
+  }
+
+  .maxwell-content ul li::marker {
+    @apply text-primary pl-0.5;
+  }
+
+  .maxwell-content ul li {
+    @apply mb-2;
+  }
+
+  .maxwell-content ul li a {
+    @apply hover:text-secondary transition-colors duration-200;
+  }
+
+  .maxwell-content blockquote {
+    @apply text-primary font-medium pt-4 border-l-4 border-primary px-6 bg-primary/5 py-2 rounded-r-lg;
+  }
+
+  .maxwell-top-title {
+    @apply font-semibold text-accent tracking-wide;
   }
 }

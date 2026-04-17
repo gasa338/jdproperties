@@ -7,7 +7,7 @@ $data = get_field('hero_text');
 ?>
 
 <?php echo _spacing_full('hero-text',$blocks_id,$data['margin'], $data['padding']); ?>
-<section class="relative bg-gradient-purple pt-32 pb-24 overflow-hidden hero-text-<?php echo esc_attr($blocks_id); ?> <?php echo esc_attr($blocks_class); ?>">
+<section class="relative bg-gradient-navy pt-32 pb-24 overflow-hidden hero-text-<?php echo esc_attr($blocks_id); ?> <?php echo esc_attr($blocks_class); ?>">
     <div class="absolute top-20 right-[10%] w-72 h-72 rounded-full border border-primary-foreground/8 animate-pulse-subtle"></div>
     <div class="absolute bottom-10 left-[5%] w-48 h-48 rounded-full border border-primary-foreground/5"></div>
     <div class="absolute top-1/3 right-[25%] w-3 h-3 rounded-full bg-accent opacity-60"></div>
