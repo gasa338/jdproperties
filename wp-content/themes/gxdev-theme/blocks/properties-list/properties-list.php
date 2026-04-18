@@ -8,7 +8,6 @@ $color_mode = $data['color_mode'] ?? 'dark';
 $layout = $data['layout'] ?? 'default';
 $layout_number = $data['layout_number'] ?? 'two';
 $color_mode = $data['background'];
-
 ?>
 <style>
     .case-item.hidden-case-item {
@@ -41,76 +40,73 @@ $color_mode = $data['background'];
 <?php echo _spacing_full('properties-list', $blocks_id, $data['margin'], $data['padding']); ?>
 <section id="<?php echo esc_attr($anchor); ?>" class="properties-list-<?php echo esc_attr($blocks_id); ?> <?php echo esc_attr($blocks_class);
                                                                                                             echo ' ' . _background($data['background']); ?>">
-    <div class="container mx-auto px-6 <?php echo $layout_number === 'two' ? 'max-w-5xl' : ''; ?>">
 
+    <?php
+    $args = array(
+        'post_type' => 'properties',
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'posts_per_page' => -1,
+    );
 
-
-
-    
-        <?php
-        $args = array(
-            'post_type' => 'properties',
-            'orderby' => 'date',
-            'order' => 'DESC',
-            'posts_per_page' => -1,
+    // Ako je cat taksonomija poslata i nije prazna
+    if (! empty($data['property_type']) && $data['use_property_type'] == 'yes') {
+        $tax_query[] = array(
+            'taxonomy' => 'jd-type',
+            'field'    => 'slug', // ili 'term_id'
+            'terms'    => sanitize_text_field($data['property_type']),
         );
+    }
 
-        // Ako je cat taksonomija poslata i nije prazna
-        if (! empty($data['type']) && $data['use_type'] == 'yes') {
-            $tax_query[] = array(
-                'taxonomy' => 'jd-type',
-                'field'    => 'slug', // ili 'term_id'
-                'terms'    => sanitize_text_field($data['type']->slug),
-            );
-        }
+    // Ako je location taksonomija poslata i nije prazna
+    if (! empty($data['property_location']) && $data['use_location'] == 'yes') {
+        $tax_query[] = array(
+            'taxonomy' => 'location',
+            'field'    => 'slug',
+            'terms'    => sanitize_text_field($data['property_location']),
+        );
+    }
 
-        // Ako je location taksonomija poslata i nije prazna
-        if (! empty($data['location']) && $data['use_location'] == 'yes') {
-            $tax_query[] = array(
-                'taxonomy' => 'location',
-                'field'    => 'slug',
-                'terms'    => sanitize_text_field($data['location']->slug),
-            );
-        }
+    // Ako je location taksonomija poslata i nije prazna
+    if (! empty($data['property_category']) && $data['use_category'] == 'yes') {
+        $tax_query[] = array(
+            'taxonomy' => 'cat',
+            'field'    => 'slug',
+            'terms'    => sanitize_text_field($data['property_category']),
+        );
+    }
 
-        // Ako je location taksonomija poslata i nije prazna
-        if (! empty($data['category']) && $data['use_category'] == 'yes') {
-            $tax_query[] = array(
-                'taxonomy' => 'cat',
-                'field'    => 'slug',
-                'terms'    => sanitize_text_field($data['category']->slug),
-            );
-        }
+    // Ako imamo bilo kakav uslov, dodajemo tax_query u args
+    if (! empty($tax_query)) {
+        // Dodajemo relation AND između svih uslova
+        $tax_query['relation'] = 'AND';
+        $args['tax_query'] = $tax_query;
+    }
 
-        // Ako imamo bilo kakav uslov, dodajemo tax_query u args
-        if (! empty($tax_query)) {
-            // Dodajemo relation AND između svih uslova
-            $tax_query['relation'] = 'AND';
-            $args['tax_query'] = $tax_query;
-        }
+    $query = new WP_Query($args);
+    $found_posts = $query->found_posts;
+    ?>
+    <?php if ($query->have_posts()) : ?>
+        <div class="container mx-auto px-6 <?php echo $layout_number === 'two' ? 'max-w-5xl' : ''; ?>">
 
-        $query = new WP_Query($args);
-        $found_posts = $query->found_posts;
-        ?>
-        <?php if ($found_posts > 0) : ?>
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-4">
-            <div class="max-w-2xl">
-                <?php if (!empty($data['top_title'])) : ?>
-                    <span class="maxwell-top-title mb-4 block"><?php echo $data['top_title']; ?></span>
-                <?php endif; ?>
-                <?php echo _heading($data['title'], "mb-6" . ($color_mode === 'dark_mode' ? ' text-white' : '')); ?>
-                <?php if (!empty($data['text'])) : ?>
-                    <div class="text-lg maxwell-content <?php echo $color_mode === 'dark_mode' ? 'text-white/60' : ''; ?>"><?php echo apply_filters('the_content', $data['text']); ?></div>
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-4">
+                <div class="max-w-2xl">
+                    <?php if (!empty($data['top_title'])) : ?>
+                        <span class="maxwell-top-title mb-4 block"><?php echo $data['top_title']; ?></span>
+                    <?php endif; ?>
+                    <?php echo _heading($data['title'], "mb-6" . ($color_mode === 'dark_mode' ? ' text-white' : '')); ?>
+                    <?php if (!empty($data['text'])) : ?>
+                        <div class="text-lg maxwell-content <?php echo $color_mode === 'dark_mode' ? 'text-white/60' : ''; ?>"><?php echo apply_filters('the_content', $data['text']); ?></div>
+                    <?php endif; ?>
+                </div>
+                <?php if (!empty($data['link'])) : ?>
+                    <?php echo _link_1($data['link'], ''); ?>
                 <?php endif; ?>
             </div>
-            <?php if (!empty($data['link'])) : ?>
-                <?php echo _link_1($data['link'], ''); ?>
-            <?php endif; ?>
-        </div>
-        <?php
-        // The Loop.
-        if ($query->have_posts()) :
-        ?>
+            <?php
+            // The Loop.
+
+            ?>
             <div class="grid <?php echo $layout_number === 'two' ? 'md:grid-cols-2' : 'md:grid-cols-3'; ?> gap-6 ">
                 <?php
                 $counter = 0;
@@ -128,7 +124,7 @@ $color_mode = $data['background'];
                 ?>
 
             </div>
-        <?php endif; ?>
+        </div>
 
         <?php if ($found_posts > 6) : ?>
             <div class="text-center mt-8">
@@ -137,16 +133,15 @@ $color_mode = $data['background'];
                 </button>
             </div>
         <?php endif; ?>
-        <?php else: ?>
-            <?php
-             if (!empty($data['fallback_content'])) {
-                echo gxdev_render_global_content($data['fallback_content']);
-             }
-            ?>
-        <?php endif; ?>
-    </div>
-
+    <?php else: ?>
+        <?php
+        if (!empty($data['fallback_content'])) {
+            echo gxdev_render_global_content($data['fallback_content']->post_name);
+        }
+        ?>
+    <?php endif; ?>
 </section>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const loadMoreBtn = document.getElementById('load-more-btn');

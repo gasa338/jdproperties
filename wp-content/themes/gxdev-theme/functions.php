@@ -500,3 +500,25 @@ function _update_price_bounds_in_options($current_price) {
     update_option('property_price_max', $current_price);
   }
 }
+
+
+/** dinamic populate field */
+add_filter('acf/load_field/name=property_location', function($field) {
+
+    // uzmi samo termine iz "location" taksonomije
+    $terms = get_terms([
+        'taxonomy'   => 'location',
+        'hide_empty' => true, // samo one koje imaju properties
+    ]);
+
+    // reset choices
+    $field['choices'] = [];
+
+    if (!is_wp_error($terms)) {
+        foreach ($terms as $term) {
+            $field['choices'][$term->term_id] = $term->name;
+        }
+    }
+
+    return $field;
+});
