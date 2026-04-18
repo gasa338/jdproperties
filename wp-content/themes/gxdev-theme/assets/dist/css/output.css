@@ -2311,10 +2311,6 @@ a {
   background-color: hsl(var(--muted));
 }
 
-.bg-navy-dark {
-  background-color: hsl(var(--navy-dark));
-}
-
 .bg-primary {
   background-color: hsl(var(--primary));
 }
@@ -2325,10 +2321,6 @@ a {
 
 .bg-primary-foreground\/20 {
   background-color: hsl(var(--primary-foreground) / 0.2);
-}
-
-.bg-primary-foreground\/30 {
-  background-color: hsl(var(--primary-foreground) / 0.3);
 }
 
 .bg-primary\/0 {
@@ -2579,6 +2571,10 @@ a {
   --tw-gradient-to: hsl(var(--muted-foreground) / 0.1) var(--tw-gradient-to-position);
 }
 
+.to-navy-dark {
+  --tw-gradient-to: hsl(var(--navy-dark)) var(--tw-gradient-to-position);
+}
+
 .to-primary {
   --tw-gradient-to: hsl(var(--primary)) var(--tw-gradient-to-position);
 }
@@ -2589,10 +2585,6 @@ a {
 
 .to-transparent {
   --tw-gradient-to: transparent var(--tw-gradient-to-position);
-}
-
-.to-navy-dark {
-  --tw-gradient-to: hsl(var(--navy-dark)) var(--tw-gradient-to-position);
 }
 
 .bg-cover {

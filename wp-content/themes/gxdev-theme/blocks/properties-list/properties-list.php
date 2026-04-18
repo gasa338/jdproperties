@@ -42,6 +42,57 @@ $color_mode = $data['background'];
 <section id="<?php echo esc_attr($anchor); ?>" class="properties-list-<?php echo esc_attr($blocks_id); ?> <?php echo esc_attr($blocks_class);
                                                                                                             echo ' ' . _background($data['background']); ?>">
     <div class="container mx-auto px-6 <?php echo $layout_number === 'two' ? 'max-w-5xl' : ''; ?>">
+
+
+
+
+    
+        <?php
+        $args = array(
+            'post_type' => 'properties',
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'posts_per_page' => -1,
+        );
+
+        // Ako je cat taksonomija poslata i nije prazna
+        if (! empty($data['type']) && $data['use_type'] == 'yes') {
+            $tax_query[] = array(
+                'taxonomy' => 'jd-type',
+                'field'    => 'slug', // ili 'term_id'
+                'terms'    => sanitize_text_field($data['type']->slug),
+            );
+        }
+
+        // Ako je location taksonomija poslata i nije prazna
+        if (! empty($data['location']) && $data['use_location'] == 'yes') {
+            $tax_query[] = array(
+                'taxonomy' => 'location',
+                'field'    => 'slug',
+                'terms'    => sanitize_text_field($data['location']->slug),
+            );
+        }
+
+        // Ako je location taksonomija poslata i nije prazna
+        if (! empty($data['category']) && $data['use_category'] == 'yes') {
+            $tax_query[] = array(
+                'taxonomy' => 'cat',
+                'field'    => 'slug',
+                'terms'    => sanitize_text_field($data['category']->slug),
+            );
+        }
+
+        // Ako imamo bilo kakav uslov, dodajemo tax_query u args
+        if (! empty($tax_query)) {
+            // Dodajemo relation AND između svih uslova
+            $tax_query['relation'] = 'AND';
+            $args['tax_query'] = $tax_query;
+        }
+
+        $query = new WP_Query($args);
+        $found_posts = $query->found_posts;
+        ?>
+        <?php if ($found_posts > 0) : ?>
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-4">
             <div class="max-w-2xl">
                 <?php if (!empty($data['top_title'])) : ?>
@@ -57,38 +108,6 @@ $color_mode = $data['background'];
             <?php endif; ?>
         </div>
         <?php
-        $args = array(
-            'post_type' => 'properties',
-            'orderby' => 'date',
-            'order' => 'DESC',
-            'posts_per_page' => -1,
-        );
-
-        // Ako je cat taksonomija poslata i nije prazna
-        if (! empty($data['type'])) {
-            $tax_query[] = array(
-                'taxonomy' => 'cat',
-                'field'    => 'slug', // ili 'term_id'
-                'terms'    => sanitize_text_field($data['type']->slug),
-            );
-        }
-
-        // Ako je location taksonomija poslata i nije prazna
-        if (! empty($data['location'])) {
-            $tax_query[] = array(
-                'taxonomy' => 'location',
-                'field'    => 'slug',
-                'terms'    => sanitize_text_field($data['location']->slug),
-            );
-        }
-
-        // Ako imamo bilo kakav uslov, dodajemo tax_query u args
-        if (! empty($tax_query)) {
-            $args['tax_query'] = $tax_query;
-        }
-
-        $query = new WP_Query($args);
-        $found_posts = $query->found_posts;
         // The Loop.
         if ($query->have_posts()) :
         ?>
@@ -117,6 +136,13 @@ $color_mode = $data['background'];
                     <?php echo $data['button_text'] ?? 'Load More' ?>
                 </button>
             </div>
+        <?php endif; ?>
+        <?php else: ?>
+            <?php
+             if (!empty($data['fallback_content'])) {
+                echo gxdev_render_global_content($data['fallback_content']);
+             }
+            ?>
         <?php endif; ?>
     </div>
 

@@ -10,21 +10,22 @@ $btn_layout = $data['btn_layout'] ?? 'dark';
 $layout = $data['layout'] ?? 'dark';
 
 $grid = $data['grid'] ?? 'default';
+$color_mode = $data['background'] ?? 'dark';
 ?>
-
-<section class="py-24">
+<?php echo _spacing_full('cta-light', $blocks_id, $data['margin'], $data['padding']); ?>
+<section class="cta-light-<?php echo esc_attr($blocks_id); ?> <?php echo $layout === 'two_column' ? '': _background($data['background']); ?> <?php echo esc_attr($blocks_class); ?>">
     <div class="container mx-auto px-6">
 
         <?php if ($layout === 'two_column') : ?>
-            <div class="<?php echo esc_attr($grid == 'default' ? 'max-w-7xl' : 'max-w-4xl'); ?> mx-auto">
+            <div class="<?php echo esc_attr($grid == 'default' ? 'max-w-7xl' : 'max-w-4xl py-8 px-12 rounded-2xl'); ?> mx-auto <?php echo _background($data['background']); ?>">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
 
                     <!-- Leva kolona (2/3) -->
                     <div class="md:col-span-2 text-left">
-                        <?php echo _heading($data['title'], 'mb-6') ?>
+                        <?php echo _heading($data['title'], 'mb-6 ' . ($color_mode == 'dark_mode' ? 'text-white' : '')) ?>
 
                         <?php if ($data['text']) : ?>
-                            <div class="text-lg text-muted-foreground max-w-2xl">
+                            <div class="text-lg text-muted-foreground max-w-2xl maxwell-content <?php echo $color_mode == 'dark_mode' ? 'text-white/60' : 'text-muted-foreground'; ?>">
                                 <?php echo apply_filters('the_content', $data['text']); ?>
                             </div>
                         <?php endif; ?>
@@ -56,10 +57,10 @@ $grid = $data['grid'] ?? 'default';
 
             <!-- Default layout (postojeći) -->
             <div class="text-center">
-                <?php echo _heading($data['title'], 'mb-6') ?>
+                <?php echo _heading($data['title'], 'mb-6 ' . ($color_mode == 'dark_mode' ? 'text-white' : '')) ?>
 
                 <?php if ($data['text']) : ?>
-                    <div class="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
+                    <div class="text-lg mb-10 max-w-2xl mx-auto maxwell-content <?php echo $color_mode == 'dark_mode' ? 'text-white/60' : 'text-muted-foreground'; ?>">
                         <?php echo apply_filters('the_content', $data['text']); ?>
                     </div>
                 <?php endif; ?>
