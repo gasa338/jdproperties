@@ -738,3 +738,46 @@ function get_max_price() {
   $max = get_option('property_price_max', 1000000);
   return $max === null ? 1200000 : (int)$max;
 }
+
+// 1. Prvo definišite funkciju koja kreira args
+function get_property_args($data) {
+    $args = array(
+        'post_type' => 'properties',
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'posts_per_page' => -1,
+    );
+
+    $tax_query = array();
+
+    if (! empty($data['property_type']) && $data['use_type'] == 'yes') {
+        $tax_query[] = array(
+            'taxonomy' => 'jd-type',
+            'field'    => 'slug',
+            'terms'    => sanitize_text_field($data['property_type']),
+        );
+    }
+
+    if (! empty($data['property_location']) && $data['use_location'] == 'yes') {
+        $tax_query[] = array(
+            'taxonomy' => 'location',
+            'field'    => 'id',
+            'terms'    => sanitize_text_field($data['property_location']),
+        );
+    }
+
+    if (! empty($data['property_category']) && $data['use_category'] == 'yes') {
+        $tax_query[] = array(
+            'taxonomy' => 'cat',
+            'field'    => 'slug',
+            'terms'    => sanitize_text_field($data['property_category']),
+        );
+    }
+
+    if (! empty($tax_query)) {
+        $tax_query['relation'] = 'AND';
+        $args['tax_query'] = $tax_query;
+    }
+
+    return $args;
+}

@@ -8,6 +8,10 @@ $color_mode = $data['color_mode'] ?? 'dark';
 $layout = $data['layout'] ?? 'default';
 $layout_number = $data['layout_number'] ?? 'two';
 $color_mode = $data['background'];
+
+// Umesto da menjate postojeći $query, uradite ovo:
+
+
 ?>
 <style>
     .case-item.hidden-case-item {
@@ -42,47 +46,8 @@ $color_mode = $data['background'];
                                                                                                             echo ' ' . _background($data['background']); ?>">
 
     <?php
-    $args = array(
-        'post_type' => 'properties',
-        'orderby' => 'date',
-        'order' => 'DESC',
-        'posts_per_page' => -1,
-    );
 
-    // Ako je cat taksonomija poslata i nije prazna
-    if (! empty($data['property_type']) && $data['use_property_type'] == 'yes') {
-        $tax_query[] = array(
-            'taxonomy' => 'jd-type',
-            'field'    => 'slug', // ili 'term_id'
-            'terms'    => sanitize_text_field($data['property_type']),
-        );
-    }
-
-    // Ako je location taksonomija poslata i nije prazna
-    if (! empty($data['property_location']) && $data['use_location'] == 'yes') {
-        $tax_query[] = array(
-            'taxonomy' => 'location',
-            'field'    => 'slug',
-            'terms'    => sanitize_text_field($data['property_location']),
-        );
-    }
-
-    // Ako je location taksonomija poslata i nije prazna
-    if (! empty($data['property_category']) && $data['use_category'] == 'yes') {
-        $tax_query[] = array(
-            'taxonomy' => 'cat',
-            'field'    => 'slug',
-            'terms'    => sanitize_text_field($data['property_category']),
-        );
-    }
-
-    // Ako imamo bilo kakav uslov, dodajemo tax_query u args
-    if (! empty($tax_query)) {
-        // Dodajemo relation AND između svih uslova
-        $tax_query['relation'] = 'AND';
-        $args['tax_query'] = $tax_query;
-    }
-
+    $args = get_property_args($data);
     $query = new WP_Query($args);
     $found_posts = $query->found_posts;
     ?>
