@@ -44,32 +44,37 @@ $reverse = $data['reverse'] ?? false;
 <?php echo _spacing_full('horizontal-tab', $blocks_id, $data['margin'], $data['padding']); ?>
 <section id="<?php echo esc_attr($anchor); ?>" class="horizontal-tab-<?php echo esc_attr($blocks_id); ?> <?php echo _background($data['background']) ?> <?php echo esc_attr($blocks_class); ?> ">
     <div class="container mx-auto px-6">
-        <div class="max-w-2xl mb-12 text-center mx-auto">
+        <div class="max-w-4xl mb-8">
             <?php if (!empty($data['top_title'])): ?>
                 <span class="maxwell-top-title mb-4 block"><?php echo esc_html($data['top_title']); ?></span>
             <?php endif; ?>
-
-            <?php echo _heading($data['title'], '' . $color_mode == "dark_mode" ? "text-white" : ""); ?>
+            <?php echo _heading($data['title'], 'mb-6' . $color_mode == "dark_mode" ? "text-white" : ""); ?>
+            <div class="gold-divider mb-6"></div>
+            <?php if (!empty($data['text'])) : ?>
+                <div class="text-lg text-muted-foreground maxwell-content <?php echo $color_mode === 'dark_mode' ? 'text-white/60' : ''; ?>"><?php echo apply_filters('the_content', $data['text']); ?></div>
+            <?php endif; ?>
         </div>
-        <div>
 
+        <div>
             <div dir="ltr" data-orientation="horizontal" class="w-full tab-container">
                 <?php if (!empty($data['tabs'])): ?>
-                    <div class="items-center justify-center w-full max-w-fit mx-auto flex p-2 <?php echo $color_mode == 'dark_mode' ? 'bg-white/5' : 'bg-card' ?> border border-border rounded-xl mb-12 tab-buttons">
-                        <?php foreach ($data['tabs'] as $key_tab => $tab): ?>
-                            <div class="flex-1 ">
-                                <button
-                                    type="button"
-                                    role="tab"
-                                    data-tab-index="<?php echo $key_tab; ?>"
-                                    class="tab-button whitespace-nowrap font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl transition-all <?php echo $key_tab === 0 ? 'bg-accent text-white' : 'bg-transparent text-muted-foreground'; ?>"
-                                    <?php echo $key_tab === 0 ? 'aria-selected="true"' : 'aria-selected="false"'; ?>>
-                                    <?php echo maxwell_render_icon($tab['icon'], 'w-4 h-4 text-white'); ?>
-                                    <span class="hidden sm:inline"><?php echo esc_html($tab['title']); ?></span>
-                                </button>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
+                    <?php if (count($data['tabs']) > 1): ?>
+                        <div class="items-center justify-center w-full max-w-fit mx-auto flex p-2 <?php echo $color_mode == 'dark_mode' ? 'bg-white/5' : 'bg-card' ?> border border-border rounded-xl mb-12 tab-buttons">
+                            <?php foreach ($data['tabs'] as $key_tab => $tab): ?>
+                                <div class="flex-1 ">
+                                    <button
+                                        type="button"
+                                        role="tab"
+                                        data-tab-index="<?php echo $key_tab; ?>"
+                                        class="tab-button whitespace-nowrap font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl transition-all <?php echo $key_tab === 0 ? 'bg-accent text-white' : 'bg-transparent text-muted-foreground'; ?>"
+                                        <?php echo $key_tab === 0 ? 'aria-selected="true"' : 'aria-selected="false"'; ?>>
+                                        <?php echo maxwell_render_icon($tab['icon'], 'w-4 h-4 text-white'); ?>
+                                        <span class="hidden sm:inline"><?php echo esc_html($tab['title']); ?></span>
+                                    </button>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
 
                     <?php foreach ($data['tabs'] as $key => $tab): ?>
                         <div
@@ -81,19 +86,15 @@ $reverse = $data['reverse'] ?? false;
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
                                 <?php
-                                $post_ids = $tab['nekretnina'];
-                                $property_query = new WP_Query([
-                                    'post_type' => 'properties', // Ili tvoj custom post type
-                                    'post__in'  => $post_ids,
-                                    'orderby'   => 'post__in',
-                                    'posts_per_page' => -1,
-                                ]);
+                                $args = get_property_args($tab, 3);
+                                $query = new WP_Query($args);
+                                $found_posts = $query->found_posts;
 
                                 // Proveri da li ima postova
-                                if ($property_query->have_posts()) :
+                                if ($query->have_posts()) :
 
-                                    while ($property_query->have_posts()) :
-                                        $property_query->the_post();
+                                    while ($query->have_posts()) :
+                                        $query->the_post();
 
                                         get_template_part('template-parts/content', 'property');
 
@@ -116,82 +117,84 @@ $reverse = $data['reverse'] ?? false;
         </div>
     </div>
 </section>
-<script>
-    (function() {
-        const tabContainer = document.querySelector('.tab-container');
-        if (!tabContainer) return;
+<?php if (count($data['tabs']) > 1): ?>
+    <script>
+        (function() {
+            const tabContainer = document.querySelector('.tab-container');
+            if (!tabContainer) return;
 
-        const tabButtons = tabContainer.querySelectorAll('.tab-button');
-        const tabContents = tabContainer.querySelectorAll('.tab-content');
+            const tabButtons = tabContainer.querySelectorAll('.tab-button');
+            const tabContents = tabContainer.querySelectorAll('.tab-content');
 
-        // Funkcija za promenu taba
-        function switchTab(tabIndex) {
-            // Ukloni active klase sa svih tab dugmadi
+            // Funkcija za promenu taba
+            function switchTab(tabIndex) {
+                // Ukloni active klase sa svih tab dugmadi
+                tabButtons.forEach(button => {
+                    button.classList.remove('bg-accent', 'text-white');
+                    button.classList.add('bg-transparent', 'text-muted-foreground');
+                    button.setAttribute('aria-selected', 'false');
+                });
+
+                // Sakrij sve tab sadržaje
+                tabContents.forEach(content => {
+                    content.hidden = true;
+                });
+
+                // Postavi aktivni tab
+                const activeButton = tabContainer.querySelector(`.tab-button[data-tab-index="${tabIndex}"]`);
+                const activeContent = tabContainer.querySelector(`.tab-content[data-tab-content="${tabIndex}"]`);
+
+                if (activeButton) {
+                    activeButton.classList.remove('bg-transparent', 'text-muted-foreground');
+                    activeButton.classList.add('bg-accent', 'text-white');
+                    activeButton.setAttribute('aria-selected', 'true');
+                }
+
+                if (activeContent) {
+                    activeContent.hidden = false;
+                }
+            }
+
+            // Dodaj event listener za svako tab dugme
             tabButtons.forEach(button => {
-                button.classList.remove('bg-accent', 'text-white');
-                button.classList.add('bg-transparent', 'text-muted-foreground');
-                button.setAttribute('aria-selected', 'false');
-            });
-
-            // Sakrij sve tab sadržaje
-            tabContents.forEach(content => {
-                content.hidden = true;
-            });
-
-            // Postavi aktivni tab
-            const activeButton = tabContainer.querySelector(`.tab-button[data-tab-index="${tabIndex}"]`);
-            const activeContent = tabContainer.querySelector(`.tab-content[data-tab-content="${tabIndex}"]`);
-
-            if (activeButton) {
-                activeButton.classList.remove('bg-transparent', 'text-muted-foreground');
-                activeButton.classList.add('bg-accent', 'text-white');
-                activeButton.setAttribute('aria-selected', 'true');
-            }
-
-            if (activeContent) {
-                activeContent.hidden = false;
-            }
-        }
-
-        // Dodaj event listener za svako tab dugme
-        tabButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const tabIndex = this.getAttribute('data-tab-index');
-                switchTab(tabIndex);
-            });
-
-            // Dodaj keyboard navigation
-            button.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
+                button.addEventListener('click', function() {
                     const tabIndex = this.getAttribute('data-tab-index');
                     switchTab(tabIndex);
-                }
+                });
 
-                // Arrow key navigation
-                if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    const currentIndex = parseInt(this.getAttribute('data-tab-index'));
-                    let newIndex;
-
-                    if (e.key === 'ArrowRight') {
-                        newIndex = (currentIndex + 1) % tabButtons.length;
-                    } else {
-                        newIndex = (currentIndex - 1 + tabButtons.length) % tabButtons.length;
+                // Dodaj keyboard navigation
+                button.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const tabIndex = this.getAttribute('data-tab-index');
+                        switchTab(tabIndex);
                     }
 
-                    switchTab(newIndex);
-                    tabButtons[newIndex].focus();
-                }
-            });
-        });
+                    // Arrow key navigation
+                    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        const currentIndex = parseInt(this.getAttribute('data-tab-index'));
+                        let newIndex;
 
-        // Inicijalno postavi prvi tab kao aktivan (ako već nije)
-        if (tabButtons.length > 0) {
-            const firstActive = Array.from(tabButtons).find(btn => btn.classList.contains('bg-accent'));
-            if (!firstActive) {
-                switchTab(0);
+                        if (e.key === 'ArrowRight') {
+                            newIndex = (currentIndex + 1) % tabButtons.length;
+                        } else {
+                            newIndex = (currentIndex - 1 + tabButtons.length) % tabButtons.length;
+                        }
+
+                        switchTab(newIndex);
+                        tabButtons[newIndex].focus();
+                    }
+                });
+            });
+
+            // Inicijalno postavi prvi tab kao aktivan (ako već nije)
+            if (tabButtons.length > 0) {
+                const firstActive = Array.from(tabButtons).find(btn => btn.classList.contains('bg-accent'));
+                if (!firstActive) {
+                    switchTab(0);
+                }
             }
-        }
-    })();
-</script>
+        })();
+    </script>
+<?php endif; ?>

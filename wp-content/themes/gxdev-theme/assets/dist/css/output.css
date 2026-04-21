@@ -1943,11 +1943,6 @@ a {
   gap: 2rem;
 }
 
-.gap-x-2 {
-  -moz-column-gap: 0.5rem;
-       column-gap: 0.5rem;
-}
-
 .gap-x-20 {
   -moz-column-gap: 5rem;
        column-gap: 5rem;
@@ -1960,10 +1955,6 @@ a {
 
 .gap-y-16 {
   row-gap: 4rem;
-}
-
-.gap-y-4 {
-  row-gap: 1rem;
 }
 
 .space-x-6 > :not([hidden]) ~ :not([hidden]) {

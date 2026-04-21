@@ -8,7 +8,10 @@ $price   = get_field('property_price', $post_id);
 
 // Povlači prvu kategoriju iz 'prop-category' taxona ili praznu niz ako nema kategorija
 $prop_categories = gxdev_get_custom_tax($post_id, 'cat');
-$type = !empty($prop_categories) ? $prop_categories[0] : '';
+$category = !empty($prop_categories) ? $prop_categories[0] : '';
+
+$prop_type = gxdev_get_custom_tax($post_id, 'jd-type');
+$property_type = !empty($prop_type) ? $prop_type[0] : '';
 
 /*----*/
 $opstinski_region = get_field('opstinski_region', $post_id);
@@ -46,10 +49,10 @@ $thumb = get_the_post_thumbnail_url($post_id, 'medium_large');
 		<div class="image-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
 		<!-- Badge -->
-		<?php if (!empty($type)): ?>
+		<?php if (!empty($category)): ?>
 			<div class="absolute top-3 left-3 flex gap-2">
 				<div class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold bg-accent text-accent-foreground">
-					<?php echo esc_html($type['name']); ?>
+					<?php echo esc_html($category['name']); ?>
 				</div>
 			</div>
 		<?php endif; ?>
@@ -81,9 +84,9 @@ $thumb = get_the_post_thumbnail_url($post_id, 'medium_large');
 	<!-- CONTENT -->
 	<div class="p-5 space-y-3">
 
-		<!-- <span class="text-xs font-medium text-accent uppercase tracking-wider">
-			<?php echo esc_html($type); ?>
-		</span> -->
+		<a href="<?php echo esc_url($property_type['link']); ?>" class="text-xs font-medium text-accent uppercase tracking-wider">
+			<?php echo esc_html($property_type['name']); ?>
+		</a>
 
 		<!-- TITLE (LINK) -->
 		<h3 class="font-heading text-lg font-semibold leading-tight line-clamp-2">

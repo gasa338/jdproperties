@@ -19,6 +19,10 @@ $color_mode = $data['background'];
 
     <div class="container mx-auto px-6 relative z-10">
         <div class="max-w-3xl mx-auto text-center">
+            <?php if (!empty($data['top_title'])): ?>
+                <p class="maxwell-top-title mb-3"><?php echo esc_html($data['top_title']); ?></p>
+                <div class="gold-divider <?php echo ($data['title']['align'] === 'center' ? 'mx-auto' : '') ?> mb-4"></div>
+            <?php endif; ?>
             <?php echo _heading($data['title'], 'mb-6' . ($color_mode === 'dark_mode' ? ' text-white' : '')); ?>
             <?php if (!empty($data['text'])) : ?>
                 <div class="text-lg sm:text-xl <?php echo ($color_mode === 'dark_mode' ? ' text-white/60' : ' text-muted-foreground'); ?> mb-10"><?php echo apply_filters('the_content', $data['text']); ?></div>

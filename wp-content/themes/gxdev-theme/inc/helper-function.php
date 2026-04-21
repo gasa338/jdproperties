@@ -740,12 +740,12 @@ function get_max_price() {
 }
 
 // 1. Prvo definišite funkciju koja kreira args
-function get_property_args($data) {
+function get_property_args($data, $per_page = -1) {
     $args = array(
         'post_type' => 'properties',
         'orderby' => 'date',
         'order' => 'DESC',
-        'posts_per_page' => -1,
+        'posts_per_page' => $per_page,
     );
 
     $tax_query = array();

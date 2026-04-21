@@ -61,7 +61,7 @@ $color_mode = $data['background'];
                     <?php endif; ?>
                     <?php echo _heading($data['title'], "mb-6" . ($color_mode === 'dark_mode' ? ' text-white' : '')); ?>
                     <?php if (!empty($data['text'])) : ?>
-                        <div class="text-lg maxwell-content <?php echo $color_mode === 'dark_mode' ? 'text-white/60' : ''; ?>"><?php echo apply_filters('the_content', $data['text']); ?></div>
+                        <div class="text-lg text-muted-foreground maxwell-content <?php echo $color_mode === 'dark_mode' ? 'text-white/60' : ''; ?>"><?php echo apply_filters('the_content', $data['text']); ?></div>
                     <?php endif; ?>
                 </div>
                 <?php if (!empty($data['link'])) : ?>
