@@ -14,7 +14,7 @@ $layout = $data['layout'] ?? 'default';
     <?php if (!empty($data['items'])) : ?>
         <?php foreach ($data['items'] as $index => $faq) : ?>
             <details
-                class="faq-item border border-border rounded-xl px-6 bg-card group"
+                class="faq-item border border-border rounded-lg px-6 bg-card group"
                 <?php echo $index === 0 ? 'open' : ''; ?>>
                 <summary class="flex items-center justify-between py-4 cursor-pointer font-heading text-base font-semibold text-foreground list-none">
 

@@ -19,7 +19,7 @@ $data = get_field('info_box');
                 <?php foreach ($data['items'] as $item) : ?>
                     <div class="flex items-center gap-3">
                         <?php if ($item['icon']) : ?>
-                            <div class="w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center">
+                            <div class="w-14 h-14 rounded-lg bg-secondary/10 flex items-center justify-center">
                                     <?php echo maxwell_render_icon($item['icon'], 'w-8 h-8 text-secondary'); ?>
                             </div>
                         <?php endif; ?>

@@ -276,13 +276,13 @@ function _background($data)
             $bg_class = 'bg-surface';
             break;
         case 'light':
-            $bg_class = 'bg-light';
+            $bg_class = 'bg-white';
             break;
         case 'dark_mode':
             $bg_class = 'bg-gradient-navy';
             break;
         default:
-            $bg_class = 'bg-light';
+            $bg_class = 'bg-white';
             break;
     }
 

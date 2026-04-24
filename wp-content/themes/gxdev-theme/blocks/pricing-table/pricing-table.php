@@ -39,7 +39,7 @@ $data = get_field('pricing_table');
             <?php endif; ?>
         </div>
         <!-- Table -->
-        <div class="overflow-x-auto md:block hidden rounded-2xl overflow-hidden shadow-md">
+        <div class="overflow-x-auto md:block hidden rounded-lg overflow-hidden shadow-md">
             <table class="w-full bg-white">
                 <thead>
                     <tr class="text-white bg-primary">
@@ -110,7 +110,7 @@ $data = get_field('pricing_table');
         <?php if (!empty($data['items'])) : ?>
             <div class="visible md:hidden space-y-6">
                 <?php foreach ($data['items'] as $item) : ?>
-                    <div class="rounded-xl p-6 mobile-box-<?php echo $blocks_id; ?>">
+                    <div class="rounded-lg p-6 mobile-box-<?php echo $blocks_id; ?>">
                         <?php if (!empty($item['title'])) : ?>
                             <h3 class="font-bold text-lg mb-4 text-primary">
                                 <?php echo maxwell_render_svg($item['icon']['url']); ?>
@@ -120,7 +120,7 @@ $data = get_field('pricing_table');
 
                         <?php if (!empty($item['data'])) : ?>
                             <?php foreach ($item['data'] as $route) : ?>
-                                <div class="bg-white rounded-xl shadow-sm p-4 mb-4">
+                                <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
                                     <h4 class="font-semibold"><?php echo esc_html($route['route']); ?></h4>
                                     <p class=" mb-2">~<?php echo esc_html($route['distance']); ?> | ~<?php echo esc_html($route['time']); ?></p>
                                     <div class="flex justify-between items-center mb-3">

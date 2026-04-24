@@ -17,7 +17,7 @@ $color_mode = $data['background'] ?? 'dark';
     <div class="container mx-auto px-6">
 
         <?php if ($layout === 'two_column') : ?>
-            <div class="<?php echo esc_attr($grid == 'default' ? 'max-w-7xl' : 'max-w-4xl py-8 px-12 rounded-2xl'); ?> mx-auto <?php echo _background($data['background']); ?>">
+            <div class="<?php echo esc_attr($grid == 'default' ? 'max-w-7xl' : 'max-w-4xl py-8 px-12 rounded-lg'); ?> mx-auto <?php echo _background($data['background']); ?>">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
 
                     <!-- Leva kolona (2/3) -->

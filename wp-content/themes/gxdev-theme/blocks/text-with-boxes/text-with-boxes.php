@@ -25,9 +25,9 @@ $color_mode = $data['background'];
                     <?php if ($content['acf_fc_layout'] == 'items' && !empty($content['items'])): ?>
                         <div class="grid md:grid-cols-3 gap-6 mb-4">
                             <?php foreach ($content['items'] as $item): ?>
-                                <div class="group flex items-center gap-4 px-5 py-2 rounded-xl <?php echo $color_mode == 'dark_mode' ? 'bg-white/5' : 'bg-card'; ?> border border-border hover:border-accent/50 transition-all duration-300">
+                                <div class="group flex items-center gap-4 px-5 py-2 rounded-lg <?php echo $color_mode == 'dark_mode' ? 'bg-white/5' : 'bg-card'; ?> border border-border hover:border-accent/50 transition-all duration-300">
                                     <?php if ($item['icon']) : ?>
-                                        <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0">
+                                        <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0">
                                             <?php echo maxwell_render_icon($item['icon'], 'w-6 h-6 text-accent shrink-0'); ?>
                                         </div><?php endif; ?>
                                         <div class="flex-1">

@@ -31,7 +31,7 @@ $data = get_field('popular_1');
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <?php if ($data['items']) : ?>
                 <?php foreach ($data['items'] as $item) : ?>
-                    <div class="tour-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="tour-card bg-white rounded-lg overflow-hidden shadow-lg border border-gray-100">
                         <div class="h-56 relative overflow-hidden">
                             <?php if ($item['image']) : ?>
                                 <img src="<?php echo esc_url($item['image']['url']); ?>" alt="<?php echo esc_attr($item['image']['alt']); ?>" class="w-full h-full object-cover">

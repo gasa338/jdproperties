@@ -14,12 +14,23 @@
 function _link_1($link, $class = '')
 {
 ?>
-    <a href="<?php echo esc_url($link['url']); ?>" class="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-accent-foreground hover:opacity-90 transition-opacity shadow-lg shadow-accent/20 no-underline <?php echo esc_attr($class); ?>">
-        <?php echo esc_html($link['title']); ?>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right w-5 h-5 transition-transform group-hover:translate-x-1">
-            <path d="M5 12h14"></path>
-            <path d="m12 5 7 7-7 7"></path>
-        </svg>
+    <a href="<?php echo esc_url($link['url']); ?>"
+        class="group relative inline-flex items-center justify-center px-10 py-5 bg-background-muted text-primary tracking-[0.35em] text-sm font-light border border-white/70 no-underline <?php echo esc_attr($class); ?>">
+
+        <span class="relative z-10 flex items-center gap-2">
+            <?php echo esc_html($link['title']); ?>
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round"
+                class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+            </svg>
+        </span>
+
+        <!-- inner border -->
+        <span class="absolute inset-[6px] border border-white/70 pointer-events-none transition-colors duration-300 group-hover:border-accent"></span>
     </a>
 <?php
 }
@@ -40,7 +51,7 @@ function _link_1($link, $class = '')
 function _link_2($link, $class = '')
 {
 ?>
-    <a href="<?php echo esc_url($link['url']); ?>" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-border bg-transparent text-foreground hover:bg-accent/50 hover:border-accent/50 h-14 rounded-xl px-10 text-lg no-underline <?php echo esc_attr($class); ?>"><?php echo esc_html($link['title']); ?></a>
+    <a href="<?php echo esc_url($link['url']); ?>" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-border bg-transparent text-foreground hover:bg-accent/50 hover:border-accent/50 h-14 rounded-lg px-10 text-lg no-underline <?php echo esc_attr($class); ?>"><?php echo esc_html($link['title']); ?></a>
 <?php
 }
 
@@ -60,7 +71,7 @@ function _link_3($link, $class = '', $title = '')
 function _link_4($link, $class = '')
 {
 ?>
-    <a href="<?php echo esc_url($link['url']); ?>" target="<?php echo esc_attr($link['target']); ?>" title="<?php echo esc_attr($link['title']); ?>" class="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground font-semibold glow-primary hover:scale-105 h-14 rounded-xl px-10 text-lg group <?php echo esc_attr($class); ?>">
+    <a href="<?php echo esc_url($link['url']); ?>" target="<?php echo esc_attr($link['target']); ?>" title="<?php echo esc_attr($link['title']); ?>" class="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground font-semibold glow-primary hover:scale-105 h-14 rounded-lg px-10 text-lg group <?php echo esc_attr($class); ?>">
         <?php echo esc_html($link['title']); ?>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 transition-transform group-hover:translate-x-1">
             <path d="M5 12h14"></path>
@@ -103,7 +114,7 @@ function _link_6($link, $class = '')
 {
 ?>
     <a href="<?php echo esc_url($link['url']); ?>">
-        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-transparent hover:border-primary/50 h-14 rounded-xl px-10 text-lg border-white/30 text-white hover:bg-white/10 <?php echo esc_attr($class); ?>">
+        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-transparent hover:border-primary/50 h-14 rounded-lg px-10 text-lg border-white/30 text-white hover:bg-white/10 <?php echo esc_attr($class); ?>">
             <?php echo esc_html($link['title']); ?>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right w-5 h-5">
                 <path d="M5 12h14"></path>

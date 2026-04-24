@@ -22,9 +22,9 @@ $color_mode = $data['background'] ?? 'light';
         <div class="grid md:grid-cols-3 gap-6 no-underline">
             <?php foreach ($data['items'] as $item): ?>
                 <?php if (!empty($item['link'])): ?>
-                    <a class="group relative p-8 rounded-2xl <?php echo $color_mode === 'dark_mode' ? ' bg-white/5' : 'bg-card'; ?> border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-500 no-underline" href="<?php echo esc_url($item['link']['url']); ?>" title="<?php echo esc_attr($item['link']['title']); ?>">
+                    <a class="group relative p-8 rounded-lg <?php echo $color_mode === 'dark_mode' ? ' bg-white/5' : 'bg-card'; ?> border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-500 no-underline" href="<?php echo esc_url($item['link']['url']); ?>" title="<?php echo esc_attr($item['link']['title']); ?>">
                         <?php if (!empty($item['icon'])): ?>
-                            <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-accent text-white transition-all">
+                            <div class="w-14 h-14 rounded-lg flex items-center justify-center mb-6 bg-accent text-white transition-all">
                                 <?php echo maxwell_render_icon($item['icon'], 'w-7 h-7 text-white'); ?>
                             </div>
                         <?php endif; ?>
@@ -43,9 +43,9 @@ $color_mode = $data['background'] ?? 'light';
                         <?php endif; ?>
                     </a>
                 <?php else: ?>
-                    <div class="group relative p-8 rounded-2xl <?php echo $color_mode === 'dark_mode' ? ' bg-white/5' : 'bg-card'; ?> border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-500">
+                    <div class="group relative p-8 rounded-lg <?php echo $color_mode === 'dark_mode' ? ' bg-white/5' : 'bg-card'; ?> border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-500">
                         <?php if (!empty($item['icon'])): ?>
-                            <div class="w-14 h-14 rounded-xl bg-accent flex items-center justify-center mb-6">
+                            <div class="w-14 h-14 rounded-lg bg-accent flex items-center justify-center mb-6">
                                 <?php echo maxwell_render_icon($item['icon'], 'w-7 h-7 text-white'); ?>
                             </div>
                         <?php endif; ?>

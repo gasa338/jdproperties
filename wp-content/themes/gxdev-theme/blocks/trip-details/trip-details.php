@@ -37,12 +37,12 @@ $background_color = $data['background_color'] ?? '#fff';
                     </ul>
                 <?php endif; ?>
                 <?php if (!empty($data['adicional_text'])) : ?>
-                    <div class="mt-8 p-6 rounded-xl bg-secondary/10 border border-secondary/20">
+                    <div class="mt-8 p-6 rounded-lg bg-secondary/10 border border-secondary/20">
                         <?php echo apply_filters('the_content', $data['adicional_text']); ?>
                     </div>
                 <?php endif; ?>
             </div>
-            <div class="rounded-2xl p-8 border border-border/50 shadow-md">
+            <div class="rounded-lg p-8 border border-border/50 shadow-md">
                 <?php if (!empty($data['pricing_title'])) : ?>
                     <h2 class="h2-responsive mb-6"><?php echo $data['pricing_title']; ?></h2>
                 <?php endif; ?>

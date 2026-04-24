@@ -59,7 +59,7 @@ function jd_output_gallery()
         $images = $fallback;
     }
 ?>
-    <div class="grid grid-cols-4 grid-rows-2 gap-2 rounded-xl overflow-hidden aspect-[21/9]">
+    <div class="grid grid-cols-4 grid-rows-2 gap-2 rounded-lg overflow-hidden aspect-[21/9]">
 
         <div class="col-span-2 row-span-2 relative cursor-pointer group">
             <img
@@ -239,7 +239,7 @@ function jd_output_stats()
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
 
         <?php if ($area) : ?>
-            <div class="bg-secondary rounded-xl p-5 text-center border border-border">
+            <div class="bg-secondary rounded-lg p-5 text-center border border-border">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent mx-auto mb-2">
                     <path d="M8 3H5a2 2 0 0 0-2 2v3" />
                     <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
@@ -252,7 +252,7 @@ function jd_output_stats()
         <?php endif; ?>
 
         <?php if ($rooms) : ?>
-            <div class="bg-secondary rounded-xl p-5 text-center border border-border">
+            <div class="bg-secondary rounded-lg p-5 text-center border border-border">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent mx-auto mb-2">
                     <path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8" />
                     <path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4" />
@@ -265,7 +265,7 @@ function jd_output_stats()
         <?php endif; ?>
 
         <?php if ($bathrooms) : ?>
-            <div class="bg-secondary rounded-xl p-5 text-center border border-border">
+            <div class="bg-secondary rounded-lg p-5 text-center border border-border">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent mx-auto mb-2">
                     <path d="M10 4 8 6" />
                     <path d="M17 19v2" />
@@ -279,7 +279,7 @@ function jd_output_stats()
         <?php endif; ?>
 
         <?php if ($floor) : ?>
-            <div class="bg-secondary rounded-xl p-5 text-center border border-border">
+            <div class="bg-secondary rounded-lg p-5 text-center border border-border">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent mx-auto mb-2">
                     <path d="m21 16-4 4-4-4" />
                     <path d="M17 20V4" />
@@ -394,7 +394,7 @@ function jd_output_additional()
     $energy_class = get_post_meta($post_id, '_property_energy_class', true) ?: 'B';
 ?>
     <div>
-        <details class="border border-border rounded-xl px-6 bg-card">
+        <details class="border border-border rounded-lg px-6 bg-card">
             <summary class="flex items-center justify-between py-4 cursor-pointer font-heading text-lg font-semibold text-foreground list-none">
                 <span class="flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
@@ -452,7 +452,7 @@ function jd_output_map()
             </svg>
             Lokacija
         </h2>
-        <div class="rounded-xl overflow-hidden border border-border aspect-[16/9]">
+        <div class="rounded-lg overflow-hidden border border-border aspect-[16/9]">
             <iframe
                 title="Lokacija nekretnine"
                 src="https://maps.google.com/maps?q=<?php echo urlencode($location); ?>&t=&z=15&ie=UTF8&iwloc=&output=embed"
@@ -510,7 +510,7 @@ function jd_output_faq()
         </h2>
         <div class="space-y-3">
             <?php foreach ($faqs as $faq) : ?>
-                <details class="border border-border rounded-xl px-6 bg-card" <?php echo ! empty($faq['open']) ? 'open' : ''; ?>>
+                <details class="border border-border rounded-lg px-6 bg-card" <?php echo ! empty($faq['open']) ? 'open' : ''; ?>>
                     <summary class="flex items-center justify-between py-4 cursor-pointer font-heading text-base font-semibold text-foreground list-none">
                         <?php echo esc_html($faq['question']); ?>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0">
@@ -544,7 +544,7 @@ function jd_output_agent_card()
     $wa      = preg_replace('/[^0-9]/', '', $phone);
     $title   = urlencode(get_the_title());
 ?>
-    <div class="bg-card border border-border rounded-xl p-6 sticky top-24 space-y-6">
+    <div class="bg-card border border-border rounded-lg p-6 sticky top-24 space-y-6">
 
         <div>
             <div class="font-heading text-3xl font-bold text-foreground">
@@ -553,7 +553,7 @@ function jd_output_agent_card()
             <p class="text-sm font-body text-muted-foreground">mesečna cena</p>
         </div>
 
-        <div class="bg-secondary rounded-xl p-5 border border-border">
+        <div class="bg-secondary rounded-lg p-5 border border-border">
             <div class="flex items-center gap-3 mb-4">
                 <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
@@ -648,7 +648,7 @@ function jd_output_pricing_promo()
 {
     $cenovnik_url = get_permalink(get_page_by_path('cenovnik'));
 ?>
-    <div class="bg-gradient-to-br from-primary to-accent rounded-xl p-6 text-primary-foreground">
+    <div class="bg-gradient-to-br from-primary to-accent rounded-lg p-6 text-primary-foreground">
         <h3 class="font-heading text-lg font-semibold mb-2">Koliko košta naša usluga?</h3>
         <p class="font-body text-sm text-primary-foreground/70 mb-4">
             Transparentne cene bez skrivenih troškova. Pogledajte naš detaljan cenovnik.
@@ -676,7 +676,7 @@ function jd_output_cta_banner()
     $kontakt_url = get_permalink(get_page_by_path('kontakt'));
 ?>
     <div class="mt-16 print:hidden">
-        <div class="bg-gradient-to-r from-primary via-accent to-primary rounded-2xl p-10 sm:p-14 text-center relative overflow-hidden">
+        <div class="bg-gradient-to-r from-primary via-accent to-primary rounded-lg p-10 sm:p-14 text-center relative overflow-hidden">
             <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-glow/10 to-transparent"></div>
             <div class="relative z-10">
                 <h2 class="font-heading text-3xl sm:text-4xl text-primary-foreground mb-4">

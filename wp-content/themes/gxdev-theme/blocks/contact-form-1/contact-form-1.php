@@ -16,9 +16,9 @@ $color_mode = $data['background'];
                 <?php if (!empty($data['data'])) : ?>
                     <div class="space-y-6">
                         <?php foreach ($data['data'] as $item): ?>
-                            <div class="flex items-start gap-4 px-6 py-4 rounded-xl bg-card border border-border hover:border-accent/50 transition-transform duration-300">
+                            <div class="flex items-start gap-4 px-6 py-4 rounded-lg bg-card border border-border hover:border-accent/50 transition-transform duration-300">
                                 <?php if (!empty($item['icon'])): ?>
-                                    <div class="w-18 h-18 rounded-xl bg-accent flex items-center justify-center shrink-0">
+                                    <div class="w-18 h-18 rounded-lg bg-accent flex items-center justify-center shrink-0">
                                         <?php echo maxwell_render_icon($item['icon'], 'w-16 h-16 rounded-md p-2 text-white'); ?>
                                     </div>
                                 <?php endif; ?>
@@ -32,7 +32,7 @@ $color_mode = $data['background'];
                     </div>
                 <?php endif; ?>
             </div>
-            <div class="lg:col-span-4 bg-white/5 rounded-2xl p-8 shadow-lg">
+            <div class="lg:col-span-4 bg-white/5 rounded-lg p-8 shadow-lg">
                 <?php if (!empty($data['form_title'])) : ?>
                     <h2 class="text-3xl mb-6 <?php echo $color_mode === 'dark_mode' ? ' text-white' : ' text-foreground'; ?>"><?php echo esc_html($data['form_title']); ?></h2>
                 <?php endif; ?>

@@ -24,7 +24,7 @@ if (!$thumbnail_url) {
 
 <article class="group post-item" data-categories="<?php echo implode(',', $category_slugs); ?>">
     <a class="block h-full no-underline" href="<?php the_permalink(); ?>">
-        <div class="bg-card border border-accent/30 rounded-2xl overflow-hidden hover:border-accent/60 transition-all h-full flex flex-col">
+        <div class="bg-card border border-accent/30 rounded-lg overflow-hidden hover:border-accent/60 transition-all h-full flex flex-col">
             <div class="aspect-video overflow-hidden">
                 <img src="<?php echo esc_url($thumbnail_url); ?>"
                     alt="<?php the_title_attribute(); ?>"

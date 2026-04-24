@@ -28,7 +28,7 @@ $right = $data['right'];
             <?php if (!empty($data['left'])) : ?>
                 <div class="grid grid-cols-2 gap-6">
                     <?php foreach ($data['left'] as $item) : ?>
-                        <div class="relative rounded-2xl overflow-hidden h-64 group hover:shadow-xl transition-all duration-300 [&_.overlay]:opacity-80 [&_.overlay]:group-hover:opacity-90 [&_.text-content]:z-20">
+                        <div class="relative rounded-lg overflow-hidden h-64 group hover:shadow-xl transition-all duration-300 [&_.overlay]:opacity-80 [&_.overlay]:group-hover:opacity-90 [&_.text-content]:z-20">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-10 transition-opacity duration-300"></div>
                             <!-- Background slika -->
                             <img
@@ -66,7 +66,7 @@ $right = $data['right'];
                         <?php foreach ($right['items'] as $item) : ?>
                             <div class="flex items-center">
                                 <?php if (!empty($item['icon'])) : ?>
-                                    <div class="flex-shrink-0 w-14 h-14 bg-button/10 rounded-xl flex items-center justify-center mr-4">
+                                    <div class="flex-shrink-0 w-14 h-14 bg-button/10 rounded-lg flex items-center justify-center mr-4">
                                         <?php if (!empty($item['icon']['subtype'] == 'svg+xml')) {
                                             echo maxwell_render_svg($item['icon']['url'], 'w-6 h-6 text-primary');
                                         } ?>

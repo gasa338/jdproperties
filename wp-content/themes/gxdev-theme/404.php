@@ -22,28 +22,26 @@ get_header();
 
 					<!-- Top title -->
 					<p class="maxwell-top-title mb-2">
-						<?php echo function_exists('pll__') ? pll__('Error 404') : __('Error 404', 'maxwell-team'); ?>
+						<?php echo __('Error 404', 'maxwell-team'); ?>
 					</p>
 
 					<!-- Main title -->
 					<h1 class="my-4 h1-responsive">
-						<?php echo function_exists('pll__') ? pll__('Page not found') : __('Page not found', 'maxwell-team'); ?>
+						<?php echo __('Page not found', 'maxwell-team'); ?>
 					</h1>
 
 					<!-- Content -->
 					<div class="my-4 max-w-xl mx-auto">
 						<p>
-							<?php echo function_exists('pll__')
-								? pll__('The page you are looking for does not exist or has been removed. We offer private and special passenger transfers across Slovenia and neighboring countries, including airport and city shuttle services. We are not a tour operator or travel agency.')
-								: __('The page you are looking for does not exist or has been removed. We offer private and special passenger transfers across Slovenia and neighboring countries, including airport and city shuttle services. We are not a tour operator or travel agency.', 'maxwell-team'); ?>
+							<?php echo __('The page you are looking for does not exist or has been removed. We offer private and special passenger transfers across Slovenia and neighboring countries, including airport and city shuttle services. We are not a tour operator or travel agency.', 'maxwell-team'); ?>
 						</p>
 					</div>
 
 					<!-- Button -->
 					<a href="<?php echo home_url(); ?>"
-						class="inline-flex items-center rounded-xl border-2 border-button text-white bg-button px-4 py-2 hover:bg-transparent hover:text-button transition-all duration-300 flex items-center justify-center"
+						class="inline-flex items-center rounded-lg border-2 border-button text-white bg-button px-4 py-2 hover:bg-transparent hover:text-button transition-all duration-300 flex items-center justify-center"
 						role="button">
-						<?php echo function_exists('pll__') ? pll__('Back to homepage') : __('Back to homepage', 'maxwell-team'); ?>
+						<?php echo __('Back to homepage', 'maxwell-team'); ?>
 					</a>
 
 				</div>

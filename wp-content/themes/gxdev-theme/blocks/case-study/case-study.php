@@ -79,7 +79,7 @@ $dynamic_load = $data['dynamic_load'] ?? "no";
                                     <div class="grid md:grid-cols-2 gap-6">
                                         <?php foreach ($chunk as $item) : ?>
                                             <div class="block h-full">
-                                                <div class="relative h-full rounded-2xl overflow-hidden <?php echo $color_mode === 'dark_mode' ? 'bg-white/5' : 'bg-card'; ?> border border-border hover:border-accent/50 transition-all duration-500">
+                                                <div class="relative h-full rounded-lg overflow-hidden <?php echo $color_mode === 'dark_mode' ? 'bg-white/5' : 'bg-card'; ?> border border-border hover:border-accent/50 transition-all duration-500">
                                                     <div class="relative h-48 overflow-hidden">
                                                         <?php if ($item['image']) : $image = get_image($item['image']); ?>
                                                             <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -155,7 +155,7 @@ $dynamic_load = $data['dynamic_load'] ?? "no";
                     ?>
                         <div class="case-item <?php echo $hidden_class; ?>">
                             <div class="block h-full">
-                                <div class="relative h-full rounded-2xl overflow-hidden <?php echo $color_mode === 'dark_mode' ? 'bg-white/5' : 'bg-card'; ?> border border-border hover:border-accent/30 transition-all duration-500">
+                                <div class="relative h-full rounded-lg overflow-hidden <?php echo $color_mode === 'dark_mode' ? 'bg-white/5' : 'bg-card'; ?> border border-border hover:border-accent/30 transition-all duration-500">
                                     <div class="relative h-48 overflow-hidden">
                                         <?php if ($data['dynamic_load'] === 'yes') : ?>
                                             <img src="<?php echo $item['image']['url']; ?>" alt="<?php echo $item['image']['alt']; ?>" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">

@@ -62,11 +62,11 @@ $color_mode = $data['background'] ?? 'light';
                         <?php foreach ($data['sliders'] as $slide): ?>
                             <div class="swiper-slide">
                                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[400px]">
-                                    <div class="lg:col-span-2 <?php echo $color_mode === 'dark_mode' ? 'bg-hero' : 'bg-card border border-border'; ?> rounded-2xl p-8 md:p-12  relative overflow-hidden left-side">
+                                    <div class="lg:col-span-2 <?php echo $color_mode === 'dark_mode' ? 'bg-hero' : 'bg-card border border-border'; ?> rounded-lg p-8 md:p-12  relative overflow-hidden left-side">
                                         <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
                                         <div class="relative z-10">
                                             <div class="flex items-center gap-4 mb-6">
-                                                <div class="w-12 h-12 rounded-xl bg-accent flex items-center justify-center bg-accent group-hover:bg-accent/30 transition-colors">
+                                                <div class="w-12 h-12 rounded-lg bg-accent flex items-center justify-center bg-accent group-hover:bg-accent/30 transition-colors">
                                                     <svg class="text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up w-6 h-6 text-primary">
                                                         <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
                                                         <polyline points="16 7 22 7 22 13"></polyline>
@@ -103,9 +103,9 @@ $color_mode = $data['background'] ?? 'light';
                                         </div>
                                     </div>
                                     <div class="flex flex-row md:flex-col gap-6 right-side">
-                                        <div class="flex-1 <?php echo $color_mode === 'dark_mode' ? 'bg-hero ' : 'bg-card border border-border'; ?> rounded-2xl p-6 flex flex-col justify-center">
+                                        <div class="flex-1 <?php echo $color_mode === 'dark_mode' ? 'bg-hero ' : 'bg-card border border-border'; ?> rounded-lg p-6 flex flex-col justify-center">
                                             <?php if (!empty($slide['left_top']['icon'])): ?>
-                                                <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center mb-4">
+                                                <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center mb-4">
                                                     <?php echo maxwell_render_icon($slide['left_top']['icon'], 'w-5 h-5 text-white'); ?>
                                                 </div>
                                             <?php endif; ?>
@@ -116,9 +116,9 @@ $color_mode = $data['background'] ?? 'light';
                                                 <div class="<?php echo $color_mode === 'dark_mode' ? 'text-white' : 'text-foreground-muted'; ?>"><?php echo $slide['left_top']['text']; ?></div>
                                             <?php endif; ?>
                                         </div>
-                                        <div class="flex-1 bg-hero <?php echo $color_mode === 'dark_mode' ? 'bg-opacity-60' : ''; ?> rounded-2xl p-6 flex flex-col justify-center text-white">
+                                        <div class="flex-1 bg-hero <?php echo $color_mode === 'dark_mode' ? 'bg-opacity-60' : ''; ?> rounded-lg p-6 flex flex-col justify-center text-white">
                                             <?php if (!empty($slide['left_bottom']['icon'])): ?>
-                                                <div class="w-10 h-10 rounded-xl bg-primary-foreground/20 flex items-center justify-center mb-4">
+                                                <div class="w-10 h-10 rounded-lg bg-primary-foreground/20 flex items-center justify-center mb-4">
                                                     <?php echo maxwell_render_icon($slide['left_bottom']['icon'], 'w-5 h-5 text-white'); ?>
                                                 </div>
                                             <?php endif; ?>

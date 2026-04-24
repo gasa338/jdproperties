@@ -55,7 +55,7 @@
     color: white;
     background-color: hsl(var(--primary));
     padding: 8px 16px; /* px-4 py-2 */
-    border-radius: 12px; /* rounded-xl */
+    border-radius: 12px; /* rounded-lg */
     transition: all 0.3s ease;
     display: flex;
     align-items: center;

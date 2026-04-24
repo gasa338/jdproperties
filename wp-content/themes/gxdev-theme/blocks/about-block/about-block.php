@@ -47,8 +47,8 @@ $lists_type = [
         <div class="grid gap-6 grid-cols-1 md:grid-cols-2">
             <?php if (!empty($data['image'])): $image = get_image($data['image']); ?>
                 <div class="flex justify-center">
-                    <div class="inline-block rounded-xl border border-primary/20 bg-primary/10 p-6">
-                        <img src="<?php echo $image['url']; ?>" class="rounded-xl" alt="<?php echo $image['alt']; ?>" srcset="<?php echo $image['url']; ?>" />
+                    <div class="inline-block rounded-lg border border-primary/20 bg-primary/10 p-6">
+                        <img src="<?php echo $image['url']; ?>" class="rounded-lg" alt="<?php echo $image['alt']; ?>" srcset="<?php echo $image['url']; ?>" />
                     </div>
                 </div>
             <?php endif; ?>
@@ -67,7 +67,7 @@ $lists_type = [
                     <div class="mb-10 mt-6 grid gap-6 md:grid-cols-2">
                         <?php foreach ($data['items'] as $item): ?>
                             <div class="flex items-center gap-3">
-                                <div class="flex w-8 h-8 rounded-xl items-center justify-center bg-accent/20 text-white">
+                                <div class="flex w-8 h-8 rounded-lg items-center justify-center bg-accent/20 text-white">
                                     <?php echo maxwell_render_icon($item['icon'], 'w-4 h-4 text-accent'); ?>
                                 </div>
                                 <?php if (!empty($item['title'])): ?>
@@ -81,7 +81,7 @@ $lists_type = [
                 <?php endif; ?>
                 <?php if (!empty($data['static'])): ?>
                     <div class="md:-ms-48 ms-0">
-                        <div class="rounded-xl p-6 border border-border-color bg-white dark:bg-default-50">
+                        <div class="rounded-lg p-6 border border-border-color bg-white dark:bg-default-50">
                             <div class="grid md:grid-cols-3">
                                 <?php $item_count = count($data['static']); ?>
                                 <?php foreach ($data['static'] as $key => $stat): ?>

@@ -74,8 +74,8 @@ $link_color = $data['link_color'] ?? 'rgba(0, 0, 0, 0.5)';
             <div class="grid grid-cols-2 gap-3" style="opacity: 1;">
                 <?php foreach ($data['links'] as $key => $value): ?>
                 <div style="opacity: 1; transform: none;">
-                    <a class="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-accent/50 transition-all duration-300 group" href="<?php echo esc_url($value['link']['url']); ?>" target="<?php echo esc_attr($value['link']['target']); ?>" title="<?php echo esc_attr($value['link']['title']); ?>">
-                        <div class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-colors shrink-0">
+                    <a class="flex items-center gap-3 p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-accent/50 transition-all duration-300 group" href="<?php echo esc_url($value['link']['url']); ?>" target="<?php echo esc_attr($value['link']['target']); ?>" title="<?php echo esc_attr($value['link']['title']); ?>">
+                        <div class="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-colors shrink-0">
                             <?php if (!empty($value['icon']['subtype'] == 'svg+xml')) : ?>
                                 <?php echo maxwell_render_svg($value['icon']['url'], 'w-4 h-4 text-accent'); ?>
                             <?php else : ?>

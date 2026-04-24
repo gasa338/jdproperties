@@ -31,7 +31,7 @@ $contact_data = get_field('contact_options', 'options');
             <a href="https://wa.me/<?php echo $contact_data['whatsapp']; ?>"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="relative overflow-hidden rounded-2xl bg-[#25D366] p-8 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:!text-white">
+                class="relative overflow-hidden rounded-lg bg-[#25D366] p-8 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:!text-white">
                 <div class="flex flex-col items-center text-center gap-4">
                     <?php if (!empty($contact_data['viber_icon']['subtype'] == 'svg+xml')) : ?>
                         <div class="w-20 h-20 rounded-full flex items-center justify-center">
@@ -52,7 +52,7 @@ $contact_data = get_field('contact_options', 'options');
 
             <!-- Viber kartica -->
             <a href="viber://chat?number=<?php echo $contact_data['viber']; ?>"
-                class="relative overflow-hidden rounded-2xl bg-[#7360F2] p-8 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:!text-white">
+                class="relative overflow-hidden rounded-lg bg-[#7360F2] p-8 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:!text-white">
                 <div class="flex flex-col items-center text-center gap-4">
                     <?php if (!empty($contact_data['whatsapp_icon']['subtype'] == 'svg+xml')) : ?>
                         <div class="w-20 h-20 rounded-full flex items-center justify-center">

@@ -59,14 +59,14 @@ $reverse = $data['reverse'] ?? false;
             <div dir="ltr" data-orientation="horizontal" class="w-full tab-container">
                 <?php if (!empty($data['tabs'])): ?>
                     <?php if (count($data['tabs']) > 1): ?>
-                        <div class="items-center justify-center w-full max-w-fit mx-auto flex p-2 <?php echo $color_mode == 'dark_mode' ? 'bg-white/5' : 'bg-card' ?> border border-border rounded-xl mb-12 tab-buttons">
+                        <div class="items-center justify-center w-full max-w-fit mx-auto flex p-2 <?php echo $color_mode == 'dark_mode' ? 'bg-white/5' : 'bg-card' ?> border border-border rounded-lg mb-12 tab-buttons">
                             <?php foreach ($data['tabs'] as $key_tab => $tab): ?>
                                 <div class="flex-1 ">
                                     <button
                                         type="button"
                                         role="tab"
                                         data-tab-index="<?php echo $key_tab; ?>"
-                                        class="tab-button whitespace-nowrap font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl transition-all <?php echo $key_tab === 0 ? 'bg-accent text-white' : 'bg-transparent text-muted-foreground'; ?>"
+                                        class="tab-button whitespace-nowrap font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 w-full flex items-center justify-center gap-2 py-3 px-4 rounded-lg transition-all <?php echo $key_tab === 0 ? 'bg-accent text-white' : 'bg-transparent text-muted-foreground'; ?>"
                                         <?php echo $key_tab === 0 ? 'aria-selected="true"' : 'aria-selected="false"'; ?>>
                                         <?php echo maxwell_render_icon($tab['icon'], 'w-4 h-4 text-white'); ?>
                                         <span class="hidden sm:inline"><?php echo esc_html($tab['title']); ?></span>

@@ -54,9 +54,9 @@ if ($color_mode == 'dark_mode') {
                     <div class="swiper-wrapper">
                         <?php foreach ($data['testimonials'] as $testimonial): ?>
                             <div class="swiper-slide">
-                                <div class="rounded-2xl p-8 md:p-12 relative overflow-hidden <?php echo $color_mode == 'dark_mode' ? 'border border-accent/50 bg-transparent ' : 'bg-card border border-border'; ?>">
+                                <div class="rounded-lg p-8 md:p-12 relative overflow-hidden <?php echo $color_mode == 'dark_mode' ? 'border border-accent/50 bg-transparent ' : 'bg-card border border-border'; ?>">
                                     <!-- Quote ikonica -->
-                                    <div class="absolute top-8 left-8 w-12 h-12 rounded-xl text-accent bg-accent/10 flex items-center justify-center mb-6">
+                                    <div class="absolute top-8 left-8 w-12 h-12 rounded-lg text-accent bg-accent/10 flex items-center justify-center mb-6">
                                         <svg class="w-7 h-7 text-accent " width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor">
                                             <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
                                             <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>

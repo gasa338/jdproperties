@@ -14,16 +14,17 @@
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
-/* manrope-700 - latin */
+/* prata-regular - latin */
 @font-face {
   font-display: swap;
   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Manrope';
+  font-family: 'Prata';
   font-style: normal;
-  font-weight: 700;
-  src: url('../fonts/Manrope/manrope-v20-latin-700.woff2') format('woff2');
+  font-weight: 400;
+  src: url('../fonts/Prata/prata-v22-latin-regular.woff2') format('woff2');
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
+
 
 /* inter-regular - latin */
 @font-face {
@@ -63,58 +64,61 @@
 
 @layer base {
   :root {
-    --background: 40 20% 98%;
-    --foreground: 215 45% 13%;
+    /* BASE */
+    --background: 25 35% 94%;
+    --background-soft: 25 30% 96%;
+    --background-muted: 25 25% 90%;
+    /* topli cream */
+    --foreground: 30 8% 12%;
+    /* tamno siva (ne crna, ne plava) */
 
+    /* SURFACES */
     --card: 0 0% 100%;
-    --card-foreground: 215 45% 13%;
+    --card-foreground: 30 8% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 45% 13%;
+    --popover-foreground: 30 8% 12%;
 
-    --primary: 215 50% 15%;
-    --primary-foreground: 40 25% 97%;
+    /* PRIMARY (neutral charcoal) */
+    --primary: 30 6% 14%;
+    --primary-foreground: 40 25% 96%;
 
-    --secondary: 215 15% 95%;
-    --secondary-foreground: 215 50% 15%;
+    /* SECONDARY (bež layering) */
+    --secondary: 40 25% 94%;
+    --secondary-foreground: 30 8% 18%;
 
-    --muted: 215 10% 94%;
-    --muted-foreground: 215 10% 46%;
+    /* MUTED */
+    --muted: 40 12% 90%;
+    --muted-foreground: 30 6% 42%;
 
-    --accent: 38 70% 50%;
-    --accent-foreground: 215 50% 10%;
+    /* ACCENT (soft beige highlight) */
+    --accent: 24.78 42.59% 57.65%; /* #C18B65 */
+    --accent-foreground: 30 10% 12%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* SYSTEM */
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 215 12% 90%;
-    --input: 215 12% 90%;
-    --ring: 215 50% 15%;
+    --border: 40 15% 88%;
+    --input: 40 15% 85%;
+    --ring: 40 18% 70%;
 
-    --radius: 0.375rem;
+    --radius: 0.2rem;
 
-    --navy: 215 50% 15%;
-    --navy-light: 215 35% 45%;
-    --navy-dark: 215 55% 10%;
-    --gold: 38 70% 50%;
-    --gold-light: 40 55% 65%;
-    --gold-glow: 38 75% 55%;
-    --cream: 40 30% 96%;
-    --cream-dark: 40 15% 90%;
-    --slate: 215 25% 35%;
+    /* BRAND TOKENS (SOFT ONLY) */
+    --cream: 40 25% 96%;
+    --cream-dark: 40 18% 90%;
+    --sand: 40 20% 80%;
+    --stone: 30 8% 35%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* GRADIENTI (minimal) */
+    --hero-gradient: linear-gradient(135deg,
+        hsl(30 6% 14%),
+        hsl(30 8% 20%));
 
-    --hero-gradient: linear-gradient(135deg, hsl(222 55% 16%), hsl(222 45% 24%));
-    --accent-gradient: linear-gradient(135deg, hsl(12 80% 58%), hsl(16 85% 52%));
-    --surface-gradient: linear-gradient(180deg, hsl(40 20% 98%), hsl(220 14% 96%));
+    --surface-gradient: linear-gradient(180deg,
+        hsl(40 25% 96%),
+        hsl(40 20% 92%));
   }
 }
 
@@ -197,11 +201,12 @@
   .card-hover {
     @apply transition-all duration-500 ease-out;
   }
+
   .card-border {
-    @apply rounded-2xl border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-500;
+    @apply rounded-lg border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-500;
   }
 
-    .image-overlay {
+  .image-overlay {
     @apply absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent;
   }
 
@@ -250,53 +255,32 @@
 
   /* H1 Styles */
   .h1-responsive {
-    @apply font-heading font-bold text-h1-mobile md:text-h1-tablet lg:text-h1-desktop;
-  }
-
-  .h1-responsive span {
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    @apply font-heading tracking-tight text-h1-mobile md:text-h1-tablet lg:text-h1-desktop;
   }
 
   /* H2 Styles */
   .h2-responsive {
-    @apply font-heading font-semibold text-h2-mobile md:text-h2-tablet lg:text-h2-desktop;
-  }
-
-  .h2-responsive span {
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    @apply font-heading tracking-tight text-h2-mobile md:text-h2-tablet lg:text-h2-desktop;
   }
 
   /* H3 Styles */
   .h3-responsive {
-    @apply font-heading font-semibold text-h3-mobile md:text-h3-tablet lg:text-h3-desktop;
-  }
-
-  .h3-responsive span {
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    @apply font-heading tracking-tight text-h3-mobile md:text-h3-tablet lg:text-h3-desktop;
   }
 
   /* H4 Styles */
   .h4-responsive {
-    @apply font-heading font-medium text-h4-mobile md:text-h4-tablet lg:text-h4-desktop;
+    @apply font-heading tracking-tight text-h4-mobile md:text-h4-tablet lg:text-h4-desktop;
   }
 
   /* H5 Styles */
   .h5-responsive {
-    @apply font-heading font-medium text-h5-mobile md:text-h5-tablet lg:text-h5-desktop;
+    @apply font-heading tracking-tight text-h5-mobile md:text-h5-tablet lg:text-h5-desktop;
   }
 
   /* H6 Styles */
   .h6-responsive {
-    @apply font-heading font-medium text-h6-mobile md:text-h6-tablet lg:text-h6-desktop;
+    @apply font-heading tracking-tight text-h6-mobile md:text-h6-tablet lg:text-h6-desktop;
   }
 }
 
@@ -335,6 +319,6 @@
   }
 
   .maxwell-top-title {
-    @apply font-semibold text-accent tracking-wide;
+    @apply uppercase tracking-[0.2em] text-xs text-muted-foreground;
   }
 }

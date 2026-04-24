@@ -92,7 +92,7 @@ $post_id = get_the_ID();
 				<!-- RIGHT: FEATURED IMAGE -->
 				<?php if (has_post_thumbnail()) : ?>
 					<div class="relative">
-						<div class="aspect-video rounded-2xl overflow-hidden shadow-2xl">
+						<div class="aspect-video rounded-lg overflow-hidden shadow-2xl">
 							<?php the_post_thumbnail(
 								'full',
 								array(
@@ -149,7 +149,7 @@ $post_id = get_the_ID();
 
 							<?php _share_component(get_permalink(), get_the_title()); ?>
 
-							<div class="mb-6 bg-card border border-border rounded-xl p-6 ">
+							<div class="mb-6 bg-card border border-border rounded-lg p-6 ">
 								<?php rockit_render_toc(get_the_content()); ?>
 							</div>
 						</div>

@@ -57,16 +57,16 @@ $color_mode = $data['background'] ?? 'dark';
                 </div>
             </div>
             <?php if (!empty($data['stats'])) : ?>
-                <div class="bg-gradient-to-br from-primary to-navy-dark rounded-lg p-12 text-center">
+                <div class="bg-background-soft rounded-lg p-12 text-center">
                     <?php if (!empty($data['stats']['number'])) : ?>
-                        <div class="font-heading text-6xl font-bold text-primary-foreground mb-4"><?php echo $data['stats']['number']; ?></div>
+                        <div class="font-heading text-6xl font-bold mb-4"><?php echo $data['stats']['number']; ?></div>
                     <?php endif; ?>
                     <?php if (!empty($data['stats']['label'])) : ?>
-                        <p class="font-heading text-2xl text-primary-foreground mb-2"><?php echo $data['stats']['label']; ?></p>
+                        <p class="font-heading text-2xl mb-2"><?php echo $data['stats']['label']; ?></p>
                         <div class="w-12 h-0.5 bg-accent mx-auto mb-4"></div>
                     <?php endif; ?>
                     <?php if (!empty($data['stats']['description'])) : ?>
-                        <p class="text-primary-foreground/70 font-body"><?php echo $data['stats']['description']; ?></p>
+                        <p class="text-muted-foreground font-body"><?php echo $data['stats']['description']; ?></p>
                     <?php endif; ?>
                 </div>
             <?php endif; ?>

@@ -27,13 +27,13 @@ $revers = $data['reverse'] == 'yes' ? true : false;
         <div class="space-y-16">
             <div class="grid lg:grid-cols-2 gap-8 items-center">
                 <div class="<?php echo $revers ? 'lg:order-2' : 'lg:order-1'; ?>">
-                    <div class="relative rounded-2xl overflow-hidden group">
+                    <div class="relative rounded-lg overflow-hidden group">
                         <?php if ($data['image']) : ?>
                             <img src="<?php echo $data['image']['url']; ?>" alt="<?php echo $data['image']['alt']; ?>" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105">
                         <?php endif; ?>
                         <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
                         <div class="absolute bottom-4 left-4">
-                            <div class="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center">
+                            <div class="w-14 h-14 rounded-lg bg-secondary flex items-center justify-center">
                                 <?php if (!empty($data['icon']['subtype'] == 'svg+xml')) : ?>
                                     <?php echo maxwell_render_svg($data['icon']['url'], 'w-7 h-7 text-primary'); ?>
                                 <?php else : ?>

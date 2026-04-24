@@ -32,7 +32,7 @@ if ($query->have_posts()) :
 
                         <!-- BIG POST -->
 
-                        <article class="group relative overflow-hidden rounded-2xl border border-border bg-card md:col-span-2">
+                        <article class="group relative overflow-hidden rounded-lg border border-border bg-card md:col-span-2">
 
                             <div class="aspect-[16/9] overflow-hidden">
                                 <?php the_post_thumbnail('large', [
@@ -64,7 +64,7 @@ if ($query->have_posts()) :
 
                         <!-- SMALL POSTS -->
 
-                        <article class="group border border-border rounded-xl bg-card overflow-hidden hover:shadow-lg transition">
+                        <article class="group border border-border rounded-lg bg-card overflow-hidden hover:shadow-lg transition">
 
                             <div class="aspect-[16/10] overflow-hidden">
                                 <?php the_post_thumbnail('medium', [

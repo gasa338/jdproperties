@@ -36,7 +36,7 @@ $revers = $data['reverse'] == 'yes' ? true : false;
 
             <?php if (!empty($data['image'])) : ?>
                 <div class="<?php echo $revers ? 'lg:order-1' : 'lg:order-2'; ?>">
-                    <img class="w-full rounded-xl overflow-hidden shadow-sm hover:shadow-md transition" src="<?php echo $data['image']['url']; ?>" alt="<?php echo $data['image']['alt']; ?>" />
+                    <img class="w-full rounded-lg overflow-hidden shadow-sm hover:shadow-md transition" src="<?php echo $data['image']['url']; ?>" alt="<?php echo $data['image']['alt']; ?>" />
                 </div>
             <?php endif; ?>
         </div>

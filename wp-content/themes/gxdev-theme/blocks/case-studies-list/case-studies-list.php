@@ -18,7 +18,7 @@ $data = get_field('case_studies_list');
             <?php if (!empty($data['items'])) : ?>
                 <div class="space-y-6">
                     <?php foreach ($data['items'] as $item) : ?>
-                        <div class="group rounded-2xl bg-card border border-border hover:border-accent/30 hover:shadow-xl transition-all duration-500 overflow-hidden">
+                        <div class="group rounded-lg bg-card border border-border hover:border-accent/30 hover:shadow-xl transition-all duration-500 overflow-hidden">
                             <div class="p-8 md:p-10">
                                 <div class="flex flex-col lg:flex-row lg:items-start gap-8">
                                     <div class="flex-1">
@@ -38,7 +38,7 @@ $data = get_field('case_studies_list');
                                         <?php endif; ?>
                                     </div>
                                     <?php if (!empty($item['outcomes'])) : ?>
-                                        <div class=" lg:w-[380px] shrink-0 p-6 rounded-xl bg-accent/10 border border-accent/30">
+                                        <div class=" lg:w-[380px] shrink-0 p-6 rounded-lg bg-accent/10 border border-accent/30">
                                             <p class="font-heading text-xl mb-4 font-medium">Outcomes</p>
                                             <ul class="space-y-3">
                                                 <?php foreach ($item['outcomes'] as $outcome) : ?>

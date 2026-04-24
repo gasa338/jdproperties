@@ -22,7 +22,7 @@ $social_network = get_field('social_network', 'option');
                         <?php foreach ($social_network as $key => $social) : ?>
                             <?php if (!empty($social['link']['url']) && !empty($social['link']['url'])) : ?>
                                 <a href="<?php echo $social['link']['url']; ?>" class="transition-all duration-300 w-10 h-10 no-underline" aria-label="<?php echo $social['link']['title']; ?> social media link">
-                                    <div class="w-12 h-12 rounded-xl bg-accent flex items-center justify-center text-white">
+                                    <div class="w-12 h-12 rounded-lg     bg-accent flex items-center justify-center text-white">
                                         <?php echo maxwell_render_icon($social['icon'], 'w-6 h-6 !text-white'); ?>
                                     </div>
                                 </a>
@@ -41,7 +41,7 @@ $social_network = get_field('social_network', 'option');
                 if ($menu_1) :
             ?>
                     <div>
-                        <h2 class="text-white font-bold text-lg mb-6"><?php echo $menu_1->name ?></h2>
+                        <h2 class="text-white font-bold text-lg mb-6 tracking-tight"><?php echo $menu_1->name ?></h2>
                         <ul class="space-y-3">
                             <?php foreach ($menu_1_items as $item) : ?>
                                 <li>
@@ -64,7 +64,7 @@ $social_network = get_field('social_network', 'option');
                 if ($menu_2) :
             ?>
                     <div>
-                        <h2 class="text-white font-bold text-lg mb-6"><?php echo $menu_2->name ?></h2>
+                        <h2 class="text-white font-bold text-lg mb-6 tracking-tight"><?php echo $menu_2->name ?></h2>
                         <ul class="space-y-3">
                             <?php foreach ($menu_2_items as $item) : ?>
                                 <li>
@@ -88,7 +88,7 @@ $social_network = get_field('social_network', 'option');
                 if ($menu_3) :
             ?>
                     <div>
-                        <h2 class="text-white font-bold text-lg mb-6"><?php echo $menu_3->name ?></h2>
+                        <h2 class="text-white font-bold text-lg mb-6 tracking-tight"><?php echo $menu_3->name ?></h2>
                         <ul class="space-y-3">
                             <?php foreach ($menu_3_items as $item) : ?>
                                 <li>
@@ -104,7 +104,7 @@ $social_network = get_field('social_network', 'option');
 
             <?php if (!empty($footer_data['contact_data'])) : ?>
                 <div>
-                    <h2 class="text-white font-bold text-lg mb-6">Kontact</h2>
+                    <h2 class="text-white font-bold text-lg mb-6 tracking-tight">Kontact</h2>
                     <ul class="space-y-4 text-foreground-muted">
                         <?php foreach ($footer_data['contact_data'] as $item) : ?>
                             <li>

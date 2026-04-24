@@ -41,7 +41,7 @@ $data = get_field('bg_image');
                 Ovo je primjer sekcije s fiksnom pozadinom.
                 Slika ostaje unutar ove sekcije dok se skroluje.
             </p>
-            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition duration-300">
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
                 Pozovite na akciju
             </button>
         </div>

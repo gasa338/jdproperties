@@ -29,9 +29,9 @@ $data = get_field('trusted_1');
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <?php if (!empty($data['items'])) : ?>
                 <?php foreach ($data['items'] as $item) : ?>
-                    <div class="text-center bg-white px-6 py-8 rounded-xl hover:shadow-md">
+                    <div class="text-center bg-white px-6 py-8 rounded-lg hover:shadow-md">
                         <?php if (!empty($item['icon'])) : ?>
-                            <div class="rounded-2xl flex items-center justify-center mx-auto w-20 h-20 mb-2">
+                            <div class="rounded-lg flex items-center justify-center mx-auto w-20 h-20 mb-2">
                                 <?php if (!empty($item['icon']['subtype'] == 'svg+xml')) {
                                     echo maxwell_render_svg($item['icon']['url'], 'text-button bg-button/5 rounded-md p-4');
                                 } else {

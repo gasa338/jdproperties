@@ -192,7 +192,7 @@
     @apply transition-all duration-500 ease-out;
   }
   .card-border {
-    @apply rounded-2xl border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-500;
+    @apply rounded-lg border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-500;
   }
 
   .card-hover:hover {

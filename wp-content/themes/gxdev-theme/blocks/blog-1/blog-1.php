@@ -27,7 +27,7 @@ $color_mode = $data['background'] ?? 'light';
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <?php foreach ($posts as $post) : ?>
-                <article class="bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition z-10">
+                <article class="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition z-10">
                     <?php if (!empty($post['primary_category'])) : ?>
                         <div class="h-64 bg-cover bg-center relative z-10">
                             <a href="<?php echo $post['primary_category']['link']; ?>" class="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded-full hover:bg-accent/80 no-underline">

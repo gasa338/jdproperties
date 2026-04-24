@@ -20,7 +20,7 @@ $color_mode = $data['background'] ?? 'dark';
                     </div>
                 <?php endif; ?>
             </div>
-            <div class="rounded-2xl p-8 shadow-lg">
+            <div class="rounded-lg p-8 shadow-lg">
                 <?php if (!empty($data['form_title'])) : ?>
                     <h2 class="text-3xl mb-6 <?php echo $color_mode === 'dark_mode' ? ' text-white' : ' text-foreground'; ?>"><?php echo esc_html($data['form_title']); ?></h2>
                 <?php endif; ?>

@@ -16,7 +16,7 @@ $anchor = isset($block['anchor']) ? $block['anchor'] : $blocks_id;
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <!-- Tour 1 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
                     <div class="md:flex">
                         <div class="md:w-2/5 bg-gradient-to-b from-blue-400 to-blue-600 p-8 flex flex-col justify-between text-white">
                             <div>
@@ -56,14 +56,14 @@ $anchor = isset($block['anchor']) ? $block['anchor'] : $blocks_id;
                             </ul>
                             <div class="flex justify-between items-center">
                                 <span class="text-gray-600"><i class="fas fa-clock mr-1"></i> 8 hours</span>
-                                <a href="#" class="bg-primary text-white px-4 py-2 rounded-xl font-medium hover:bg-blue-700 transition">Book Now</a>
+                                <a href="#" class="bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">Book Now</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Tour 2 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
                     <div class="md:flex">
                         <div class="md:w-2/5 bg-gradient-to-b from-amber-400 to-amber-600 p-8 flex flex-col justify-between text-white">
                             <div>
@@ -103,14 +103,14 @@ $anchor = isset($block['anchor']) ? $block['anchor'] : $blocks_id;
                             </ul>
                             <div class="flex justify-between items-center">
                                 <span class="text-gray-600"><i class="fas fa-clock mr-1"></i> 6 hours</span>
-                                <a href="#" class="bg-primary text-white px-4 py-2 rounded-xl font-medium hover:bg-blue-700 transition">Book Now</a>
+                                <a href="#" class="bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">Book Now</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Tour 3 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
                     <div class="md:flex">
                         <div class="md:w-2/5 bg-gradient-to-b from-green-400 to-green-600 p-8 flex flex-col justify-between text-white">
                             <div>
@@ -150,14 +150,14 @@ $anchor = isset($block['anchor']) ? $block['anchor'] : $blocks_id;
                             </ul>
                             <div class="flex justify-between items-center">
                                 <span class="text-gray-600"><i class="fas fa-clock mr-1"></i> 5 hours</span>
-                                <a href="#" class="bg-primary text-white px-4 py-2 rounded-xl font-medium hover:bg-blue-700 transition">Book Now</a>
+                                <a href="#" class="bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">Book Now</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Tour 4 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
                     <div class="md:flex">
                         <div class="md:w-2/5 bg-gradient-to-b from-purple-400 to-purple-600 p-8 flex flex-col justify-between text-white">
                             <div>
@@ -197,7 +197,7 @@ $anchor = isset($block['anchor']) ? $block['anchor'] : $blocks_id;
                             </ul>
                             <div class="flex justify-between items-center">
                                 <span class="text-gray-600"><i class="fas fa-clock mr-1"></i> 2.5 hours</span>
-                                <a href="#" class="bg-primary text-white px-4 py-2 rounded-xl font-medium hover:bg-blue-700 transition">Book Now</a>
+                                <a href="#" class="bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">Book Now</a>
                             </div>
                         </div>
                     </div>

@@ -55,14 +55,14 @@ $reverse = $data['reverse'] ?? false;
 
             <div dir="ltr" data-orientation="horizontal" class="w-full tab-container">
                 <?php if (!empty($data['tabs'])): ?>
-                    <div class="items-center justify-center w-full max-w-fit mx-auto flex p-2 <?php echo $color_mode == 'dark_mode' ? 'bg-white/5' : 'bg-card' ?> border border-border rounded-xl mb-12 tab-buttons">
+                    <div class="items-center justify-center w-full max-w-fit mx-auto flex p-2 <?php echo $color_mode == 'dark_mode' ? 'bg-white/5' : 'bg-card' ?> border border-border rounded-lg mb-12 tab-buttons">
                         <?php foreach ($data['tabs'] as $key_tab => $tab): ?>
                             <div class="flex-1 ">
                                 <button
                                     type="button"
                                     role="tab"
                                     data-tab-index="<?php echo $key_tab; ?>"
-                                    class="tab-button whitespace-nowrap font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl transition-all <?php echo $key_tab === 0 ? 'bg-accent text-white' : 'bg-transparent text-muted-foreground'; ?>"
+                                    class="tab-button whitespace-nowrap font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 w-full flex items-center justify-center gap-2 py-3 px-4 rounded-lg transition-all <?php echo $key_tab === 0 ? 'bg-accent text-white' : 'bg-transparent text-muted-foreground'; ?>"
                                     <?php echo $key_tab === 0 ? 'aria-selected="true"' : 'aria-selected="false"'; ?>>
                                     <?php echo maxwell_render_icon($tab['icon'], 'w-4 h-4 text-white'); ?>
                                     <span class="hidden sm:inline"><?php echo esc_html($tab['title']); ?></span>
@@ -96,9 +96,9 @@ $reverse = $data['reverse'] ?? false;
                                         <?php if (!empty($content['items'])): ?>
                                             <div class="grid md:grid-cols-2 gap-6">
                                                 <?php foreach ($content['items'] as $item): ?>
-                                                    <div class="p-6 rounded-xl bg-white/5 border border-accent/5 hover:border-accent/50 transition-colors">
+                                                    <div class="p-6 rounded-lg bg-white/5 border border-accent/5 hover:border-accent/50 transition-colors">
                                                         <div class="flex items-start gap-4">
-                                                            <div class="w-8 h-8 rounded-xl bg-accent flex items-center justify-center shrink-0">
+                                                            <div class="w-8 h-8 rounded-lg bg-accent flex items-center justify-center shrink-0">
                                                                 <?php echo maxwell_render_icon($item['icon'], 'w-4 h-4 text-white'); ?>
                                                             </div>
                                                             <?php if (!empty($item['text'])): ?>
@@ -120,7 +120,7 @@ $reverse = $data['reverse'] ?? false;
                                         <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center lg:flex-row-reverse">
                                             <div class="<?php echo esc_attr($reverse == 'yes' ? 'order-1' : 'order-2'); ?>">
                                                 <div class="relative">
-                                                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-border/50">
+                                                    <div class="relative rounded-lg overflow-hidden shadow-2xl border border-border/50">
                                                         <?php if (!empty($data['image'])):  $image = get_image($data['image']); ?>
                                                             <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" srcset="<?php echo esc_attr($image['srcset']); ?>" class="w-full h-auto object-cover aspect-square">
                                                         <?php endif; ?>

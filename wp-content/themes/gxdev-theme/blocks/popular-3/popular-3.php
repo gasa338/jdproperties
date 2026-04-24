@@ -87,7 +87,7 @@ $data = get_field('popular_3');
                 <?php if (!empty($data['items'])) : ?>
                     <?php foreach ($data['items'] as $item) : ?>
                         <div class="swiper-slide">
-                            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition h-full">
+                            <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition h-full">
                                 <div class="h-48 relative overflow-hidden">
                                     <img src="<?php echo $item['image']['url']; ?>"
                                         class="w-full h-full object-cover"
@@ -97,7 +97,7 @@ $data = get_field('popular_3');
                                     <?php if (!empty($item['tag'])): ?>
                                         <div class="absolute top-4 right-4">
                                             <a href="<?php echo $item['tag']['url']; ?>"
-                                                class="text-sm text-white bg-black bg-opacity-50 px-2 py-1 rounded-xl"
+                                                class="text-sm text-white bg-black bg-opacity-50 px-2 py-1 rounded-lg"
                                                 aria-label="View all <?php echo $item['tag']['title']; ?> tours">
                                                 <?php echo $item['tag']['title']; ?>
                                             </a>

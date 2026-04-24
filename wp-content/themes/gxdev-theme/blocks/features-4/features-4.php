@@ -21,7 +21,7 @@ $color_mode = $data['color_mode'] ?? 'dark';
                     <div class="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl opacity-50"></div>
                     <div class="absolute -top-4 -left-4 w-24 h-24 bg-primary/30 rounded-full blur-xl"></div>
                     <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-accent/30 rounded-full blur-xl"></div>
-                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-border/50">
+                    <div class="relative rounded-lg overflow-hidden shadow-2xl border border-border/50">
                         <?php if (!empty($data['image'])):  $image = get_image($data['image']); ?>
                             <img class="w-full h-auto object-cover" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" srcset="<?php echo esc_attr($image['srcset']); ?>">
                         <?php endif; ?>
@@ -41,7 +41,7 @@ $color_mode = $data['color_mode'] ?? 'dark';
                     <div class="grid sm:grid-cols-2 gap-6 mb-6">
                         <?php foreach ($data['features'] as $key => $value): ?>
                             <div class="flex gap-4">
-                                <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-accent">
+                                <div class="w-12 h-12 rounded-lg flex items-center justify-center shrink-0 bg-accent">
                                     <?php echo maxwell_render_icon($value['icon'], 'w-6 h-6 text-white'); ?>
                                 </div>
                                 <div>

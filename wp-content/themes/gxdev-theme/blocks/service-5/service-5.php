@@ -29,9 +29,9 @@ $data = get_field('service_5');
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <?php if (!empty($data['items'])) : ?>
                 <?php foreach ($data['items'] as $item) : ?>
-                    <div class="bg-white p-8 rounded-xl hover:shadow-md">
+                    <div class="bg-white p-8 rounded-lg hover:shadow-md">
                         <?php if (!empty($item['icon'])) : ?>
-                            <div class="rounded-2xl w-20 h-20 mb-3 bg-secondary-light">
+                            <div class="rounded-lg w-20 h-20 mb-3 bg-secondary-light">
                                 <?php if (!empty($item['icon']['subtype'] == 'svg+xml')) {
                                     echo maxwell_render_svg($item['icon']['url'], 'text-secondary rounded-md p-4');
                                 } else {

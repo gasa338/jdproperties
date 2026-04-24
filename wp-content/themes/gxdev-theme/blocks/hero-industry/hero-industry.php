@@ -22,7 +22,7 @@ $align = $data['title']['align'] ?? 'left';
     <div class="container mx-auto px-6 relative z-10">
         <div class="max-w-4xl <?php echo $align == 'center' ? 'text-center mx-auto' : ''; ?>">
             <?php if (!empty($data['icon'])): ?>
-                <div class="w-16 h-16 rounded-2xl bg-accent flex items-center justify-center mb-8">
+                <div class="w-16 h-16 rounded-lg bg-accent flex items-center justify-center mb-8">
                     <?php echo maxwell_render_icon($data['icon'], 'w-8 h-8 text-white'); ?>
                 </div>
             <?php endif; ?>

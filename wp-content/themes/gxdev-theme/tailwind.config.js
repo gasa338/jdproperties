@@ -19,32 +19,37 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        heading: ['Playfair Display', 'Georgia', 'serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
-      },      
+        heading: ['Prata', 'serif'],
+        body: ['Inter', 'sans-serif'],
+      },
       fontSize: {
-        'xs': ['12px', { lineHeight: '16px' }],
-        'sm': ['14px', { lineHeight: '18px' }],
-        'base': ['16px', { lineHeight: '20px' }],
-        'lg': ['18px', { lineHeight: '22px' }],
-        'xl': ['20px', { lineHeight: '22px' }],
-        '2xl': ['24px', { lineHeight: '28px' }],
-        '3xl': ['30px', { lineHeight: '32px' }],
-        '4xl': ['45px', { lineHeight: '1.2' }],
-        '5xl': ['70px', { lineHeight: '1.1' }],
-        
-        // Custom heading sizes za responsive
-        'h1-mobile': ['40px', { lineHeight: '44px' }],
-        'h1-tablet': ['44px', { lineHeight: '48px' }],
-        'h1-desktop': ['52px', { lineHeight: '65px' }],
+        'xs': ['12px', { lineHeight: '18px' }],
+        'sm': ['14px', { lineHeight: '22px' }],
+        'base': ['16px', { lineHeight: '26px' }], // 🔥 više vazduha
+        'lg': ['18px', { lineHeight: '28px' }],
+        'xl': ['20px', { lineHeight: '30px' }],
 
-        'h2-mobile': ['24px', { lineHeight: '28px' }],
-        'h2-tablet': ['28px', { lineHeight: '32px' }],
-        'h2-desktop': ['34px', { lineHeight: '44px' }],
+        '2xl': ['24px', { lineHeight: '32px' }],
+        '3xl': ['30px', { lineHeight: '38px' }],
 
-        'h3-mobile': ['20px', { lineHeight: '24px' }],
-        'h3-tablet': ['22px', { lineHeight: '26px' }],
-        'h3-desktop': ['24px', { lineHeight: '30px' }],
+        // 👇 headline tuning
+        '4xl': ['45px', { lineHeight: '1.15', letterSpacing: '-0.01em' }],
+        '5xl': ['70px', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
+
+        // H1
+        'h1-mobile': ['40px', { lineHeight: '44px', letterSpacing: '-0.01em' }],
+        'h1-tablet': ['44px', { lineHeight: '48px', letterSpacing: '-0.015em' }],
+        'h1-desktop': ['52px', { lineHeight: '60px', letterSpacing: '-0.02em' }],
+
+        // H2
+        'h2-mobile': ['24px', { lineHeight: '32px' }],
+        'h2-tablet': ['28px', { lineHeight: '36px' }],
+        'h2-desktop': ['34px', { lineHeight: '42px', letterSpacing: '-0.01em' }],
+
+        // H3
+        'h3-mobile': ['20px', { lineHeight: '28px' }],
+        'h3-tablet': ['22px', { lineHeight: '30px' }],
+        'h3-desktop': ['24px', { lineHeight: '32px' }],
 
         'h4-mobile': ['18px', { lineHeight: '22px' }],
         'h4-tablet': ['20px', { lineHeight: '24px' }],
@@ -62,8 +67,12 @@ module.exports = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        background: {
+          DEFAULT: "hsl(var(--background))",
+          soft: "hsl(var(--background-soft))",
+          muted: "hsl(var(--background-muted))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -92,10 +101,8 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        navy: {
-          DEFAULT: "hsl(var(--navy))",
-          light: "hsl(var(--navy-light))",
-          dark: "hsl(var(--navy-dark))",
+        hero: {
+          DEFAULT: "hsl(var(--hero-gradient))"
         },
         gold: {
           DEFAULT: "hsl(var(--gold))",
@@ -107,16 +114,12 @@ module.exports = {
           dark: "hsl(var(--cream-dark))",
         },
         slate: "hsl(var(--slate))",
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
+      },
+      letterSpacing: {
+        tight: '-0.02em',
+        normal: '0em',
+        wide: '0.05em',
+        luxury: '0.08em', // 👈 za male caps / labele
       },
       borderRadius: {
         lg: "var(--radius)",

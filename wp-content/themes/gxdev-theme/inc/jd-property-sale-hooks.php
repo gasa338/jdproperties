@@ -68,7 +68,7 @@ function jd_sale_output_gallery()
 ?>
 
         <div
-            class="grid grid-cols-4 grid-rows-2 gap-2 rounded-xl overflow-hidden aspect-[21/9] relative gallery-grid"
+            class="grid grid-cols-4 grid-rows-2 gap-2 rounded-lg overflow-hidden aspect-[21/9] relative gallery-grid"
             data-gallery='<?php echo esc_attr($images_json); ?>'>
             <!-- MAIN IMAGE (prva slika) -->
             <div class="col-span-2 row-span-2 relative cursor-pointer group gallery-item" data-index="0">
@@ -546,7 +546,7 @@ function jd_sale_output_stats()
 ?>
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
 
-        <div class="bg-secondary rounded-xl p-5 text-center border border-border">
+        <div class="bg-secondary rounded-lg p-5 text-center border border-border">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 text-accent mx-auto mb-2">
                 <path d="M8 3H5a2 2 0 0 0-2 2v3" />
                 <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
@@ -557,7 +557,7 @@ function jd_sale_output_stats()
             <div class="font-heading text-2xl font-bold text-foreground"><?php echo !empty($area) ? $area : "---"; ?> m²</div>
         </div>
 
-        <div class="bg-secondary rounded-xl p-5 text-center border border-border">
+        <div class="bg-secondary rounded-lg p-5 text-center border border-border">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent mx-auto mb-2 w-10 h-10 ">
                 <path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8" />
                 <path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4" />
@@ -568,7 +568,7 @@ function jd_sale_output_stats()
             <div class="font-heading text-2xl font-bold text-foreground"><?php echo !empty($rooms) ? $rooms : "---"; ?></div>
         </div>
 
-        <div class="bg-secondary rounded-xl p-5 text-center border border-border">
+        <div class="bg-secondary rounded-lg p-5 text-center border border-border">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 text-accent mx-auto mb-2">
                 <path d="m21 16-4 4-4-4" />
                 <path d="M17 20V4" />
@@ -579,7 +579,7 @@ function jd_sale_output_stats()
             <div class="font-heading text-2xl font-bold text-foreground"><?php echo !empty($floor) ? $floor : "---"; ?></div>
         </div>
 
-        <div class="bg-secondary rounded-xl p-5 text-center border border-border">
+        <div class="bg-secondary rounded-lg p-5 text-center border border-border">
 
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 text-accent mx-auto mb-2">
                 <path d="M2 20h20" />
@@ -724,19 +724,19 @@ function jd_sale_output_financing()
         </h2>
 
         <div class="grid sm:grid-cols-3 gap-4 mb-5">
-            <div class="bg-secondary rounded-xl p-5 border border-border text-center">
+            <div class="bg-secondary rounded-lg p-5 border border-border text-center">
                 <div class="text-xs font-body text-muted-foreground mb-1">Cena nekretnine</div>
                 <div class="font-heading text-xl font-bold text-foreground">
                     <?php echo number_format($price, 0, ',', '.'); ?> EUR
                 </div>
             </div>
-            <div class="bg-secondary rounded-xl p-5 border border-border text-center">
+            <div class="bg-secondary rounded-lg p-5 border border-border text-center">
                 <div class="text-xs font-body text-muted-foreground mb-1">Učešće (<?php echo esc_html($downpayment); ?>%)</div>
                 <div class="font-heading text-xl font-bold text-foreground">
                     <?php echo number_format($price * $downpayment / 100, 0, ',', '.'); ?> EUR
                 </div>
             </div>
-            <div class="bg-accent/10 rounded-xl p-5 border border-accent/30 text-center">
+            <div class="bg-accent/10 rounded-lg p-5 border border-accent/30 text-center">
                 <div class="text-xs font-body text-muted-foreground mb-1">Okvirna mesečna rata*</div>
                 <div class="font-heading text-xl font-bold text-accent">
                     ~<?php echo number_format($monthly_est, 0, ',', '.'); ?> EUR
@@ -749,7 +749,7 @@ function jd_sale_output_financing()
         </p>
 
         <?php if (! empty($banks)) : ?>
-            <div class="bg-secondary rounded-xl p-5 border border-border">
+            <div class="bg-secondary rounded-lg p-5 border border-border">
                 <p class="font-body text-sm font-medium text-foreground mb-3">Sarađujemo sa bankama:</p>
                 <div class="flex flex-wrap gap-2">
                     <?php foreach ((array) $banks as $bank) : ?>
@@ -859,7 +859,7 @@ function jd_sale_output_neighbourhood()
 
         <div class="grid sm:grid-cols-2 gap-4">
             <?php foreach ($grouped as $category => $places) : ?>
-                <div class="bg-secondary/60 rounded-xl p-4 border border-border">
+                <div class="bg-secondary/60 rounded-lg p-4 border border-border">
                     <div class="flex items-center gap-2 mb-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
                             <?php echo $icons[$category] ?? '<circle cx="12" cy="12" r="10"/>'; ?>
@@ -899,7 +899,7 @@ function jd_sale_output_additional()
     $orientation  = get_post_meta($post_id, '_property_orientation',  true) ?: 'Jug-istok';
 ?>
     <div>
-        <details class="border border-border rounded-xl px-6 bg-card">
+        <details class="border border-border rounded-lg px-6 bg-card">
             <summary class="flex items-center justify-between py-4 cursor-pointer font-heading text-lg font-semibold text-foreground list-none">
                 <span class="flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
@@ -953,7 +953,7 @@ function jd_sale_output_map()
             <?php echo __("Lokacija", 'gxdev'); ?>
         </h2>
         <?php if (!empty($geo_duzina) || !empty($geo_sirina)): ?>
-            <div class="rounded-xl overflow-hidden border border-border aspect-[16/9]">
+            <div class="rounded-lg overflow-hidden border border-border aspect-[16/9]">
                 <iframe
                     title="Lokacija nekretnine"
                     src="https://maps.google.com/maps?q=<?php echo $geo_sirina; ?>,<?php echo $geo_duzina; ?>&z=15&output=embed"
@@ -1007,7 +1007,7 @@ function jd_sale_output_price_card()
     $title   = urlencode(get_the_title());
     $price_per_m2 = ($area > 0) ? round($price / $area) : 0;
 ?>
-    <div class="bg-card border border-border rounded-xl p-6 sticky top-24 space-y-6">
+    <div class="bg-card border border-border rounded-lg p-6 sticky top-24 space-y-6">
 
         <div>
             <div class="font-heading text-3xl font-bold text-foreground">
@@ -1020,7 +1020,7 @@ function jd_sale_output_price_card()
             <?php endif; ?>
         </div>
 
-        <div class="bg-secondary rounded-xl p-5 border border-border">
+        <div class="bg-secondary rounded-lg p-5 border border-border">
             <div class="flex items-center gap-3 mb-4">
                 <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
@@ -1104,7 +1104,7 @@ function jd_sale_output_price_card()
 function jd_sale_output_schedule_form()
 {
 ?>
-    <div class="bg-card border border-border rounded-xl p-6 space-y-4">
+    <div class="bg-card border border-border rounded-lg p-6 space-y-4">
         <h3 class="font-heading text-base font-semibold text-foreground flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
                 <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
@@ -1129,7 +1129,7 @@ function jd_sale_output_mortgage_calc()
 {
     $price = 185000;
 ?>
-    <div class="bg-card border border-border rounded-xl p-6 space-y-4">
+    <div class="bg-card border border-border rounded-lg p-6 space-y-4">
         <h3 class="font-heading text-base font-semibold text-foreground flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
                 <rect width="16" height="20" x="4" y="2" rx="2" />
@@ -1177,7 +1177,7 @@ function jd_sale_output_mortgage_calc()
             </div>
         </div>
 
-        <div class="bg-accent/10 rounded-xl p-4 border border-accent/30 text-center">
+        <div class="bg-accent/10 rounded-lg p-4 border border-accent/30 text-center">
             <div class="text-xs font-body text-muted-foreground mb-1">Mesečna rata</div>
             <div class="font-heading text-2xl font-bold text-accent" id="calc-result">—</div>
             <div class="text-xs font-body text-muted-foreground mt-1" id="calc-loan-amount"></div>
@@ -1230,7 +1230,7 @@ function jd_sale_output_mortgage_calc()
 function jd_sale_output_valuation()
 {
 ?>
-    <div class="bg-gradient-to-br from-secondary to-card border border-border rounded-xl p-6 space-y-3">
+    <div class="bg-gradient-to-br from-secondary to-card border border-border rounded-lg p-6 space-y-3">
         <h3 class="font-heading text-base font-semibold text-foreground flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
                 <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7" />
@@ -1265,7 +1265,7 @@ function jd_sale_output_compare()
 {
     $post_id = get_the_ID();
 ?>
-    <div class="bg-card border border-border rounded-xl p-6 space-y-3">
+    <div class="bg-card border border-border rounded-lg p-6 space-y-3">
         <h3 class="font-heading text-base font-semibold text-foreground flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
                 <path d="M16 3h5v5" />

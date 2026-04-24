@@ -21,9 +21,9 @@ $background = $data['background'] ?? 'dark_mode';
             <div class="grid md:grid-cols-2 gap-8">
                 <?php if (!empty($data['features'])) : ?>
                     <?php foreach ($data['features'] as $feature) : ?>
-                        <div class="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-accent/50 transition-colors group">
+                        <div class="p-8 rounded-lg bg-white/5 border border-white/10 hover:border-accent/50 transition-colors group">
                             <?php if (!empty($feature['icon'])) : ?>
-                                <div class="w-14 h-14 rounded-xl bg-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent/30 transition-colors">
+                                <div class="w-14 h-14 rounded-lg bg-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent/30 transition-colors">
                                     <?php echo maxwell_render_icon($feature['icon'], 'w-7 h-7 text-accent'); ?>
                                 </div>
                             <?php endif; ?>
