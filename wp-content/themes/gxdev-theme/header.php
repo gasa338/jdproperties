@@ -14,17 +14,39 @@
 	<!-- <div id="page" class="site"> -->
 	<a class="skip-link screen-reader-text hidden" href="#primary"><?php esc_html_e('Skip to content', 'mma-future'); ?></a>
 
-	<header class="fixed top-0 w-full z-50 shadow-lg font-body bg-card">
-		<div class="mx-auto px-4 sm:px-6 lg:px-8">
-			<nav class="flex justify-between items-center h-16">
+
+	<header class="w-full hairline-b font-body">
+		<div class="bg-background hairline-b">
+			<div class="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-2.5 text-xs font-body text-muted-foreground">
+				<div class="flex items-center gap-5">
+					<a href="tel:+381111234567" class="flex items-center gap-1.5 hover:text-accent transition-colors">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone w-3 h-3 text-accent">
+							<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+						</svg>
+						<span class="hidden sm:inline tracking-wide">+381 11 123 4567</span>
+					</a>
+					<a href="mailto:info@jdproperties.rs" class="flex items-center gap-1.5 hover:text-accent transition-colors">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail w-3 h-3 text-accent">
+							<rect width="20" height="16" x="2" y="4" rx="2"></rect>
+							<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+						</svg>
+						<span class="hidden sm:inline tracking-wide">info@jdproperties.rs</span>
+					</a>
+				</div>
+				<span class="eyebrow hidden sm:inline">Privatno posredovanje · od 2010</span>
+			</div>
+		</div>
+
+		<!-- Main Navigation -->
+		<nav class="bg-background/95 backdrop-blur-md hairline-b sticky top-0 z-50">
+			<div class="container-luxury mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
 				<!-- Logo -->
-				<div class="flex-shrink-0 custom-logo-link">
+				<div class="flex-shrink-0 custom-logo-link h-10 sm:h-12">
 					<?php the_custom_logo(); ?>
 				</div>
 
-				<!-- Center Navigation Links -->
-				<div class="hidden md:flex items-center space-x-6 font-bold">
-
+				<!-- Desktop Navigation Links -->
+				<div class="hidden lg:flex items-center gap-8">
 					<?php
 					// Get the primary menu
 					$menu_locations = get_nav_menu_locations();
@@ -41,16 +63,10 @@
 							if (!empty($children)) :
 					?>
 								<div class="relative group">
-									<button class="flex items-center">
+									<button class="flex items-center text-sm font-body font-medium tracking-wide transition-colors hover:text-accent text-foreground">
 										<span><?php echo $item->title; ?></span>
-										<svg viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-4 h-4 ml-1">
-											<g id="directional" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<g id="arrow-down" fill="#000000">
-													<polygon id="Shape" points="6 7 12 13 18 7 20 9 12 17 4 9">
-
-													</polygon>
-												</g>
-											</g>
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4 ml-1">
+											<path d="m6 9 6 6 6-6"></path>
 										</svg>
 									</button>
 									<div class="absolute left-0 mt-2 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
@@ -65,8 +81,7 @@
 												<?php endif; ?>
 												<div class="flex-auto">
 													<span><?php echo $child->title; ?></span>
-													<?php
-													if (!empty($menu_items['text'])) : ?>
+													<?php if (!empty($menu_items['text'])) : ?>
 														<p class="mt-0.5 text-sm text-gray-600"><?php echo $menu_items['text']; ?></p>
 													<?php endif; ?>
 												</div>
@@ -75,47 +90,44 @@
 									</div>
 								</div>
 							<?php else: ?>
-								<!-- Home Link -->
-								<a href="<?php echo $item->url; ?>" class="no-underline flex items-center transition">
-									<i class="fas fa-home mr-2"></i>
-									<span><?php echo $item->title; ?></span>
+								<a href="<?php echo $item->url; ?>" class="text-sm font-body font-medium tracking-wide transition-colors hover:text-accent <?php echo is_front_page() && $item->title == 'Početna' ? 'text-accent' : 'text-foreground'; ?>">
+									<?php echo $item->title; ?>
 								</a>
 							<?php endif; ?>
 						<?php endif; ?>
 					<?php endforeach; ?>
 				</div>
 
+				<!-- Call to Action Button -->
 				<?php $header = get_field('header', 'option');
-
-				if (!empty($header)) :
-					if (!empty($header['link'])) :
-				?>
-						<!-- Call to Action Button -->
-						<div class="hidden md:block">
-							<a href="<?php echo $header['link']['url']; ?>" title="<?php echo esc_attr($header['link']['title']); ?>" class="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground glow-primary hover:scale-105 rounded-lg px-10 py-2 group no-underline">
-								<?php echo esc_html($header['link']['title']); ?>
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right w-5 h-5 transition-transform group-hover:translate-x-1">
-									<path d="M5 12h14"></path>
-									<path d="m12 5 7 7-7 7"></path>
-								</svg>
-							</a>
-						</div>
-					<?php endif; ?>
+				if (!empty($header) && !empty($header['link'])) : ?>
+					<div class="hidden lg:block">
+						<a href="<?php echo $header['link']['url']; ?>" title="<?php echo esc_attr($header['link']['title']); ?>" class="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground glow-primary hover:scale-105 rounded-lg px-10 py-2 group no-underline">
+							<?php echo esc_html($header['link']['title']); ?>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right w-5 h-5 transition-transform group-hover:translate-x-1">
+								<path d="M5 12h14"></path>
+								<path d="m12 5 7 7-7 7"></path>
+							</svg>
+						</a>
+					</div>
 				<?php endif; ?>
+
 				<!-- Mobile menu button -->
-				<div class="block md:hidden z-50 w-12 h-12 flex item-center justify-end">
-					<button id="mobile-menu-button" aria-label="Toggle mobile menu">
-						<svg class="w-6 h-6 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-							<path fill="currentColor" d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z" />
+				<div class="block lg:hidden z-50 w-12 h-12 flex items-center justify-end">
+					<button id="mobile-menu-button" class="p-2 text-foreground" aria-label="Toggle mobile menu">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu w-6 h-6">
+							<line x1="4" x2="20" y1="12" y2="12"></line>
+							<line x1="4" x2="20" y1="6" y2="6"></line>
+							<line x1="4" x2="20" y1="18" y2="18"></line>
 						</svg>
 					</button>
 				</div>
-			</nav>
-		</div>
+			</div>
+		</nav>
 
 		<!-- Mobile Menu -->
-		<div id="mobile-menu" class="hidden md:hidden z-50 absolute top-16 right-0 w-full bg-card">
-			<nav class="px-2 pt-2 pb-3 space-y-1">
+		<div id="mobile-menu" class="hidden lg:hidden fixed top-0 right-0 w-full h-screen bg-card z-40 overflow-y-auto pt-20">
+			<nav class="px-4 pt-2 pb-3 space-y-2">
 				<?php
 				foreach ($menu_1_items as $item) :
 					if ($item->menu_item_parent == 0) :
@@ -125,48 +137,78 @@
 
 						if (!empty($children)) : ?>
 							<div>
-								<button class="flex items-center w-full px-3 py-2 text-gray-700 hover:bg-blue-50 rounded-md" onclick="toggleSubmenu('services-mobile')">
-									<span><?php echo $item->title; ?></span>
-									<svg viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-4 h-4 ml-1">
-										<g id="directional" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-											<g id="arrow-down" fill="#000000">
-												<polygon id="Shape" points="6 7 12 13 18 7 20 9 12 17 4 9">
-
-												</polygon>
-											</g>
-										</g>
+								<button class="flex items-center justify-between w-full px-3 py-3 text-foreground hover:bg-gray-100 rounded-md transition-colors" onclick="toggleSubmenu(this)">
+									<span class="font-medium"><?php echo $item->title; ?></span>
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4 transition-transform">
+										<path d="m6 9 6 6 6-6"></path>
 									</svg>
 								</button>
-								<div id="services-mobile" class="hidden pl-8 space-y-1">
+								<div class="submenu hidden pl-4 mt-1 space-y-1">
 									<?php foreach ($children as $child) : ?>
-										<a href="<?php echo $child->url; ?>" class="flex items-center px-3 py-2 text-gray-600 hover:bg-blue-50 rounded-md no-underline">
+										<a href="<?php echo $child->url; ?>" class="flex items-center px-3 py-2 text-muted-foreground hover:text-accent hover:bg-gray-50 rounded-md no-underline transition-colors">
 											<?php
 											$menu_items = get_field('menu_items', $child->ID);
 											if (!empty($menu_items['icon']) && $menu_items['icon']['subtype'] == 'svg+xml') : ?>
-												<div class="flex flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-													<?php echo maxwell_render_svg($menu_items['icon']['url'], 'w-6 h-6 text-primary'); ?>
+												<div class="flex-none mr-3">
+													<?php echo maxwell_render_svg($menu_items['icon']['url'], 'w-5 h-5 text-primary'); ?>
 												</div>
 											<?php endif; ?>
 											<div class="flex-auto">
-												<span><?php echo $child->title; ?></span>
-												<?php
-												if (!empty($menu_items['text'])) : ?>
-													<p class="mt-0.5 text-sm text-gray-600"><?php echo $menu_items['text']; ?></p>
+												<div><?php echo $child->title; ?></div>
+												<?php if (!empty($menu_items['text'])) : ?>
+													<p class="text-xs text-muted-foreground"><?php echo $menu_items['text']; ?></p>
 												<?php endif; ?>
 											</div>
 										</a>
 									<?php endforeach; ?>
 								</div>
 							</div>
-
 						<?php else: ?>
-							<a href="<?php echo $item->url; ?>" class="flex items-center px-3 py-2 text-gray-700 hover:bg-blue-50 rounded-md no-underline">
-								<i class="fas fa-home mr-2"></i>
-								<span><?php echo $item->title; ?></span>
+							<a href="<?php echo $item->url; ?>" class="flex items-center px-3 py-3 text-foreground hover:bg-gray-100 rounded-md no-underline transition-colors font-medium">
+								<?php echo $item->title; ?>
 							</a>
 						<?php endif; ?>
 					<?php endif; ?>
 				<?php endforeach; ?>
+
+				<!-- Mobile CTA Button -->
+				<?php if (!empty($header) && !empty($header['link'])) : ?>
+					<div class="pt-4 mt-4 border-t border-gray-200">
+						<a href="<?php echo $header['link']['url']; ?>" class="flex items-center justify-center gap-2 bg-primary text-primary-foreground rounded-lg px-6 py-3 no-underline transition-all hover:scale-105 font-medium">
+							<?php echo esc_html($header['link']['title']); ?>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right w-4 h-4">
+								<path d="M5 12h14"></path>
+								<path d="m12 5 7 7-7 7"></path>
+							</svg>
+						</a>
+					</div>
+				<?php endif; ?>
 			</nav>
 		</div>
 	</header>
+
+	<script>
+		// Mobile menu toggle
+		document.getElementById('mobile-menu-button').addEventListener('click', function() {
+			var menu = document.getElementById('mobile-menu');
+			menu.classList.toggle('hidden');
+			document.body.classList.toggle('overflow-hidden');
+		});
+
+		// Mobile submenu toggle
+		function toggleSubmenu(button) {
+			var submenu = button.nextElementSibling;
+			var icon = button.querySelector('svg');
+
+			submenu.classList.toggle('hidden');
+			icon.classList.toggle('rotate-180');
+		}
+
+		// Close mobile menu when clicking on a link (optional)
+		document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+			link.addEventListener('click', function() {
+				document.getElementById('mobile-menu').classList.add('hidden');
+				document.body.classList.remove('overflow-hidden');
+			});
+		});
+	</script>

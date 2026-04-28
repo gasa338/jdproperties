@@ -38,7 +38,7 @@ $term = get_queried_object();
 ?>
 
 <main >
-    <section class="pt-8">
+    <!-- <section class="pt-8"> -->
         <div class="relative bg-gradient-navy py-24 overflow-hidden mb-24">
             <div class="absolute top-20 right-[10%] w-72 h-72 rounded-full border border-primary-foreground/8 animate-pulse-subtle"></div>
             <div class="absolute bottom-10 left-[5%] w-48 h-48 rounded-full border border-primary-foreground/5"></div>
@@ -113,7 +113,7 @@ $term = get_queried_object();
                 <?php echo gxdev_render_global_content($page->post_name); ?>
             <?php endforeach; ?>
         <?php } ?>
-    </section>
+    <!-- </section> -->
 </main>
 
 <?php get_footer(); ?>

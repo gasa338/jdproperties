@@ -11,9 +11,12 @@ $color_mode = $data['background'];
     <div class="container mx-auto px-6 relative z-10">
         <div class="max-w-6xl mx-auto">
             <?php if (!empty($data['top_title']) && $data['use_top_title'] == 'yes'): ?>
-                <span class="maxwell-top-title mb-4 block "><?php echo esc_html($data['top_title']); ?></span>
+                <?php _top_title($data['top_title'], 'left'); ?>
             <?php endif; ?>
-            <?php echo _heading($data['title'], 'mb-8 ' . ($color_mode == 'dark_mode' ? 'text-white' : '')) ?>
+            <?php if (!empty($data['title'])) : ?>
+                <?php echo _heading($data['title'], 'mb-8 ' . ($color_mode == 'dark_mode' ? 'text-white' : '')) ?>
+                <div class="gold-divider <?php echo ($data['title']['align'] === 'center' ? 'mx-auto' : '') ?> mb-4"></div>
+            <?php endif; ?>
             <?php if (!empty($data['content'])): ?>
                 <?php foreach ($data['content'] as $content): ?>
                     <?php if ($content['acf_fc_layout'] == 'text' && !empty($content['text'])): ?>
@@ -30,14 +33,14 @@ $color_mode = $data['background'];
                                         <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0">
                                             <?php echo maxwell_render_icon($item['icon'], 'w-6 h-6 text-accent shrink-0'); ?>
                                         </div><?php endif; ?>
-                                        <div class="flex-1">
-                                    <?php if (!empty($item['title'])): ?>
-                                        <h3 class="text-lg <?php echo $color_mode == 'dark_mode' ? 'text-white' : 'text-foreground'; ?> font-semibold mb-1.5"><?php echo esc_html($item['title']); ?></h3>
-                                    <?php endif; ?>
-                                    <?php if (!empty($item['text'])): ?>
-                                        <p class="<?php echo $color_mode == 'dark_mode' ? 'text-white/60' : 'text-muted-foreground'; ?>"><?php echo esc_html($item['text']); ?></p>
-                                    <?php endif; ?>
-                                        </div>
+                                    <div class="flex-1">
+                                        <?php if (!empty($item['title'])): ?>
+                                            <h3 class="text-lg <?php echo $color_mode == 'dark_mode' ? 'text-white' : 'text-foreground'; ?> mb-1.5"><?php echo esc_html($item['title']); ?></h3>
+                                        <?php endif; ?>
+                                        <?php if (!empty($item['text'])): ?>
+                                            <p class="<?php echo $color_mode == 'dark_mode' ? 'text-white/60' : 'text-muted-foreground'; ?>"><?php echo esc_html($item['text']); ?></p>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
                             <?php endforeach; ?>
                         </div>

@@ -10,7 +10,7 @@ $top_title_as_h1 = $data['top_title_as_h1'] ?? 'no';
 $align = $data['title']['align'] ?? 'left';
 ?>
 
-<?php echo _spacing_full('hero-industry',$blocks_id,$data['margin'], $data['padding']); ?>
+<?php echo _spacing_full('hero-industry', $blocks_id, $data['margin'], []); ?>
 <section class="py-24 relative hero-industry-<?php echo esc_attr($blocks_id); ?> <?php echo esc_attr($blocks_class); ?> <?php echo _background($data['background']); ?>">
     <?php if ($color_scheme == 'dark'): ?>
         <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 1px 1px, rgb(255, 255, 255) 1px, transparent 0px); background-size: 32px 32px;"></div>
@@ -28,9 +28,13 @@ $align = $data['title']['align'] ?? 'left';
             <?php endif; ?>
             <?php if (!empty($data['top_title'])): ?>
                 <?php if ($top_title_as_h1): ?>
-                    <h1 class="maxwell-top-title mb-4 block <?php echo $align == 'center' ? 'text-center mx-auto' : ''; ?>"><?php echo $data['top_title']; ?></h1>
+                    <div class="flex items-center gap-3 mb-4 justify-center">
+                        <span class="w-10 h-px bg-accent"></span>
+                        <h1 class="mb-4 text-accent <?php echo $align == 'center' ? 'text-center mx-auto' : ''; ?>"><?php echo $data['top_title']; ?></h1>
+                        <span class="w-10 h-px bg-accent"></span>
+                    </div>
                 <?php else: ?>
-                    <span class="maxwell-top-title mb-4 block <?php echo $align == 'center' ? 'text-center mx-auto' : ''; ?>"><?php echo $data['top_title']; ?></span>
+                     <?php _top_title($data['top_title']); ?>
                 <?php endif; ?>
             <?php endif; ?>
             <?php echo _heading($data['title'], 'mb-6' . ($color_scheme == 'dark_mode' ? ' text-white/80' : ' text-primary')); ?>

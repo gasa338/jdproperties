@@ -31,53 +31,53 @@ function get_image($image_id): array
  */
 function maxwell_render_svg($svg_url, $classes = '', $aria_label = '')
 {
-    // Check if the URL is empty
     if (empty($svg_url)) {
         return '';
     }
 
-    // Check if the URL is valid
     if (!filter_var($svg_url, FILTER_VALIDATE_URL)) {
         return '';
     }
 
-    // If the URL is local, convert it to a file path
-    $wp_upload_dir = wp_upload_dir();
-    $site_url = site_url();
+    $file_path = str_replace(site_url(), ABSPATH, $svg_url);
 
-    $file_path = str_replace($site_url, ABSPATH, $svg_url);
-
-    // If the file exists, get its content
     if (file_exists($file_path)) {
         $svg_content = file_get_contents($file_path);
     } else {
-        // If it's not a local file, try to get it via wp_remote_get
         $response = wp_remote_get($svg_url);
-
         if (is_wp_error($response)) {
             return '';
         }
-
         $svg_content = wp_remote_retrieve_body($response);
     }
 
-
-    // Check if the content is an SVG
     if (strpos($svg_content, '<svg') === false) {
         return '';
     }
 
-    // Add classes if provided
-    if (!empty($classes)) {
-        $svg_content = preg_replace(
-            '/<svg([^>]*)>/',
-            '<svg$1 class="' . esc_attr($classes) . '">',
-            $svg_content
-        );
-    }
-
     // Add focusable="false" for IE
     $svg_content = str_replace('<svg', '<svg focusable="false"', $svg_content);
+
+    // Handle classes
+    if (!empty($classes)) {
+        $escaped = esc_attr($classes);
+
+        if (preg_match('/class=["\']/', $svg_content)) {
+            // SVG already has a class attribute — append to existing value
+            $svg_content = preg_replace(
+                '/class=(["\'])(.*?)(["\'])/',
+                'class=$1$2 ' . $escaped . '$3',
+                $svg_content
+            );
+        } else {
+            // No existing class attribute — add a new one
+            $svg_content = preg_replace(
+                '/<svg([^>]*)>/',
+                '<svg$1 class="' . $escaped . '">',
+                $svg_content
+            );
+        }
+    }
 
     return $svg_content;
 }
@@ -273,13 +273,13 @@ function _background($data)
 
     switch ($data) {
         case 'dark':
-            $bg_class = 'bg-surface';
+            $bg_class = 'bg-secundary/50';
             break;
         case 'light':
             $bg_class = 'bg-white';
             break;
         case 'dark_mode':
-            $bg_class = 'bg-gradient-navy';
+            $bg_class = 'bg-gradient-luxury';
             break;
         default:
             $bg_class = 'bg-white';
@@ -409,7 +409,7 @@ function maxwell_related_posts($post_id = null, $posts_per_page = 2)
  * @param string $classes CSS klase koje se primenjuju
  * @return void
  */
-function maxwell_render_icon($icon_data, $classes = 'w-5 h-5 text-white')
+function maxwell_render_icon($icon_data, $classes = '')
 {
     if (empty($icon_data['url'])) {
         return;

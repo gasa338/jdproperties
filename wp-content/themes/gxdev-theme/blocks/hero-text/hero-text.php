@@ -6,37 +6,24 @@ $data = get_field('hero_text');
 
 ?>
 
-<?php echo _spacing_full('hero-text',$blocks_id,$data['margin'], $data['padding']); ?>
-<section class="relative bg-hero pt-32 pb-24 overflow-hidden hero-text-<?php echo esc_attr($blocks_id); ?> <?php echo esc_attr($blocks_class); ?>">
-    <div class="absolute top-20 right-[10%] w-72 h-72 rounded-full border border-primary-foreground/8 animate-pulse-subtle"></div>
-    <div class="absolute bottom-10 left-[5%] w-48 h-48 rounded-full border border-primary-foreground/5"></div>
-    <div class="absolute top-1/3 right-[25%] w-3 h-3 rounded-full bg-accent opacity-60"></div>
-    <div class="absolute bottom-1/4 right-[15%] w-2 h-2 rounded-full bg-accent opacity-40"></div>
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="max-w-3xl">
-            <?php echo _heading($data['title'], 'font-bold text-primary-foreground leading-[1.08] mb-6'); ?>
-            <?php if (!empty($data['text'])): ?>
-                <div class="text-lg sm:text-xl text-primary-foreground/65 max-w-2xl mb-10 leading-relaxed"><?php echo apply_filters('the_content', $data['text']); ?></div>
+<?php echo _spacing_full('hero-text', $blocks_id, $data['margin'], []); ?>
+<section class="relative bg-primary overflow-hidden hero-text-<?php echo esc_attr($blocks_id); ?> <?php echo esc_attr($blocks_class); ?>">
+    <div class="absolute inset-0">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gold-glow/8 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-gold-glow/10 blur-3xl -translate-x-1/2 translate-y-1/2"></div>
+    </div>
+    <div class="container-luxury mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 relative z-10 text-center">
+        <div style="opacity: 1; filter: blur(0px); transform: none;">
+            <?php if (!empty($data['top_title'])): ?>
+                <div class="gold-divider mx-auto mb-6"></div>
+                <p class="text-gold-light font-body text-sm tracking-[0.25em] uppercase mb-4"><?php echo $data['top_title']; ?></p>
             <?php endif; ?>
-            <div class="flex flex-col sm:flex-row gap-4 mb-6">
-                <?php if (!empty($data['link_1']) && !empty($data['link_1'])): ?>
-                    <a href="<?php echo esc_url($data['link_1']['url']); ?>" class="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-7 py-3.5 text-sm font-semibold text-accent-foreground hover:opacity-90 transition-opacity shadow-lg shadow-accent/20 no-underline"><?php echo esc_html($data['link_1']['title']); ?></a>
-                <?php endif; ?>
-                <?php if (!empty($data['link_2']) && !empty($data['link_2'])): ?>
-                    <a href="<?php echo esc_url($data['link_2']['url']); ?>" class="inline-flex items-center justify-center gap-2 rounded-lg border border-primary-foreground/20 px-7 py-3.5 text-sm font-semibold text-primary-foreground hover:bg-primary-foreground/5 transition-colors no-underline"><?php echo esc_html($data['link_2']['title']); ?>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right w-4 h-4">
-                        <path d="M5 12h14"></path>
-                        <path d="m12 5 7 7-7 7"></path>
-                    </svg>
-                    </a>
-                <?php endif; ?>
-            </div>
-        </div>
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-primary-foreground/30">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down w-4 h-4 animate-bounce">
-                <path d="M12 5v14"></path>
-                <path d="m19 12-7 7-7-7"></path>
-            </svg>
+
+            <?php echo _heading($data['title'], 'font-bold text-primary-foreground leading-[1.08] mb-6'); ?>
+            
+            <?php if (!empty($data['text'])): ?>
+                <div class="text-primary-foreground/60 font-body text-lg max-w-3xl mx-auto leading-relaxed"><?php echo apply_filters('the_content', $data['text']); ?></div>
+            <?php endif; ?>
         </div>
     </div>
 </section>

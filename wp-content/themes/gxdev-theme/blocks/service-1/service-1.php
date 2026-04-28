@@ -7,7 +7,7 @@ $color_mode = $data['background'] ?? 'light';
 ?>
 
 <?php echo _spacing_full('service-1', $blocks_id, $data['margin'], $data['padding']); ?>
-<section id="<?php echo esc_attr($anchor); ?>" class="service-1-<?php echo esc_attr($blocks_id); ?> <?php echo _background($data['background']); ?> <?php echo esc_attr($blocks_class); ?>">
+<section id="<?php echo esc_attr($anchor); ?>" class="relative service-1-<?php echo esc_attr($blocks_id); ?> <?php echo _background($data['background']); ?> <?php echo esc_attr($blocks_class); ?>">
     <div class="absolute inset-0 opacity-50" style="background-image: radial-gradient(circle at 1px 1px, hsl(var(--primary) / 0.05) 1px, transparent 0); background-size: 32px 32px;"></div>
     <div class="container mx-auto px-6 relative z-10">
         <div class="max-w-2xl mb-10">
@@ -22,9 +22,9 @@ $color_mode = $data['background'] ?? 'light';
         <div class="grid md:grid-cols-3 gap-6 no-underline">
             <?php foreach ($data['items'] as $item): ?>
                 <?php if (!empty($item['link'])): ?>
-                    <a class="group relative p-8 rounded-lg <?php echo $color_mode === 'dark_mode' ? ' bg-white/5' : 'bg-card'; ?> border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-500 no-underline" href="<?php echo esc_url($item['link']['url']); ?>" title="<?php echo esc_attr($item['link']['title']); ?>">
+                    <a class="group relative p-8 <?php echo $color_mode === 'dark_mode' ? ' bg-white/5' : 'bg-card'; ?> border border-border transition-all duration-500 no-underline" href="<?php echo esc_url($item['link']['url']); ?>" title="<?php echo esc_attr($item['link']['title']); ?>">
                         <?php if (!empty($item['icon'])): ?>
-                            <div class="w-14 h-14 rounded-lg flex items-center justify-center mb-6 bg-accent text-white transition-all">
+                            <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-accent text-white transition-all">
                                 <?php echo maxwell_render_icon($item['icon'], 'w-7 h-7 text-white'); ?>
                             </div>
                         <?php endif; ?>
@@ -43,9 +43,9 @@ $color_mode = $data['background'] ?? 'light';
                         <?php endif; ?>
                     </a>
                 <?php else: ?>
-                    <div class="group relative p-8 rounded-lg <?php echo $color_mode === 'dark_mode' ? ' bg-white/5' : 'bg-card'; ?> border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-500">
+                    <div class="group relative p-8 <?php echo $color_mode === 'dark_mode' ? ' bg-white/5' : 'bg-card'; ?> border border-border transition-all duration-500">
                         <?php if (!empty($item['icon'])): ?>
-                            <div class="w-14 h-14 rounded-lg bg-accent flex items-center justify-center mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-accent flex items-center justify-center mb-6">
                                 <?php echo maxwell_render_icon($item['icon'], 'w-7 h-7 text-white'); ?>
                             </div>
                         <?php endif; ?>

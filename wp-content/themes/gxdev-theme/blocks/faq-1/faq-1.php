@@ -14,9 +14,14 @@ $layout = $data['layout'] ?? 'default';
 
         <div class="max-w-2xl mx-auto text-center m-0 p-0">
             <?php if (!empty($data['top_title'])) : ?>
-                <p class="maxwell-top-title"><?php echo $data['top_title']; ?></p>
+                <?php _top_title($data['top_title'], 'center'); ?>
             <?php endif; ?>
-            <?php echo _heading($data['title'], 'mb-6' . ($color_mode === 'dark_mode' ? ' text-white' : '')) ?>
+
+            <?php if (!empty($data['title'])) : ?>
+                <?php echo _heading($data['title'], 'mb-6' . ($color_mode === 'dark_mode' ? ' text-white' : '')) ?>
+                <div class="gold-divider <?php echo ($data['title']['align'] === 'center' ? 'mx-auto' : '') ?> mb-4"></div>
+            <?php endif; ?>
+
             <?php if (!empty($data['description'])) : ?>
                 <div class="mx-auto mt-4 <?php echo $color_mode === 'dark_mode' ? 'text-white/60' : ''; ?>"><?php echo apply_filters('the_content', $data['description']); ?></div>
             <?php endif; ?>

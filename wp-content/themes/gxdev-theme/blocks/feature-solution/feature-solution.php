@@ -35,11 +35,14 @@ switch ($grid_columns) {
         <div>
             <div class="<?php echo _title_position($data['title_position'], $data['title_size']); ?>">
                 <?php if ($data['top_title']): ?>
-                    <span class="maxwell-top-title mb-4 block"><?php echo esc_html($data['top_title']); ?></span>
+                    <?php echo _top_title($data['top_title'], 'center'); ?>
                 <?php endif; ?>
-                <?php echo _heading($data['title'], 'mb-4 ' . ($color_mode == 'dark_mode' ? 'text-white' : 'text-foreground')); ?>
+                <?php if (!empty($data['title'])): ?>
+                    <?php echo _heading($data['title'], 'mb-4 ' . ($color_mode == 'dark_mode' ? 'text-white' : 'text-foreground')); ?>
+                    <div class="gold-divider <?php echo ($data['title']['align'] === 'center' ? 'mx-auto' : '') ?> mb-8"></div>
+                <?php endif; ?>
                 <?php if ($data['text']): ?>
-                    <div class="<?php echo esc_attr($color_mode == 'dark_mode' ? 'text-white/60' : 'text-muted-foreground'); ?> mb-12"><?php echo apply_filters('the_content', $data['text']); ?></div>
+                    <div class="<?php echo esc_attr($color_mode == 'dark_mode' ? 'text-white/60' : 'text-muted-foreground'); ?> mb-8"><?php echo apply_filters('the_content', $data['text']); ?></div>
                 <?php endif; ?>
             </div>
 
@@ -48,8 +51,8 @@ switch ($grid_columns) {
                     <?php foreach ($data['solutions'] as $solution): ?>
                         <div class="group p-8 rounded-lg <?php echo esc_attr($color_mode == 'dark_mode' ? 'bg-white/5 border border-white/10 hover:border-accent/50' : 'bg-card border-border hover:border-accent/50'); ?> <?php echo $layout == 'center' ? " flex flex-col items-center justify-center text-center " : "" ?> border transition-colors group">
                             <?php if ($solution['icon']): ?>
-                                <div class="w-14 h-14 rounded-lg flex items-center justify-center mb-6 bg-accent">
-                                    <?php echo maxwell_render_svg($solution['icon']['url'], 'w-7 h-7 text-white'); ?>
+                                <div class="rounded-lg flex items-center justify-center mb-6 ">
+                                    <?php echo maxwell_render_svg($solution['icon']['url'], 'w-14 h-14 !text-accent'); ?>
                                 </div>
                             <?php endif; ?>
                             <?php if ($solution['title']): ?>

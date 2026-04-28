@@ -18,9 +18,7 @@ $two_column = $data['two_column'];
                 <!-- TEXT -->
                 <div>
                     <?php if ($data['top_title']): ?>
-                        <p class="mb-4 uppercase tracking-luxury text-xs text-muted-foreground">
-                            <?php echo $data['top_title']; ?>
-                        </p>
+                        <?php _top_title($data['top_title'], 'left'); ?>
                     <?php endif; ?>
 
                     <?php echo _heading($data['title'], "mb-6 font-heading tracking-tight"); ?>
@@ -58,7 +56,7 @@ $two_column = $data['two_column'];
                 <div>
                     <?php if (!empty($data['cta_section'])): ?>
 
-                        <div class="rounded-lg bg-background-soft backdrop-blur-sm border border-border p-10 shadow-xl">
+                        <div class="rounded-lg bg-background-soft border border-border p-10">
 
                             <?php if (!empty($data['cta_section']['title'])): ?>
                                 <h3 class="font-heading text-2xl font-semibold text-foreground mb-4">
@@ -75,7 +73,7 @@ $two_column = $data['two_column'];
                             <?php if (!empty($data['cta_section']['link'])): ?>
 
                                 <a href="<?php echo $data['cta_section']['link']['url']; ?>"
-                                   class="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent transition-colors no-underline">
+                                    class="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent transition-colors no-underline">
 
                                     <?php echo $data['cta_section']['link']['title']; ?>
 

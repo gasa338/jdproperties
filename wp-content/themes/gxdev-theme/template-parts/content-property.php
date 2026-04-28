@@ -33,7 +33,7 @@ $floor   = get_field('property_floor', $post_id);
 $thumb = get_the_post_thumbnail_url($post_id, 'medium_large');
 ?>
 
-<div class="group bg-card group card-border">
+<div class="group border border-border">
 
 	<!-- IMAGE (LINK) -->
 	<a href="<?php echo esc_url($link); ?>" class="block relative aspect-[4/3] bg-muted rounded-t-lg overflow-hidden">
@@ -59,7 +59,7 @@ $thumb = get_the_post_thumbnail_url($post_id, 'medium_large');
 	</a>
 
 	<!-- SPECS -->
-	<div class="flex items-center justify-center gap-6 py-3 bg-background border-b border-border">
+	<div class="flex items-center justify-center gap-6 py-3 bg-background-soft border-b border-border">
 		<?php if (!empty($size)): ?>
 			<div class="flex items-center gap-1.5 text-accent">
 				<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize w-4 h-4 text-accent">
@@ -112,11 +112,15 @@ $thumb = get_the_post_thumbnail_url($post_id, 'medium_large');
 			</a>
 		</h3>
 
-		<!-- LOCATION -->
-		<div class="text-sm text-muted-foreground">
-			<?php echo esc_html($city); ?>
+		<?php if (!empty($city)): ?>
+		<div class="flex items-center gap-1.5 text-muted-foreground">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-3.5 h-3.5 text-accent">
+				<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+				<circle cx="12" cy="10" r="3"></circle>
+			</svg>
+			<span class="text-sm font-body"><?php echo esc_html($city); ?></span>
 		</div>
-
+		<?php endif; ?>
 		<!-- PRICE + CTA -->
 		<div class="pt-3 border-t border-border flex items-center justify-between">
 
@@ -124,10 +128,8 @@ $thumb = get_the_post_thumbnail_url($post_id, 'medium_large');
 				<?php echo esc_html($price); ?> €
 			</span>
 
-			<a href="<?php echo esc_url($link); ?>"
-				class="text-sm font-semibold text-accent hover:underline">
-				Pogledaj detaljno →
-			</a>
+			<?php $title = "Pogledaj detaljno. " . $title;
+			_link_3(['url' => $link, 'title' => 'Detalji', 'target' => '_blank'], 'text-accent italic', $title); ?>
 
 		</div>
 	</div>

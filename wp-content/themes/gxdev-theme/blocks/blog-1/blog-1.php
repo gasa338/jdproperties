@@ -13,11 +13,12 @@ $color_mode = $data['background'] ?? 'light';
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
             <?php if (!empty($data['top_title'])) : ?>
-                <p class="maxwell-top-title mb-2"><?php echo $data['top_title']; ?></p>
+                <?php _top_title($data['top_title'], 'center'); ?>
             <?php endif; ?>
 
             <?php if (!empty($data['title'])) : ?>
-                <h2 class="h2-responsive mt-2 mb-4"><?php echo $data['title']; ?></h2>
+                <h2 class="h2-responsive mb-4"><?php echo $data['title']; ?></h2>
+                <div class="gold-divider mx-auto text-center mb-4"></div>
             <?php endif; ?>
 
             <?php if (!empty($data['description'])) : ?>
@@ -27,7 +28,7 @@ $color_mode = $data['background'] ?? 'light';
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <?php foreach ($posts as $post) : ?>
-                <article class="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition z-10">
+                <article class="border border-border overflow-hidden transition z-10">
                     <?php if (!empty($post['primary_category'])) : ?>
                         <div class="h-64 bg-cover bg-center relative z-10">
                             <a href="<?php echo $post['primary_category']['link']; ?>" class="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded-full hover:bg-accent/80 no-underline">

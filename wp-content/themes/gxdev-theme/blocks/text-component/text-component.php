@@ -16,7 +16,7 @@ $verical_alignment = $data['verical_alignment'] ?? 'center';
       <div class="grid grid-cols-1 md:grid-cols-6 gap-12 max-w-7xl mx-auto">
         <div class="md:col-span-2">
           <?php if ($data['top_title']): ?>
-            <span class="maxwell-top-title mb-4 block"><?php echo $data['top_title']; ?></span>
+            <?php echo _top_title($data['top_title'], 'left'); ?>
           <?php endif; ?>
           <?php echo _heading($data['title'], 'mb-10 '. esc_attr($color_mode == 'dark_mode' ? 'text-white' : '')); ?>
         </div>
@@ -31,9 +31,12 @@ $verical_alignment = $data['verical_alignment'] ?? 'center';
     <?php else: ?>
       <div class="max-w-5xl mx-auto <?php echo $verical_alignment == 'center' ? " justify-center items-center text-center" : " text-left " ?>">
         <?php if ($data['top_title']): ?>
-          <span class="maxwell-top-title mb-4 block"><?php echo $data['top_title']; ?></span>
+            <?php echo _top_title($data['top_title'], 'center'); ?>
         <?php endif; ?>
-        <?php echo _heading($data['title'], 'mb-10 '. ($color_mode === 'dark_mode' ? 'text-white' : '')); ?>
+        <?php if (!empty($data['title'])) : ?>
+            <?php echo _heading($data['title'], 'mb-10 '. ($color_mode === 'dark_mode' ? 'text-white' : '')); ?>
+            <div class="gold-divider <?php echo ($data['title']['align'] === 'center' ? 'mx-auto' : '') ?> mb-4"></div>
+        <?php endif; ?>
         <?php if ($data['text']): ?>
           <div class="text-lg maxwell-content <?php echo $color_mode === 'dark_mode' ? 'text-white/60' : 'text-foreground'; ?>">
             <?php echo apply_filters('the_content', $data['text']); ?>
