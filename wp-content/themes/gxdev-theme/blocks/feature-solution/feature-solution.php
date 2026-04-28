@@ -35,7 +35,7 @@ switch ($grid_columns) {
         <div>
             <div class="<?php echo _title_position($data['title_position'], $data['title_size']); ?>">
                 <?php if ($data['top_title']): ?>
-                    <?php echo _top_title($data['top_title'], 'center'); ?>
+                    <?php echo _top_title($data['top_title'], 'left'); ?>
                 <?php endif; ?>
                 <?php if (!empty($data['title'])): ?>
                     <?php echo _heading($data['title'], 'mb-4 ' . ($color_mode == 'dark_mode' ? 'text-white' : 'text-foreground')); ?>
@@ -51,7 +51,7 @@ switch ($grid_columns) {
                     <?php foreach ($data['solutions'] as $solution): ?>
                         <div class="group p-8 rounded-lg <?php echo esc_attr($color_mode == 'dark_mode' ? 'bg-white/5 border border-white/10 hover:border-accent/50' : 'bg-card border-border hover:border-accent/50'); ?> <?php echo $layout == 'center' ? " flex flex-col items-center justify-center text-center " : "" ?> border transition-colors group">
                             <?php if ($solution['icon']): ?>
-                                <div class="rounded-lg flex items-center justify-center mb-6 ">
+                                <div class="flex mb-6 ">
                                     <?php echo maxwell_render_svg($solution['icon']['url'], 'w-14 h-14 !text-accent'); ?>
                                 </div>
                             <?php endif; ?>

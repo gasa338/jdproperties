@@ -9,7 +9,8 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class('font-body scroll-smooth'); ?>>
+<?php $is_logged_in = is_user_logged_in(); ?>
+<body <?php body_class('font-body scroll-smooth' . ($is_logged_in ? 'mt-8' : '')); ?>>
 	<?php wp_body_open(); ?>
 	<!-- <div id="page" class="site"> -->
 	<a class="skip-link screen-reader-text hidden" href="#primary"><?php esc_html_e('Skip to content', 'mma-future'); ?></a>

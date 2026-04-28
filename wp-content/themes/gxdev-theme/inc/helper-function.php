@@ -279,7 +279,16 @@ function _background($data)
             $bg_class = 'bg-white';
             break;
         case 'dark_mode':
-            $bg_class = 'bg-gradient-luxury';
+            $bg_class = 'bg-primary';
+            break;
+        case 'noise_luxury':
+            $bg_class = 'bg-noise-luxury';
+            break;
+        case 'luxury':
+            $bg_class = 'bg-pattern-luxury';
+            break;
+        case 'diagonal':
+            $bg_class = 'bg-pattern-diagonal';
             break;
         default:
             $bg_class = 'bg-white';

@@ -4,10 +4,9 @@ $blocks_class = isset($block['className']) ? $block['className'] : '';
 $anchor = isset($block['anchor']) ? $block['anchor'] : $blocks_id;
 $data = get_field('feature_category');
 $color_mode = $data['background'] ?? 'dark';
-?><?php echo _spacing_full('feature-category', $blocks_id, $data['margin'], $data['padding']); ?>
-<section id="<?php echo esc_attr($anchor); ?>" class="feature-category-<?php echo esc_attr($blocks_id); ?> <?php echo esc_attr($blocks_class);
-                                                                                                            echo ' ' . _background($data['background']); ?>">
-
+?>
+<?php echo _spacing_full('feature-category', $blocks_id, $data['margin'], $data['padding']); ?>
+<section id="<?php echo esc_attr($anchor); ?>" class="feature-category-<?php echo esc_attr($blocks_id); ?> <?php echo esc_attr($blocks_class); ?> <?php echo _background($data['background']); ?>">
     <div class="container mx-auto">
         <div class="mb-12 text-center">
             <?php if (!empty($data['top_title'])) : ?>
@@ -24,7 +23,7 @@ $color_mode = $data['background'] ?? 'dark';
                 <?php foreach ($data['categories'] as $category): ?>
                     <div class="rounded-lg overflow-hidden">
                         <a class="group relative block overflow-hidden aspect-[3/4] card-hover bg-background" href="<?php echo $category['link']['url']; ?>" title="<?php echo $category['title']; ?>" target="<?php echo $category['link']['target'] ? $category['link']['target'] : '_self'; ?>">
-                            <img src="<?php echo $category['image']['url']; ?>" alt="<?php echo $category['image']['alt']; ?>" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-105">
+                            <img src="<?php echo $category['image']['url']; ?>" alt="<?php echo $category['image']['alt']; ?>" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform  ease-out group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/20 to-transparent"></div>
                             <div class="absolute inset-3 border border-background/20 group-hover:border-accent/60 transition-colors duration-500 pointer-events-none"></div>
                             <div class="absolute bottom-0 left-0 right-0 p-7">

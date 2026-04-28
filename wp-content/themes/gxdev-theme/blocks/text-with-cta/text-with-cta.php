@@ -56,7 +56,14 @@ $two_column = $data['two_column'];
                 <div>
                     <?php if (!empty($data['cta_section'])): ?>
 
-                        <div class="rounded-lg bg-background-soft border border-border p-10">
+                        <div class="relative rounded-lg bg-noise-luxury border border-border p-10">
+                            <!-- SOFT BLUSH OVERLAY (UMESTO TAMNOG) -->
+                            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(190,173,141,0.08),transparent_70%)]"></div>
+
+                            <!-- LUXURY FRAME -->
+                            <div class="absolute inset-0 pointer-events-none">
+                                <div class="absolute inset-[20px] border border-accent/20"></div>
+                            </div>
 
                             <?php if (!empty($data['cta_section']['title'])): ?>
                                 <h3 class="font-heading text-2xl font-semibold text-foreground mb-4">

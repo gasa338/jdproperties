@@ -206,6 +206,7 @@
     @apply w-16 h-px;
     background: linear-gradient(90deg, transparent, hsl(var(--rose-gold)), transparent);
   }
+
   .gold-divider::before,
   .gold-divider::after {
     content: '';
@@ -217,8 +218,14 @@
     background: hsl(var(--rose-gold));
     transform: translateY(-50%);
   }
-  .gold-divider::before { left: -2px; }
-  .gold-divider::after { right: -2px; }
+
+  .gold-divider::before {
+    left: -2px;
+  }
+
+  .gold-divider::after {
+    right: -2px;
+  }
 
   .ornament-divider {
     display: flex;
@@ -227,6 +234,7 @@
     gap: 0.75rem;
     color: hsl(var(--rose-gold));
   }
+
   .ornament-divider::before,
   .ornament-divider::after {
     content: '';
@@ -259,6 +267,7 @@
   .card-hover {
     @apply transition-all duration-500 ease-out;
   }
+
   .card-hover:hover {
     box-shadow: 0 30px 60px -30px hsl(var(--ink) / 0.15);
     transform: translateY(-4px);
@@ -299,12 +308,18 @@
   }
 
   /* Hairline separators — couture detail */
-  .hairline-t { border-top: 1px solid hsl(var(--border)); }
-  .hairline-b { border-bottom: 1px solid hsl(var(--border)); }
+  .hairline-t {
+    border-top: 1px solid hsl(var(--border));
+  }
+
+  .hairline-b {
+    border-bottom: 1px solid hsl(var(--border));
+  }
 
   .corner-ornament {
     position: relative;
   }
+
   .corner-ornament::before,
   .corner-ornament::after {
     content: '';
@@ -314,45 +329,53 @@
     border: 1px solid hsl(var(--rose-gold) / 0.7);
     pointer-events: none;
   }
+
   .corner-ornament::before {
-    top: 12px; left: 12px;
-    border-right: none; border-bottom: none;
-  }
-  .corner-ornament::after {
-    bottom: 12px; right: 12px;
-    border-left: none; border-top: none;
+    top: 12px;
+    left: 12px;
+    border-right: none;
+    border-bottom: none;
   }
 
-  /* Suptilni ornament patern — vrlo, vrlo blag, na beloj */
-  .bg-pattern-ornament {
-    background-image: url('/pattern-ornament.svg');
-    background-size: 140px 140px;
-    background-repeat: repeat;
-  }
-  .bg-pattern-soft {
-    background-color: hsl(var(--background));
-    background-image: url('/pattern-ornament.svg');
-    background-size: 160px 160px;
-    background-repeat: repeat;
-  }
-  .bg-cream-pattern {
-    background-color: hsl(var(--secondary));
-    background-image: url('/pattern-ornament.svg');
-    background-size: 160px 160px;
-    background-repeat: repeat;
-    background-blend-mode: multiply;
+  .corner-ornament::after {
+    bottom: 12px;
+    right: 12px;
+    border-left: none;
+    border-top: none;
   }
 
   /* Elegant inner frame */
   .luxury-frame {
     position: relative;
   }
+
   .luxury-frame::before {
     content: '';
     position: absolute;
     inset: 16px;
     border: 1px solid hsl(var(--rose-gold) / 0.35);
     pointer-events: none;
+  }
+
+  .bg-pattern-luxury {
+    background-image:
+      linear-gradient(rgba(190, 173, 141, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(190, 173, 141, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bg-noise-luxury {
+    background-image:
+      radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+
+  .bg-pattern-diagonal {
+    background-image: repeating-linear-gradient(45deg,
+        rgba(190, 173, 141, 0.06),
+        rgba(190, 173, 141, 0.06) 1px,
+        transparent 1px,
+        transparent 20px);
   }
 }
 
@@ -386,7 +409,7 @@
   /* H6 Styles */
   .h6-responsive {
     @apply font-heading tracking-tight text-h6-mobile md:text-h6-tablet lg:text-h6-desktop;
-  } 
+  }
 
   .maxwell-content p {
     @apply mb-4;
