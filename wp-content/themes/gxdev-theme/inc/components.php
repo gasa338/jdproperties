@@ -14,8 +14,20 @@
 function _link_1($link, $class = '')
 {
 ?>
+    <a class="inline-flex items-center gap-3 bg-foreground text-background hover:bg-accent transition-colors duration-500 font-body text-xs tracking-[0.32em] uppercase px-10 py-4" href="<?php echo esc_url($link['url']); ?>" title="<?php echo esc_attr($link['title']); ?>">
+        <?php echo esc_html($link['title']); ?>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right w-3.5 h-3.5">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+        </svg>
+    </a>
+<?php
+}
+function _link_1_backup($link, $class = '')
+{
+?>
     <a href="<?php echo esc_url($link['url']); ?>"
-        class="group relative inline-flex items-center justify-center px-8 py-3 bg-transparent text-accent tracking-[0.15em] border border-accent no-underline <?php echo esc_attr($class); ?>">
+        class="group relative inline-flex items-center justify-center px-6 py-2 bg-transparent text-accent tracking-[0.15em] border border-accent no-underline <?php echo esc_attr($class); ?>">
 
         <span class="relative z-10 flex items-center gap-2">
             <?php echo esc_html($link['title']); ?>
@@ -30,7 +42,7 @@ function _link_1($link, $class = '')
         </span>
 
         <!-- inner border -->
-        <span class="absolute inset-[6px] border border-white/70 pointer-events-none transition-colors duration-300 group-hover:border-accent"></span>
+        <span class="absolute inset-[2px] border border-white/70 pointer-events-none transition-colors duration-300 group-hover:border-accent"></span>
     </a>
 <?php
 }
@@ -145,8 +157,16 @@ function _link_6($link, $class = '')
 
 function _top_title($data, $position = 'center')
 {
+    // Mapiranje pozicije za justify klasu
+    $justify_map = [
+        'center' => 'justify-center',
+        'left'   => 'justify-start',
+        'right'  => 'justify-end',
+    ];
+
+    $justify_class = $justify_map[$position] ?? 'justify-center';
 ?>
-    <div class="flex items-center gap-3 mb-4 justify-<?php echo esc_attr($position); ?>">
+    <div class="flex items-center gap-3 mb-4 <?php echo esc_attr($justify_class); ?>">
         <?php if ($position === 'center' || $position === 'left') : ?>
             <span class="w-8 h-px bg-accent"></span>
         <?php endif; ?>

@@ -44,15 +44,14 @@ $reverse = $data['reverse'] ?? false;
 <?php echo _spacing_full('horizontal-tab', $blocks_id, $data['margin'], $data['padding']); ?>
 <section id="<?php echo esc_attr($anchor); ?>" class="horizontal-tab-<?php echo esc_attr($blocks_id); ?> <?php echo _background($data['background']) ?> <?php echo esc_attr($blocks_class); ?> ">
     <div class="container mx-auto px-6">
-        <div class="max-w-4xl mb-8">
-            <?php if (!empty($data['top_title'])): ?>
-                <?php echo _top_title($data['top_title'], 'left'); ?>
+        <div class="mb-12 text-center">
+            <?php if (!empty($data['top_title'])) : ?>
+                <?php _top_title($data['top_title']); ?>
             <?php endif; ?>
-            <?php echo _heading($data['title'], 'mb-6' . ($color_mode == "dark_mode" ? " text-white" : "")); ?>
-
-            <div class="gold-divider <?php echo ($data['title']['align'] === 'center' ? 'mx-auto' : '') ?> mb-4"></div>
+            <?php echo _heading($data['title'], "mb-6" . ($color_mode === 'dark_mode' ? ' text-white' : '')); ?>
             <?php if (!empty($data['text'])) : ?>
-                <div class="text-lg text-muted-foreground maxwell-content <?php echo $color_mode === 'dark_mode' ? 'text-white/60' : ''; ?>"><?php echo apply_filters('the_content', $data['text']); ?></div>
+                <div class="text-lg mb-8 <?php echo $color_mode === 'dark_mode' ? 'text-white/60' : 'text-muted-foreground'; ?>">
+                    <?php echo apply_filters('the_content', $data['text']); ?></div>
             <?php endif; ?>
         </div>
 

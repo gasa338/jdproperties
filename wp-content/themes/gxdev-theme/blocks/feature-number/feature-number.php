@@ -39,9 +39,9 @@ $counter = count($data['numbers']);
                             <?php endif; ?>
 
                             <?php if ($number['title']): ?>
-                                <div class="text-3xl font-bold text-foreground">
+                                <h3 class="h3-responsive text-3xl text-foreground">
                                     <?php echo esc_html($number['title']); ?>
-                                </div>
+                                </h3>
                             <?php endif; ?>
 
                             <?php if ($number['text']): ?>

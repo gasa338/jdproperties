@@ -13,7 +13,7 @@ $grid = $data['grid'] ?? 'default';
 $color_mode = $data['background'] ?? 'dark';
 ?>
 <?php echo _spacing_full('cta-light', $blocks_id, $data['margin'], $data['padding']); ?>
-<section class="cta-light-<?php echo esc_attr($blocks_id); ?> <?php echo $layout === 'two_column' ? '': _background($data['background']); ?> <?php echo esc_attr($blocks_class); ?>">
+<section class="cta-light-<?php echo esc_attr($blocks_id); ?> <?php echo $layout === 'two_column' ? '' : _background($data['background']); ?> <?php echo esc_attr($blocks_class); ?>">
     <div class="container mx-auto px-6">
 
         <?php if ($layout === 'two_column') : ?>
@@ -22,7 +22,14 @@ $color_mode = $data['background'] ?? 'dark';
 
                     <!-- Leva kolona (2/3) -->
                     <div class="md:col-span-2 text-left">
-                        <?php echo _heading($data['title'], 'mb-6 ' . ($color_mode == 'dark_mode' ? 'text-white' : '')) ?>
+
+                        <?php if ($data['top_title']): ?>
+                            <?php _top_title($data['top_title'], 'left') ?>
+                        <?php endif; ?>
+                        <?php if (!empty($data['title'])): ?>
+                            <?php echo _heading($data['title'], 'mt-4 mb-6' . ($color_mode === 'dark_mode' ? ' text-white' : '')); ?>
+                            <div class="gold-divider <?php echo ($data['title']['align'] === 'center' ? 'mx-auto' : '') ?> mb-8"></div>
+                        <?php endif; ?>
 
                         <?php if ($data['text']) : ?>
                             <div class="text-lg text-muted-foreground max-w-2xl maxwell-content <?php echo $color_mode == 'dark_mode' ? 'text-white/60' : 'text-muted-foreground'; ?>">
@@ -57,7 +64,13 @@ $color_mode = $data['background'] ?? 'dark';
 
             <!-- Default layout (postojeći) -->
             <div class="text-center">
-                <?php echo _heading($data['title'], 'mb-6 ' . ($color_mode == 'dark_mode' ? 'text-white' : '')) ?>
+                <?php if ($data['top_title']): ?>
+                    <?php _top_title($data['top_title'], 'center') ?>
+                <?php endif; ?>
+                <?php if (!empty($data['title'])): ?>
+                    <?php echo _heading($data['title'], 'mt-4 mb-6'); ?>
+                    <div class="gold-divider <?php echo ($data['title']['align'] === 'center' ? 'mx-auto' : '') ?> mb-8"></div>
+                <?php endif; ?>
 
                 <?php if ($data['text']) : ?>
                     <div class="text-lg mb-10 max-w-2xl mx-auto maxwell-content <?php echo $color_mode == 'dark_mode' ? 'text-white/60' : 'text-muted-foreground'; ?>">

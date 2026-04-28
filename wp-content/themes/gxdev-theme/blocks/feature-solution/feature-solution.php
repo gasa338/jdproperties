@@ -49,14 +49,14 @@ switch ($grid_columns) {
             <?php if ($data['solutions']): ?>
                 <div class="grid <?php echo $grid_classes; ?>">
                     <?php foreach ($data['solutions'] as $solution): ?>
-                        <div class="group p-8 rounded-lg <?php echo esc_attr($color_mode == 'dark_mode' ? 'bg-white/5 border border-white/10 hover:border-accent/50' : 'bg-card border-border hover:border-accent/50'); ?> <?php echo $layout == 'center' ? " flex flex-col items-center justify-center text-center " : "" ?> border transition-colors group">
+                        <div class="p-8 border border-border <?php echo esc_attr($color_mode == 'dark_mode' ? 'bg-white/5 ' : 'bg-card '); ?> <?php echo $layout == 'center' ? " flex flex-col items-center justify-center text-center " : "" ?> transition-colors">
                             <?php if ($solution['icon']): ?>
                                 <div class="flex mb-6 ">
                                     <?php echo maxwell_render_svg($solution['icon']['url'], 'w-14 h-14 !text-accent'); ?>
                                 </div>
                             <?php endif; ?>
                             <?php if ($solution['title']): ?>
-                                <h3 class=" font-bold <?php echo $box_title == "small" ? 'text-xl' : 'text-3xl'; ?> <?php echo esc_attr($color_mode == 'dark_mode' ? 'text-white' : 'text-gradient'); ?> mb-3">
+                                <h3 class="<?php echo $box_title == "small" ? 'text-xl' : 'text-3xl'; ?> <?php echo esc_attr($color_mode == 'dark_mode' ? 'text-white' : 'text-gradient'); ?> mb-3">
                                     <?php echo esc_html($solution['title']); ?>
                                 </h3>
                             <?php endif; ?>

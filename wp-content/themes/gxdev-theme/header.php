@@ -20,27 +20,27 @@
 		<div class="bg-background hairline-b">
 			<div class="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-2.5 text-xs font-body text-muted-foreground">
 				<div class="flex items-center gap-5">
-					<a href="tel:+381111234567" class="flex items-center gap-1.5 hover:text-accent transition-colors">
+					<a href="tel:+381616917238" class="flex items-center gap-1.5 hover:text-accent transition-colors">
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone w-3 h-3 text-accent">
 							<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
 						</svg>
-						<span class="hidden sm:inline tracking-wide">+381 11 123 4567</span>
+						<span class="hidden sm:inline tracking-wide">+381 61 691 7238</span>
 					</a>
-					<a href="mailto:info@jdproperties.rs" class="flex items-center gap-1.5 hover:text-accent transition-colors">
+					<a href="mailto:office@jdproperties.rs" class="flex items-center gap-1.5 hover:text-accent transition-colors">
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail w-3 h-3 text-accent">
 							<rect width="20" height="16" x="2" y="4" rx="2"></rect>
 							<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
 						</svg>
-						<span class="hidden sm:inline tracking-wide">info@jdproperties.rs</span>
+						<span class="hidden sm:inline tracking-wide">office@jdproperties.rs</span>
 					</a>
 				</div>
-				<span class="eyebrow hidden sm:inline">Privatno posredovanje · od 2010</span>
+				<span class="eyebrow hidden sm:inline"><?php echo __('Radno vreme: Pon - Pet: 09:00 - 17:00', 'gxdev'); ?></span>
 			</div>
 		</div>
 
 		<!-- Main Navigation -->
 		<nav class="bg-background/95 backdrop-blur-md hairline-b sticky top-0 z-50">
-			<div class="container-luxury mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
+			<div class="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
 				<!-- Logo -->
 				<div class="flex-shrink-0 custom-logo-link h-10 sm:h-12">
 					<?php the_custom_logo(); ?>

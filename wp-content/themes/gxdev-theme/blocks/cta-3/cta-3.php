@@ -40,7 +40,7 @@ $color_mode = $data['background'];
                 <?php endif; ?>
 
                 <?php if (!empty($data['link_2'])): ?>
-                    <?php echo _link_2($data['link_2'], 'border border-accent/30 hover:bg-accent hover:text-white'); ?>
+                    <?php echo _link_2($data['link_2'], 'text-white'); ?>
                 <?php endif; ?>
             </div>
 

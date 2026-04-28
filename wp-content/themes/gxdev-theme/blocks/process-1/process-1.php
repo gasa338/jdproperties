@@ -16,11 +16,12 @@ $layout = $data['layout'] ?? 'left';
         <!-- RIGHT: sticky panel -->
         <aside class="hidden lg:block self-start">
             <?php if ($data['top_title']): ?>
-                <span class="maxwell-top-title">
-                    <?php echo $data['top_title']; ?>
-                </span>
+                <?php _top_title($data['top_title'], 'left') ?>
             <?php endif; ?>
-            <?php echo _heading($data['title'], 'mt-4 mb-6'); ?>
+            <?php if (!empty($data['title'])): ?>
+                <?php echo _heading($data['title'], 'mt-4 mb-6'); ?>
+                <div class="gold-divider <?php echo ($data['title']['align'] === 'center' ? 'mx-auto' : '') ?> mb-8"></div>
+            <?php endif; ?>
             <?php if ($data['text']): ?>
                 <div class="text-muted-foreground max-w-sm">
                     <?php echo apply_filters('the_content', $data['text']); ?>

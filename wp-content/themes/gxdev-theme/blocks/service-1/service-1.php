@@ -8,7 +8,6 @@ $color_mode = $data['background'] ?? 'light';
 
 <?php echo _spacing_full('service-1', $blocks_id, $data['margin'], $data['padding']); ?>
 <section id="<?php echo esc_attr($anchor); ?>" class="relative service-1-<?php echo esc_attr($blocks_id); ?> <?php echo _background($data['background']); ?> <?php echo esc_attr($blocks_class); ?>">
-    <div class="absolute inset-0 opacity-50" style="background-image: radial-gradient(circle at 1px 1px, hsl(var(--primary) / 0.05) 1px, transparent 0); background-size: 32px 32px;"></div>
     <div class="container mx-auto px-6 relative z-10">
         <div class="max-w-2xl mb-10">
             <?php if (!empty($data['top_title'])) : ?>
@@ -24,12 +23,12 @@ $color_mode = $data['background'] ?? 'light';
                 <?php if (!empty($item['link'])): ?>
                     <a class="group relative p-8 <?php echo $color_mode === 'dark_mode' ? ' bg-white/5' : 'bg-card'; ?> border border-border transition-all duration-500 no-underline" href="<?php echo esc_url($item['link']['url']); ?>" title="<?php echo esc_attr($item['link']['title']); ?>">
                         <?php if (!empty($item['icon'])): ?>
-                            <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-accent text-white transition-all">
-                                <?php echo maxwell_render_icon($item['icon'], 'w-7 h-7 text-white'); ?>
+                            <div class="flex items-center justify-center mb-6 text-accent transition-all">
+                                <?php echo maxwell_render_icon($item['icon'], 'w-14 h-14 text-accent'); ?>
                             </div>
                         <?php endif; ?>
                         <?php if (!empty($item['title'])): ?>
-                            <h3 class="text-2xl font-semibold mb-4 group-hover:text-accent transition-colors <?php echo $color_mode === 'dark_mode' ? ' text-white' : ''; ?>"><?php echo $item['title']; ?></h3>
+                            <h3 class="h3-responsive mb-4 group-hover:text-accent transition-colors <?php echo $color_mode === 'dark_mode' ? ' text-white' : ''; ?>"><?php echo $item['title']; ?></h3>
                         <?php endif; ?>
                         <?php if (!empty($item['text'])): ?>
                             <div class="text-muted-foreground mb-6 leading-relaxed maxwell-content <?php echo $color_mode === 'dark_mode' ? ' text-white/60' : ''; ?>"><?php echo $item['text']; ?></div>
