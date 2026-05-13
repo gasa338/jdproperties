@@ -1,320 +1,273 @@
 <?php
-// Ovo će kasnije biti zamenjeno sa stvarnim podacima iz CPT i taksonomija
-// Za sada koristimo mock podatke
-$property_types = [
-    '' => 'Tip nekretnine'
+$blocks_id = $block['id'];
+$blocks_class = isset($block['class']) ? $block['class'] : '';
+$block_name = $block['name'];
+$data = get_field('home_search');
+$anchor = isset($block['anchor']) ? $block['anchor'] : $blocks_id;
+$color_mode = $data['background'] ?? 'dark';
+
+
+
+/**
+ * QUICK SEARCH
+ */
+
+$defaults = [
+  'cat'      => '',
+  'jd_type'  => '',
+  'location' => '',
 ];
 
-// Lokacije - inicijalno 10 lokacija, kasnije će se učitavati iz taksonomije
-$locations = [];
+$args = wp_parse_args($args ?? [], $defaults);
 
+$selected_cat      = sanitize_text_field($args['cat']);
+$selected_jd_type  = sanitize_text_field($args['jd_type']);
+$selected_location = sanitize_text_field($args['location']);
 
-// Učitavamo termine iz WordPress taksonomija
-$types_tax = get_terms([
-    'taxonomy'   => 'jd-type',
-    'hide_empty' => false,
+$cats = get_terms([
+  'taxonomy'   => 'cat',
+  'hide_empty' => false,
 ]);
-foreach ($types_tax as $type) {
-    $property_types[$type->slug] = $type->name;
-}
 
-$locations_tax = get_terms([
-    'taxonomy'   => 'location',
-    'hide_empty' => false,
+$types = get_terms([
+  'taxonomy'   => 'jd-type',
+  'hide_empty' => false,
 ]);
-foreach ($locations_tax as $location) {
-    $locations[$location->slug] = $location->name;
-}
+
+$locations = get_terms([
+  'taxonomy'   => 'location',
+  'hide_empty' => false,
+]);
 ?>
 
-<section class="relative z-20 -mt-8 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-5xl mx-auto">
-        <div class="bg-card rounded-lg shadow-xl border border-border">
-            <form method="GET" action="<?php echo home_url('/'); ?>" id="search-form">
-                <div class="flex border-b border-border">
-                    <button class="flex-1 py-3.5 text-sm font-body tracking-wide transition-colors bg-accent text-accent-foreground font-medium" data-type="all">Sve</button>
-                    <button class="flex-1 py-3.5 text-sm font-body tracking-wide transition-colors text-muted-foreground hover:text-foreground hover:bg-secondary/50" data-type="prodaja">Prodaja</button>
-                    <button class="flex-1 py-3.5 text-sm font-body tracking-wide transition-colors text-muted-foreground hover:text-foreground hover:bg-secondary/50" data-type="izdavanje">Izdavanje</button>
-                </div>
-                <div class="p-5">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-                        <!-- Tip nekretnine dropdown -->
-                        <div class="relative">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-accent">
-                                <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
-                                <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                            </svg>
-                            <select name="property_type" id="property-type" class="h-12 w-full px-4 bg-background border-0 border-b border-border/50 text-sm font-body text-foreground focus:outline-none focus:border-accent transition-colors appearance-none cursor-pointer pl-10">
-                                <?php foreach ($property_types as $value => $label): ?>
-                                    <option value="<?php echo esc_attr($value); ?>"><?php echo esc_html($label); ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
+<style>
+  /* Ovo već verovatno imaš, ali dodaj ako fali */
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+</style>
 
-                        <!-- Lokacija input sa autocomplete -->
-                        <div class="relative" id="location-container" style="overflow: visible;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-accent">
-                                <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                            <input type="text"
-                                id="location-input"
-                                name="location"
-                                placeholder="Lokacija..."
-                                class="h-12 w-full px-4 bg-background border-0 border-b border-border/50 text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors pl-10"
-                                autocomplete="off"
-                                value="<?php echo isset($_GET['location']) ? esc_attr($_GET['location']) : ''; ?>">
-                            <div id="location-suggestions" class="hidden absolute z-50 w-full mt-1 bg-card border border-border rounded-md shadow-lg max-h-60 overflow-auto" style="min-width: 200px;"></div>
-                        </div>
+<?php echo _spacing_full('home-search', $blocks_id, $data['margin'], $data['padding']); ?>
+<section class="home-search-<?php echo esc_attr($blocks_id); ?> <?php echo _background($data['background']) ?> <?php echo esc_attr($blocks_class); ?>">
+  <form
+    action="<?php echo esc_url(get_post_type_archive_link('properties')); ?>"
+    method="GET"
+    class="bg-white border border-border p-6 lg:p-10">
 
-                        <!-- Min m² -->
-                        <div class="relative">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-accent">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
-                                <path d="M21 8V5a2 2 0 0 0-2-2h-3"></path>
-                                <path d="M3 16v3a2 2 0 0 0 2 2h3"></path>
-                                <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
-                            </svg>
-                            <input type="number"
-                                name="min_area"
-                                placeholder="Min m²"
-                                class="h-12 w-full px-4 bg-background border-0 border-b border-border/50 text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors pl-10"
-                                value="<?php echo isset($_GET['min_area']) ? esc_attr($_GET['min_area']) : ''; ?>">
-                        </div>
+    <input type="hidden" name="post_type" value="properties">
 
-                        <!-- Max m² -->
-                        <div class="relative">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-accent">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
-                                <path d="M21 8V5a2 2 0 0 0-2-2h-3"></path>
-                                <path d="M3 16v3a2 2 0 0 0 2 2h3"></path>
-                                <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
-                            </svg>
-                            <input type="number"
-                                name="max_area"
-                                placeholder="Max m²"
-                                class="h-12 w-full px-4 bg-background border-0 border-b border-border/50 text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors pl-10"
-                                value="<?php echo isset($_GET['max_area']) ? esc_attr($_GET['max_area']) : ''; ?>">
-                        </div>
+    <!-- PRIMARY SEARCH -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[1fr_1fr_1.4fr_220px_80px] gap-6 items-end">
 
-                        <!-- Submit dugme -->
-                        <button type="submit" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 px-4 py-2 h-12 bg-accent text-accent-foreground hover:bg-accent/90 rounded-sm font-body text-sm tracking-wide">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search w-4 h-4 mr-2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <path d="m21 21-4.3-4.3"></path>
-                            </svg>
-                            Pretraži
-                        </button>
-                    </div>
+      <!-- TRANSACTION -->
+      <div>
+        <label class="block text-base text-muted-foreground mb-4">
+          <?php echo __('Prodaja / Izdavanje', 'gxdev'); ?>
+        </label>
 
-                    <!-- Hidden input za tip pretrage (prodaja/izdavanje) -->
-                    <input type="hidden" name="search_type" id="search-type" value="all">
-                </div>
-            </form>
-            <div class="px-5 pb-4 flex justify-end">
-                <a class="inline-flex items-center gap-2 text-sm font-body text-accent hover:text-accent/80 transition-colors" href="/nekretnine">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sliders-horizontal w-3.5 h-3.5">
-                        <line x1="21" x2="14" y1="4" y2="4"></line>
-                        <line x1="10" x2="3" y1="4" y2="4"></line>
-                        <line x1="21" x2="12" y1="12" y2="12"></line>
-                        <line x1="8" x2="3" y1="12" y2="12"></line>
-                        <line x1="21" x2="16" y1="20" y2="20"></line>
-                        <line x1="12" x2="3" y1="20" y2="20"></line>
-                        <line x1="14" x2="14" y1="2" y2="6"></line>
-                        <line x1="8" x2="8" y1="10" y2="14"></line>
-                        <line x1="16" x2="16" y1="18" y2="22"></line>
-                    </svg>
-                    Napredna pretraga
-                </a>
-            </div>
-        </div>
+        <select
+          name="cat"
+          class="w-full h-[58px] bg-transparent border-0 border-b border-accent px-0 text-muted-foreground focus:outline-none focus:border-[#a48d69] transition-colors">
+          <option value="" class="text-muted-foreground"><?php echo __('Sve', 'gxdev'); ?></option>
+
+          <?php foreach ($cats as $term): ?>
+            <option
+              class="text-muted-foreground"
+              value="<?php echo esc_attr($term->slug); ?>"
+              <?php selected($selected_cat, $term->slug); ?>>
+              <?php echo esc_html($term->name); ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+
+      <!-- TYPE -->
+      <div>
+        <label class="block text-base text-muted-foreground mb-4">
+          <?php echo __('Vrsta objekta', 'gxdev'); ?>
+        </label>
+
+        <select
+          name="jd_type"
+          class="w-full h-[58px] bg-transparent border-0 border-b border-accent px-0 text-foreground focus:outline-none focus:border-[#a48d69] transition-colors">
+          <option value="" class="text-muted-foreground"><?php echo __('Sve', 'gxdev'); ?></option>
+
+          <?php foreach ($types as $term): ?>
+            <option
+              class="text-muted-foreground"
+              value="<?php echo esc_attr($term->slug); ?>"
+              <?php selected($selected_jd_type, $term->slug); ?>>
+              <?php echo esc_html($term->name); ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+
+      <!-- LOCATION -->
+      <div>
+        <label class="block text-base text-muted-foreground mb-4">
+          <?php echo __('Lokacija', 'gxdev'); ?>
+        </label>
+
+        <select
+          name="location"
+          class="w-full h-[58px] bg-transparent border-0 border-b border-accent px-0 text-foreground focus:outline-none focus:border-[#a48d69] transition-colors">
+          <option value="" class="text-muted-foreground"><?php echo __('Sve lokacije', 'gxdev'); ?></option>
+
+          <?php foreach ($locations as $term): ?>
+            <option
+              class="text-muted-foreground"
+              value="<?php echo esc_attr($term->slug); ?>"
+              <?php selected($selected_location, $term->slug); ?>>
+              <?php echo esc_html($term->name); ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+
+      <!-- BUTTON -->
+      <button
+        type="submit"
+        class="inline-flex items-center justify-center gap-3 bg-accent text-background hover:bg-accent/60 transition-colors duration-500 font-body uppercase px-8 py-4">
+        <?php echo __('Traži', 'gxdev'); ?>
+
+        <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 6C13.7614 6 16 8.23858 16 11M16.6588 16.6549L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <!-- TOGGLE -->
+      <button
+        type="button"
+        data-search-toggle
+        class="w-full h-[58px] inline-flex items-center justify-center border border-accent/30 hover:border-accent/80 hover:bg-white transition-all duration-300 group"
+        aria-label="Dodatna pretraga">
+
+        <!-- Ikona filtera (levak) - NAJBOLJA -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2 2 0 0 1-.65 1.483l-5.284 4.757a2 2 0 0 0-.7 1.514V19a1 1 0 0 1-.4.8l-2 1.5A1 1 0 0 1 10 20.5v-7.928a2 2 0 0 0-.7-1.514L4.016 6.3A2 2 0 0 1 3.366 4.82V3.774c0-.54.384-1.006.917-1.096A41.43 41.43 0 0 1 12 3z" />
+        </svg>
+      </button>
+
     </div>
+
+    <!-- ADVANCED SEARCH -->
+    <div data-search-advanced class="hidden mt-10 pt-10">
+
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6">
+
+        <!-- PRICE MIN -->
+        <div>
+          <label class="block text-base text-muted-foreground mb-4">
+            <?php echo __('Cena od', 'gxdev'); ?>
+          </label>
+
+          <input
+            type="number"
+            name="price_min"
+            placeholder="Min"
+            value="<?php echo esc_attr($_GET['price_min'] ?? ''); ?>"
+            class="w-full h-[58px] bg-transparent border-0 border-b border-accent text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-[#a48d69]">
+        </div>
+
+        <!-- PRICE MAX -->
+        <div>
+          <label class="block text-base text-muted-foreground mb-4">
+            <?php echo __('Cena do', 'gxdev'); ?>
+          </label>
+
+          <input
+            type="number"
+            name="price_max"
+            placeholder="Max"
+            value="<?php echo esc_attr($_GET['price_max'] ?? ''); ?>"
+            class="w-full h-[58px] bg-transparent border-0 border-b border-accent text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-[#a48d69]">
+        </div>
+
+        <!-- AREA MIN -->
+        <div>
+          <label class="block text-base text-muted-foreground mb-4">
+            <?php echo __('Kvadratura od', 'gxdev'); ?>
+          </label>
+
+          <input
+            type="number"
+            name="area_min"
+            placeholder="Min"
+            value="<?php echo esc_attr($_GET['area_min'] ?? ''); ?>"
+            class="w-full h-[58px] bg-transparent border-0 border-b border-accent text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-[#a48d69]">
+        </div>
+
+        <!-- AREA MAX -->
+        <div>
+          <label class="block text-base text-foreground mb-4">
+            <?php echo __('Kvadratura do', 'gxdev'); ?>
+          </label>
+
+          <input
+            type="number"
+            name="area_max"
+            placeholder="Max"
+            value="<?php echo esc_attr($_GET['area_max'] ?? ''); ?>"
+            class="w-full h-[58px] bg-transparent border-0 border-b border-accent text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-[#a48d69]">
+        </div>
+
+        <!-- NEW BUILD -->
+        <div class="flex items-end">
+
+          <label class="flex items-center gap-3 h-[58px] cursor-pointer select-none group">
+
+            <div class="relative flex items-center justify-center">
+              <input
+                type="checkbox"
+                name="novogradnja"
+                value="1"
+                <?php checked(!empty($_GET['novogradnja'])); ?>
+                class="peer w-4 h-4 appearance-none border-2 border-[#b8a27b] rounded-sm bg-white 
+               checked:bg-[#b8a27b] checked:border-[#b8a27b]
+               hover:border-[#9b8764] 
+               focus:outline-none focus:ring-2 focus:ring-[#b8a27b] focus:ring-offset-1
+               transition-all duration-200 cursor-pointer">
+
+              <!-- Custom checkmark (samo za checked stanje) -->
+              <svg
+                class="absolute w-3 h-3 text-white pointer-events-none peer-checked:block hidden"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </div>
+
+            <span class="text-foreground group-hover:text-[#b8a27b] transition-colors duration-200">
+              <?php echo __('Novogradnja', 'gxdev'); ?>
+            </span>
+
+          </label>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </form>
 </section>
 
 <script>
-    // Lokacije iz PHP niza (kasnije će se učitavati iz taksonomije)
-    const locationsData = <?php echo json_encode(array_values($locations)); ?>;
+  document.addEventListener('DOMContentLoaded', function() {
 
-    // Funkcija za filter lokacija
-    function filterLocations(searchTerm) {
-        if (!searchTerm) return locationsData.slice(0, 10);
+    const toggle = document.querySelector('[data-search-toggle]');
+    const advanced = document.querySelector('[data-search-advanced]');
 
-        const term = searchTerm.toLowerCase();
-        return locationsData
-            .filter(location => location.toLowerCase().includes(term))
-            .slice(0, 10);
-    }
 
-    // Prikazivanje predloga za lokacije
-    function showSuggestions(suggestions) {
-        const suggestionsDiv = document.getElementById('location-suggestions');
+    if (!toggle || !advanced) return;
 
-        if (suggestions.length === 0) {
-            suggestionsDiv.classList.add('hidden');
-            return;
-        }
-
-        suggestionsDiv.innerHTML = suggestions
-            .map(location => `
-            <div class="px-4 py-2 hover:bg-accent/10 cursor-pointer text-sm text-foreground transition-colors" data-location="${location}">
-                ${escapeHtml(location)}
-            </div>
-        `)
-            .join('');
-
-        suggestionsDiv.classList.remove('hidden');
-    }
-
-    // HTML escape funkcija
-    function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
-
-    // Sakrivanje predloga
-    function hideSuggestions() {
-        setTimeout(() => {
-            const suggestionsDiv = document.getElementById('location-suggestions');
-            if (suggestionsDiv) {
-                suggestionsDiv.classList.add('hidden');
-            }
-        }, 200);
-    }
-
-    // Inicijalizacija autocomplete-a za lokacije
-    function initLocationAutocomplete() {
-        const locationInput = document.getElementById('location-input');
-        const suggestionsDiv = document.getElementById('location-suggestions');
-
-        if (!locationInput) return;
-
-        // Event za unos teksta
-        locationInput.addEventListener('input', function(e) {
-            const searchTerm = e.target.value;
-            const suggestions = filterLocations(searchTerm);
-            showSuggestions(suggestions);
-        });
-
-        // Event za klik na predlog
-        suggestionsDiv.addEventListener('click', function(e) {
-            const target = e.target.closest('[data-location]');
-            if (target) {
-                locationInput.value = target.getAttribute('data-location');
-                hideSuggestions();
-
-                // Opciono: trigger input event da bi se pokrenula pretraga
-                const event = new Event('input', {
-                    bubbles: true
-                });
-                locationInput.dispatchEvent(event);
-            }
-        });
-
-        // Event za fokusiranje - prikaži inicijalne predloge
-        locationInput.addEventListener('focus', function() {
-            const suggestions = filterLocations('');
-            showSuggestions(suggestions);
-        });
-
-        // Event za izlazak iz polja
-        locationInput.addEventListener('blur', function() {
-            hideSuggestions();
-        });
-
-        // Event za Enter
-        locationInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                document.getElementById('search-form').submit();
-            }
-        });
-
-        // Event za Escape - sakrivanje predloga
-        locationInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                hideSuggestions();
-            }
-        });
-    }
-
-    // Inicijalizacija tabova (prodaja/izdavanje)
-    function initTabs() {
-        const tabs = document.querySelectorAll('[data-type]');
-        const searchTypeInput = document.getElementById('search-type');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                // Ukloni active klasu sa svih tabova
-                tabs.forEach(t => {
-                    t.classList.remove('bg-accent', 'text-accent-foreground', 'font-medium');
-                    t.classList.add('text-muted-foreground');
-                });
-
-                // Dodaj active klasu na kliknuti tab
-                this.classList.add('bg-accent', 'text-accent-foreground', 'font-medium');
-                this.classList.remove('text-muted-foreground');
-
-                // Postavi vrednost za search type
-                const searchType = this.getAttribute('data-type');
-                searchTypeInput.value = searchType;
-
-                // Opciono: automatski submit forme
-                // document.getElementById('search-form').submit();
-            });
-        });
-    }
-
-    // Inicijalizacija na load
-    document.addEventListener('DOMContentLoaded', function() {
-        initLocationAutocomplete();
-        initTabs();
+    toggle.addEventListener('click', function() {
+      advanced.classList.toggle('hidden');
     });
+
+  });
 </script>
-
-<style>
-    /* Stilovi za autocomplete - osiguravamo da dropdown bude iznad svih elemenata */
-    #location-suggestions {
-        background-color: var(--card, #ffffff);
-        border-color: var(--border, #e5e7eb);
-        max-height: 240px;
-        overflow-y: auto;
-        z-index: 9999;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    }
-
-    #location-suggestions div:hover {
-        background-color: var(--accent, #f59e0b);
-        color: var(--accent-foreground, #ffffff);
-    }
-
-    /* Dark mode podrška */
-    @media (prefers-color-scheme: dark) {
-        #location-suggestions {
-            background-color: var(--card, #1f2937);
-            border-color: var(--border, #374151);
-        }
-    }
-
-    /* Osiguravamo da roditeljski kontejner ne ograničava prikaz dropdowna */
-    #location-container {
-        overflow: visible !important;
-    }
-
-    /* Grid kontejner takođe ne sme da ograničava overflow */
-    .grid {
-        overflow: visible !important;
-    }
-
-    /* Celi form kontejner mora da dozvoli overflow */
-    form {
-        overflow: visible !important;
-    }
-
-    /* Relativni pozicionirani elementi ne smeju da imaju overflow hidden */
-    .relative {
-        overflow: visible !important;
-    }
-</style>

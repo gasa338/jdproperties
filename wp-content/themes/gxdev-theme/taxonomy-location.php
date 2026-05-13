@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Template Name: Properties
- */
-
 get_header();
 
 

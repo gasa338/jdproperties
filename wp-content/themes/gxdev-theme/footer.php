@@ -15,14 +15,14 @@ $social_network = get_field('social_network', 'option');
                 </div>
 
                 <?php if (!empty($footer_data['description'])) : ?>
-                    <div class="mb-6"><?php echo apply_filters('the_content', $footer_data['description']); ?></div>
+                    <div class="mb-6 text-white/70"><?php echo apply_filters('the_content', $footer_data['description']); ?></div>
                 <?php endif; ?>
                 <?php if (!empty($social_network)) : ?>
                     <div class="flex items-center gap-3 mb-6">
                         <?php foreach ($social_network as $key => $social) : ?>
                             <?php if (!empty($social['link']['url']) && !empty($social['link']['url'])) : ?>
                                 <a href="<?php echo $social['link']['url']; ?>" class="transition-all duration-300 w-10 h-10 no-underline" aria-label="<?php echo $social['link']['title']; ?> social media link">
-                                    <div class="w-12 h-12 rounded-lg     bg-accent flex items-center justify-center text-white">
+                                    <div class="w-12 h-12 rounded-lg bg-accent flex items-center justify-center text-white">
                                         <?php echo maxwell_render_icon($social['icon'], 'w-6 h-6 !text-white'); ?>
                                     </div>
                                 </a>
@@ -41,11 +41,11 @@ $social_network = get_field('social_network', 'option');
                 if ($menu_1) :
             ?>
                     <div>
-                        <h2 class="text-white font-bold text-lg mb-6 tracking-tight"><?php echo $menu_1->name ?></h2>
+                        <h2 class="text-white text-lg mb-6 tracking-tight"><?php echo $menu_1->name ?></h2>
                         <ul class="space-y-3">
                             <?php foreach ($menu_1_items as $item) : ?>
                                 <li>
-                                    <a class="hover:text-foreground-muted transition-colors  no-underline" href="<?php echo esc_url($item->url) ?>">
+                                    <a class="text-white/70 hover:text-white transition-colors  no-underline" href="<?php echo esc_url($item->url) ?>">
                                         <?php echo esc_html($item->title) ?>
                                     </a>
                                 </li>
@@ -64,11 +64,11 @@ $social_network = get_field('social_network', 'option');
                 if ($menu_2) :
             ?>
                     <div>
-                        <h2 class="text-white font-bold text-lg mb-6 tracking-tight"><?php echo $menu_2->name ?></h2>
+                        <h2 class="text-white text-lg mb-6 tracking-tight"><?php echo $menu_2->name ?></h2>
                         <ul class="space-y-3">
                             <?php foreach ($menu_2_items as $item) : ?>
                                 <li>
-                                    <a class="hover:text-foreground-muted transition-colors no-underline" href="<?php echo esc_url($item->url) ?>">
+                                    <a class="text-white/70 hover:text-white transition-colors no-underline" href="<?php echo esc_url($item->url) ?>">
                                         <?php echo esc_html($item->title) ?>
                                     </a>
                                 </li>
@@ -88,11 +88,11 @@ $social_network = get_field('social_network', 'option');
                 if ($menu_3) :
             ?>
                     <div>
-                        <h2 class="text-white font-bold text-lg mb-6 tracking-tight"><?php echo $menu_3->name ?></h2>
+                        <h2 class="text-white text-lg mb-6 tracking-tight"><?php echo $menu_3->name ?></h2>
                         <ul class="space-y-3">
                             <?php foreach ($menu_3_items as $item) : ?>
                                 <li>
-                                    <a class="hover:text-foreground-muted transition-colors no-underline" href="<?php echo esc_url($item->url) ?>">
+                                    <a class="text-white/70 hover:text-white transition-colors no-underline" href="<?php echo esc_url($item->url) ?>">
                                         <?php echo esc_html($item->title) ?>
                                     </a>
                                 </li>
@@ -104,19 +104,19 @@ $social_network = get_field('social_network', 'option');
 
             <?php if (!empty($footer_data['contact_data'])) : ?>
                 <div>
-                    <h2 class="text-white font-bold text-lg mb-6 tracking-tight">Kontact</h2>
+                    <h2 class="text-white text-lg mb-6 tracking-tight"><?php echo __("Kontakt", "gxdev"); ?></h2>
                     <ul class="space-y-4 text-foreground-muted">
                         <?php foreach ($footer_data['contact_data'] as $item) : ?>
                             <li>
                                 <?php if ($item['text']['url'] == '#'): ?>
-                                    <div class="flex items-center gap-3 transition-colors">
+                                    <div class="flex items-center gap-3 transition-colors text-white/70">
                                         <?php if (!empty($item['icon'])): ?>
                                             <?php echo maxwell_render_svg($item['icon']['url'], 'w-6 h-6'); ?>
                                         <?php endif; ?>
                                         <?php echo $item['text']['title']; ?>
                                     </div>
                                 <?php else: ?>
-                                    <a href="<?php echo esc_url($item['text']['url']); ?>" class="flex items-center gap-3 transition-colors no-underline">
+                                    <a href="<?php echo esc_url($item['text']['url']); ?>" class="flex items-center gap-3 transition-colors text-white/70 hover:text-white no-underline">
                                         <?php if (!empty($item['icon'])): ?>
                                             <?php echo maxwell_render_svg($item['icon']['url'], 'w-6 h-6'); ?>
                                         <?php endif; ?>
@@ -144,7 +144,7 @@ $social_network = get_field('social_network', 'option');
             ?>
                     <div class="flex gap-4">
                         <?php foreach ($menu_5_items as $item) : ?>
-                            <a class="transition-colors no-underline" href="<?php echo esc_url($item->url) ?>">
+                            <a class="transition-colors text-white/70 hover:text-white no-underline" href="<?php echo esc_url($item->url) ?>">
                                 <?php echo esc_html($item->title) ?>
                             </a>
                         <?php endforeach; ?>

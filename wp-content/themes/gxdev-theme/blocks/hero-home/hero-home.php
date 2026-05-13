@@ -3,6 +3,7 @@ $blocks_id = $block['id'];
 $blocks_class = isset($block['class']) ? $block['class'] : '';
 $anchor = isset($block['anchor']) ? $block['anchor'] : $blocks_id;
 $data = get_field('hero_home');
+$half_size = $data['half_size'] ?? 'yes';
 ?>
 
 <?php echo _spacing_full('hero-image', $blocks_id, $data['margin'], []); ?>
@@ -21,15 +22,15 @@ $data = get_field('hero_home');
         <div class="relative lg:absolute lg:inset-y-0 lg:right-0 w-full h-[55vw] lg:h-full">
             <img src="<?php echo esc_url($data['image']['url']); ?>" 
                  alt="<?php echo esc_attr($data['image']['alt']); ?>" 
-                 class="w-full h-full object-cover">
+                 class="w-full h-full object-cover animate-pulse-scale">
         </div>
     <?php endif; ?>
 
     <!-- LEVA TAMNA POVRŠINA -->
-    <div class="hero-left-panel relative z-10 bg-primary text-primary-foreground w-full lg:w-[38%] lg:min-h-[85vh] flex items-center">
+    <div class="hero-left-panel relative z-10 bg-primary text-primary-foreground w-full <?php echo $half_size == 'no' ? 'lg:w-[38%]': 'lg:w-[48%]' ?> lg:min-h-[85vh] flex items-center">
         <div class="px-6 sm:px-10 lg:px-16 py-14 lg:py-28 w-full">
             
-            <div class="max-w-sm">
+            <div class="max-w-xl">
                 <?php if (!empty($data['top_title'])): ?>
                     <div class="flex items-center gap-3 mb-6">
                         <span class="w-10 h-px bg-accent"></span>
@@ -52,7 +53,7 @@ $data = get_field('hero_home');
                 <?php if (!empty($data['link_1']) || !empty($data['link_2'])): ?>
                     <div class="flex flex-wrap gap-4 items-center">
                         <?php if (!empty($data['link_1'])): ?>
-                            <?php _link_1($data['link_1']) ?>
+                            <?php _link_1($data['link_1'], 'bg-accent') ?>
                         <?php endif; ?>
                         <?php if (!empty($data['link_2'])): ?>
                             <a class="inline-flex items-center gap-2 text-primary-foreground hover:text-accent transition-colors font-body text-xs tracking-[0.32em] uppercase border-b border-primary-foreground/30 hover:border-accent pb-1"

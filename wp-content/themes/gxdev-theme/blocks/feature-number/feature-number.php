@@ -19,7 +19,7 @@ $counter = count($data['numbers']);
 
             <?php if (!empty($data['title'])) : ?>
                 <?php echo _heading($data['title'], 'mb-6  ' . esc_attr($color_mode == 'dark_mode' ? 'text-white' : 'text-foreground')); ?>
-                <div class="gold-divider <?php echo ($data['title']['align'] === 'center' ? 'mx-auto' : '') ?> mb-4"></div>
+                <div class="gold-divider <?php echo ($data['title']['align'] === 'center' ? 'mx-auto' : '') ?> mb-6"></div>
             <?php endif; ?>
 
             <?php if ($data['text']): ?>
@@ -28,7 +28,7 @@ $counter = count($data['numbers']);
                 </div>
             <?php endif; ?>
 
-            <div class="grid md:grid-cols-2 <?php echo $counter == 3 ? 'lg:grid-cols-3 max-w-4xl mx-auto' : 'lg:grid-cols-4 max-w-6xl mx-auto'; ?>  gap-4">
+            <div class="grid grid-cols-2 <?php echo $counter == 3 ? 'lg:grid-cols-3 max-w-4xl mx-auto' : 'lg:grid-cols-4 max-w-6xl mx-auto'; ?> gap-10 md:gap-6">
                 <?php if ($data['numbers']): ?>
                     <?php foreach ($data['numbers'] as $number): ?>
 

@@ -97,10 +97,6 @@
 
     --radius: 0.25rem;
 
-    --font-heading: 'Playfair Display', Georgia, serif;
-    --font-script: 'Cormorant Garamond', 'Playfair Display', serif;
-    --font-body: 'Inter', system-ui, sans-serif;
-
     /* Aliased tokens (backward compatibility) */
     --navy: 220 15% 12%;
     --navy-light: 220 10% 38%;
@@ -120,15 +116,6 @@
     --bordeaux: 220 15% 12%;
     --plum: 220 15% 18%;
     --ink: 220 15% 12%;
-
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 220 15% 26%;
-    --sidebar-primary: 220 15% 12%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 30 15% 96%;
-    --sidebar-accent-foreground: 220 15% 12%;
-    --sidebar-border: 25 15% 90%;
-    --sidebar-ring: 24.78 42.59% 57.65%;
   }
 }
 
@@ -169,13 +156,17 @@
   }
 
   .custom-logo-link img {
-    height: 48px !important;
+    height: 80px !important;
     width: auto !important;
   }
 
   a {
     text-decoration: none !important;
   }
+  
+  /* a:hover {
+    text-decoration: underline !important;
+  } */
 
   /* Samo dva breakpoint-a */
   @media (max-width: 992px) {
@@ -428,7 +419,10 @@
   }
 
   .maxwell-content ul li a {
-    @apply hover:text-secondary transition-colors duration-200;
+    @apply text-accent transition-colors duration-200;
+  }
+  .maxwell-content a {
+    @apply text-accent transition-colors duration-200;
   }
 
   .maxwell-content blockquote {

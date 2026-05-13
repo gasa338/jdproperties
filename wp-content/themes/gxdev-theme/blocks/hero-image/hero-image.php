@@ -41,7 +41,7 @@ $data = get_field('hero_image');
                         <?php endif; ?>
 
                         <?php if (!empty($data['link_2'])): ?>
-                            <a class="text-xs tracking-[0.32em] uppercase border-b border-primary-foreground/40 hover:border-accent hover:text-accent transition-all pb-1"
+                            <a class="tracking-[0.05em] border-b border-primary-foreground/40 hover:border-accent hover:text-accent transition-all"
                                href="<?php echo esc_url($data['link_2']['url']); ?>">
                                 <?php echo esc_html($data['link_2']['title']); ?>
                             </a>

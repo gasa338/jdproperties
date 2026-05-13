@@ -10,6 +10,7 @@
 </head>
 
 <?php $is_logged_in = is_user_logged_in(); ?>
+
 <body <?php body_class('font-body scroll-smooth' . ($is_logged_in ? 'mt-8' : '')); ?>>
 	<?php wp_body_open(); ?>
 	<!-- <div id="page" class="site"> -->
@@ -17,32 +18,34 @@
 
 
 	<header class="w-full hairline-b font-body">
-		<div class="bg-background hairline-b">
-			<div class="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-2.5 text-xs font-body text-muted-foreground">
+		<div class="bg-noise-luxury hairline-b">
+			<div class="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-2.5 font-body text-primary">
 				<div class="flex items-center gap-5">
 					<a href="tel:+381616917238" class="flex items-center gap-1.5 hover:text-accent transition-colors">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone w-3 h-3 text-accent">
+						<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-accent">
 							<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
 						</svg>
 						<span class="hidden sm:inline tracking-wide">+381 61 691 7238</span>
 					</a>
 					<a href="mailto:office@jdproperties.rs" class="flex items-center gap-1.5 hover:text-accent transition-colors">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail w-3 h-3 text-accent">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-accent">
 							<rect width="20" height="16" x="2" y="4" rx="2"></rect>
 							<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
 						</svg>
 						<span class="hidden sm:inline tracking-wide">office@jdproperties.rs</span>
 					</a>
 				</div>
-				<span class="eyebrow hidden sm:inline"><?php echo __('Radno vreme: Pon - Pet: 09:00 - 17:00', 'gxdev'); ?></span>
+				<span class="eyebrow hidden sm:inline tracking-wide text-sm"><?php echo __('Radno vreme: Pon - Pet: 09:00 - 17:00', 'gxdev'); ?></span>
 			</div>
 		</div>
+	</header>
+	
 
 		<!-- Main Navigation -->
 		<nav class="bg-background/95 backdrop-blur-md hairline-b sticky top-0 z-50">
-			<div class="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
+			<div class="container-fluid mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-1">
 				<!-- Logo -->
-				<div class="flex-shrink-0 custom-logo-link h-10 sm:h-12">
+				<div class="flex-shrink-0 custom-logo-link">
 					<?php the_custom_logo(); ?>
 				</div>
 
@@ -64,7 +67,7 @@
 							if (!empty($children)) :
 					?>
 								<div class="relative group">
-									<button class="flex items-center text-sm font-body font-medium tracking-wide transition-colors hover:text-accent text-foreground">
+									<button class="flex items-center text-base font-body font-medium tracking-wide transition-colors hover:text-accent text-foreground">
 										<span><?php echo $item->title; ?></span>
 										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4 ml-1">
 											<path d="m6 9 6 6 6-6"></path>
@@ -83,7 +86,7 @@
 												<div class="flex-auto">
 													<span><?php echo $child->title; ?></span>
 													<?php if (!empty($menu_items['text'])) : ?>
-														<p class="mt-0.5 text-sm text-gray-600"><?php echo $menu_items['text']; ?></p>
+														<p class="mt-0.5 text-base text-muted-foreground"><?php echo $menu_items['text']; ?></p>
 													<?php endif; ?>
 												</div>
 											</a>
@@ -91,12 +94,26 @@
 									</div>
 								</div>
 							<?php else: ?>
-								<a href="<?php echo $item->url; ?>" class="text-sm font-body font-medium tracking-wide transition-colors hover:text-accent <?php echo is_front_page() && $item->title == 'Početna' ? 'text-accent' : 'text-foreground'; ?>">
+								<a href="<?php echo $item->url; ?>" class="text-base font-body font-medium tracking-wide transition-colors hover:text-accent <?php echo is_front_page() && $item->title == 'Početna' ? 'text-accent' : 'text-foreground'; ?>">
 									<?php echo $item->title; ?>
 								</a>
 							<?php endif; ?>
 						<?php endif; ?>
 					<?php endforeach; ?>
+				</div>
+
+				<!-- Language Switcher -->
+				<div class="flex items-center">
+					<div class="lang-switcher mr-4">
+						<?php echo do_shortcode('[wpml_language_selector_widget]'); ?>
+					</div>
+
+					<?php $header = get_field('header', 'option'); ?>
+					<?php if (!empty($header) && !empty($header['cta_link'])) : ?>
+						<div class="hidden md:flex">
+							<?php _link_1($header['cta_link']); ?>
+						</div>
+					<?php endif; ?>
 				</div>
 
 				<!-- Call to Action Button -->
@@ -127,7 +144,7 @@
 		</nav>
 
 		<!-- Mobile Menu -->
-		<div id="mobile-menu" class="hidden lg:hidden fixed top-0 right-0 w-full h-screen bg-card z-40 overflow-y-auto pt-20">
+		<div id="mobile-menu" class="hidden lg:hidden fixed top-0 right-0 w-full h-screen bg-card z-40 overflow-y-auto pt-20 sticky top-0 z-50">
 			<nav class="px-4 pt-2 pb-3 space-y-2">
 				<?php
 				foreach ($menu_1_items as $item) :
@@ -175,18 +192,11 @@
 				<!-- Mobile CTA Button -->
 				<?php if (!empty($header) && !empty($header['link'])) : ?>
 					<div class="pt-4 mt-4 border-t border-gray-200">
-						<a href="<?php echo $header['link']['url']; ?>" class="flex items-center justify-center gap-2 bg-primary text-primary-foreground rounded-lg px-6 py-3 no-underline transition-all hover:scale-105 font-medium">
-							<?php echo esc_html($header['link']['title']); ?>
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right w-4 h-4">
-								<path d="M5 12h14"></path>
-								<path d="m12 5 7 7-7 7"></path>
-							</svg>
-						</a>
+						<?php _link_1($header['link']); ?>
 					</div>
 				<?php endif; ?>
 			</nav>
 		</div>
-	</header>
 
 	<script>
 		// Mobile menu toggle

@@ -17,42 +17,47 @@
 .wpcf7-form select,
 .wpcf7-form textarea {
     width: 100%;
-    padding: 2px 6px;
+    padding: 8px 12px;
+    margin-top: 1px;
     border: 1px solid hsl(var(--rose-gold) / 0.2);
-    border-radius: 3px;
     background-color: hsl(var(--muted));
     font-size: 16px;
     box-sizing: border-box;
     font-family: inherit;
+    border-radius: 5px;
 }
 
 /* Placeholder stil */
 .wpcf7-form ::placeholder {
-    /* color: #999; */
     font-family: theme('fontFamily.body');
     font-weight: 400;
-    font-size: 1rem;
-    color: hsl(var(--rose-gold-soft));
+    font-size: 16px;
+    color: hsl(var(--muted-foreground));
 }
 
-
+/* Dugme */
 .wpcf7-form input[type="submit"] {
     color: white;
-    background-color: hsl(var(--primary));
-    padding: 2px 6px; /* px-4 py-2 */
+    background-color: hsl(var(--accent));
+    padding: 8px 16px;
+    /* px-4 py-2 */
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     font-size: 16px;
-    width: 100%; /* zadržavam iz prethodnog */
+    width: 100%;
+    /* zadržavam iz prethodnog */
     margin-top: 10px;
+    border: 2px solid hsl(var(--rose-gold) / 0.2);
+    border-radius: 5px;
 }
 
 .wpcf7-form input[type="submit"]:hover {
     background-color: hsl(var(--accent));
-    color: white !important; /* hover:!text-[#F06F40] */
+    color: white !important;
+    border: 2px solid hsl(var(--primary) / 0.7);
 }
 
 .wpcf7-form input[type="submit"]:active {
@@ -82,4 +87,31 @@
     border-radius: 5px;
     padding: 15px;
     margin: 20px 0;
+}
+
+.inline-fields {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.inline-fields p {
+    flex: 1;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.inline-fields input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+@media (max-width: 640px) {
+    .inline-fields {
+        flex-direction: column;
+        gap: 8px;
+    }
 }

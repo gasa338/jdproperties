@@ -1,9 +1,4 @@
 <?php
-
-/**
- * Template Name: Properties
- */
-
 get_header();
 
 
@@ -27,12 +22,17 @@ $locations = get_terms([
     'number'     => 0, // sve lokacije, JS ce prikazati prvih 12
 ]);
 
+$chevron_up   = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up w-4 h-4 text-muted-foreground"><path d="m18 15-6-6-6 6"></path></svg>';
+$chevron_down = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4 text-muted-foreground"><path d="m6 9 6 6 6-6"></path></svg>';
+
+$input_classes = 'flex w-full border border-input bg-background px-3 py-2 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm font-body rounded-sm h-10 text-sm';
+
 $page_id = get_the_ID();
 $additional_pages = get_field('additional_content', $page_id);
 $term = get_queried_object();
 ?>
 
-<main >
+<main>
     <!-- <section class="pt-8"> -->
         <div class="relative bg-gradient-navy py-24 overflow-hidden mb-24">
             <div class="absolute top-20 right-[10%] w-72 h-72 rounded-full border border-primary-foreground/8 animate-pulse-subtle"></div>
@@ -102,7 +102,7 @@ $term = get_queried_object();
 
             </div>
         </div>
-        <?php      
+        <?php
         if (!empty($additional_pages)) {
             foreach ($additional_pages['bottom'] as $page) : ?>
                 <?php echo gxdev_render_global_content($page->post_name); ?>

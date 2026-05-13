@@ -37,23 +37,23 @@ module.exports = {
         '5xl': ['70px', { lineHeight: '1.05', letterSpacing: '0.02em' }],
 
         // H1
-        'h1-mobile': ['40px', { lineHeight: '44px', letterSpacing: '2px' }],
-        'h1-tablet': ['44px', { lineHeight: '48px', letterSpacing: '2px' }],
-        'h1-desktop': ['52px', { lineHeight: '60px', letterSpacing: '2px' }],
+        'h1-mobile': ['54px', { lineHeight: '60px', letterSpacing: '2px' }],
+        'h1-tablet': ['54px', { lineHeight: '60px', letterSpacing: '2px' }],
+        'h1-desktop': ['70px', { lineHeight: '80px', letterSpacing: '2px' }],
 
         // H2
-        'h2-mobile': ['24px', { lineHeight: '32px', letterSpacing: '2px' }],
-        'h2-tablet': ['28px', { lineHeight: '36px', letterSpacing: '2px' }],
-        'h2-desktop': ['34px', { lineHeight: '42px', letterSpacing: '2px' }],
+        'h2-mobile': ['46px', { lineHeight: '52px', letterSpacing: '2px' }],
+        'h2-tablet': ['46px', { lineHeight: '52px', letterSpacing: '2px' }],
+        'h2-desktop': ['46px', { lineHeight: '52px', letterSpacing: '2px' }],
 
         // H3
-        'h3-mobile': ['20px', { lineHeight: '28px', letterSpacing: '2px' }],
-        'h3-tablet': ['22px', { lineHeight: '30px', letterSpacing: '2px' }],
-        'h3-desktop': ['24px', { lineHeight: '32px', letterSpacing: '2px' }],
+        'h3-mobile': ['32px', { lineHeight: '40px', letterSpacing: '2px' }],
+        'h3-tablet': ['32px', { lineHeight: '40px', letterSpacing: '2px' }],
+        'h3-desktop': ['28px', { lineHeight: '36px', letterSpacing: '2px' }],
 
-        'h4-mobile': ['18px', { lineHeight: '22px' }],
+        'h4-mobile': ['20px', { lineHeight: '22px' }],
         'h4-tablet': ['20px', { lineHeight: '24px' }],
-        'h4-desktop': ['22px', { lineHeight: '26px' }],
+        'h4-desktop': ['22px', { lineHeight: '28px' }],
 
         'h5-mobile': ['18px', { lineHeight: '20px' }],
         'h5-tablet': ['18px', { lineHeight: '24px' }],
@@ -141,12 +141,18 @@ module.exports = {
           from: { opacity: "0", transform: "translateY(20px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        
+        'pulse-scale': {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.06)' },
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.6s ease-out forwards",
-      },
+        'pulse-scale': 'pulse-scale 15s ease-in-out infinite',
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],

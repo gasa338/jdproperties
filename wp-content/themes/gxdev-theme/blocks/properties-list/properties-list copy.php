@@ -46,6 +46,7 @@ $color_mode = $data['background'];
                                                                                                             echo ' ' . _background($data['background']); ?>">
 
     <?php
+
     $args = get_property_args($data);
     $query = new WP_Query($args);
     $found_posts = $query->found_posts;

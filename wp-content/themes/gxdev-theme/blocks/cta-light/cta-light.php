@@ -68,7 +68,7 @@ $color_mode = $data['background'] ?? 'dark';
                     <?php _top_title($data['top_title'], 'center') ?>
                 <?php endif; ?>
                 <?php if (!empty($data['title'])): ?>
-                    <?php echo _heading($data['title'], 'mt-4 mb-6'); ?>
+                    <?php echo _heading($data['title'], 'mt-4 mb-6' . ($color_mode === 'dark_mode' ? ' text-white' : '')); ?>
                     <div class="gold-divider <?php echo ($data['title']['align'] === 'center' ? 'mx-auto' : '') ?> mb-8"></div>
                 <?php endif; ?>
 
@@ -82,13 +82,13 @@ $color_mode = $data['background'] ?? 'dark';
                     <?php
                     switch ($btn_layout) {
                         case 'dark':
-                            echo _link_1($data['link']);
+                            echo _link_1_backup($data['link']);
                             break;
                         case 'light':
                             echo _link_2($data['link']);
                             break;
                         default:
-                            echo _link_1($data['link']);
+                            echo _link_1_backup($data['link']);
                             break;
                     }
                     ?>

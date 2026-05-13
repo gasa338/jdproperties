@@ -33,7 +33,7 @@ $color_mode = $data['background'] ?? 'dark';
             </div>
           <?php endif; ?>
           <?php if (!empty($data['left_title'])): ?>
-            <h3 class="text-2xl font-bold <?php echo ($color_mode === 'dark_mode' ? 'text-white' : ''); ?>">
+            <h3 class="text-2xl <?php echo ($color_mode === 'dark_mode' ? 'text-white' : ''); ?>">
               <?php echo $data['left_title']; ?>
             </h3>
           <?php endif; ?>
@@ -55,7 +55,7 @@ $color_mode = $data['background'] ?? 'dark';
           <?php endif; ?>
 
           <?php if (!empty($data['right_title'])): ?>
-            <h3 class="text-2xl font-bold <?php echo ($color_mode === 'dark_mode' ? 'text-white' : ''); ?>">
+            <h3 class="text-2xl <?php echo ($color_mode === 'dark_mode' ? 'text-white' : ''); ?>">
               <?php echo $data['right_title']; ?>
             </h3>
           <?php endif; ?>

@@ -137,6 +137,10 @@ function mma_future_setup()
 }
 add_action('after_setup_theme', 'mma_future_setup');
 
+
+// Ukloni p tagove iz CF7
+add_filter('wpcf7_autop_or_not', '__return_false');
+
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
@@ -265,6 +269,92 @@ function mma_future_admin_scripts($hook)
 }
 add_action('admin_enqueue_scripts', 'mma_future_admin_scripts');
 
+
+
+/**
+ * CPT: Properties + taxonomies (cat, type, location, other)
+ * Slug CPT-a: properties  (VAŽNO: isti kao u staroj temi/WP All Import-u)
+ */
+add_action('init', function () {
+
+	/* ---------- CPT: properties ---------- */
+	if ( ! post_type_exists('properties') ) {
+		$labels = array(
+			'name'               => 'Properties',
+			'singular_name'      => 'Property',
+			'menu_name'          => 'Properties',
+			'add_new'            => 'Add New',
+			'add_new_item'       => 'Add New Property',
+			'edit_item'          => 'Edit Property',
+			'new_item'           => 'New Property',
+			'view_item'          => 'View Property',
+			'all_items'          => 'All Properties',
+			'search_items'       => 'Search Properties',
+			'not_found'          => 'No properties found',
+			'not_found_in_trash' => 'No properties found in Trash',
+		);
+
+		register_post_type('properties', array(
+			'labels'             => $labels,
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'show_in_rest'       => true,   // Gutenberg/REST
+			'has_archive'        => true,
+			'rewrite'            => array('slug' => 'nekretnine'), // npr. /nekretnine/
+			'menu_icon'          => 'dashicons-building',
+			'supports'           => array('title','editor','thumbnail','excerpt','custom-fields'),
+			'exclude_from_search'=> false,
+			'map_meta_cap'       => true,
+		));
+	}
+
+	/* ---------- TAX: cat (hijerarhijska — kao kategorije) ---------- */
+	// koristila se u staroj temi; ako želiš drugi slug, promeni 'cat'
+	register_taxonomy('cat', array('properties'), array(
+		'labels' => array(
+			'name'          => 'Categories',
+			'singular_name' => 'Category',
+		),
+		'hierarchical'      => true,
+		'public'            => true,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'show_in_rest'      => true,
+		// 'rewrite'           => array('slug' => 'prop-category'),
+	));
+
+	/* ---------- TAX: location (hijerarhijska — npr. Grad/Opština) ---------- */
+	register_taxonomy('location', array('properties'), array(
+		'labels' => array(
+			'name'          => 'Locations',
+			'singular_name' => 'Location',
+		),
+		'hierarchical'      => true,
+		'public'            => true,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'show_in_rest'      => true,
+		// 'rewrite'           => array('slug' => 'location'),
+	));
+
+	/* ---------- TAX: other (nehijerarhijska — tagovi/feature-i) ---------- */
+	register_taxonomy('other', array('properties'), array(
+		'labels' => array(
+			'name'          => 'Features',
+			'singular_name' => 'Feature',
+		),
+		'hierarchical'      => false, // tagovi
+		'public'            => true,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'show_in_rest'      => true,
+		// 'rewrite'           => array('slug' => 'feature'),
+	));
+});
+
+
 /**
  * Include helper functions
  */
@@ -336,189 +426,5 @@ require_once get_template_directory() . '/inc/jd-property-hooks.php';
 require_once get_template_directory() . '/inc/jd-property-sale-hooks.php';
 require_once get_template_directory() . '/inc/functions-properties-ajax.php';
 require_once get_template_directory() . '/inc/functions-properties-ajax-taxonomy.php';
+require_once get_template_directory() . '/inc/speed-contact-options.php';
 
-
-
-/**
- * CPT: Properties + taxonomies (cat, type, location, other)
- * Slug CPT-a: properties  (VAŽNO: isti kao u staroj temi/WP All Import-u)
- */
-add_action('init', function () {
-
-	/* ---------- CPT: properties ---------- */
-	if ( ! post_type_exists('properties') ) {
-		$labels = array(
-			'name'               => 'Properties',
-			'singular_name'      => 'Property',
-			'menu_name'          => 'Properties',
-			'add_new'            => 'Add New',
-			'add_new_item'       => 'Add New Property',
-			'edit_item'          => 'Edit Property',
-			'new_item'           => 'New Property',
-			'view_item'          => 'View Property',
-			'all_items'          => 'All Properties',
-			'search_items'       => 'Search Properties',
-			'not_found'          => 'No properties found',
-			'not_found_in_trash' => 'No properties found in Trash',
-		);
-
-		register_post_type('properties', array(
-			'labels'             => $labels,
-			'public'             => true,
-			'publicly_queryable' => true,
-			'show_ui'            => true,
-			'show_in_menu'       => true,
-			'show_in_rest'       => true,   // Gutenberg/REST
-			'has_archive'        => true,
-			'rewrite'            => array('slug' => 'nekretnine'), // npr. /nekretnine/
-			'menu_icon'          => 'dashicons-building',
-			'supports'           => array('title','editor','thumbnail','excerpt','custom-fields'),
-			'exclude_from_search'=> false,
-			'map_meta_cap'       => true,
-		));
-	}
-
-	/* ---------- TAX: cat (hijerarhijska — kao kategorije) ---------- */
-	// koristila se u staroj temi; ako želiš drugi slug, promeni 'cat'
-	register_taxonomy('cat', array('properties'), array(
-		'labels' => array(
-			'name'          => 'Categories',
-			'singular_name' => 'Category',
-		),
-		'hierarchical'      => true,
-		'public'            => true,
-		'show_ui'           => true,
-		'show_admin_column' => true,
-		'show_in_rest'      => true,
-		// 'rewrite'           => array('slug' => 'prop-category'),
-	));
-
-	/* ---------- TAX: location (hijerarhijska — npr. Grad/Opština) ---------- */
-	register_taxonomy('location', array('properties'), array(
-		'labels' => array(
-			'name'          => 'Locations',
-			'singular_name' => 'Location',
-		),
-		'hierarchical'      => true,
-		'public'            => true,
-		'show_ui'           => true,
-		'show_admin_column' => true,
-		'show_in_rest'      => true,
-		'rewrite'           => array('slug' => 'location'),
-	));
-
-	/* ---------- TAX: other (nehijerarhijska — tagovi/feature-i) ---------- */
-	register_taxonomy('other', array('properties'), array(
-		'labels' => array(
-			'name'          => 'Features',
-			'singular_name' => 'Feature',
-		),
-		'hierarchical'      => false, // tagovi
-		'public'            => true,
-		'show_ui'           => true,
-		'show_admin_column' => true,
-		'show_in_rest'      => true,
-		'rewrite'           => array('slug' => 'feature'),
-	));
-});
-
-
-
-function jdproperty_map_shortcode() {
-    $lat = get_field('geo_sirina');
-    $lng = get_field('geo_duzina');
-
-    // Ako nema koordinate, ne prikazuj ništa
-    if ( empty($lat) || empty($lng) ) {
-        return '';
-    }
-
-    // HTML embed mape
-    $map = '<div class="property-map" style="margin-top:20px;">
-        <iframe 
-            width="100%" 
-            height="450" 
-            style="border:0" 
-            loading="lazy" 
-            allowfullscreen 
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=' . esc_attr($lat) . ',' . esc_attr($lng) . '&hl=sr&z=15&output=embed">
-        </iframe>
-    </div>';
-
-    return $map;
-}
-add_shortcode('property_map', 'jdproperty_map_shortcode');
-
-
-add_action('save_post_properties', function($post_id, $post, $update) {
-
-  if (wp_is_post_revision($post_id) || (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)) {
-    return;
-  }
-
-  $raw = get_post_meta($post_id, 'property_price', true);
-
-  // iz "455.160 €" napravi 455160
-  $num = preg_replace('/[^\d]/', '', (string)$raw);
-
-  $num = $num !== '' ? (int)$num : 0;
-
-  update_post_meta($post_id, 'property_price_num', $num);
-
-  _update_price_bounds_in_options($num);
-
-}, 10, 3);
-
-
-function _update_price_bounds_in_options($current_price) {
-  // Ako je cena 0 (nema cene), ignoriši
-  if ($current_price <= 0) {
-    return;
-  }
-  
-  // Dohvati trenutne vrednosti iz option tabele
-  $current_min = get_option('property_price_min', null);
-  $current_max = get_option('property_price_max', null);
-  
-  // INICIJALIZACIJA: ako nema vrednosti, postavi trenutnu cenu
-  if ($current_min === null) {
-    update_option('property_price_min', $current_price);
-  }
-  
-  if ($current_max === null) {
-    update_option('property_price_max', $current_price);
-  }
-  
-  // Provera za MINIMUM
-  if ($current_price < (int)$current_min) {
-    update_option('property_price_min', $current_price);
-  }
-  
-  // Provera za MAKSIMUM
-  if ($current_price > (int)$current_max) {
-    update_option('property_price_max', $current_price);
-  }
-}
-
-
-/** dinamic populate field */
-add_filter('acf/load_field/name=property_location', function($field) {
-
-    // uzmi samo termine iz "location" taksonomije
-    $terms = get_terms([
-        'taxonomy'   => 'location',
-        'hide_empty' => true, // samo one koje imaju properties
-    ]);
-
-    // reset choices
-    $field['choices'] = [];
-
-    if (!is_wp_error($terms)) {
-        foreach ($terms as $term) {
-            $field['choices'][$term->term_id] = $term->name;
-        }
-    }
-
-    return $field;
-});

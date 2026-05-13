@@ -790,3 +790,107 @@ function get_property_args($data, $per_page = -1) {
 
     return $args;
 }
+
+
+
+/** properties helper function */
+
+
+function jdproperty_map_shortcode() {
+    $lat = get_field('geo_sirina');
+    $lng = get_field('geo_duzina');
+
+    // Ako nema koordinate, ne prikazuj ništa
+    if ( empty($lat) || empty($lng) ) {
+        return '';
+    }
+
+    // HTML embed mape
+    $map = '<div class="property-map" style="margin-top:20px;">
+        <iframe 
+            width="100%" 
+            height="450" 
+            style="border:0" 
+            loading="lazy" 
+            allowfullscreen 
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=' . esc_attr($lat) . ',' . esc_attr($lng) . '&hl=sr&z=15&output=embed">
+        </iframe>
+    </div>';
+
+    return $map;
+}
+add_shortcode('property_map', 'jdproperty_map_shortcode');
+
+
+add_action('save_post_properties', function($post_id, $post, $update) {
+
+  if (wp_is_post_revision($post_id) || (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)) {
+    return;
+  }
+
+  $raw = get_post_meta($post_id, 'property_price', true);
+
+  // iz "455.160 €" napravi 455160
+  $num = preg_replace('/[^\d]/', '', (string)$raw);
+
+  $num = $num !== '' ? (int)$num : 0;
+
+  update_post_meta($post_id, 'property_price_num', $num);
+
+  _update_price_bounds_in_options($num);
+
+}, 10, 3);
+
+
+function _update_price_bounds_in_options($current_price) {
+  // Ako je cena 0 (nema cene), ignoriši
+  if ($current_price <= 0) {
+    return;
+  }
+  
+  // Dohvati trenutne vrednosti iz option tabele
+  $current_min = get_option('property_price_min', null);
+  $current_max = get_option('property_price_max', null);
+  
+  // INICIJALIZACIJA: ako nema vrednosti, postavi trenutnu cenu
+  if ($current_min === null) {
+    update_option('property_price_min', $current_price);
+  }
+  
+  if ($current_max === null) {
+    update_option('property_price_max', $current_price);
+  }
+  
+  // Provera za MINIMUM
+  if ($current_price < (int)$current_min) {
+    update_option('property_price_min', $current_price);
+  }
+  
+  // Provera za MAKSIMUM
+  if ($current_price > (int)$current_max) {
+    update_option('property_price_max', $current_price);
+  }
+}
+
+
+/** dinamic populate field */
+add_filter('acf/load_field/name=property_location', function($field) {
+
+    // uzmi samo termine iz "location" taksonomije
+    $terms = get_terms([
+        'taxonomy'   => 'location',
+        'hide_empty' => true, // samo one koje imaju properties
+    ]);
+
+    // reset choices
+    $field['choices'] = [];
+
+    if (!is_wp_error($terms)) {
+        foreach ($terms as $term) {
+            $field['choices'][$term->term_id] = $term->name;
+        }
+    }
+
+    return $field;
+});

@@ -462,7 +462,13 @@ function jd_sale_output_title()
             <?php endif; ?>
         </div>
 
-        <?php the_title('<h1 class="h2-responsive">', '</h1>'); ?>
+        <?php the_title('<h1 class="h2-responsive mb-4">', '</h1>'); ?>
+
+        <div class="ornament-divider mb-8 max-w-md text-accent">
+            <svg width="10" height="10" viewBox="0 0 14 14" fill="none">
+                <path d="M7 0L8.5 5.5L14 7L8.5 8.5L7 14L5.5 8.5L0 7L5.5 5.5Z" fill="currentColor"></path>
+            </svg>
+        </div>
 
         <?php
         $opstina = get_field('opstina', $post_id);
@@ -512,7 +518,7 @@ function jd_sale_output_title()
 
         <?php if (!empty($price)): ?>
             <div class="flex flex-wrap items-baseline gap-4">
-                <span class="font-heading text-3xl sm:text-4xl font-bold text-foreground">
+                <span class="font-heading h4-responsive text-foreground">
                     <?php echo number_format($price, 0, ',', '.'); ?> EUR
                 </span>
                 <?php
@@ -554,7 +560,7 @@ function jd_sale_output_stats()
                 <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
             </svg>
             <div class="font-body text-muted-foreground mb-1"><?php echo __("Površina", "gxdev"); ?></div>
-            <div class="font-heading text-2xl font-bold text-foreground"><?php echo !empty($area) ? $area : "---"; ?> m²</div>
+            <div class="font-heading text-2xl text-foreground"><?php echo !empty($area) ? $area : "---"; ?> m²</div>
         </div>
 
         <div class="bg-secondary rounded-lg p-5 text-center border border-border">
@@ -565,7 +571,7 @@ function jd_sale_output_stats()
                 <path d="M2 18h20" />
             </svg>
             <div class="font-body text-muted-foreground mb-1"><?php echo __("Sobe", "gxdev"); ?></div>
-            <div class="font-heading text-2xl font-bold text-foreground"><?php echo !empty($rooms) ? $rooms : "---"; ?></div>
+            <div class="font-heading text-2xl text-foreground"><?php echo !empty($rooms) ? $rooms : "---"; ?></div>
         </div>
 
         <div class="bg-secondary rounded-lg p-5 text-center border border-border">
@@ -576,7 +582,7 @@ function jd_sale_output_stats()
                 <path d="M7 4v16" />
             </svg>
             <div class="font-body text-muted-foreground mb-1"><?php echo __("Sprat", "gxdev"); ?></div>
-            <div class="font-heading text-2xl font-bold text-foreground"><?php echo !empty($floor) ? $floor : "---"; ?></div>
+            <div class="font-heading text-2xl text-foreground"><?php echo !empty($floor) ? $floor : "---"; ?></div>
         </div>
 
         <div class="bg-secondary rounded-lg p-5 text-center border border-border">
@@ -590,7 +596,7 @@ function jd_sale_output_stats()
                 <path d="M16 12h.01" />
             </svg>
             <div class="font-body text-muted-foreground mb-1"><?php echo __("Spratnost", "gxdev"); ?></div>
-            <div class="font-heading text-2xl font-bold text-foreground"><?php echo !empty($floors_in_building) ? $floors_in_building : "---"; ?></div>
+            <div class="font-heading text-2xl text-foreground"><?php echo !empty($floors_in_building) ? $floors_in_building : "---"; ?></div>
         </div>
 
     </div>
@@ -606,8 +612,8 @@ function jd_sale_output_description()
 {
 ?>
     <div>
-        <h2 class="font-heading text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+        <h2 class="h3-responsive text-foreground mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
                 <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
                 <path d="M14 2v4a2 2 0 0 0 2 2h4" />
                 <path d="M10 9H8" />
@@ -616,7 +622,7 @@ function jd_sale_output_description()
             </svg>
             <?php echo __("Opis nekretnine", "gxdev"); ?>
         </h2>
-        <div class="font-body text-muted-foreground leading-relaxed text-base maxwell-content">
+        <div class="font-body text-muted-foreground maxwell-content">
             <?php the_content(); ?>
         </div>
     </div>
@@ -637,8 +643,8 @@ function jd_sale_output_features()
     $toilettes = get_field('property_toilettes', $post_id);
 ?>
     <div>
-        <h2 class="font-heading text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+        <h2 class="h3-responsive text-foreground mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
                 <path d="M21.801 10A10 10 0 1 1 17 3.335" />
                 <path d="m9 11 3 3L22 4" />
             </svg>
@@ -715,8 +721,8 @@ function jd_sale_output_financing()
     $monthly_est   = round($loan_amount * 0.005); // ~0.5% gruba procena rate
 ?>
     <div>
-        <h2 class="font-heading text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+        <h2 class="h3-responsive text-foreground mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
                 <rect width="20" height="14" x="2" y="5" rx="2" />
                 <line x1="2" x2="22" y1="10" y2="10" />
             </svg>
@@ -779,8 +785,8 @@ function jd_sale_output_documentation()
     $cadaster     = get_post_meta($post_id, '_property_cadaster',     true) ?: 'Upisano u katastar';
 ?>
     <div>
-        <h2 class="font-heading text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+        <h2 class="h3-responsive text-foreground mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
                 <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
                 <path d="M14 2v4a2 2 0 0 0 2 2h4" />
                 <path d="M9 13h6" />
@@ -927,7 +933,7 @@ function jd_sale_output_additional()
             </div>
         </details>
     </div>
-<?php
+    <?php
 }
 
 
@@ -943,31 +949,35 @@ function jd_sale_output_map()
     $location = $opstina . ", " . $opstinski_region;
     $geo_duzina = get_field('geo_duzina', $post_id); // longitude
     $geo_sirina = get_field('geo_sirina', $post_id); // latitude
-?>
-    <div>
-        <h2 class="font-heading text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
-                <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
-                <circle cx="12" cy="10" r="3" />
-            </svg>
-            <?php echo __("Lokacija", 'gxdev'); ?>
-        </h2>
-        <?php if (!empty($geo_duzina) || !empty($geo_sirina)): ?>
-            <div class="rounded-lg overflow-hidden border border-border aspect-[16/9]">
-                <iframe
-                    title="Lokacija nekretnine"
-                    src="https://maps.google.com/maps?q=<?php echo $geo_sirina; ?>,<?php echo $geo_duzina; ?>&z=15&output=embed"
-                    class="w-full h-full"
-                    loading="lazy"
-                    allowfullscreen>
-                </iframe>
-            </div>
-        <?php endif; ?>
-        <p class="font-body text-sm text-muted-foreground mt-3">
-            📍 <?php echo esc_html($location); ?>
-        </p>
-    </div>
-<?php
+    if (!empty($geo_duzina) || !empty($geo_sirina) || !empty($opstina)):
+    ?>
+        <div>
+            <h2 class="h3-responsive text-foreground mb-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+                    <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+                    <circle cx="12" cy="10" r="3" />
+                </svg>
+                <?php echo __("Lokacija", 'gxdev'); ?>
+            </h2>
+            <?php if (!empty($geo_duzina) || !empty($geo_sirina)): ?>
+                <div class="rounded-lg overflow-hidden border border-border aspect-[16/9]">
+                    <iframe
+                        title="Lokacija nekretnine"
+                        src="https://maps.google.com/maps?q=<?php echo $geo_sirina; ?>,<?php echo $geo_duzina; ?>&z=15&output=embed"
+                        class="w-full h-full"
+                        loading="lazy"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            <?php endif; ?>
+            <?php if (!empty($location)): ?>
+                <p class="font-body text-sm text-muted-foreground mt-3">
+                    📍 <?php echo esc_html($location); ?>
+                </p>
+            <?php endif; ?>
+        </div>
+    <?php
+    endif;
 }
 
 
@@ -977,10 +987,10 @@ function jd_sale_output_map()
 
 function jd_sale_output_faq()
 {
-?>
+    ?>
     <div>
-        <h2 class="font-heading text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+        <h2 class="h3-responsive text-foreground mb-6 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
                 <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
             </svg>
             <?php echo __('Česta pitanja', 'gxdev'); ?>
@@ -1103,6 +1113,8 @@ function jd_sale_output_price_card()
 
 function jd_sale_output_schedule_form()
 {
+    $form_data = get_field('single_properties', 'option');
+
 ?>
     <div class="bg-card border border-border rounded-lg p-6 space-y-4">
         <h3 class="font-heading text-base font-semibold text-foreground flex items-center gap-2">
@@ -1114,8 +1126,7 @@ function jd_sale_output_schedule_form()
             </svg>
             <?php echo __('Zakaži razgledanje', 'gxdev'); ?>
         </h3>
-
-        <?php echo do_shortcode('[contact-form-7 id="f76702a" title="Zakaži razgledanje"]') ?>
+        <?php echo do_shortcode('[contact-form-7 id="' . $form_data['choose_form'] . '"]'); ?>
     </div>
 <?php
 }
@@ -1343,8 +1354,8 @@ function jd_sale_output_similar()
 
 ?>
     <?php if ($query->have_posts()) : ?>
-        <div class="mt-16" style="opacity: 1; transform: none;">
-            <h2 class="font-heading text-2xl sm:text-3xl font-semibold text-foreground mb-8"><?php echo __ ('Slične nekretnine', 'gxdev'); ?></h2>
+        <div class="mt-16">
+            <h2 class="h3-responsive text-foreground mb-8"><?php echo __('Slične nekretnine', 'gxdev'); ?></h2>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php while ($query->have_posts()) : $query->the_post(); ?>
                     <?php get_template_part('template-parts/content', 'property', [
